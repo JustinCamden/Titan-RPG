@@ -1,22 +1,22 @@
 {
-  "BOILERPLATE.AbilityStr": "Strength",
-  "BOILERPLATE.AbilityCon": "Constitution",
-  "BOILERPLATE.AbilityDex": "Dexterity",
-  "BOILERPLATE.AbilityInt": "Intelligence",
-  "BOILERPLATE.AbilityWis": "Wisdom",
-  "BOILERPLATE.AbilityCha": "Charisma",
+  "TITAN.AbilityStr": "Strength",
+  "TITAN.AbilityCon": "Constitution",
+  "TITAN.AbilityDex": "Dexterity",
+  "TITAN.AbilityInt": "Intelligence",
+  "TITAN.AbilityWis": "Wisdom",
+  "TITAN.AbilityCha": "Charisma",
 
-  "BOILERPLATE.AbilityStrAbbr": "str",
-  "BOILERPLATE.AbilityConAbbr": "con",
-  "BOILERPLATE.AbilityDexAbbr": "dex",
-  "BOILERPLATE.AbilityIntAbbr": "int",
-  "BOILERPLATE.AbilityWisAbbr": "wis",
-  "BOILERPLATE.AbilityChaAbbr": "cha",
+  "TITAN.AbilityStrAbbr": "str",
+  "TITAN.AbilityConAbbr": "con",
+  "TITAN.AbilityDexAbbr": "dex",
+  "TITAN.AbilityIntAbbr": "int",
+  "TITAN.AbilityWisAbbr": "wis",
+  "TITAN.AbilityChaAbbr": "cha",
 
-  "BOILERPLATE.EffectCreate": "Create Effect",
-  "BOILERPLATE.EffectToggle": "Toggle Effect",
-  "BOILERPLATE.EffectEdit": "Edit Effect",
-  "BOILERPLATE.EffectDelete": "Delete Effect",
+  "TITAN.EffectCreate": "Create Effect",
+  "TITAN.EffectToggle": "Toggle Effect",
+  "TITAN.EffectEdit": "Edit Effect",
+  "TITAN.EffectDelete": "Delete Effect",
 
-  "BOILERPLATE.Add": "Add"
+  "TITAN.Add": "Add"
 }
