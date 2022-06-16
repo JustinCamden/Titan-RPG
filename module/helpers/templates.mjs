@@ -7,9 +7,9 @@
   return loadTemplates([
 
     // Actor partials.
-    "systems/titan/templates/actor/parts/actor-features.html",
-    "systems/titan/templates/actor/parts/actor-items.html",
-    "systems/titan/templates/actor/parts/actor-spells.html",
-    "systems/titan/templates/actor/parts/actor-effects.html",
+    "systems/titan/templates/actor/parts/actor-features.hbs",
+    "systems/titan/templates/actor/parts/actor-items.hbs",
+    "systems/titan/templates/actor/parts/actor-spells.hbs",
+    "systems/titan/templates/actor/parts/actor-effects.hbs",
   ]);
 };
