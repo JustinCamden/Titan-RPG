@@ -259,11 +259,16 @@
             "staticMod": 0
           },
           "wounds": {
-            "value": 0
+            "value": 0,
+            "staticMod": 0
           }
         },
         "movement": {
-          "speed": "normal"
+          "land": {
+            "speed": {
+              "base": 1
+            }
+          }
         }
       }
     },
