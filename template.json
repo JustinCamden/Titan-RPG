@@ -16,172 +16,248 @@
         "biography": "",
         "attributes": {
           "body": {
-            "value": 1
+            "value": 1,
+            "static-bonus": 0
           },
           "mind": {
-            "value": 1
+            "value": 1,
+            "static-bonus": 0
           },
           "soul": {
-            "value": 1
+            "value": 1,
+            "static-bonus": 0
           },
           "level": {
-            "value": 1
+            "value": 1,
+            "static-bonus": 0
           }
         },
         "resistances": {
           "fortitude": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "reflexes": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "willpower": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           }
         },
         "skills": {
           "arcana": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "athletics": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "beast-handling": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "deception": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "dexterity": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "diplomacy": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "engineering": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
+            }
+          },
+          "evasion": {
+            "training": {
+              "value": 0,
+              "static-bonus": 0
+            },
+            "focus": {
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "intimidation": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "investigation": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "lore": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "medicine": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "perception": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "performance": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "ranged-weapons": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "survival": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
           },
           "theology": {
             "training": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             },
             "focus": {
-              "value": 0
+              "value": 0,
+              "static-bonus": 0
             }
+          }
+        },
+        "derived": {
+          "stamina": {
+            "value": 3,
+            "static-bonus": 0
+          },
+          "wounds": {
+            "value": 0
+          },
+          "defense": {
+            "static-bonus": 0
+          },
+          "melee": {
+            "static-bonus": 0
+          },
+          "accuracy": {
+            "static-bonus": 0
+          },
+          "initiative": {
+            "static-bonus": 0
+          },
+          "passive-perception": {
+            "static-bonus": 0
           }
         }
       }
@@ -206,10 +282,10 @@
         },
         "cha": {
           "value": 10
-        },
-        "exp": {
-          "value": 0
         }
+      },
+      "exp": {
+        "max-value": 0
       }
     },
     "npc": {
