@@ -13,16 +13,25 @@
           "min": 0,
           "max": 5
         },
-        "biography": ""
+        "biography": "",
+        "attributes": {
+          "body": {
+            "value": 1
+          },
+          "mind": {
+            "value": 1
+          },
+          "soul": {
+            "value": 1
+          },
+          "level": {
+            "value": 1
+          }
+        }
       }
     },
     "player": {
       "templates": ["base"],
-      "attributes": {
-        "level": {
-          "value": 1
-        }
-      },
       "abilities": {
         "str": {
           "value": 10

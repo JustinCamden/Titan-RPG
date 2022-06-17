@@ -39,6 +39,35 @@
         </div>
 
       </div>
+      
+      {{!-- Attributes --}}
+      <div class="resources grid grid-3col">
+
+        {{!-- Body --}}
+        <div class="resource flex-group-center">
+          <label for="data.health.value" class="resource-label">Body</label>
+          <div class="resource-content flexrow flex-center flex-between">
+          <input type="text" name="data.attributes.body.value" value="{{data.attributes.body.value}}" data-dtype="Number"/>
+          </div>
+        </div>
+
+        {{!-- Mind --}}
+        <div class="resource flex-group-center">
+          <label for="data.health.value" class="resource-label">Mind</label>
+          <div class="resource-content flexrow flex-center flex-between">
+          <input type="text" name="data.attributes.mind.value" value="{{data.attributes.mind.value}}" data-dtype="Number"/>
+          </div>
+        </div>
+
+        {{!-- Soul --}}
+        <div class="resource flex-group-center">
+          <label for="data.health.value" class="resource-label">Soul</label>
+          <div class="resource-content flexrow flex-center flex-between">
+          <input type="text" name="data.attributes.soul.value" value="{{data.attributes.soul.value}}" data-dtype="Number"/>
+          </div>
+        </div>
+
+      </div>
     </div>
   </header>
 
