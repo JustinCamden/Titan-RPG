@@ -2,7 +2,7 @@
   "Actor": {
     "types": ["player", "npc"],
     "templates": {
-      "base": {
+      "character": {
         "health": {
           "value": 10,
           "min": 0,
@@ -27,11 +27,167 @@
           "level": {
             "value": 1
           }
+        },
+        "resistances": {
+          "fortitude": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "reflexes": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "willpower": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          }
+        },
+        "skills": {
+          "arcana": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "athletics": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "beast-handling": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "deception": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "dexterity": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "diplomacy": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "engineering": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "intimidation": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "investigation": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "lore": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "medicine": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "perception": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "performance": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "ranged-weapons": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "survival": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          },
+          "theology": {
+            "training": {
+              "value": 0
+            },
+            "focus": {
+              "value": 0
+            }
+          }
         }
       }
     },
     "player": {
-      "templates": ["base"],
+      "templates": ["character"],
       "abilities": {
         "str": {
           "value": 10
@@ -50,11 +206,14 @@
         },
         "cha": {
           "value": 10
+        },
+        "exp": {
+          "value": 0
         }
       }
     },
     "npc": {
-      "templates": ["base"],
+      "templates": ["character"],
       "cr": 0
     }
   },
