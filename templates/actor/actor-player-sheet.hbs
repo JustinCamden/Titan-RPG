@@ -45,7 +45,7 @@
 
         {{!-- Body --}}
         <div class="resource flex-group-center">
-          <label for="data.attributes.body.value" class="resource-label">{{localize "TITAN.Attribute.Body"}}</label>
+          <label for="data.attributes.body.value" class="resource-label rollable" data-roll="(@attributes.body.value)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attribute.Body"}}>{{localize "TITAN.Attribute.Body"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
           <input type="text" name="data.attributes.body.value" value="{{data.attributes.body.value}}" data-dtype="Number"/>
           </div>
@@ -53,7 +53,7 @@
 
         {{!-- Mind --}}
         <div class="resource flex-group-center">
-          <label for="data.attributes.mind.value" class="resource-label">{{localize "TITAN.Attribute.Mind"}}</label>
+          <label for="data.attributes.mind.value" class="resource-label rollable" data-roll="(@attributes.mind.value)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attribute.Mind"}}>{{localize "TITAN.Attribute.Mind"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
           <input type="text" name="data.attributes.mind.value" value="{{data.attributes.mind.value}}" data-dtype="Number"/>
           </div>
@@ -61,7 +61,7 @@
 
         {{!-- Soul --}}
         <div class="resource flex-group-center">
-          <label for="data.attributes.soul.value" class="resource-label">{{localize "TITAN.Attribute.Soul"}}</label>
+          <label for="data.attributes.soul.value" class="resource-label rollable" data-roll="(@attributes.soul.value)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attribute.Soul"}}>{{localize "TITAN.Attribute.Soul"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
           <input type="text" name="data.attributes.soul.value" value="{{data.attributes.soul.value}}" data-dtype="Number"/>
           </div>
@@ -95,7 +95,7 @@
           <div class="abilities flexcol">
             {{#each data.abilities as |ability key|}}
             <div class="ability flexrow flex-group-center">
-              <label for="data.abilities.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@abilities.{{key}}.mod" data-label="{{ability.label}}">{{ability.label}}</label>
+              <label for="data.abilities.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@abilities.{{key}}.mod" data-roll-type="ability" data-label="{{ability.label}}">{{ability.label}}</label>
               <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
               <span class="ability-mod rollable" data-roll="d20+@abilities.{{key}}.mod" data-label="{{ability.label}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
             </div>

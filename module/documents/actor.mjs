@@ -3,7 +3,6 @@
  * @extends {Actor}
  */
 export class TitanActor extends Actor {
-
   /** @override */
   prepareData() {
     // Prepare data for the actor. Calling the super version of this executes
@@ -43,7 +42,7 @@ export class TitanActor extends Actor {
    * Prepare Character type specific data
    */
   _prepareCharacterData(actorData) {
-    if (actorData.type !== 'player') return;
+    if (actorData.type !== "player") return;
 
     // Make modifications to data here. For example:
     const data = actorData.data;
@@ -59,11 +58,11 @@ export class TitanActor extends Actor {
    * Prepare NPC type specific data.
    */
   _prepareNpcData(actorData) {
-    if (actorData.type !== 'npc') return;
+    if (actorData.type !== "npc") return;
 
     // Make modifications to data here. For example:
     const data = actorData.data;
-    data.xp = (data.cr * data.cr) * 100;
+    data.xp = data.cr * data.cr * 100;
   }
 
   /**
@@ -83,12 +82,18 @@ export class TitanActor extends Actor {
    * Prepare player roll data.
    */
   _getCharacterRollData(data) {
-    if (this.data.type !== 'player') return;
+    if (this.data.type !== "player") return;
 
     // Copy the ability scores to the top level, so that rolls can use
     // formulas like `@str.mod + 4`.
     if (data.abilities) {
       for (let [k, v] of Object.entries(data.abilities)) {
+        data[k] = foundry.utils.deepClone(v);
+      }
+    }
+
+    if (data.attributes) {
+      for (let [k, v] of Object.entries(data.attributes)) {
         data[k] = foundry.utils.deepClone(v);
       }
     }
@@ -103,9 +108,8 @@ export class TitanActor extends Actor {
    * Prepare NPC roll data.
    */
   _getNpcRollData(data) {
-    if (this.data.type !== 'npc') return;
+    if (this.data.type !== "npc") return;
 
     // Process additional NPC data here.
   }
-
 }
