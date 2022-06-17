@@ -5,14 +5,14 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Sass Compile",
-            "type": "shell",
-            "command": "sass scss/titan.scss css/titan.css",
+            "type": "gulp",
+            "task": "default",
+            "problemMatcher": [],
+            "label": "gulp: default",
             "group": {
                 "kind": "build",
                 "isDefault": true
-            },
-            "problemMatcher": []
+            }
         }
-    ]
+    ],
   } 
