@@ -18,5 +18,9 @@
   "TITAN.EffectEdit": "Edit Effect",
   "TITAN.EffectDelete": "Delete Effect",
 
-  "TITAN.Add": "Add"
+  "TITAN.Add": "Add",
+
+  "TITAN.Attribute.Body": "Body",
+  "TITAN.Attribute.Mind": "Mind",
+  "TITAN.Attribute.Soul": "Soul"
 }
