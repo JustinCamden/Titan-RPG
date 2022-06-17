@@ -55,56 +55,56 @@ export class TitanActor extends Actor {
     // Make modifications to data here. For example:
     const data = actorData.data;
 
-    // Initiative = (Mind + Training in Awareness) / 2 rounded up (+ bonus)
+    // Initiative = (Mind + Training in Awareness) / 2 rounded up (+ Mod)
     data.derivedStats.initiative.value =
       data.attributes.mind.baseValue +
-      data.attributes.mind.staticBonus +
+      data.attributes.mind.staticMod +
       data.skills.dexterity.training.baseValue +
-      data.skills.dexterity.training.staticBonus +
+      data.skills.dexterity.training.staticMod +
       data.skills.perception.training.baseValue +
-      data.skills.perception.training.staticBonus +
-      data.derivedStats.initiative.staticBonus;
+      data.skills.perception.training.staticMod +
+      data.derivedStats.initiative.staticMod;
 
-    // Awareness = (Mind + Training in Awareness) / 2 rounded up (+ bonus)
+    // Awareness = (Mind + Training in Awareness) / 2 rounded up (+ Mod)
     data.derivedStats.awareness.value =
       Math.ceil(
         (data.attributes.mind.baseValue +
-          data.attributes.mind.staticBonus +
+          data.attributes.mind.staticMod +
           data.skills.perception.training.baseValue +
-          data.skills.perception.training.staticBonus) /
+          data.skills.perception.training.staticMod) /
           2
-      ) + data.derivedStats.awareness.staticBonus;
+      ) + data.derivedStats.awareness.staticMod;
 
-    // Defense = (Body + Training in Dexterity) / 2 rounded up (+ bonus)
+    // Defense = (Body + Training in Dexterity) / 2 rounded up (+ Mod)
     data.derivedStats.defense.value =
       Math.ceil(
         (data.attributes.body.baseValue +
-          data.attributes.body.staticBonus +
+          data.attributes.body.staticMod +
           data.skills.dexterity.training.baseValue +
-          data.skills.dexterity.training.staticBonus) /
+          data.skills.dexterity.training.staticMod) /
           2
-      ) + data.derivedStats.defense.staticBonus;
+      ) + data.derivedStats.defense.staticMod;
 
-    // Accuracy = (Mind + Training in Ranged Weapons) / 2 rounded up (+ bonus)
+    // Accuracy = (Mind + Training in Ranged Weapons) / 2 rounded up (+ Mod)
     data.derivedStats.accuracy.value =
       Math.ceil(
         (data.attributes.mind.baseValue +
-          data.attributes.mind.staticBonus +
+          data.attributes.mind.staticMod +
           data.skills.rangedWeapons.training.baseValue +
-          data.skills.rangedWeapons.training.staticBonus) /
+          data.skills.rangedWeapons.training.staticMod) /
           2
-      ) + data.derivedStats.accuracy.staticBonus;
+      ) + data.derivedStats.accuracy.staticMod;
 
     // Calculate derived stats
-    // Melee = (Body + Training in Melee Weapons) / 2 rounded up (+ bonus)
+    // Melee = (Body + Training in Melee Weapons) / 2 rounded up (+ Mod)
     data.derivedStats.melee.value =
       Math.ceil(
         (data.attributes.body.baseValue +
-          data.attributes.body.staticBonus +
+          data.attributes.body.staticMod +
           data.skills.meleeWeapons.training.baseValue +
-          data.skills.meleeWeapons.training.staticBonus) /
+          data.skills.meleeWeapons.training.staticMod) /
           2
-      ) + data.derivedStats.melee.staticBonus;
+      ) + data.derivedStats.melee.staticMod;
   }
 
   /**
