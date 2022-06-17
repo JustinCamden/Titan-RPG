@@ -34,15 +34,85 @@ export class TitanActor extends Actor {
 
     // Make separate methods for each Actor type (player, npc, etc.) to keep
     // things organized.
-    this._prepareCharacterData(actorData);
-    this._prepareNpcData(actorData);
+    switch (actorData.type) {
+      case "player": {
+        this._preparePlayerData(actorData);
+        break;
+      }
+      case "npc": {
+        this._prepareNpcData(actorData);
+        break;
+      }
+      default: {
+        console.error("TITAN: Invalid actor type when preparing derived data.");
+        break;
+      }
+    }
+  }
+
+  // Prepare Character type specific data
+  _prepareCharacterData(actorData) {
+    // Make modifications to data here. For example:
+    const data = actorData.data;
+
+    // Initiative = (Mind + Training in Awareness) / 2 rounded up (+ bonus)
+    data.derivedStats.initiative.value =
+      data.attributes.mind.baseValue +
+      data.attributes.mind.staticBonus +
+      data.skills.dexterity.training.baseValue +
+      data.skills.dexterity.training.staticBonus +
+      data.skills.perception.training.baseValue +
+      data.skills.perception.training.staticBonus +
+      data.derivedStats.initiative.staticBonus;
+
+    // Awareness = (Mind + Training in Awareness) / 2 rounded up (+ bonus)
+    data.derivedStats.awareness.value =
+      Math.ceil(
+        (data.attributes.mind.baseValue +
+          data.attributes.mind.staticBonus +
+          data.skills.perception.training.baseValue +
+          data.skills.perception.training.staticBonus) /
+          2
+      ) + data.derivedStats.awareness.staticBonus;
+
+    // Defense = (Body + Training in Dexterity) / 2 rounded up (+ bonus)
+    data.derivedStats.defense.value =
+      Math.ceil(
+        (data.attributes.body.baseValue +
+          data.attributes.body.staticBonus +
+          data.skills.dexterity.training.baseValue +
+          data.skills.dexterity.training.staticBonus) /
+          2
+      ) + data.derivedStats.defense.staticBonus;
+
+    // Accuracy = (Mind + Training in Ranged Weapons) / 2 rounded up (+ bonus)
+    data.derivedStats.accuracy.value =
+      Math.ceil(
+        (data.attributes.mind.baseValue +
+          data.attributes.mind.staticBonus +
+          data.skills.rangedWeapons.training.baseValue +
+          data.skills.rangedWeapons.training.staticBonus) /
+          2
+      ) + data.derivedStats.accuracy.staticBonus;
+
+    // Calculate derived stats
+    // Melee = (Body + Training in Melee Weapons) / 2 rounded up (+ bonus)
+    data.derivedStats.melee.value =
+      Math.ceil(
+        (data.attributes.body.baseValue +
+          data.attributes.body.staticBonus +
+          data.skills.meleeWeapons.training.baseValue +
+          data.skills.meleeWeapons.training.staticBonus) /
+          2
+      ) + data.derivedStats.melee.staticBonus;
   }
 
   /**
-   * Prepare Character type specific data
+   * Prepare Player type specific data
    */
-  _prepareCharacterData(actorData) {
-    if (actorData.type !== "player") return;
+  _preparePlayerData(actorData) {
+    // Prepare template data
+    this._prepareCharacterData(actorData);
 
     // Make modifications to data here. For example:
     const data = actorData.data;
@@ -58,10 +128,12 @@ export class TitanActor extends Actor {
    * Prepare NPC type specific data.
    */
   _prepareNpcData(actorData) {
-    if (actorData.type !== "npc") return;
+    // Prepare template data
+    this._prepareCharacterData(actorData);
 
     // Make modifications to data here. For example:
     const data = actorData.data;
+
     data.xp = data.cr * data.cr * 100;
   }
 
@@ -72,7 +144,7 @@ export class TitanActor extends Actor {
     const data = super.getRollData();
 
     // Prepare player roll data.
-    this._getCharacterRollData(data);
+    this._getPlayerRollData(data);
     this._getNpcRollData(data);
 
     return data;
@@ -81,7 +153,7 @@ export class TitanActor extends Actor {
   /**
    * Prepare player roll data.
    */
-  _getCharacterRollData(data) {
+  _getPlayerRollData(data) {
     if (this.data.type !== "player") return;
 
     // Copy the ability scores to the top level, so that rolls can use

@@ -40,30 +40,70 @@
 
       </div>
 
-      {{!-- Attributes --}}
-      <div class="resources grid grid-3col">
+      {{!-- Attributes and Derived Stats --}}
+      <div class="resources grid grid-8col">
+
+        {{!-- Initiative --}}
+        <div class="resource flex-group-center">
+          <label for="data.derivedStats.initiative.value" class="resource-label rollable" data-roll="2d6+@derivedStats.initiative.value" data-roll-type="attribute" data-label={{localize "TITAN.DerivedStats.Initiative"}}>{{localize "TITAN.DerivedStats.Initiative"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <span>{{numberFormat data.derivedStats.initiative.value decimals=0}}</span>
+          </div>
+        </div>
+
+        {{!-- Awareness --}}
+        <div class="resource flex-group-center">
+          <label for="data.derivedStats.awareness.value" class="resource-label">Awareness</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <span>{{numberFormat data.derivedStats.awareness.value decimals=0}}</span>
+          </div>
+        </div>
+
+        {{!-- Defense --}}
+        <div class="resource flex-group-center">
+          <label for="data.derivedStats.defense.value" class="resource-label">Defense</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <span>{{numberFormat data.derivedStats.defense.value decimals=0}}</span>
+          </div>
+        </div>
+
+        {{!-- Melee --}}
+        <div class="resource flex-group-center">
+          <label for="data.derivedStats.melee.value" class="resource-label">Melee</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <span>{{numberFormat data.derivedStats.melee.value decimals=0}}</span>
+          </div>
+        </div>
+
+        {{!-- Accuracy --}}
+        <div class="resource flex-group-center">
+          <label for="data.derivedStats.accuracy.value" class="resource-label">Accuracy</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <span>{{numberFormat data.derivedStats.accuracy.value decimals=0}}</span>
+          </div>
+        </div>
 
         {{!-- Body --}}
         <div class="resource flex-group-center">
-          <label for="data.attributes.body.value" class="resource-label rollable" data-roll="(@attributes.body.value)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attribute.Body"}}>{{localize "TITAN.Attribute.Body"}}</label>
+          <label for="data.attributes.body.baseValue" class="resource-label rollable" data-roll="(@attributes.body.baseValue)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attribute.Body"}}>{{localize "TITAN.Attribute.Body"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.attributes.body.value" value="{{data.attributes.body.value}}" data-dtype="Number"/>
+          <input type="text" name="data.attributes.body.baseValue" value="{{data.attributes.body.baseValue}}" data-dtype="Number"/>
           </div>
         </div>
 
         {{!-- Mind --}}
         <div class="resource flex-group-center">
-          <label for="data.attributes.mind.value" class="resource-label rollable" data-roll="(@attributes.mind.value)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attribute.Mind"}}>{{localize "TITAN.Attribute.Mind"}}</label>
+          <label for="data.attributes.mind.baseValue" class="resource-label rollable" data-roll="(@attributes.mind.baseValue)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attribute.Mind"}}>{{localize "TITAN.Attribute.Mind"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.attributes.mind.value" value="{{data.attributes.mind.value}}" data-dtype="Number"/>
+          <input type="text" name="data.attributes.mind.baseValue" value="{{data.attributes.mind.baseValue}}" data-dtype="Number"/>
           </div>
         </div>
 
         {{!-- Soul --}}
         <div class="resource flex-group-center">
-          <label for="data.attributes.soul.value" class="resource-label rollable" data-roll="(@attributes.soul.value)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attribute.Soul"}}>{{localize "TITAN.Attribute.Soul"}}</label>
+          <label for="data.attributes.soul.baseValue" class="resource-label rollable" data-roll="(@attributes.soul.baseValue)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attribute.Soul"}}>{{localize "TITAN.Attribute.Soul"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.attributes.soul.value" value="{{data.attributes.soul.value}}" data-dtype="Number"/>
+          <input type="text" name="data.attributes.soul.baseValue" value="{{data.attributes.soul.baseValue}}" data-dtype="Number"/>
           </div>
         </div>
 

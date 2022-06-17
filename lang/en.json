@@ -22,5 +22,11 @@
 
   "TITAN.Attribute.Body": "Body",
   "TITAN.Attribute.Mind": "Mind",
-  "TITAN.Attribute.Soul": "Soul"
+  "TITAN.Attribute.Soul": "Soul",
+
+  "TITAN.DerivedStats.Initiative": "Initiative",
+  "TITAN.DerivedStats.Awareness": "Awareness",
+  "TITAN.DerivedStats.Defense": "Defense",
+  "TITAN.DerivedStats.Melee": "Melee",
+  "TITAN.DerivedStats.Ranged": "Soul"
 }
