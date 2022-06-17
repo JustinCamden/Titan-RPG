@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "npc"],
+    "types": ["player", "npc"],
     "templates": {
       "base": {
         "health": {
@@ -16,7 +16,7 @@
         "biography": ""
       }
     },
-    "character": {
+    "player": {
       "templates": ["base"],
       "attributes": {
         "level": {

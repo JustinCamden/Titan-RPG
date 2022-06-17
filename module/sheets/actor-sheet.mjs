@@ -39,8 +39,8 @@ export class TitanActorSheet extends ActorSheet {
     context.data = actorData.data;
     context.flags = actorData.flags;
 
-    // Prepare character data and items.
-    if (actorData.type == 'character') {
+    // Prepare player data and items.
+    if (actorData.type == 'player') {
       this._prepareItems(context);
       this._prepareCharacterData(context);
     }

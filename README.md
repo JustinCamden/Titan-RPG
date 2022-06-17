@@ -14,7 +14,7 @@ This project is also available as generator that can be run with npm: https://ww
 
 ### Vue 3 Titan
 
-Alternatively, there's another build of this system that supports using Vue 3 components (ES module build target) for character sheet templates.
+Alternatively, there's another build of this system that supports using Vue 3 components (ES module build target) for player sheet templates.
 
 Head over to the [Vue3Titan System](https://gitlab.com/asacolips-projects/foundry-mods/vue3titan) repo if you're interested in using Vue!
 

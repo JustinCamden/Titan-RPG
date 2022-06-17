@@ -25,7 +25,7 @@ export class TitanActor extends Actor {
    * you'll want to handle most of your calculated/derived data in this step.
    * Data calculated in this step should generally not exist in template.json
    * (such as ability modifiers rather than ability scores) and should be
-   * available both inside and outside of character sheets (such as if an actor
+   * available both inside and outside of player sheets (such as if an actor
    * is queried and has a roll executed directly from it).
    */
   prepareDerivedData() {
@@ -33,7 +33,7 @@ export class TitanActor extends Actor {
     const data = actorData.data;
     const flags = actorData.flags.titan || {};
 
-    // Make separate methods for each Actor type (character, npc, etc.) to keep
+    // Make separate methods for each Actor type (player, npc, etc.) to keep
     // things organized.
     this._prepareCharacterData(actorData);
     this._prepareNpcData(actorData);
@@ -43,7 +43,7 @@ export class TitanActor extends Actor {
    * Prepare Character type specific data
    */
   _prepareCharacterData(actorData) {
-    if (actorData.type !== 'character') return;
+    if (actorData.type !== 'player') return;
 
     // Make modifications to data here. For example:
     const data = actorData.data;
@@ -72,7 +72,7 @@ export class TitanActor extends Actor {
   getRollData() {
     const data = super.getRollData();
 
-    // Prepare character roll data.
+    // Prepare player roll data.
     this._getCharacterRollData(data);
     this._getNpcRollData(data);
 
@@ -80,10 +80,10 @@ export class TitanActor extends Actor {
   }
 
   /**
-   * Prepare character roll data.
+   * Prepare player roll data.
    */
   _getCharacterRollData(data) {
-    if (this.data.type !== 'character') return;
+    if (this.data.type !== 'player') return;
 
     // Copy the ability scores to the top level, so that rolls can use
     // formulas like `@str.mod + 4`.
