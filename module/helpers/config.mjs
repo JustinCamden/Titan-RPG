@@ -26,4 +26,11 @@ TITAN.attributes = {
   body: "TITAN.Attribute.Body",
   mind: "TITAN.Attribute.Mind",
   soul: "TITAN.Attribute.Soul",
+  max: 8,
+  min: 1,
+  expCostByRank: [2, 7, 14, 23, 34, 47, 62],
+};
+
+TITAN.resources = {
+  maxStaminaMulti: 1.0,
 };

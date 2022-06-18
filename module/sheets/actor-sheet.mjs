@@ -1,3 +1,4 @@
+import { TITAN } from "../helpers/config.mjs";
 import {
   onManageActiveEffect,
   prepareActiveEffectCategories,
@@ -166,6 +167,12 @@ export class TitanActorSheet extends ActorSheet {
     // Rollable abilities.
     html.find(".rollable").click(this._onRoll.bind(this));
 
+    // Editing attributes
+    html.find(".attribute-edit").change(this._onAttributeEdit.bind(this));
+
+    // Editing resources
+    html.find(".resource-edit").change(this._onResourceEdit.bind(this));
+
     // Drag events for macros.
     if (this.actor.isOwner) {
       let handler = (ev) => this._onDragStart(ev);
@@ -240,6 +247,30 @@ export class TitanActorSheet extends ActorSheet {
         rollMode: game.settings.get("core", "rollMode"),
       });
       return roll;
+    }
+  }
+
+  async _onAttributeEdit(event) {
+    // Ensure the attribute is within a valid range
+    const newValue = event.target.value;
+
+    if (newValue > TITAN.attributes.max) {
+      event.target.value = TITAN.attributes.max;
+    } else if (newValue < TITAN.attributes.min) {
+      event.target.value = TITAN.attributes.min;
+    }
+  }
+
+  async _onResourceEdit(event) {
+    // Ensure the resource is within a valid range
+    const resource =
+      this.object.data.data.resources[event.target.dataset.resource];
+    const newValue = event.target.value;
+
+    if (newValue > resource.maxValue) {
+      event.target.value = resource.maxValue;
+    } else if (newValue < 0) {
+      event.target.value = 0;
     }
   }
 }

@@ -1,3 +1,5 @@
+import { TITAN } from "../helpers/config.mjs";
+
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
@@ -125,42 +127,25 @@ export class TitanActor extends Actor {
     for (const attribute in data.attributes) {
       let attributeValue = data.attributes[attribute].baseValue;
 
+      // Validate attribute values
+      if (attributeValue < TITAN.attributes.min) {
+        data.attributes[attribute].baseValue = TITAN.attributes.min;
+      } else if (attributeValue > TITAN.attributes.max) {
+        data.attributes[attribute].baseValue = TITAN.attributes.max;
+      }
+
       // Calculate stamina
-      maxStamina = maxStamina + attributeValue;
+      maxStamina =
+        maxStamina + attributeValue * TITAN.resources.maxStaminaMulti;
 
       // Calculate xp cost
-      switch (attributeValue) {
-        case 2: {
-          spentExp = spentExp + 2;
-          break;
-        }
-        case 3: {
-          spentExp = spentExp + 7;
-          break;
-        }
-        case 4: {
-          spentExp = spentExp + 14;
-          break;
-        }
-        case 5: {
-          spentExp = spentExp + 23;
-          break;
-        }
-        case 6: {
-          spentExp = spentExp + 34;
-          break;
-        }
-        case 7: {
-          spentExp = spentExp + 47;
-          break;
-        }
-        case 8: {
-          spentExp = spentExp + 62;
-          break;
-        }
-        default: {
-          break;
-        }
+      // Attributes
+      if (attributeValue > TITAN.attributes.min) {
+        spentExp =
+          spentExp +
+          TITAN.attributes.expCostByRank[
+            attributeValue - TITAN.attributes.min - 1
+          ];
       }
     }
 
@@ -215,5 +200,9 @@ export class TitanActor extends Actor {
     if (this.data.type !== "npc") return;
 
     // Process additional NPC data here.
+  }
+
+  _onUpdate(changed, options, userId) {
+    super._onUpdate(changed, options, userId);
   }
 }

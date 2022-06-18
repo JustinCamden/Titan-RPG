@@ -12,14 +12,13 @@ import { TITAN } from "./helpers/config.mjs";
 /*  Init Hook                                   */
 /* -------------------------------------------- */
 
-Hooks.once('init', async function() {
-
+Hooks.once("init", async function () {
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
   game.titan = {
     TitanActor,
     TitanItem,
-    rollItemMacro
+    rollItemMacro,
   };
 
   // Add custom constants for configuration.
@@ -31,7 +30,7 @@ Hooks.once('init', async function() {
    */
   CONFIG.Combat.initiative = {
     formula: "1d20 + @abilities.dex.mod",
-    decimals: 2
+    decimals: 2,
   };
 
   // Define custom Document classes
@@ -53,17 +52,17 @@ Hooks.once('init', async function() {
 /* -------------------------------------------- */
 
 // If you need to add Handlebars helpers, here are a few useful examples:
-Handlebars.registerHelper('concat', function() {
-  var outStr = '';
+Handlebars.registerHelper("concat", function () {
+  var outStr = "";
   for (var arg in arguments) {
-    if (typeof arguments[arg] != 'object') {
+    if (typeof arguments[arg] != "object") {
       outStr += arguments[arg];
     }
   }
   return outStr;
 });
 
-Handlebars.registerHelper('toLowerCase', function(str) {
+Handlebars.registerHelper("toLowerCase", function (str) {
   return str.toLowerCase();
 });
 
@@ -71,7 +70,7 @@ Handlebars.registerHelper('toLowerCase', function(str) {
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
 
-Hooks.once("ready", async function() {
+Hooks.once("ready", async function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(data, slot));
 });
@@ -89,19 +88,24 @@ Hooks.once("ready", async function() {
  */
 async function createItemMacro(data, slot) {
   if (data.type !== "Item") return;
-  if (!("data" in data)) return ui.notifications.warn("You can only create macro buttons for owned Items");
+  if (!("data" in data))
+    return ui.notifications.warn(
+      "You can only create macro buttons for owned Items"
+    );
   const item = data.data;
 
   // Create the macro command
   const command = `game.titan.rollItemMacro("${item.name}");`;
-  let macro = game.macros.find(m => (m.name === item.name) && (m.command === command));
+  let macro = game.macros.find(
+    (m) => m.name === item.name && m.command === command
+  );
   if (!macro) {
     macro = await Macro.create({
       name: item.name,
       type: "script",
       img: item.img,
       command: command,
-      flags: { "titan.itemMacro": true }
+      flags: { "titan.itemMacro": true },
     });
   }
   game.user.assignHotbarMacro(macro, slot);
@@ -119,8 +123,11 @@ function rollItemMacro(itemName) {
   let actor;
   if (speaker.token) actor = game.actors.tokens[speaker.token];
   if (!actor) actor = game.actors.get(speaker.actor);
-  const item = actor ? actor.items.find(i => i.name === itemName) : null;
-  if (!item) return ui.notifications.warn(`Your controlled Actor does not have an item named ${itemName}`);
+  const item = actor ? actor.items.find((i) => i.name === itemName) : null;
+  if (!item)
+    return ui.notifications.warn(
+      `Your controlled Actor does not have an item named ${itemName}`
+    );
 
   // Trigger the item roll
   return item.roll();

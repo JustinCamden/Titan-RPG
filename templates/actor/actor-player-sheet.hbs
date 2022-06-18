@@ -11,12 +11,13 @@
       
       {{!-- Profile Fields --}}
       <div class="profile-fields flexrow flex-center flex-between">
+        {{!-- Stamina --}}
         <div class="resource flex-group-center">
-          <label for="data.health.value" class="resource-label">Stamina</label>
-          <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.resources.stamina.value" value="{{data.resources.stamina.value}}" data-dtype="Number"/>
-          <span> / </span>
-          <span>{{numberFormat data.resources.stamina.maxValue decimals=0}}</span>
+          <label for="data.stamina.value" class="resource-label">Stamina</label>
+            <div class="resource-content flexrow flex-center flex-between">
+            <input class="resource-edit" data-resource="stamina" type="text" name="data.resources.stamina.value" value="{{data.resources.stamina.value}}" data-dtype="Number"/>
+            <span> / </span>
+            <span>{{numberFormat data.resources.stamina.maxValue decimals=0}}</span>
           </div>
         </div>
       </div>
@@ -115,7 +116,7 @@
         <div class="resource flex-group-center">
           <label for="data.attributes.body.baseValue" class="resource-label rollable" data-roll="(@attributes.body.baseValue)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attribute.Body"}}>{{localize "TITAN.Attribute.Body"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.attributes.body.baseValue" value="{{data.attributes.body.baseValue}}" data-dtype="Number"/>
+          <input class="attribute-edit" type="number" max="8" name="data.attributes.body.baseValue" value="{{data.attributes.body.baseValue}}" data-dtype="Number"/>
           </div>
         </div>
 
@@ -123,7 +124,7 @@
         <div class="resource flex-group-center">
           <label for="data.attributes.mind.baseValue" class="resource-label rollable" data-roll="(@attributes.mind.baseValue)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attribute.Mind"}}>{{localize "TITAN.Attribute.Mind"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.attributes.mind.baseValue" value="{{data.attributes.mind.baseValue}}" data-dtype="Number"/>
+          <input class="attribute-edit" type="text" name="data.attributes.mind.baseValue" value="{{data.attributes.mind.baseValue}}" data-dtype="Number"/>
           </div>
         </div>
 
@@ -131,7 +132,7 @@
         <div class="resource flex-group-center">
           <label for="data.attributes.soul.baseValue" class="resource-label rollable" data-roll="(@attributes.soul.baseValue)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attribute.Soul"}}>{{localize "TITAN.Attribute.Soul"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.attributes.soul.baseValue" value="{{data.attributes.soul.baseValue}}" data-dtype="Number"/>
+          <input class="attribute-edit" type="text" name="data.attributes.soul.baseValue" value="{{data.attributes.soul.baseValue}}" data-dtype="Number"/>
           </div>
         </div>
 
