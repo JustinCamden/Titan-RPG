@@ -117,12 +117,18 @@ export class TitanActor extends Actor {
     // Make modifications to data here. For example:
     const data = actorData.data;
 
-    // Calculate the amount of EXP spent
+    // Calculate the amount of EXP spent and the max Stamina
     let spentExp = 0;
+    let maxStamina = 0;
 
     // Add cost of current attributes
     for (const attribute in data.attributes) {
       let attributeValue = data.attributes[attribute].baseValue;
+
+      // Calculate stamina
+      maxStamina = maxStamina + attributeValue;
+
+      // Calculate xp cost
       switch (attributeValue) {
         case 2: {
           spentExp = spentExp + 2;
@@ -159,6 +165,8 @@ export class TitanActor extends Actor {
     }
 
     data.exp.available = data.exp.earned - spentExp;
+    data.resources.stamina.maxBase = maxStamina;
+    data.resources.stamina.maxValue = maxStamina;
 
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (let [key, ability] of Object.entries(data.abilities)) {

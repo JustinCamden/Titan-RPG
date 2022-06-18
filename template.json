@@ -26,10 +26,6 @@
           "soul": {
             "baseValue": 1,
             "staticMod": 0
-          },
-          "level": {
-            "baseValue": 1,
-            "staticMod": 0
           }
         },
         "resistances": {
