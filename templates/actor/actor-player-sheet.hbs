@@ -2,7 +2,19 @@
 
   {{!-- Sheet Header --}}
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <div class ="profile">
+      <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="160" width="160"/>
+      <div class="profile-fields flexrow flex-center flex-between">
+        <div class="resource flex-group-center">
+          <label for="data.health.value" class="resource-label">Health</label>
+          <div class="resource-content flexrow flex-center flex-between">
+          <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number"/>
+          <span> / </span>
+          <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="header-fields">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
       {{!-- The grid classes are defined in scss/global/_grid.scss. To use,

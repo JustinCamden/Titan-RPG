@@ -11,10 +11,17 @@
   justify-content: flex-start;
   margin-bottom: 10px;
 
-  .profile-img {
+  .profile{
     flex: 0 0 160px;
-    height: 160px;
+    height: 300px;
     margin-right: 10px;
+
+    .profile-img {
+      flex: 0 0 160px;
+      height: 160px;
+    }
+    .profile-fields {
+    }
   }
 
   .header-fields {
