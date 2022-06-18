@@ -26,9 +26,15 @@ TITAN.attributes = {
   body: "TITAN.Attribute.Body",
   mind: "TITAN.Attribute.Mind",
   soul: "TITAN.Attribute.Soul",
-  max: 8,
   min: 1,
-  expCostByRank: [2, 7, 14, 23, 34, 47, 62],
+  max: 8,
+  totalExpCostByRank: [2, 7, 14, 23, 34, 47, 62],
+};
+
+TITAN.skills = {
+  min: 1,
+  max: 8,
+  totalExpCostByRank: [1, 3, 7, 13, 21, 31, 43],
 };
 
 TITAN.resources = {

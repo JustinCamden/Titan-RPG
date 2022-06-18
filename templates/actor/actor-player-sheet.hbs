@@ -8,47 +8,31 @@
 
       {{!-- Image --}}
       <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="160" width="160"/>
-      
-      {{!-- Profile Fields --}}
-      <div class="profile-fields flexrow flex-center flex-between">
+    </div>
+
+    {{!-- Header Fields --}}
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+
+      <div class="resources grid grid-3col">
+
         {{!-- Stamina --}}
         <div class="resource flex-group-center">
-          <label for="data.stamina.value" class="resource-label">Stamina</label>
+          <label for="data.resources.stamina.value" class="resource-label">Stamina</label>
             <div class="resource-content flexrow flex-center flex-between">
             <input class="resource-edit" data-resource="stamina" type="text" name="data.resources.stamina.value" value="{{data.resources.stamina.value}}" data-dtype="Number"/>
             <span> / </span>
             <span>{{numberFormat data.resources.stamina.maxValue decimals=0}}</span>
           </div>
         </div>
-      </div>
-    </div>
 
-    {{!-- Header Fields --}}
-    <div class="header-fields">
-      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
-      {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-      use both the "grid" and "grid-Ncol" class where "N" can be any number
-      from 1 to 12 and will create that number of columns.  --}}
-      <div class="resources grid grid-3col">
-
-        {{!-- "flex-group-center" is also defined in the _grid.scss file
-        and it will add a small amount of padding, a border, and will
-        center all of its child elements content and text. --}}
+        {{!-- Resolve --}}
         <div class="resource flex-group-center">
-          <label for="data.health.value" class="resource-label">Health</label>
-          <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number"/>
-          <span> / </span>
-          <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
-          </div>
-        </div>
-
-        <div class="resource flex-group-center">
-          <label for="data.power.value" class="resource-label">Power</label>
-          <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.power.value" value="{{data.power.value}}" data-dtype="Number"/>
-          <span> / </span>
-          <input type="text" name="data.power.max" value="{{data.power.max}}" data-dtype="Number"/>
+          <label for="data.resources.resolve.value" class="resource-label">Resolve</label>
+            <div class="resource-content flexrow flex-center flex-between">
+            <input class="resource-edit" data-resource="resolve" type="text" name="data.resources.resolve.value" value="{{data.resources.resolve.value}}" data-dtype="Number"/>
+            <span> / </span>
+            <span>{{numberFormat data.resources.resolve.maxValue decimals=0}}</span>
           </div>
         </div>
 

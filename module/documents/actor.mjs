@@ -121,37 +121,38 @@ export class TitanActor extends Actor {
 
     // Calculate the amount of EXP spent and the max Stamina
     let spentExp = 0;
-    let maxStamina = 0;
+    let totalAttributeValue = 0;
 
     // Add cost of current attributes
     for (const attribute in data.attributes) {
       let attributeValue = data.attributes[attribute].baseValue;
 
-      // Validate attribute values
-      if (attributeValue < TITAN.attributes.min) {
-        data.attributes[attribute].baseValue = TITAN.attributes.min;
-      } else if (attributeValue > TITAN.attributes.max) {
-        data.attributes[attribute].baseValue = TITAN.attributes.max;
-      }
-
       // Calculate stamina
-      maxStamina =
-        maxStamina + attributeValue * TITAN.resources.maxStaminaMulti;
+      totalAttributeValue = totalAttributeValue + attributeValue;
 
       // Calculate xp cost
       // Attributes
       if (attributeValue > TITAN.attributes.min) {
         spentExp =
           spentExp +
-          TITAN.attributes.expCostByRank[
+          TITAN.attributes.totalExpCostByRank[
             attributeValue - TITAN.attributes.min - 1
           ];
       }
     }
 
     data.exp.available = data.exp.earned - spentExp;
-    data.resources.stamina.maxBase = maxStamina;
-    data.resources.stamina.maxValue = maxStamina;
+
+    // Calculate max stamina
+    let maxStaminaBase = totalAttributeValue * TITAN.resources.maxStaminaMulti;
+    data.resources.stamina.maxBase = totalAttributeValue * maxStaminaBase;
+    data.resources.stamina.maxValue = maxStaminaBase;
+
+    // Calculate max resolve
+    let maxResolveBase = Math.ceil(data.attributes.soul.baseValue / 2);
+    console.log(maxResolveBase);
+    data.resources.resolve.maxBase = maxResolveBase;
+    data.resources.resolve.maxValue = maxResolveBase;
 
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (let [key, ability] of Object.entries(data.abilities)) {
