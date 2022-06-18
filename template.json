@@ -261,6 +261,10 @@
           "wounds": {
             "value": 0,
             "staticMod": 0
+          },
+          "resolve": {
+            "value": 0,
+            "staticMod": 0
           }
         },
         "movement": {
@@ -295,7 +299,7 @@
         }
       },
       "exp": {
-        "max-value": 0
+        "earned": 0
       }
     },
     "npc": {

@@ -117,6 +117,49 @@ export class TitanActor extends Actor {
     // Make modifications to data here. For example:
     const data = actorData.data;
 
+    // Calculate the amount of EXP spent
+    let spentExp = 0;
+
+    // Add cost of current attributes
+    for (const attribute in data.attributes) {
+      let attributeValue = data.attributes[attribute].baseValue;
+      switch (attributeValue) {
+        case 2: {
+          spentExp = spentExp + 2;
+          break;
+        }
+        case 3: {
+          spentExp = spentExp + 7;
+          break;
+        }
+        case 4: {
+          spentExp = spentExp + 14;
+          break;
+        }
+        case 5: {
+          spentExp = spentExp + 23;
+          break;
+        }
+        case 6: {
+          spentExp = spentExp + 34;
+          break;
+        }
+        case 7: {
+          spentExp = spentExp + 47;
+          break;
+        }
+        case 8: {
+          spentExp = spentExp + 62;
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    }
+
+    data.exp.available = data.exp.earned - spentExp;
+
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (let [key, ability] of Object.entries(data.abilities)) {
       // Calculate the modifier using d20 rules.
@@ -133,8 +176,6 @@ export class TitanActor extends Actor {
 
     // Make modifications to data here. For example:
     const data = actorData.data;
-
-    data.xp = data.cr * data.cr * 100;
   }
 
   /**
@@ -157,23 +198,6 @@ export class TitanActor extends Actor {
     if (this.data.type !== "player") return;
 
     // Copy the ability scores to the top level, so that rolls can use
-    // formulas like `@str.mod + 4`.
-    if (data.abilities) {
-      for (let [k, v] of Object.entries(data.abilities)) {
-        data[k] = foundry.utils.deepClone(v);
-      }
-    }
-
-    if (data.attributes) {
-      for (let [k, v] of Object.entries(data.attributes)) {
-        data[k] = foundry.utils.deepClone(v);
-      }
-    }
-
-    // Add level for easier access, or fall back to 0.
-    if (data.attributes.level) {
-      data.lvl = data.attributes.level.value ?? 0;
-    }
   }
 
   /**

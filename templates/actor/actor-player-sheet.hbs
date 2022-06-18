@@ -31,10 +31,18 @@
           </div>
         </div>
 
+        {{!-- Exp --}}
         <div class="resource flex-group-center">
-          <label for="data.attributes.level.value" class="resource-label">Level</label>
+          <label for="data.exp" class="resource-label">{{localize "TITAN.EXP"}}</label>
           <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="data.attributes.level.value" value="{{data.attributes.level.value}}" data-dtype="Number"/>
+            <label for="data.exp.available" class="resource-label">{{localize "TITAN.Available"}}</label>
+            <label for="data.exp.available" class="resource-label"> </label>
+            <label for="data.exp.available" class="resource-label">{{localize "TITAN.Earned"}}</label>
+          </div>
+          <div class="resource-content flexrow flex-center flex-between">
+            <span>{{numberFormat data.exp.available decimals=0}}</span>
+            <span> / </span>
+            <input type="text" name="data.exp.earned" value="{{data.exp.earned}}" data-dtype="Number"/>
           </div>
         </div>
 

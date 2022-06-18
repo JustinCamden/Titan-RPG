@@ -28,5 +28,9 @@
   "TITAN.DerivedStats.Awareness": "Awareness",
   "TITAN.DerivedStats.Defense": "Defense",
   "TITAN.DerivedStats.Melee": "Melee",
-  "TITAN.DerivedStats.Accuracy": "Accuracy"
+  "TITAN.DerivedStats.Accuracy": "Accuracy",
+
+  "TITAN.EXP": "EXP",
+  "TITAN.Available": "Available",
+  "TITAN.Earned": "Earned"
 }
