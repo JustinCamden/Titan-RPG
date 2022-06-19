@@ -44,7 +44,7 @@ Hooks.once("init", async function () {
   Items.registerSheet("titan", TitanItemSheet, { makeDefault: true });
 
   // Preload Handlebars templates.
-  return preloadHandlebarsTemplates();
+  return await preloadHandlebarsTemplates();
 });
 
 /* -------------------------------------------- */

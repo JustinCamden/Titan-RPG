@@ -23,5 +23,25 @@
   "TITAN.EXP": "EXP",
   "TITAN.Available": "Available",
   "TITAN.Earned": "Earned",
-  "TITAN.Inspiration": "Inspiration"
+  "TITAN.Inspiration": "Inspiration",
+
+  "TITAN.Skills.arcana": "Arcana",
+  "TITAN.Skills.athletics": "Athletics",
+  "TITAN.Skills.beastHandling": "Beast Handling",
+  "TITAN.Skills.deception": "Deception",
+  "TITAN.Skills.dexterity": "Dexterity",
+  "TITAN.Skills.diplomacy": "diplomacy",
+  "TITAN.Skills.engineering": "Engeineering",
+  "TITAN.Skills.intimidation": "Intimidation",
+  "TITAN.Skills.investigation": "Investigation",
+  "TITAN.Skills.lore": "Lore",
+  "TITAN.Skills.medicine": "Medicine",
+  "TITAN.Skills.meleeWeapons": "Melee Weapons",
+  "TITAN.Skills.perception": "Perception",
+  "TITAN.Skills.performance": "Performance",
+  "TITAN.Skills.rangedWeapons": "Ranged Weapons",
+  "TITAN.Skills.sleightOfHand": "Sleight of Hand",
+  "TITAN.Skills.stealth": "Stealth",
+  "TITAN.Skills.survival": "Survival",
+  "TITAN.Skills.theology": "Theology"
 }

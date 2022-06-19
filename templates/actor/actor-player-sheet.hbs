@@ -4,27 +4,30 @@
   <header class="sheet-header">
 
     {{!-- Profile --}}
-    <div class ="profile">
+    <div class="profile">
 
       {{!-- Image --}}
-      <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="160" width="160"/>
+      <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="160" width="160" />
     </div>
 
     {{!-- Header Fields --}}
     <div class="header-fields">
-      <div class = "grid grid-3col">
+      <div class="grid grid-3col">
         <div class="flex-group-left">
-          <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+          <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" /></h1>
         </div>
 
         {{!-- Inspiration --}}
         <div class="inspiration flex-group-center">
-          <label for="data.attributes.body.value" class="stat-label" data-roll="(@attributes.body.value)d6" data-roll-type="attribute" data-label={{localize "TITAN.Inspiration"}}>{{localize "TITAN.Inspiration"}}</label>
+          <label for="data.attributes.body.value" class="stat-label" data-roll="(@attributes.body.value)d6"
+            data-roll-type="attribute">
+            {{localize "TITAN.Inspiration"}}
+          </label>
           <div class="stat-content flexrow flex-center flex-between">
-            <input type="number" name="data.inspiration" value="{{data.inspiration}}" data-dtype="Number"/>
+            <input type="number" name="data.inspiration" value="{{data.inspiration}}" data-dtype="Number" />
           </div>
         </div>
-        
+
         {{!-- Exp --}}
         <div class="flex-group-center">
           <label for="data.exp" class="stat-label">{{localize "TITAN.EXP"}}</label>
@@ -36,41 +39,55 @@
           <div class="stat-content flexrow flex-center flex-between">
             <span>{{numberFormat data.exp.available decimals=0}}</span>
             <span> / </span>
-            <input type="text" name="data.exp.earned" value="{{data.exp.earned}}" data-dtype="Number"/>
+            <input type="text" name="data.exp.earned" value="{{data.exp.earned}}" data-dtype="Number" />
           </div>
         </div>
       </div>
 
-            {{!-- Attributes and Derived Stats --}}
+      {{!-- Attributes and Derived Stats --}}
       <div class="resources grid grid-8col">
 
         {{!-- Body --}}
         <div class="attribute flex-group-center">
-          <label for="data.attributes.body.value" class="stat-label rollable" data-roll="(@attributes.body.value)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attributes.Body"}}>{{localize "TITAN.Attributes.Body"}}</label>
+          <label for="data.attributes.body.value" class="stat-label rollable" data-roll="(@attributes.body.value)d6"
+            data-roll-type="attribute" data-roll-label={{localize "TITAN.Attributes.Body" }}>
+            {{localize "TITAN.Attributes.Body"}}
+          </label>
           <div class="stat-content flexrow flex-center flex-between">
-          <input class="attribute-edit" type="number" name="data.attributes.body.value" value="{{data.attributes.body.value}}" data-dtype="Number"/>
+            <input class="attribute-edit" type="number" name="data.attributes.body.baseValue"
+              value="{{data.attributes.body.baseValue}}" data-dtype="Number" />
           </div>
         </div>
 
         {{!-- Mind --}}
         <div class="attribute flex-group-center">
-          <label for="data.attributes.mind.value" class="stat-label rollable" data-roll="(@attributes.mind.value)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attributes.Mind"}}>{{localize "TITAN.Attributes.Mind"}}</label>
+          <label for="data.attributes.mind.value" class="stat-label rollable" data-roll="(@attributes.mind.value)d6"
+            data-roll-type="attribute" data-roll-label={{localize "TITAN.Attributes.Mind" }}>{{localize
+            "TITAN.Attributes.Mind"}}</label>
           <div class="stat-content flexrow flex-center flex-between">
-          <input class="attribute-edit" type="text" name="data.attributes.mind.value" value="{{data.attributes.mind.value}}" data-dtype="Number"/>
+            <input class="attribute-edit" type="text" name="data.attributes.mind.baseValue"
+              value="{{data.attributes.mind.baseValue}}" data-dtype="Number" />
           </div>
         </div>
 
         {{!-- Soul --}}
         <div class="attribute flex-group-center">
-          <label for="data.attributes.soul.value" class="stat-label rollable" data-roll="(@attributes.soul.value)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attributes.Soul"}}>{{localize "TITAN.Attributes.Soul"}}</label>
+          <label for="data.attributes.soul.value" class="stat-label rollable" data-roll="(@attributes.soul.value)d6"
+            data-roll-type="attribute" data-roll-label={{localize "TITAN.Attributes.Soul" }}>
+            {{localize "TITAN.Attributes.Soul"}}
+          </label>
           <div class="stat-content flexrow flex-center flex-between">
-            <input class="attribute-edit" type="text" name="data.attributes.soul.value" value="{{data.attributes.soul.value}}" data-dtype="Number"/>
+            <input class="attribute-edit" type="text" name="data.attributes.soul.baseValue"
+              value="{{data.attributes.soul.baseValue}}" data-dtype="Number" />
           </div>
         </div>
 
         {{!-- Initiative --}}
         <div class="derived flex-group-center">
-          <label for="data.derivedStats.initiative.value" class="stat-label rollable" data-roll="2d6+@derivedStats.initiative.value" data-roll-type="attribute" data-label={{localize "TITAN.DerivedStats.Initiative"}}>{{localize "TITAN.DerivedStats.Initiative"}}</label>
+          <label for="data.derivedStats.initiative.value" class="stat-label rollable"
+            data-roll="2d6+@derivedStats.initiative.value" data-roll-type="attribute"
+            data-roll-label={{localize "TITAN.DerivedStats.Initiative" }}>{{localize
+            "TITAN.DerivedStats.Initiative"}}</label>
           <div class="stat-content flexrow flex-center flex-between">
             <span>{{numberFormat data.derivedStats.initiative.value decimals=0}}</span>
           </div>
@@ -78,7 +95,8 @@
 
         {{!-- Awareness --}}
         <div class="derived flex-group-center">
-          <label for="data.derivedStats.awareness.value" class="stat-label">{{localize "TITAN.DerivedStats.Awareness"}}</label>
+          <label for="data.derivedStats.awareness.value" class="stat-label">{{localize
+            "TITAN.DerivedStats.Awareness"}}</label>
           <div class="stat-content flexrow flex-center flex-between">
             <span>{{numberFormat data.derivedStats.awareness.value decimals=0}}</span>
           </div>
@@ -86,7 +104,8 @@
 
         {{!-- Defense --}}
         <div class="derived flex-group-center">
-          <label for="data.derivedStats.defense.value" class="stat-label">{{localize "TITAN.DerivedStats.Defense"}}</label>
+          <label for="data.derivedStats.defense.value" class="stat-label">{{localize
+            "TITAN.DerivedStats.Defense"}}</label>
           <div class="stat-content flexrow flex-center flex-between">
             <span>{{numberFormat data.derivedStats.defense.value decimals=0}}</span>
           </div>
@@ -102,7 +121,8 @@
 
         {{!-- Accuracy --}}
         <div class="derived flex-group-center">
-          <label for="data.derivedStats.accuracy.value" class="stat-label">{{localize "TITAN.DerivedStats.Accuracy"}}</label>
+          <label for="data.derivedStats.accuracy.value" class="stat-label">{{localize
+            "TITAN.DerivedStats.Accuracy"}}</label>
           <div class="stat-content flexrow flex-center flex-between">
             <span>{{numberFormat data.derivedStats.accuracy.value decimals=0}}</span>
           </div>
@@ -115,8 +135,9 @@
         {{!-- Stamina --}}
         <div class="resource flex-group-center">
           <label for="data.resources.stamina.value" class="stat-label">{{localize "TITAN.Resources.Stamina"}}</label>
-            <div class="stat-content flexrow flex-center flex-between">
-            <input class="resource-edit" data-resource="stamina" type="text" name="data.resources.stamina.value" value="{{data.resources.stamina.value}}" data-dtype="Number"/>
+          <div class="stat-content flexrow flex-center flex-between">
+            <input class="resource-edit" data-resource="stamina" type="text" name="data.resources.stamina.value"
+              value="{{data.resources.stamina.value}}" data-dtype="Number" />
             <span> / </span>
             <span>{{numberFormat data.resources.stamina.maxValue decimals=0}}</span>
           </div>
@@ -125,8 +146,9 @@
         {{!-- Resolve --}}
         <div class="resource flex-group-center">
           <label for="data.resources.resolve.value" class="stat-label">{{localize "TITAN.Resources.Resolve"}}</label>
-            <div class="stat-content flexrow flex-center flex-between">
-            <input class="resource-edit" data-resource="resolve" type="text" name="data.resources.resolve.value" value="{{data.resources.resolve.value}}" data-dtype="Number"/>
+          <div class="stat-content flexrow flex-center flex-between">
+            <input class="resource-edit" data-resource="resolve" type="text" name="data.resources.resolve.value"
+              value="{{data.resources.resolve.value}}" data-dtype="Number" />
             <span> / </span>
             <span>{{numberFormat data.resources.resolve.maxValue decimals=0}}</span>
           </div>
@@ -135,13 +157,13 @@
         {{!-- Resolve --}}
         <div class="resource flex-group-center">
           <label for="data.resources.wounds.value" class="stat-label">{{localize "TITAN.Resources.Wounds"}}</label>
-            <div class="stat-content flexrow flex-center flex-between">
-            <input class="resource-edit" data-resource="wounds" type="text" name="data.resources.wounds.value" value="{{data.resources.resolve.value}}" data-dtype="Number"/>
+          <div class="stat-content flexrow flex-center flex-between">
+            <input class="resource-edit" data-resource="wounds" type="text" name="data.resources.wounds.value"
+              value="{{data.resources.resolve.value}}" data-dtype="Number" />
             <span> / </span>
             <span>{{numberFormat data.resources.wounds.maxValue decimals=0}}</span>
           </div>
         </div>
-
       </div>
     </div>
   </header>
@@ -172,13 +194,16 @@
 
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
-          from 1 to 12 and will create that number of columns.  --}}
+          from 1 to 12 and will create that number of columns. --}}
           <div class="abilities flexcol">
             {{#each data.abilities as |ability key|}}
             <div class="ability flexrow flex-group-center">
-              <label for="data.abilities.{{key}}.value" class="stat-label rollable flexlarge align-left" data-roll="d20+@abilities.{{key}}.mod" data-roll-type="ability" data-label="{{ability.label}}">{{ability.label}}</label>
-              <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
-              <span class="ability-mod rollable" data-roll="d20+@abilities.{{key}}.mod" data-label="{{ability.label}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+              <label for="data.abilities.{{key}}.value" class="stat-label rollable flexlarge align-left"
+                data-roll="d20+@abilities.{{key}}.mod" data-roll-type="ability"
+                data-roll-label="{{ability.label}}">{{ability.label}}</label>
+              <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number" />
+              <span class="ability-mod rollable" data-roll="d20+@abilities.{{key}}.mod"
+                data-roll-label="{{ability.label}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
             </div>
             {{/each}}
           </div>
@@ -186,7 +211,8 @@
 
         {{!-- For the main features list, span the right two columns --}}
         <section class="main grid-span-2">
-          {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
+          {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in
+          module/helpers/templates.mjs --}}
           {{> "systems/titan/templates/actor/parts/actor-features.hbs"}}
         </section>
 
@@ -195,13 +221,15 @@
 
     {{!-- Biography Tab --}}
     <div class="tab biography" data-group="primary" data-tab="description">
-      {{!-- If you want TinyMCE editors to output inline rolls when rendered, you need to pass the actor's roll data to the rollData property. --}}
-      {{editor content=data.biography target="data.biography" rollData=rollData button=true owner=owner editable=editable}}
+      {{!-- If you want TinyMCE editors to output inline rolls when rendered, you need to pass the actor's roll data to
+      the rollData property. --}}
+      {{editor content=data.biography target="data.biography" rollData=rollData button=true owner=owner
+      editable=editable}}
     </div>
 
     {{!-- Owned Items Tab --}}
     <div class="tab items" data-group="primary" data-tab="items">
-       {{> "systems/titan/templates/actor/parts/actor-items.hbs"}}
+      {{> "systems/titan/templates/actor/parts/actor-items.hbs"}}
     </div>
 
     {{!-- Owned Spells Tab --}}
@@ -216,4 +244,3 @@
 
   </section>
 </form>
-

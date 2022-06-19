@@ -19,7 +19,7 @@ export class TitanActorSheet extends ActorSheet {
         {
           navSelector: ".sheet-tabs",
           contentSelector: ".sheet-body",
-          initial: "features",
+          initial: "skills",
         },
       ],
     });
@@ -230,18 +230,19 @@ export class TitanActorSheet extends ActorSheet {
 
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = "";
-      if (dataset.label) {
+      let rollLabel = "";
+      console.log (dataset);
+      if (dataset.rollLabel) {
         if (dataset.rollType) {
-          label = `[${dataset.rollType}] ${dataset.label}`;
+          rollLabel = `[${dataset.rollType}] ${dataset.rollLabel}`;
         } else {
-          label = `[ability] ${dataset.label}`;
+          rollLabel = `[ability] ${dataset.rollLabel}`;
         }
       }
       let roll = new Roll(dataset.roll, this.actor.getRollData());
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: label,
+        flavor: rollLabel,
         rollMode: game.settings.get("core", "rollMode"),
       });
       return roll;
