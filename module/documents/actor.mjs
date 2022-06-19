@@ -160,12 +160,6 @@ export class TitanActor extends Actor {
     );
     data.resources.wounds.maxBase = maxWoundsBase;
     data.resources.wounds.maxValue = maxWoundsBase;
-
-    // Loop through ability scores, and add their modifiers to our sheet output.
-    for (let [key, ability] of Object.entries(data.abilities)) {
-      // Calculate the modifier using d20 rules.
-      ability.mod = Math.floor((ability.value - 10) / 2);
-    }
   }
 
   /**
