@@ -146,7 +146,7 @@ export class TitanActor extends Actor {
     // Calculate max stamina
     let maxStaminaBase =
       totalAttributeValue * TITAN.resources.stamina.maxBaseMulti;
-    data.resources.stamina.maxBase = totalAttributeValue * maxStaminaBase;
+    data.resources.stamina.maxBase = maxStaminaBase;
     data.resources.stamina.maxValue = maxStaminaBase;
 
     // Calculate max resolve
