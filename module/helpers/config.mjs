@@ -6,9 +6,9 @@ export const TITAN = {};
  */
 
 TITAN.attributes = {
-  body: "TITAN.Attributes.Body",
-  mind: "TITAN.Attributes.Mind",
-  soul: "TITAN.Attributes.Soul",
+  body: "TITAN.attributes.body",
+  mind: "TITAN.attributes.mind",
+  soul: "TITAN.attributes.soul",
   min: 1,
   max: 8,
   totalExpCostByRank: [2, 7, 14, 23, 34, 47, 62],
@@ -27,17 +27,17 @@ TITAN.skills = {
 
 TITAN.resources = {
   stamina: {
-    name: "TITAN.Resources.Stamina",
+    name: "TITAN.resources.stamina",
     maxBaseMulti: 1.0,
   },
 
   resolve: {
-    name: "TITAN.Resources.Resolve",
+    name: "TITAN.resources.Resolve",
     maxBaseMulti: 1.0,
   },
 
   wounds: {
-    name: "TITAN.Resources.Wounds",
+    name: "TITAN.resources.wounds",
     maxBaseMulti: 1.0,
   },
 };

@@ -7,14 +7,18 @@
   column-count: 3;
   column-gap: 2rem;
   list-style: none;
-  margin: 0;
-  padding: 0;
+
   overflow-y: auto;
   scrollbar-width: thin;
   color: $c-tan;
   .skill {
-    height: 3rem;
+    margin-bottom: 1.5rem;
+    padding: .5rem;
+    border: solid;
+    border-radius: 10px;
+    height: 5rem;
     break-inside: avoid;
-    page-break-inside: avoid
+    page-break-inside: avoid;
+    align-items: top;
   }
 }

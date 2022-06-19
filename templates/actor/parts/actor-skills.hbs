@@ -6,14 +6,28 @@
       class="stat-label rollable"
       data-roll="(@skills.{{key}}.training.value + @attributes.{{skill.defaultAttribute}}.value)d6"
       data-roll-type="skill"
-      data-roll-label={{localize (concat "TITAN.Skills." key)}}
-    >{{localize (concat "TITAN.Skills." key)}}</label>
-    <div class="stat-content flexrow flex-center flex-between">
+      data-roll-label={{localize (concat "TITAN.skills." key)}}
+    >{{localize (concat "TITAN.skills." key)}}</label>
+
+    <div class="stat-content flexrow flex-group-center flex-between">
+      <label for="data.exp.available" class="stat-label">{{localize "TITAN.training"}}</label>
+      <label for="data.exp.available" class="stat-label"> </label>
+      <label for="data.exp.available" class="stat-label">{{localize "TITAN.focus"}}</label>
+    </div>
+    <div class="stat-content flexrow flex-group-center flex-between">
       <input
-        class="skill-edit"
+        class="skill-edit focus-edit"
         type="text"
         name="data.skills.{{key}}.training.baseValue"
         value="{{skill.training.value}}"
+        data-dtype="Number"
+      />
+      <span> </span>
+      <input
+        class="skill-edit focus-edit"
+        type="text"
+        name="data.skills.{{key}}.focus.baseValue"
+        value="{{skill.focus.value}}"
         data-dtype="Number"
       />
     </div>

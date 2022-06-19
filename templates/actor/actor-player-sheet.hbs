@@ -21,9 +21,9 @@
         <div class="inspiration flex-group-center">
           <label for="data.attributes.body.value" class="stat-label" data-roll="(@attributes.body.value)d6"
             data-roll-type="attribute">
-            {{localize "TITAN.Inspiration"}}
+            {{localize "TITAN.inspiration"}}
           </label>
-          <div class="stat-content flexrow flex-center flex-between">
+          <div class="stat-content flexrow flex-group-center flex-between">
             <input type="number" name="data.inspiration" value="{{data.inspiration}}" data-dtype="Number" />
           </div>
         </div>
@@ -31,12 +31,12 @@
         {{!-- Exp --}}
         <div class="flex-group-center">
           <label for="data.exp" class="stat-label">{{localize "TITAN.EXP"}}</label>
-          <div class="stat-content flexrow flex-center flex-between">
+          <div class="stat-content flexrow flex-group-center flex-between">
             <label for="data.exp.available" class="stat-label">{{localize "TITAN.Available"}}</label>
             <label for="data.exp.available" class="stat-label"> </label>
             <label for="data.exp.available" class="stat-label">{{localize "TITAN.Earned"}}</label>
           </div>
-          <div class="stat-content flexrow flex-center flex-between">
+          <div class="stat-content flexrow flex-group-center flex-between">
             <span>{{numberFormat data.exp.available decimals=0}}</span>
             <span> / </span>
             <input type="text" name="data.exp.earned" value="{{data.exp.earned}}" data-dtype="Number" />
@@ -50,10 +50,10 @@
         {{!-- Body --}}
         <div class="attribute flex-group-center">
           <label for="data.attributes.body.value" class="stat-label rollable" data-roll="(@attributes.body.value)d6"
-            data-roll-type="attribute" data-roll-label={{localize "TITAN.Attributes.Body" }}>
-            {{localize "TITAN.Attributes.Body"}}
+            data-roll-type="attribute" data-roll-label={{localize "TITAN.attributes.body" }}>
+            {{localize "TITAN.attributes.body"}}
           </label>
-          <div class="stat-content flexrow flex-center flex-between">
+          <div class="stat-content flexrow flex-group-center flex-between">
             <input class="attribute-edit" type="number" name="data.attributes.body.baseValue"
               value="{{data.attributes.body.baseValue}}" data-dtype="Number" />
           </div>
@@ -62,9 +62,9 @@
         {{!-- Mind --}}
         <div class="attribute flex-group-center">
           <label for="data.attributes.mind.value" class="stat-label rollable" data-roll="(@attributes.mind.value)d6"
-            data-roll-type="attribute" data-roll-label={{localize "TITAN.Attributes.Mind" }}>{{localize
-            "TITAN.Attributes.Mind"}}</label>
-          <div class="stat-content flexrow flex-center flex-between">
+            data-roll-type="attribute" data-roll-label={{localize "TITAN.attributes.mind" }}>{{localize
+            "TITAN.attributes.mind"}}</label>
+          <div class="stat-content flexrow flex-group-center flex-between">
             <input class="attribute-edit" type="text" name="data.attributes.mind.baseValue"
               value="{{data.attributes.mind.baseValue}}" data-dtype="Number" />
           </div>
@@ -73,10 +73,10 @@
         {{!-- Soul --}}
         <div class="attribute flex-group-center">
           <label for="data.attributes.soul.value" class="stat-label rollable" data-roll="(@attributes.soul.value)d6"
-            data-roll-type="attribute" data-roll-label={{localize "TITAN.Attributes.Soul" }}>
-            {{localize "TITAN.Attributes.Soul"}}
+            data-roll-type="attribute" data-roll-label={{localize "TITAN.attributes.soul" }}>
+            {{localize "TITAN.attributes.soul"}}
           </label>
-          <div class="stat-content flexrow flex-center flex-between">
+          <div class="stat-content flexrow flex-group-center flex-between">
             <input class="attribute-edit" type="text" name="data.attributes.soul.baseValue"
               value="{{data.attributes.soul.baseValue}}" data-dtype="Number" />
           </div>
@@ -86,9 +86,9 @@
         <div class="derived flex-group-center">
           <label for="data.derivedStats.initiative.value" class="stat-label rollable"
             data-roll="2d6+@derivedStats.initiative.value" data-roll-type="attribute"
-            data-roll-label={{localize "TITAN.DerivedStats.Initiative" }}>{{localize
-            "TITAN.DerivedStats.Initiative"}}</label>
-          <div class="stat-content flexrow flex-center flex-between">
+            data-roll-label={{localize "TITAN.derivedStats.initiative" }}>{{localize
+            "TITAN.derivedStats.initiative"}}</label>
+          <div class="stat-content flexrow flex-group-center flex-between">
             <span>{{numberFormat data.derivedStats.initiative.value decimals=0}}</span>
           </div>
         </div>
@@ -96,8 +96,8 @@
         {{!-- Awareness --}}
         <div class="derived flex-group-center">
           <label for="data.derivedStats.awareness.value" class="stat-label">{{localize
-            "TITAN.DerivedStats.Awareness"}}</label>
-          <div class="stat-content flexrow flex-center flex-between">
+            "TITAN.derivedStats.awareness"}}</label>
+          <div class="stat-content flexrow flex-group-center flex-between">
             <span>{{numberFormat data.derivedStats.awareness.value decimals=0}}</span>
           </div>
         </div>
@@ -105,16 +105,16 @@
         {{!-- Defense --}}
         <div class="derived flex-group-center">
           <label for="data.derivedStats.defense.value" class="stat-label">{{localize
-            "TITAN.DerivedStats.Defense"}}</label>
-          <div class="stat-content flexrow flex-center flex-between">
+            "TITAN.derivedStats.defense"}}</label>
+          <div class="stat-content flexrow flex-group-center flex-between">
             <span>{{numberFormat data.derivedStats.defense.value decimals=0}}</span>
           </div>
         </div>
 
         {{!-- Melee --}}
         <div class="derived flex-group-center">
-          <label for="data.derivedStats.melee.value" class="stat-label">{{localize "TITAN.DerivedStats.Melee"}}</label>
-          <div class="stat-content flexrow flex-center flex-between">
+          <label for="data.derivedStats.melee.value" class="stat-label">{{localize "TITAN.derivedStats.melee"}}</label>
+          <div class="stat-content flexrow flex-group-center flex-between">
             <span>{{numberFormat data.derivedStats.melee.value decimals=0}}</span>
           </div>
         </div>
@@ -122,8 +122,8 @@
         {{!-- Accuracy --}}
         <div class="derived flex-group-center">
           <label for="data.derivedStats.accuracy.value" class="stat-label">{{localize
-            "TITAN.DerivedStats.Accuracy"}}</label>
-          <div class="stat-content flexrow flex-center flex-between">
+            "TITAN.derivedStats.accuracy"}}</label>
+          <div class="stat-content flexrow flex-group-center flex-between">
             <span>{{numberFormat data.derivedStats.accuracy.value decimals=0}}</span>
           </div>
         </div>
@@ -134,8 +134,8 @@
 
         {{!-- Stamina --}}
         <div class="resource flex-group-center">
-          <label for="data.resources.stamina.value" class="stat-label">{{localize "TITAN.Resources.Stamina"}}</label>
-          <div class="stat-content flexrow flex-center flex-between">
+          <label for="data.resources.stamina.value" class="stat-label">{{localize "TITAN.resources.stamina"}}</label>
+          <div class="stat-content flexrow flex-group-center flex-between">
             <input class="resource-edit" data-resource="stamina" type="text" name="data.resources.stamina.value"
               value="{{data.resources.stamina.value}}" data-dtype="Number" />
             <span> / </span>
@@ -145,8 +145,8 @@
 
         {{!-- Resolve --}}
         <div class="resource flex-group-center">
-          <label for="data.resources.resolve.value" class="stat-label">{{localize "TITAN.Resources.Resolve"}}</label>
-          <div class="stat-content flexrow flex-center flex-between">
+          <label for="data.resources.resolve.value" class="stat-label">{{localize "TITAN.resources.Resolve"}}</label>
+          <div class="stat-content flexrow flex-group-center flex-between">
             <input class="resource-edit" data-resource="resolve" type="text" name="data.resources.resolve.value"
               value="{{data.resources.resolve.value}}" data-dtype="Number" />
             <span> / </span>
@@ -154,12 +154,12 @@
           </div>
         </div>
 
-        {{!-- Resolve --}}
+        {{!-- Wounds --}}
         <div class="resource flex-group-center">
-          <label for="data.resources.wounds.value" class="stat-label">{{localize "TITAN.Resources.Wounds"}}</label>
-          <div class="stat-content flexrow flex-center flex-between">
+          <label for="data.resources.wounds.value" class="stat-label">{{localize "TITAN.resources.wounds"}}</label>
+          <div class="stat-content flexrow flex-group-center flex-between">
             <input class="resource-edit" data-resource="wounds" type="text" name="data.resources.wounds.value"
-              value="{{data.resources.resolve.value}}" data-dtype="Number" />
+              value="{{data.resources.wounds.value}}" data-dtype="Number" />
             <span> / </span>
             <span>{{numberFormat data.resources.wounds.maxValue decimals=0}}</span>
           </div>

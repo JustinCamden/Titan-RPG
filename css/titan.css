@@ -489,17 +489,22 @@
   -moz-column-gap: 2rem;
   column-gap: 2rem;
   list-style: none;
-  margin: 0;
-  padding: 0;
   overflow-y: auto;
   scrollbar-width: thin;
   color: #444;
 }
 
 .titan .skills-list .skill {
-  height: 3rem;
+  margin-bottom: 1.5rem;
+  padding: .5rem;
+  border: solid;
+  border-radius: 10px;
+  height: 5rem;
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
   break-inside: avoid;
   page-break-inside: avoid;
+  -webkit-box-align: top;
+  -ms-flex-align: top;
+  align-items: top;
 }
