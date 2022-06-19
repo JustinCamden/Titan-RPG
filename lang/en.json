@@ -1,18 +1,4 @@
 {
-  "TITAN.AbilityStr": "Strength",
-  "TITAN.AbilityCon": "Constitution",
-  "TITAN.AbilityDex": "Dexterity",
-  "TITAN.AbilityInt": "Intelligence",
-  "TITAN.AbilityWis": "Wisdom",
-  "TITAN.AbilityCha": "Charisma",
-
-  "TITAN.AbilityStrAbbr": "str",
-  "TITAN.AbilityConAbbr": "con",
-  "TITAN.AbilityDexAbbr": "dex",
-  "TITAN.AbilityIntAbbr": "int",
-  "TITAN.AbilityWisAbbr": "wis",
-  "TITAN.AbilityChaAbbr": "cha",
-
   "TITAN.EffectCreate": "Create Effect",
   "TITAN.EffectToggle": "Toggle Effect",
   "TITAN.EffectEdit": "Edit Effect",

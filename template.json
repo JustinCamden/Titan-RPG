@@ -3,16 +3,6 @@
     "types": ["player", "npc"],
     "templates": {
       "character": {
-        "health": {
-          "value": 10,
-          "min": 0,
-          "max": 10
-        },
-        "power": {
-          "value": 5,
-          "min": 0,
-          "max": 5
-        },
         "biography": "",
         "attributes": {
           "body": {
@@ -211,6 +201,26 @@
               "staticMod": 0
             }
           },
+          "sleightOfHand": {
+            "training": {
+              "baseValue": 0,
+              "staticMod": 0
+            },
+            "focus": {
+              "baseValue": 0,
+              "staticMod": 0
+            }
+          },
+          "stealth": {
+            "training": {
+              "baseValue": 0,
+              "staticMod": 0
+            },
+            "focus": {
+              "baseValue": 0,
+              "staticMod": 0
+            }
+          },
           "survival": {
             "training": {
               "baseValue": 0,
@@ -274,33 +284,12 @@
     },
     "player": {
       "templates": ["character"],
-      "abilities": {
-        "str": {
-          "value": 10
-        },
-        "dex": {
-          "value": 10
-        },
-        "con": {
-          "value": 10
-        },
-        "int": {
-          "value": 10
-        },
-        "wis": {
-          "value": 10
-        },
-        "cha": {
-          "value": 10
-        }
-      },
       "exp": {
         "earned": 0
       }
     },
     "npc": {
-      "templates": ["character"],
-      "cr": 0
+      "templates": ["character"]
     }
   },
   "Item": {
