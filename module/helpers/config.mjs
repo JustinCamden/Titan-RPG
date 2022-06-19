@@ -19,7 +19,6 @@ TITAN.skills = {
     max: 3,
     totalExpCostByRank: [1, 3, 7],
   },
-
   focus: {
     max: 3,
     totalExpCostByRank: [1, 3, 7],

@@ -19,7 +19,7 @@
 
         {{!-- Inspiration --}}
         <div class="inspiration flex-group-center">
-          <label for="data.attributes.body.baseValue" class="stat-label" data-roll="(@attributes.body.baseValue)d6" data-roll-type="attribute" data-label={{localize "TITAN.Inspiration"}}>{{localize "TITAN.Inspiration"}}</label>
+          <label for="data.attributes.body.value" class="stat-label" data-roll="(@attributes.body.value)d6" data-roll-type="attribute" data-label={{localize "TITAN.Inspiration"}}>{{localize "TITAN.Inspiration"}}</label>
           <div class="stat-content flexrow flex-center flex-between">
             <input type="number" name="data.inspiration" value="{{data.inspiration}}" data-dtype="Number"/>
           </div>
@@ -46,25 +46,25 @@
 
         {{!-- Body --}}
         <div class="attribute flex-group-center">
-          <label for="data.attributes.body.baseValue" class="stat-label rollable" data-roll="(@attributes.body.baseValue)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attributes.Body"}}>{{localize "TITAN.Attributes.Body"}}</label>
+          <label for="data.attributes.body.value" class="stat-label rollable" data-roll="(@attributes.body.value)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attributes.Body"}}>{{localize "TITAN.Attributes.Body"}}</label>
           <div class="stat-content flexrow flex-center flex-between">
-          <input class="attribute-edit" type="number" name="data.attributes.body.baseValue" value="{{data.attributes.body.baseValue}}" data-dtype="Number"/>
+          <input class="attribute-edit" type="number" name="data.attributes.body.value" value="{{data.attributes.body.value}}" data-dtype="Number"/>
           </div>
         </div>
 
         {{!-- Mind --}}
         <div class="attribute flex-group-center">
-          <label for="data.attributes.mind.baseValue" class="stat-label rollable" data-roll="(@attributes.mind.baseValue)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attributes.Mind"}}>{{localize "TITAN.Attributes.Mind"}}</label>
+          <label for="data.attributes.mind.value" class="stat-label rollable" data-roll="(@attributes.mind.value)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attributes.Mind"}}>{{localize "TITAN.Attributes.Mind"}}</label>
           <div class="stat-content flexrow flex-center flex-between">
-          <input class="attribute-edit" type="text" name="data.attributes.mind.baseValue" value="{{data.attributes.mind.baseValue}}" data-dtype="Number"/>
+          <input class="attribute-edit" type="text" name="data.attributes.mind.value" value="{{data.attributes.mind.value}}" data-dtype="Number"/>
           </div>
         </div>
 
         {{!-- Soul --}}
         <div class="attribute flex-group-center">
-          <label for="data.attributes.soul.baseValue" class="stat-label rollable" data-roll="(@attributes.soul.baseValue)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attributes.Soul"}}>{{localize "TITAN.Attributes.Soul"}}</label>
+          <label for="data.attributes.soul.value" class="stat-label rollable" data-roll="(@attributes.soul.value)d6" data-roll-type="attribute" data-label={{localize "TITAN.Attributes.Soul"}}>{{localize "TITAN.Attributes.Soul"}}</label>
           <div class="stat-content flexrow flex-center flex-between">
-            <input class="attribute-edit" type="text" name="data.attributes.soul.baseValue" value="{{data.attributes.soul.baseValue}}" data-dtype="Number"/>
+            <input class="attribute-edit" type="text" name="data.attributes.soul.value" value="{{data.attributes.soul.value}}" data-dtype="Number"/>
           </div>
         </div>
 
@@ -149,6 +149,7 @@
   {{!-- Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
     {{!-- Default tab is specified in actor-sheet.mjs --}}
+    <a class="item" data-tab="skills">Skills</a>
     <a class="item" data-tab="features">Features</a>
     <a class="item" data-tab="description">Description</a>
     <a class="item" data-tab="items">Items</a>
@@ -158,6 +159,11 @@
 
   {{!-- Sheet Body --}}
   <section class="sheet-body">
+
+    {{!-- Skills Tab --}}
+    <div class="tab skills" data-group="primary" data-tab="skills">
+      {{> "systems/titan/templates/actor/parts/actor-skills.hbs"}}
+    </div>
 
     {{!-- Owned Features Tab --}}
     <div class="tab features" data-group="primary" data-tab="features">

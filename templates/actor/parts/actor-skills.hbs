@@ -1,0 +1,14 @@
+<div class="resources grid grid-3col"></div>
+  <ol class="skills-list">
+    {{#each data.skills as |skill key|}}
+    <li>
+      <div class="skill">
+        <label for="data.skills.{{key}}" class="stat-label rollable" data-roll="(@{{key}}.training.value)d6" data-roll-type="skill" data-label={{key}}>{{key}}</label>
+        <div class="stat-content flexrow flex-center flex-between">
+          <input class="skill-edit" type="text" name="data.skills.{{key}}.training.baseValue" value="{{skill.training.value}}" data-dtype="Number"/>
+        </div>
+      </div>
+    </li>
+    {{/each}}
+  </ol>
+</div>

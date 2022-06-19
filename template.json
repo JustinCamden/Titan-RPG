@@ -52,6 +52,7 @@
         },
         "skills": {
           "arcana": {
+            "defaultAttribute": "mind",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -62,6 +63,7 @@
             }
           },
           "athletics": {
+            "defaultAttribute": "body",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -71,6 +73,7 @@
               "staticMod": 0
             }
           },
+          "defaultAttribute": "soul",
           "beastHandling": {
             "training": {
               "baseValue": 0,
@@ -82,6 +85,7 @@
             }
           },
           "deception": {
+            "defaultAttribute": "mind",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -92,6 +96,7 @@
             }
           },
           "dexterity": {
+            "defaultAttribute": "body",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -102,6 +107,7 @@
             }
           },
           "diplomacy": {
+            "defaultAttribute": "soul",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -112,6 +118,7 @@
             }
           },
           "engineering": {
+            "defaultAttribute": "mind",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -122,6 +129,7 @@
             }
           },
           "intimidation": {
+            "defaultAttribute": "body",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -132,6 +140,7 @@
             }
           },
           "investigation": {
+            "defaultAttribute": "mind",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -142,6 +151,7 @@
             }
           },
           "lore": {
+            "defaultAttribute": "mind",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -152,6 +162,7 @@
             }
           },
           "medicine": {
+            "defaultAttribute": "mind",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -162,6 +173,7 @@
             }
           },
           "meleeWeapons": {
+            "defaultAttribute": "body",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -172,6 +184,7 @@
             }
           },
           "perception": {
+            "defaultAttribute": "mind",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -182,6 +195,7 @@
             }
           },
           "performance": {
+            "defaultAttribute": "soul",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -192,6 +206,7 @@
             }
           },
           "rangedWeapons": {
+            "defaultAttribute": "mind",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -202,6 +217,7 @@
             }
           },
           "sleightOfHand": {
+            "defaultAttribute": "body",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -212,6 +228,7 @@
             }
           },
           "stealth": {
+            "defaultAttribute": "body",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -222,6 +239,7 @@
             }
           },
           "survival": {
+            "defaultAttribute": "mind",
             "training": {
               "baseValue": 0,
               "staticMod": 0
@@ -232,6 +250,7 @@
             }
           },
           "theology": {
+            "defaultAttribute": "soul",
             "training": {
               "baseValue": 0,
               "staticMod": 0

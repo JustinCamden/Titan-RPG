@@ -147,19 +147,34 @@ export class TitanActor extends Actor {
     let maxStaminaBase =
       totalAttributeValue * TITAN.resources.stamina.maxBaseMulti;
     data.resources.stamina.maxBase = maxStaminaBase;
-    data.resources.stamina.maxValue = maxStaminaBase;
+    data.resources.stamina.maxValue =
+      maxStaminaBase + data.resources.stamina.staticMod;
 
     // Calculate max resolve
     let maxResolveBase = Math.ceil(data.attributes.soul.baseValue / 2);
     data.resources.resolve.maxBase = maxResolveBase;
-    data.resources.resolve.maxValue = maxResolveBase;
+    data.resources.resolve.maxValue =
+      maxResolveBase + data.resources.resolve.staticMod;
 
     // Calculate max wounds
     let maxWoundsBase = Math.ceil(
       (totalAttributeValue * TITAN.resources.wounds.maxBaseMulti) / 2
     );
     data.resources.wounds.maxBase = maxWoundsBase;
-    data.resources.wounds.maxValue = maxWoundsBase;
+    data.resources.wounds.maxValue =
+      maxWoundsBase + data.resources.wounds.staticMod;
+
+    // Calculate ability mods
+    for (let [k, v] of Object.entries(data.attributes)) {
+      data.attributes[k].value = v.baseValue + v.staticMod;
+    }
+
+    // Calculate skill mods
+    for (let [k, v] of Object.entries(data.skills)) {
+      data.skills[k].training.value =
+        v.training.baseValue + v.training.staticMod;
+      data.skills[k].focus.value = v.focus.baseValue + v.focus.staticMod;
+    }
   }
 
   /**

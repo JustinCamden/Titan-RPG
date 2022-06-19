@@ -1,4 +1,3 @@
-import { TITAN } from "../helpers/config.mjs";
 import {
   onManageActiveEffect,
   prepareActiveEffectCategories,
@@ -76,7 +75,9 @@ export class TitanActorSheet extends ActorSheet {
    * @return {undefined}
    */
   _prepareCharacterData(context) {
-    // Handle ability scores.
+    for (let [k, v] of Object.entries(context.data.skills)) {
+      v.label = game.i18n.localize(CONFIG.TITAN.skills[k]) ?? k;
+    }
   }
 
   /**
@@ -251,10 +252,10 @@ export class TitanActorSheet extends ActorSheet {
     // Ensure the attribute is within a valid range
     const newValue = event.target.value;
 
-    if (newValue > TITAN.attributes.max) {
-      event.target.value = TITAN.attributes.max;
-    } else if (newValue < TITAN.attributes.min) {
-      event.target.value = TITAN.attributes.min;
+    if (newValue > CONFIG.TITAN.attributes.max) {
+      event.target.value = CONFIG.TITAN.attributes.max;
+    } else if (newValue < CONFIG.TITAN.attributes.min) {
+      event.target.value = CONFIG.TITAN.attributes.min;
     }
   }
 
