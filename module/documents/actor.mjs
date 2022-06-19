@@ -107,45 +107,17 @@ export class TitanActor extends Actor {
           data.skills.meleeWeapons.training.staticMod) /
           2
       ) + data.derivedStats.melee.staticMod;
-  }
 
-  /**
-   * Prepare Player type specific data
-   */
-  _preparePlayerData(actorData) {
-    // Prepare template data
-    this._prepareCharacterData(actorData);
-
-    // Make modifications to data here. For example:
-    const data = actorData.data;
-
-    // Calculate the amount of EXP spent and the max Stamina
-    let spentExp = 0;
-    let totalAttributeValue = 0;
-
-    // Add cost of current attributes
+    // Calculate the total attribute value
+    let totalBaseAttributeValue = 0;
     for (const attribute in data.attributes) {
-      let attributeValue = data.attributes[attribute].baseValue;
-
-      // Calculate stamina
-      totalAttributeValue = totalAttributeValue + attributeValue;
-
-      // Calculate xp cost
-      // Attributes
-      if (attributeValue > TITAN.attributes.min) {
-        spentExp =
-          spentExp +
-          TITAN.attributes.totalExpCostByRank[
-            attributeValue - TITAN.attributes.min - 1
-          ];
-      }
+      totalBaseAttributeValue =
+        totalBaseAttributeValue + data.attributes[attribute].baseValue;
     }
-
-    data.exp.available = data.exp.earned - spentExp;
 
     // Calculate max stamina
     let maxStaminaBase =
-      totalAttributeValue * TITAN.resources.stamina.maxBaseMulti;
+      totalBaseAttributeValue * TITAN.resources.stamina.maxBaseMulti;
     data.resources.stamina.maxBase = maxStaminaBase;
     data.resources.stamina.maxValue =
       maxStaminaBase + data.resources.stamina.staticMod;
@@ -158,7 +130,7 @@ export class TitanActor extends Actor {
 
     // Calculate max wounds
     let maxWoundsBase = Math.ceil(
-      (totalAttributeValue * TITAN.resources.wounds.maxBaseMulti) / 2
+      (totalBaseAttributeValue * TITAN.resources.wounds.maxBaseMulti) / 2
     );
     data.resources.wounds.maxBase = maxWoundsBase;
     data.resources.wounds.maxValue =
@@ -175,6 +147,37 @@ export class TitanActor extends Actor {
         v.training.baseValue + v.training.staticMod;
       data.skills[k].focus.value = v.focus.baseValue + v.focus.staticMod;
     }
+  }
+
+  /**
+   * Prepare Player type specific data
+   */
+  _preparePlayerData(actorData) {
+    // Prepare template data
+    this._prepareCharacterData(actorData);
+
+    // Make modifications to data here.
+    const data = actorData.data;
+
+    // Calculate the amount of EXP spent
+    let spentExp = 0;
+
+    // Add cost of current attributes
+    for (const attribute in data.attributes) {
+      let attributeValue = data.attributes[attribute].baseValue;
+
+      // Calculate xp cost
+      // Attributes
+      if (attributeValue > TITAN.attributes.min) {
+        spentExp =
+          spentExp +
+          TITAN.attributes.totalExpCostByRank[
+            attributeValue - TITAN.attributes.min - 1
+          ];
+      }
+    }
+
+    data.exp.available = data.exp.earned - spentExp;
   }
 
   /**

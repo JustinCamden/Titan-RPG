@@ -76,7 +76,7 @@ export class TitanActorSheet extends ActorSheet {
    */
   _prepareCharacterData(context) {
     for (let [k, v] of Object.entries(context.data.skills)) {
-      v.label = game.i18n.localize(CONFIG.TITAN.skills[k]) ?? k;
+      context.data.skills[k].label = ""; // game.i18n.localize(CONFIG.TITAN.skills[k]) ?? k;
     }
   }
 

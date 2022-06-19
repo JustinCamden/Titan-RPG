@@ -73,8 +73,8 @@
               "staticMod": 0
             }
           },
-          "defaultAttribute": "soul",
           "beastHandling": {
+            "defaultAttribute": "soul",
             "training": {
               "baseValue": 0,
               "staticMod": 0
