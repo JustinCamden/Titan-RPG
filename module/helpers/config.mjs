@@ -32,11 +32,30 @@ TITAN.attributes = {
 };
 
 TITAN.skills = {
-  min: 1,
-  max: 8,
-  totalExpCostByRank: [1, 3, 7, 13, 21, 31, 43],
+  training: {
+    max: 3,
+    totalExpCostByRank: [1, 3, 7],
+  },
+
+  focus: {
+    max: 3,
+    totalExpCostByRank: [1, 3, 7],
+  },
 };
 
 TITAN.resources = {
-  maxStaminaMulti: 1.0,
+  stamina: {
+    name: "TITAN.Resources.Stamina",
+    maxBaseMulti: 1.0,
+  },
+
+  resolve: {
+    name: "TITAN.Resources.Resolve",
+    maxBaseMulti: 1.0,
+  },
+
+  wounds: {
+    name: "TITAN.Resources.Wounds",
+    maxBaseMulti: 1.0,
+  },
 };

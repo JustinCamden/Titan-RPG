@@ -12,8 +12,29 @@
 
     {{!-- Header Fields --}}
     <div class="header-fields">
-      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
 
+      <div class = "grid grid-2col">
+        <div class="flex-group-left">
+          <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+        </div>
+        
+        {{!-- Exp --}}
+        <div class="resource flex-group-center">
+          <label for="data.exp" class="resource-label">{{localize "TITAN.EXP"}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <label for="data.exp.available" class="resource-label">{{localize "TITAN.Available"}}</label>
+            <label for="data.exp.available" class="resource-label"> </label>
+            <label for="data.exp.available" class="resource-label">{{localize "TITAN.Earned"}}</label>
+          </div>
+          <div class="resource-content flexrow flex-center flex-between">
+            <span>{{numberFormat data.exp.available decimals=0}}</span>
+            <span> / </span>
+            <input type="text" name="data.exp.earned" value="{{data.exp.earned}}" data-dtype="Number"/>
+          </div>
+        </div>
+      </div>
+
+      {{!-- Resources --}}
       <div class="resources grid grid-3col">
 
         {{!-- Stamina --}}
@@ -36,18 +57,13 @@
           </div>
         </div>
 
-        {{!-- Exp --}}
+        {{!-- Resolve --}}
         <div class="resource flex-group-center">
-          <label for="data.exp" class="resource-label">{{localize "TITAN.EXP"}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <label for="data.exp.available" class="resource-label">{{localize "TITAN.Available"}}</label>
-            <label for="data.exp.available" class="resource-label"> </label>
-            <label for="data.exp.available" class="resource-label">{{localize "TITAN.Earned"}}</label>
-          </div>
-          <div class="resource-content flexrow flex-center flex-between">
-            <span>{{numberFormat data.exp.available decimals=0}}</span>
+          <label for="data.resources.wounds.value" class="resource-label">Wounds</label>
+            <div class="resource-content flexrow flex-center flex-between">
+            <input class="resource-edit" data-resource="wounds" type="text" name="data.resources.wounds.value" value="{{data.resources.resolve.value}}" data-dtype="Number"/>
             <span> / </span>
-            <input type="text" name="data.exp.earned" value="{{data.exp.earned}}" data-dtype="Number"/>
+            <span>{{numberFormat data.resources.wounds.maxValue decimals=0}}</span>
           </div>
         </div>
 

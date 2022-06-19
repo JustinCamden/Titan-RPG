@@ -144,15 +144,22 @@ export class TitanActor extends Actor {
     data.exp.available = data.exp.earned - spentExp;
 
     // Calculate max stamina
-    let maxStaminaBase = totalAttributeValue * TITAN.resources.maxStaminaMulti;
+    let maxStaminaBase =
+      totalAttributeValue * TITAN.resources.stamina.maxBaseMulti;
     data.resources.stamina.maxBase = totalAttributeValue * maxStaminaBase;
     data.resources.stamina.maxValue = maxStaminaBase;
 
     // Calculate max resolve
     let maxResolveBase = Math.ceil(data.attributes.soul.baseValue / 2);
-    console.log(maxResolveBase);
     data.resources.resolve.maxBase = maxResolveBase;
     data.resources.resolve.maxValue = maxResolveBase;
+
+    // Calculate max wounds
+    let maxWoundsBase = Math.ceil(
+      (totalAttributeValue * TITAN.resources.wounds.maxBaseMulti) / 2
+    );
+    data.resources.wounds.maxBase = maxWoundsBase;
+    data.resources.wounds.maxValue = maxWoundsBase;
 
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (let [key, ability] of Object.entries(data.abilities)) {
