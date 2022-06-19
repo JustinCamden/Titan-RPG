@@ -229,6 +229,9 @@
   /*  Items Lists                              */
   /* ----------------------------------------- */
   /* Example style for Titan (can be removed if not needed) */
+  /* ----------------------------------------- */
+  /*  Items Lists                              */
+  /* ----------------------------------------- */
 }
 
 .titan .item-form {
@@ -475,4 +478,28 @@
 
 .titan .effects .item .effect-controls {
   border: none;
+}
+
+.titan .skills-list {
+  height: 100%;
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+  -webkit-column-gap: 2rem;
+  -moz-column-gap: 2rem;
+  column-gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  color: #444;
+}
+
+.titan .skills-list .skill {
+  height: 3rem;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  break-inside: avoid;
+  page-break-inside: avoid;
 }
