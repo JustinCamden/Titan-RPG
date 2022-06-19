@@ -6,9 +6,9 @@ export const TITAN = {};
  */
 
 TITAN.attributes = {
-  body: "TITAN.Attribute.Body",
-  mind: "TITAN.Attribute.Mind",
-  soul: "TITAN.Attribute.Soul",
+  body: "TITAN.Attributes.Body",
+  mind: "TITAN.Attributes.Mind",
+  soul: "TITAN.Attributes.Soul",
   min: 1,
   max: 8,
   totalExpCostByRank: [2, 7, 14, 23, 34, 47, 62],

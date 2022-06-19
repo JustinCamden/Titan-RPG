@@ -264,11 +264,11 @@
             "value": 3,
             "staticMod": 0
           },
-          "wounds": {
+          "resolve": {
             "value": 0,
             "staticMod": 0
           },
-          "resolve": {
+          "wounds": {
             "value": 0,
             "staticMod": 0
           }
@@ -286,7 +286,8 @@
       "templates": ["character"],
       "exp": {
         "earned": 0
-      }
+      },
+      "inspiration": 0
     },
     "npc": {
       "templates": ["character"]

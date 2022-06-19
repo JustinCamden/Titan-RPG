@@ -6,9 +6,9 @@
 
   "TITAN.Add": "Add",
 
-  "TITAN.Attribute.Body": "Body",
-  "TITAN.Attribute.Mind": "Mind",
-  "TITAN.Attribute.Soul": "Soul",
+  "TITAN.Attributes.Body": "Body",
+  "TITAN.Attributes.Mind": "Mind",
+  "TITAN.Attributes.Soul": "Soul",
 
   "TITAN.DerivedStats.Initiative": "Initiative",
   "TITAN.DerivedStats.Awareness": "Awareness",
@@ -16,7 +16,12 @@
   "TITAN.DerivedStats.Melee": "Melee",
   "TITAN.DerivedStats.Accuracy": "Accuracy",
 
+  "TITAN.Resources.Stamina": "Stamina",
+  "TITAN.Resources.Wounds": "Wounds",
+  "TITAN.Resources.Resolve": "Resolve",
+
   "TITAN.EXP": "EXP",
   "TITAN.Available": "Available",
-  "TITAN.Earned": "Earned"
+  "TITAN.Earned": "Earned",
+  "TITAN.Inspiration": "Inspiration"
 }
