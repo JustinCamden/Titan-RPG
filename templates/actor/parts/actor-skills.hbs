@@ -4,9 +4,8 @@
     <label
       for="data.skills.{{key}}"
       class="stat-label rollable"
-      data-roll="(@skills.{{key}}.training.value + @attributes.{{skill.defaultAttribute}}.value)d6"
       data-roll-type="skill"
-      data-roll-label={{localize (concat "TITAN.skills." key)}}
+      data-roll-skill={{key}}
     >{{localize (concat "TITAN.skills." key)}}</label>
 
     <div class="stat-content flexrow flex-group-center flex-between">

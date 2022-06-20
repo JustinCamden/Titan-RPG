@@ -15,6 +15,25 @@ TITAN.attributes = {
 };
 
 TITAN.skills = {
+  arcana: "TITAN.skills.arcana",
+  athletics: "TITAN.skills.athletics",
+  beastHandling: "TITAN.skills.beastHandling",
+  deception: "TITAN.skills.deception",
+  dexterity: "TITAN.skills.dexterity",
+  diplomacy: "TITAN.skills.diplomacy",
+  engineering: "TITAN.skills.engineering",
+  intimidation: "TITAN.skills.intimidation",
+  investigation: "TITAN.skills.investigation",
+  lore: "TITAN.skills.lore",
+  medicine: "TITAN.skills.medicine",
+  meleeWeapons: "TITAN.skills.meleeWeapons",
+  perception: "TITAN.skills.perception",
+  performance: "TITAN.skills.performance",
+  rangedWeapons: "TITAN.skills.rangedWeapons",
+  sleightOfHand: "TITAN.skills.sleightOfHand",
+  stealth: "TITAN.skills.stealth",
+  survival: "TITAN.skills.survival",
+  theology: "TITAN.skills.theology",
   training: {
     max: 3,
     totalExpCostByRank: [1, 3, 7],

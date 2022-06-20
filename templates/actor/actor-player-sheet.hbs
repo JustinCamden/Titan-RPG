@@ -49,8 +49,7 @@
 
         {{!-- Body --}}
         <div class="attribute flex-group-center">
-          <label for="data.attributes.body.value" class="stat-label rollable" data-roll="(@attributes.body.value)d6"
-            data-roll-type="attribute" data-roll-label={{localize "TITAN.attributes.body" }}>
+          <label for="data.attributes.body.value" class="stat-label rollable" data-roll-type="attribute" data-roll-attribute = "body">
             {{localize "TITAN.attributes.body"}}
           </label>
           <div class="stat-content flexrow flex-group-center flex-between">
@@ -61,9 +60,8 @@
 
         {{!-- Mind --}}
         <div class="attribute flex-group-center">
-          <label for="data.attributes.mind.value" class="stat-label rollable" data-roll="(@attributes.mind.value)d6"
-            data-roll-type="attribute" data-roll-label={{localize "TITAN.attributes.mind" }}>{{localize
-            "TITAN.attributes.mind"}}</label>
+          <label for="data.attributes.mind.value" class="stat-label rollable" data-roll-type="attribute" data-roll-attribute = "mind">
+            {{localize "TITAN.attributes.mind"}}</label>
           <div class="stat-content flexrow flex-group-center flex-between">
             <input class="attribute-edit" type="text" name="data.attributes.mind.baseValue"
               value="{{data.attributes.mind.baseValue}}" data-dtype="Number" />
@@ -72,8 +70,7 @@
 
         {{!-- Soul --}}
         <div class="attribute flex-group-center">
-          <label for="data.attributes.soul.value" class="stat-label rollable" data-roll="(@attributes.soul.value)d6"
-            data-roll-type="attribute" data-roll-label={{localize "TITAN.attributes.soul" }}>
+          <label for="data.attributes.soul.value" class="stat-label rollable" data-roll-type="attribute" data-roll-attribute = "soul">
             {{localize "TITAN.attributes.soul"}}
           </label>
           <div class="stat-content flexrow flex-group-center flex-between">
@@ -84,9 +81,7 @@
 
         {{!-- Initiative --}}
         <div class="derived flex-group-center">
-          <label for="data.derivedStats.initiative.value" class="stat-label rollable"
-            data-roll="2d6+@derivedStats.initiative.value" data-roll-type="attribute"
-            data-roll-label={{localize "TITAN.derivedStats.initiative" }}>{{localize
+          <label for="data.derivedStats.initiative.value" class="stat-label rollable" data-roll-type="initiative">{{localize
             "TITAN.derivedStats.initiative"}}</label>
           <div class="stat-content flexrow flex-group-center flex-between">
             <span>{{numberFormat data.derivedStats.initiative.value decimals=0}}</span>

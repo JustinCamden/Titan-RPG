@@ -219,33 +219,59 @@ export class TitanActorSheet extends ActorSheet {
     const element = event.currentTarget;
     const dataset = element.dataset;
 
-    // Handle item rolls.
+    // Handle rolls.
     if (dataset.rollType) {
-      if (dataset.rollType == "item") {
-        const itemId = element.closest(".item").dataset.itemId;
-        const item = this.actor.items.get(itemId);
-        if (item) return item.roll();
-      }
-    }
+      switch (dataset.rollType) {
 
-    // Handle rolls that supply the formula directly.
-    if (dataset.roll) {
-      let rollLabel = "";
-      console.log (dataset);
-      if (dataset.rollLabel) {
-        if (dataset.rollType) {
-          rollLabel = `[${dataset.rollType}] ${dataset.rollLabel}`;
-        } else {
-          rollLabel = `[ability] ${dataset.rollLabel}`;
+        // Item rolls
+        case "item": {
+          const itemId = element.closest(".item").dataset.itemId;
+          const item = this.actor.items.get(itemId);
+          if (item) return item.roll();
+          return roll;
+          break;
+        }
+
+        // Attribute rolls
+        case "attribute": {
+          if (dataset.rollAttribute) {
+            const localizedLabel = game.i18n.localize(CONFIG.TITAN.attributes[dataset.rollAttribute]);
+            const rollFormula = ("(@attributes." + dataset.rollAttribute + ".value)d6");
+            const roll = new Roll(rollFormula, this.actor.getRollData());
+            roll.toMessage({
+              speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+              flavor: localizedLabel,
+              rollMode: game.settings.get("core", "rollMode"),
+            });
+            return roll;
+          }
+          break;
+        }
+
+        // Skill rolls
+        case "skill": {
+          if (dataset.rollSkill) {
+            const rollSkill = dataset.rollSkill;
+            const rollData = this.actor.getRollData();
+            const rollAttribute = (rollData.skills[rollSkill].defaultAttribute);
+            const localizedLabel = game.i18n.localize(CONFIG.TITAN.skills[rollSkill]) + " (" + game.i18n.localize(CONFIG.TITAN.attributes[rollAttribute]) + ")";
+            const rollFormula = ("(@skills." + dataset.rollSkill + ".training.value + @attributes." + rollAttribute + ".value)d6");
+            const roll = new Roll(rollFormula, this.actor.getRollData());
+            roll.toMessage({
+              speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+              flavor: localizedLabel,
+              rollMode: game.settings.get("core", "rollMode"),
+            });
+            return roll;
+          }
+          break;
+        }
+
+        default: {
+          return null;
+          break;
         }
       }
-      let roll = new Roll(dataset.roll, this.actor.getRollData());
-      roll.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: rollLabel,
-        rollMode: game.settings.get("core", "rollMode"),
-      });
-      return roll;
     }
   }
 
