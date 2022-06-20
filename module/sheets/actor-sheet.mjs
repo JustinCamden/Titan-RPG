@@ -236,7 +236,7 @@ export class TitanActorSheet extends ActorSheet {
         case "attribute": {
           if (dataset.rollAttribute) {
             const localizedLabel = game.i18n.localize(CONFIG.TITAN.attributes[dataset.rollAttribute]);
-            const rollFormula = ("(@attributes." + dataset.rollAttribute + ".value)d6");
+            const rollFormula = ("(@attributes." + dataset.rollAttribute + ".value)d6cs>=4");
             const roll = new Roll(rollFormula, this.actor.getRollData());
             roll.toMessage({
               speaker: ChatMessage.getSpeaker({ actor: this.actor }),
@@ -255,7 +255,7 @@ export class TitanActorSheet extends ActorSheet {
             const rollData = this.actor.getRollData();
             const rollAttribute = (rollData.skills[rollSkill].defaultAttribute);
             const localizedLabel = game.i18n.localize(CONFIG.TITAN.skills[rollSkill]) + " (" + game.i18n.localize(CONFIG.TITAN.attributes[rollAttribute]) + ")";
-            const rollFormula = ("(@skills." + dataset.rollSkill + ".training.value + @attributes." + rollAttribute + ".value)d6");
+            const rollFormula = ("(@skills." + dataset.rollSkill + ".training.value + @attributes." + rollAttribute + ".value)d6cs>=4");
             const roll = new Roll(rollFormula, this.actor.getRollData());
             roll.toMessage({
               speaker: ChatMessage.getSpeaker({ actor: this.actor }),
