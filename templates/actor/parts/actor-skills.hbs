@@ -1,35 +1,45 @@
-<ol class="skills-list">
-{{#each data.skills as |skill key|}}
-  <li class="skill flex-group-center">
-    <label
-      for="data.skills.{{key}}"
-      class="stat-label rollable"
-      data-roll-type="skill"
-      data-roll-skill={{key}}
-    >{{localize (concat "TITAN.skills." key)}}</label>
+{{!-- Profile --}}
+<div class="skills-tab grid grid-3col">
+  <div class = "resistances-list flex-group-left sidebar">
+    Put Resistances here
+  </div>
+  <ol class="skills-list grid-span-2">
+  {{#each data.skills as |skill key|}}
+    <li class="skill flex-group-center">
+      <label
+        for="data.skills.{{key}}"
+        class="stat-label rollable"
+        data-roll-type="skill"
+        data-roll-skill={{key}}
+      >{{localize (concat "TITAN.skills." key)}}</label>
 
-    <div class="stat-content flexrow flex-group-center flex-between">
-      <label for="data.exp.available" class="stat-label">{{localize "TITAN.training"}}</label>
-      <label for="data.exp.available" class="stat-label"> </label>
-      <label for="data.exp.available" class="stat-label">{{localize "TITAN.focus"}}</label>
-    </div>
-    <div class="stat-content flexrow flex-group-center flex-between">
-      <input
-        class="skill-edit focus-edit"
-        type="text"
-        name="data.skills.{{key}}.training.baseValue"
-        value="{{skill.training.value}}"
-        data-dtype="Number"
-      />
-      <span> </span>
-      <input
-        class="skill-edit focus-edit"
-        type="text"
-        name="data.skills.{{key}}.focus.baseValue"
-        value="{{skill.focus.value}}"
-        data-dtype="Number"
-      />
-    </div>
-  </li>
-{{/each}}
-</ol>
+      <div class="stat-content flexrow flex-group-center flex-between">
+        <label for="data.exp.available" class="stat-label">{{localize "TITAN.training"}}</label>
+        <label for="data.exp.available" class="stat-label"> </label>
+        <label for="data.exp.available" class="stat-label">{{localize "TITAN.focus"}}</label>
+      </div>
+      <div class="stat-content flexrow flex-group-center flex-between">
+        <input
+          class="skill-edit focus-edit"
+          type="text"
+          name="data.skills.{{key}}.training.baseValue"
+          value="{{skill.training.value}}"
+          data-skill={{key}}
+          data-skill-type="training"
+          data-dtype="Number"
+        />
+        <span> </span>
+        <input
+          class="skill-edit focus-edit"
+          type="text"
+          name="data.skills.{{key}}.focus.baseValue"
+          value="{{skill.focus.value}}"
+          data-skill={{key}}
+          data-skill-type="focus"
+          data-dtype="Number"
+        />
+      </div>
+    </li>
+  {{/each}}
+  </ol>
+</div>

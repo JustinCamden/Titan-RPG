@@ -164,15 +164,40 @@ export class TitanActor extends Actor {
 
     // Add cost of current attributes
     for (const attribute in data.attributes) {
-      let attributeValue = data.attributes[attribute].baseValue;
+      const attributeBaseValue = data.attributes[attribute].baseValue;
 
       // Calculate xp cost
-      // Attributes
-      if (attributeValue > TITAN.attributes.min) {
+      const minAttributeValue = TITAN.attributes.min;
+      if (attributeBaseValue > minAttributeValue) {
         spentExp =
           spentExp +
           TITAN.attributes.totalExpCostByRank[
-            attributeValue - TITAN.attributes.min - 1
+            attributeBaseValue - minAttributeValue - 1
+          ];
+      }
+    }
+    
+    // Add cost of current skills
+    for (const skill in data.skills) {
+      const skillData = data.skills[skill];
+
+      // Calculate xp cost of training
+      const skillTrainingBaseValue = skillData.training.baseValue;
+      if (skillTrainingBaseValue > 0) {
+        spentExp =
+          spentExp +
+          TITAN.skills.training.totalExpCostByRank[
+            skillTrainingBaseValue - 1
+          ];
+      }
+
+      // Calculate xp cost of training
+      const skillFocusBaseValue = skillData.focus.baseValue;
+      if (skillFocusBaseValue > 0) {
+        spentExp =
+          spentExp +
+          TITAN.skills.focus.totalExpCostByRank[
+            skillFocusBaseValue - 1
           ];
       }
     }

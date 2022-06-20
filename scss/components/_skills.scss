@@ -2,23 +2,27 @@
 /*  Items Lists                              */
 /* ----------------------------------------- */
 
-.skills-list {
-  height: 100%;
-  column-count: 3;
-  column-gap: 2rem;
-  list-style: none;
-
-  overflow-y: auto;
-  scrollbar-width: thin;
-  color: $c-tan;
-  .skill {
-    margin-bottom: 1.5rem;
-    padding: .5rem;
-    border: solid;
-    border-radius: 10px;
-    height: 5rem;
-    break-inside: avoid;
-    page-break-inside: avoid;
-    align-items: top;
+.skills-tab {
+  .resistances-list {
+    align-items: left;
+  }
+  .skills-list {
+    column-count: 2;
+    column-gap: 2rem;
+    list-style: none;
+  
+    overflow-y: auto;
+    scrollbar-width: thin;
+    color: $c-tan;
+    .skill {
+      margin-bottom: 1.5rem;
+      padding: .5rem;
+      border: solid;
+      border-radius: 10px;
+      height: 5rem;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      align-items: top;
+    }
   }
 }

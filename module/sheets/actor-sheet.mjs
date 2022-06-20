@@ -171,6 +171,9 @@ export class TitanActorSheet extends ActorSheet {
     // Editing resources
     html.find(".resource-edit").change(this._onResourceEdit.bind(this));
 
+    // Editing skills
+    html.find(".skill-edit").change(this._onSkillEdit.bind(this));
+
     // Drag events for macros.
     if (this.actor.isOwner) {
       let handler = (ev) => this._onDragStart(ev);
@@ -279,11 +282,17 @@ export class TitanActorSheet extends ActorSheet {
     // Ensure the attribute is within a valid range
     const newValue = event.target.value;
 
-    if (newValue > CONFIG.TITAN.attributes.max) {
-      event.target.value = CONFIG.TITAN.attributes.max;
-    } else if (newValue < CONFIG.TITAN.attributes.min) {
-      event.target.value = CONFIG.TITAN.attributes.min;
+    const maxAttributeValue = CONFIG.TITAN.attributes.max;
+    if (newValue > maxAttributeValue) {
+      event.target.value = maxAttributeValue;
+    } else {
+      const minAttributeValue = CONFIG.TITAN.attributes.min;
+      if (newValue < minAttributeValue) {
+        event.target.value = CONFIG.TITAN.attributes.min;
+      }
     }
+
+    return;
   }
 
   async _onResourceEdit(event) {
@@ -297,5 +306,32 @@ export class TitanActorSheet extends ActorSheet {
     } else if (newValue < 0) {
       event.target.value = 0;
     }
+
+    return;
+  }
+
+  async _onSkillEdit(event) {
+    // Ensure the skill is within a valid range
+    const newValue = event.target.value;
+
+    if (event.target.dataset.skillType == "training") {
+      const maxSkillTraining = CONFIG.TITAN.skills.training.max;
+      if (newValue > maxSkillTraining) {
+        event.target.value = maxSkillTraining;
+      } else if (newValue < 0) {
+        event.target.value = 0;
+      }
+    }
+    
+    else {
+      const maxSkillFocus = CONFIG.TITAN.skills.focus.max;
+      if (newValue > maxSkillFocus) {
+        event.target.value = maxSkillFocus;
+      } else if (newValue < 0) {
+        event.target.value = 0;
+      }
+    }
+
+    return;
   }
 }
