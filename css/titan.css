@@ -223,6 +223,44 @@
   text-align: center;
 }
 
+.border {
+  padding: .5rem;
+  border: solid;
+  border-radius: 10px;
+}
+
+.list {
+  list-style: none;
+  -webkit-column-gap: 2rem;
+  -moz-column-gap: 2rem;
+  column-gap: 2rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.list-1col {
+  -webkit-column-count: 1;
+  -moz-column-count: 1;
+  column-count: 1;
+}
+
+.list-2col {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+}
+
+.list-item {
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  -webkit-box-align: top;
+  -ms-flex-align: top;
+  align-items: top;
+  margin-bottom: 1.5rem;
+}
+
 /* Styles limited to titan sheets */
 .titan {
   /* ----------------------------------------- */
@@ -478,38 +516,4 @@
 
 .titan .effects .item .effect-controls {
   border: none;
-}
-
-.titan .skills-tab .resistances-list {
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-}
-
-.titan .skills-tab .skills-list {
-  -webkit-column-count: 2;
-  -moz-column-count: 2;
-  column-count: 2;
-  -webkit-column-gap: 2rem;
-  -moz-column-gap: 2rem;
-  column-gap: 2rem;
-  list-style: none;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  color: #444;
-}
-
-.titan .skills-tab .skills-list .skill {
-  margin-bottom: 1.5rem;
-  padding: .5rem;
-  border: solid;
-  border-radius: 10px;
-  height: 5rem;
-  -webkit-column-break-inside: avoid;
-  -moz-column-break-inside: avoid;
-  break-inside: avoid;
-  page-break-inside: avoid;
-  -webkit-box-align: top;
-  -ms-flex-align: top;
-  align-items: top;
 }

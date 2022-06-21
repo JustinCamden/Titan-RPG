@@ -5,11 +5,11 @@
       "character": {
         "biography": "",
         "attributes": {
-          "body": {
+          "mind": {
             "baseValue": 1,
             "staticMod": 0
           },
-          "mind": {
+          "body": {
             "baseValue": 1,
             "staticMod": 0
           },
@@ -18,33 +18,36 @@
             "staticMod": 0
           }
         },
-        "resistances": {
-          "fortitude": {
+        "resiliences": {
+          "focus": {
+            "defaultAttribute": "mind",
             "training": {
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
           },
           "reflexes": {
+            "defaultAttribute": "body",
             "training": {
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
           },
           "willpower": {
+            "defaultAttribute": "soul",
             "training": {
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -57,7 +60,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -68,7 +71,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -79,7 +82,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -90,7 +93,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -101,7 +104,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -112,7 +115,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -123,7 +126,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -134,7 +137,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -145,7 +148,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -156,7 +159,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -167,7 +170,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -178,7 +181,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -189,7 +192,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -200,7 +203,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -211,7 +214,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -222,7 +225,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -233,7 +236,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -244,7 +247,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }
@@ -255,7 +258,7 @@
               "baseValue": 0,
               "staticMod": 0
             },
-            "focus": {
+            "expertise": {
               "baseValue": 0,
               "staticMod": 0
             }

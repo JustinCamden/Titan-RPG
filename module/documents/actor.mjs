@@ -58,55 +58,63 @@ export class TitanActor extends Actor {
     const data = actorData.data;
 
     // Initiative = (Mind + Training in Awareness) / 2 rounded up (+ Mod)
-    data.derivedStats.initiative.value =
+    data.derivedStats.initiative.baseValue =
       data.attributes.mind.baseValue +
       data.attributes.mind.staticMod +
       data.skills.dexterity.training.baseValue +
       data.skills.dexterity.training.staticMod +
       data.skills.perception.training.baseValue +
-      data.skills.perception.training.staticMod +
+      data.skills.perception.training.staticMod;
+    data.derivedStats.initiative.value =
+      data.derivedStats.initiative.baseValue +
       data.derivedStats.initiative.staticMod;
 
     // Awareness = (Mind + Training in Awareness) / 2 rounded up (+ Mod)
+    data.derivedStats.awareness.baseValue = Math.ceil(
+      (data.attributes.mind.baseValue +
+        data.attributes.mind.staticMod +
+        data.skills.perception.training.baseValue +
+        data.skills.perception.training.staticMod) /
+        2
+    );
     data.derivedStats.awareness.value =
-      Math.ceil(
-        (data.attributes.mind.baseValue +
-          data.attributes.mind.staticMod +
-          data.skills.perception.training.baseValue +
-          data.skills.perception.training.staticMod) /
-          2
-      ) + data.derivedStats.awareness.staticMod;
+      data.derivedStats.awareness.baseValue +
+      data.derivedStats.awareness.staticMod;
 
     // Defense = (Body + Training in Dexterity) / 2 rounded up (+ Mod)
+    data.derivedStats.defense.baseValue = Math.ceil(
+      (data.attributes.body.baseValue +
+        data.attributes.body.staticMod +
+        data.skills.dexterity.training.baseValue +
+        data.skills.dexterity.training.staticMod) /
+        2
+    );
     data.derivedStats.defense.value =
-      Math.ceil(
-        (data.attributes.body.baseValue +
-          data.attributes.body.staticMod +
-          data.skills.dexterity.training.baseValue +
-          data.skills.dexterity.training.staticMod) /
-          2
-      ) + data.derivedStats.defense.staticMod;
+      data.derivedStats.defense.baseValue + data.derivedStats.defense.staticMod;
 
     // Accuracy = (Mind + Training in Ranged Weapons) / 2 rounded up (+ Mod)
+    data.derivedStats.accuracy.baseValue = Math.ceil(
+      (data.attributes.mind.baseValue +
+        data.attributes.mind.staticMod +
+        data.skills.rangedWeapons.training.baseValue +
+        data.skills.rangedWeapons.training.staticMod) /
+        2
+    );
     data.derivedStats.accuracy.value =
-      Math.ceil(
-        (data.attributes.mind.baseValue +
-          data.attributes.mind.staticMod +
-          data.skills.rangedWeapons.training.baseValue +
-          data.skills.rangedWeapons.training.staticMod) /
-          2
-      ) + data.derivedStats.accuracy.staticMod;
+      data.derivedStats.accuracy.baseValue +
+      data.derivedStats.accuracy.staticMod;
 
     // Calculate derived stats
     // Melee = (Body + Training in Melee Weapons) / 2 rounded up (+ Mod)
+    data.derivedStats.melee.baseValue = Math.ceil(
+      (data.attributes.body.baseValue +
+        data.attributes.body.staticMod +
+        data.skills.meleeWeapons.training.baseValue +
+        data.skills.meleeWeapons.training.staticMod) /
+        2
+    );
     data.derivedStats.melee.value =
-      Math.ceil(
-        (data.attributes.body.baseValue +
-          data.attributes.body.staticMod +
-          data.skills.meleeWeapons.training.baseValue +
-          data.skills.meleeWeapons.training.staticMod) /
-          2
-      ) + data.derivedStats.melee.staticMod;
+      data.derivedStats.melee.baseValue + data.derivedStats.melee.staticMod;
 
     // Calculate the total attribute value
     let totalBaseAttributeValue = 0;
@@ -145,7 +153,14 @@ export class TitanActor extends Actor {
     for (let [k, v] of Object.entries(data.skills)) {
       data.skills[k].training.value =
         v.training.baseValue + v.training.staticMod;
-      data.skills[k].focus.value = v.focus.baseValue + v.focus.staticMod;
+      data.skills[k].expertise.value = v.expertise.baseValue + v.expertise.staticMod;
+    }
+
+    // Calculate resilience mods
+    for (let [k, v] of Object.entries(data.resiliences)) {
+      data.resiliences[k].training.value =
+        v.training.baseValue + v.training.staticMod;
+      data.resiliences[k].expertise.value = v.expertise.baseValue + v.expertise.staticMod;
     }
   }
 
@@ -176,7 +191,7 @@ export class TitanActor extends Actor {
           ];
       }
     }
-    
+
     // Add cost of current skills
     for (const skill in data.skills) {
       const skillData = data.skills[skill];
@@ -186,19 +201,38 @@ export class TitanActor extends Actor {
       if (skillTrainingBaseValue > 0) {
         spentExp =
           spentExp +
+          TITAN.skills.training.totalExpCostByRank[skillTrainingBaseValue - 1];
+      }
+
+      // Calculate xp cost of training
+      const skillExpertiseBaseValue = skillData.expertise.baseValue;
+      if (skillExpertiseBaseValue > 0) {
+        spentExp =
+          spentExp +
+          TITAN.skills.expertise.totalExpCostByRank[skillExpertiseBaseValue - 1];
+      }
+    }
+
+    // Add cost of current resiliences
+    for (const resilience in data.resiliences) {
+      const resilienceData = data.resiliences[resilience];
+
+      // Calculate xp cost of training
+      const resilienceTrainingBaseValue = resilienceData.training.baseValue;
+      if (resilienceTrainingBaseValue > 0) {
+        spentExp =
+          spentExp +
           TITAN.skills.training.totalExpCostByRank[
-            skillTrainingBaseValue - 1
+            resilienceTrainingBaseValue - 1
           ];
       }
 
       // Calculate xp cost of training
-      const skillFocusBaseValue = skillData.focus.baseValue;
-      if (skillFocusBaseValue > 0) {
+      const resilienceExpertiseBaseValue = resilienceData.expertise.baseValue;
+      if (resilienceExpertiseBaseValue > 0) {
         spentExp =
           spentExp +
-          TITAN.skills.focus.totalExpCostByRank[
-            skillFocusBaseValue - 1
-          ];
+          TITAN.skills.expertise.totalExpCostByRank[resilienceExpertiseBaseValue - 1];
       }
     }
 
@@ -249,5 +283,149 @@ export class TitanActor extends Actor {
 
   _onUpdate(changed, options, userId) {
     super._onUpdate(changed, options, userId);
+  }
+
+  async getAttributeRoll(attribute, difficulty, bonusDie) {
+    // If the skill key is valid
+    const attributeData = this.data.data.attributes[attribute];
+    if (attributeData) {
+      // Calculate the attribute mod
+      const attributeMod = attributeData.value;
+
+      // Calculate the difficulty
+      let rollDifficulty = difficulty;
+      if (!rollDifficulty) {
+        rollDifficulty = 4;
+      }
+
+      // Calculate the roll formula
+      const rollFormula =
+        ("(" + attributeMod).toString() +
+        (bonusDie ? "+" + bonusDie.toString() : "") +
+        ")d6cs>=" +
+        rollDifficulty.toString();
+
+      // Perform the roll
+      const roll = new Roll(rollFormula, this.getRollData());
+
+      // Return the data
+      const retVal = {
+        outRoll: roll,
+        outAttributeMod: attributeMod,
+      };
+
+      return retVal;
+    }
+
+    return null;
+  }
+
+  async getSkillRoll(skill, attribute, difficulty, bonusDie) {
+    // If the skill key is valid
+    const skillData = this.data.data.skills[skill];
+    if (skillData) {
+      // Calculate the skill mod
+      const skillTrainingMod = skillData.training.value;
+
+      // Calculate the attribute mod
+      const attributes = this.data.data.attributes;
+      let attributeKey = attribute;
+      let attributeData = attributes[attributeKey];
+      if (!attributeData) {
+        attributeKey = skillData.defaultAttribute;
+        attributeData = attributes[attributeKey];
+      }
+      let attributeMod = attributeData.value;
+
+      // Calculate the difficulty
+      let rollDifficulty = difficulty;
+      if (!rollDifficulty) {
+        rollDifficulty = 4;
+      }
+
+      // Calculate the roll formula
+      const rollFormula =
+        ("(" + skillTrainingMod + "+" + attributeMod).toString() +
+        (bonusDie ? "+" + bonusDie.toString() : "") +
+        ")d6cs>=" +
+        rollDifficulty.toString();
+
+      // Perform the roll
+      const roll = new Roll(rollFormula, this.getRollData());
+
+      // Return the data
+      const retVal = {
+        outRoll: roll,
+        outSkillTrainingMod: skillTrainingMod,
+        outAttribute: attributeKey,
+        outAttributeMod: attributeMod,
+      };
+
+      return retVal;
+    }
+
+    return null;
+  }
+
+  async getResilienceRoll(resilience, attribute, difficulty, bonusDie) {
+    // If the resilience key is valid
+    const resilienceData = this.data.data.resiliences[resilience];
+    if (resilienceData) {
+      // Calculate the resilience mod
+      const resilienceTrainingMod = resilienceData.training.value;
+
+      // Calculate the attribute mod
+      const attributes = this.data.data.attributes;
+      let attributeKey = attribute;
+      let attributeData = attributes[attributeKey];
+      if (!attributeData) {
+        attributeKey = resilienceData.defaultAttribute;
+        attributeData = attributes[attributeKey];
+      }
+      let attributeMod = attributeData.value;
+
+      // Calculate the difficulty
+      let rollDifficulty = difficulty;
+      if (!rollDifficulty) {
+        rollDifficulty = 4;
+      }
+
+      // Calculate the roll formula
+      const rollFormula =
+        ("(" + resilienceTrainingMod + "+" + attributeMod).toString() +
+        (bonusDie ? "+" + bonusDie.toString() : "") +
+        ")d6cs>=" +
+        rollDifficulty.toString();
+
+      // Perform the roll
+      const roll = new Roll(rollFormula, this.getRollData());
+
+      // Return the data
+      const retVal = {
+        outRoll: roll,
+        outresilienceTrainingMod: resilienceTrainingMod,
+        outAttribute: attributeKey,
+        outAttributeMod: attributeMod,
+      };
+
+      return retVal;
+    }
+
+    return null;
+  }
+
+  async getInitiativeRoll(bonus) {
+    // Calculate the initiative value
+    const initiative = this.data.data.derivedStats.initiative.value;
+    const roll = new Roll(
+      "2d6+" + initiative.toString() + (bonus ? bonus.toString() : ""),
+      this.getRollData()
+    );
+    const retVal = {
+      outRoll: roll,
+      outInitiativeMod: initiative,
+    };
+
+    return retVal;
   }
 }

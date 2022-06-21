@@ -2,6 +2,7 @@ import {
   onManageActiveEffect,
   prepareActiveEffectCategories,
 } from "../helpers/effects.mjs";
+import { TitanActor } from "../documents/actor.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -217,7 +218,7 @@ export class TitanActorSheet extends ActorSheet {
    * @param {Event} event   The originating click event
    * @private
    */
-  _onRoll(event) {
+  async _onRoll(event) {
     event.preventDefault();
     const element = event.currentTarget;
     const dataset = element.dataset;
@@ -225,7 +226,6 @@ export class TitanActorSheet extends ActorSheet {
     // Handle rolls.
     if (dataset.rollType) {
       switch (dataset.rollType) {
-
         // Item rolls
         case "item": {
           const itemId = element.closest(".item").dataset.itemId;
@@ -237,37 +237,110 @@ export class TitanActorSheet extends ActorSheet {
 
         // Attribute rolls
         case "attribute": {
-          if (dataset.rollAttribute) {
-            const localizedLabel = game.i18n.localize(CONFIG.TITAN.attributes[dataset.rollAttribute]);
-            const rollFormula = ("(@attributes." + dataset.rollAttribute + ".value)d6cs>=4");
-            const roll = new Roll(rollFormula, this.actor.getRollData());
-            roll.toMessage({
-              speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-              flavor: localizedLabel,
-              rollMode: game.settings.get("core", "rollMode"),
-            });
-            return roll;
+          // Check if the data is valid
+          const rollAttribute = dataset.rollAttribute;
+          if (rollAttribute) {
+            // Get the roll from the actor
+            const rollResult = await this.actor.getAttributeRoll(rollAttribute);
+            if (rollResult) {
+              // Output the roll
+              const roll = rollResult.outRoll;
+              const localizedLabel = game.i18n.localize(
+                CONFIG.TITAN.attributes[rollAttribute]
+              );
+              roll.toMessage({
+                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+                flavor: localizedLabel,
+                rollMode: game.settings.get("core", "rollMode"),
+              });
+
+              return roll;
+            }
           }
+
           break;
         }
 
         // Skill rolls
         case "skill": {
-          if (dataset.rollSkill) {
-            const rollSkill = dataset.rollSkill;
-            const rollData = this.actor.getRollData();
-            const rollAttribute = (rollData.skills[rollSkill].defaultAttribute);
-            const localizedLabel = game.i18n.localize(CONFIG.TITAN.skills[rollSkill]) + " (" + game.i18n.localize(CONFIG.TITAN.attributes[rollAttribute]) + ")";
-            const rollFormula = ("(@skills." + dataset.rollSkill + ".training.value + @attributes." + rollAttribute + ".value)d6cs>=4");
-            const roll = new Roll(rollFormula, this.actor.getRollData());
+          // Check if the data is valid
+          const rollSkill = dataset.rollSkill;
+          if (rollSkill) {
+            // Get the roll from the actor
+            const rollResult = await this.actor.getSkillRoll(rollSkill);
+            if (rollResult) {
+              // Output the roll
+              const roll = rollResult.outRoll;
+              const localizedLabel =
+                game.i18n.localize(CONFIG.TITAN.skills[rollSkill]) +
+                " (" +
+                game.i18n.localize(
+                  CONFIG.TITAN.attributes[rollResult.outAttribute]
+                ) +
+                ")";
+              roll.toMessage({
+                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+                flavor: localizedLabel,
+                rollMode: game.settings.get("core", "rollMode"),
+              });
+
+              return roll;
+            }
+          }
+
+          break;
+        }
+
+        // Resilience rolls
+        case "resilience": {
+          // Check if the data is valid
+          const rollresilience = dataset.rollResilience;
+          if (rollresilience) {
+            // Get the roll from the actor
+            const rollResult = await this.actor.getResilienceRoll(
+              rollresilience
+            );
+            if (rollResult) {
+              // Output the roll
+              const roll = rollResult.outRoll;
+              const localizedLabel =
+                game.i18n.localize(CONFIG.TITAN.resiliences[rollresilience]) +
+                " (" +
+                game.i18n.localize(
+                  CONFIG.TITAN.attributes[rollResult.outAttribute]
+                ) +
+                ")";
+              roll.toMessage({
+                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+                flavor: localizedLabel,
+                rollMode: game.settings.get("core", "rollMode"),
+              });
+
+              return roll;
+            }
+          }
+
+          break;
+        }
+
+        // Initiative rolls
+        case "initiative": {
+          // Get the roll from the actor
+          const rollResult = await this.actor.getInitiativeRoll();
+          if (rollResult) {
+            // Output the roll
+            const roll = rollResult.outRoll;
+            const localizedLabel = game.i18n.localize(
+              CONFIG.TITAN.derivedStats.initiative
+            );
             roll.toMessage({
               speaker: ChatMessage.getSpeaker({ actor: this.actor }),
               flavor: localizedLabel,
               rollMode: game.settings.get("core", "rollMode"),
             });
+
             return roll;
           }
-          break;
         }
 
         default: {
@@ -321,12 +394,10 @@ export class TitanActorSheet extends ActorSheet {
       } else if (newValue < 0) {
         event.target.value = 0;
       }
-    }
-    
-    else {
-      const maxSkillFocus = CONFIG.TITAN.skills.focus.max;
-      if (newValue > maxSkillFocus) {
-        event.target.value = maxSkillFocus;
+    } else {
+      const maxSkillExpertise = CONFIG.TITAN.skills.expertise.max;
+      if (newValue > maxSkillExpertise) {
+        event.target.value = maxSkillExpertise;
       } else if (newValue < 0) {
         event.target.value = 0;
       }

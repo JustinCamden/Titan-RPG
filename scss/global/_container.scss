@@ -1,0 +1,27 @@
+.border {
+  padding: .5rem;
+  border: solid;
+  border-radius: 10px;
+}
+
+.list {
+  list-style: none;
+  column-gap: 2rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.list-1col {
+  column-count: 1;
+}
+
+.list-2col {
+  column-count: 2;
+}
+
+.list-item {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  align-items: top;
+  margin-bottom: 1.5rem;
+}

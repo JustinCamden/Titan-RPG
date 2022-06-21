@@ -38,7 +38,7 @@ TITAN.skills = {
     max: 3,
     totalExpCostByRank: [1, 3, 7],
   },
-  focus: {
+  expertise: {
     max: 3,
     totalExpCostByRank: [1, 3, 7],
   },
@@ -51,7 +51,7 @@ TITAN.resources = {
   },
 
   resolve: {
-    name: "TITAN.resources.Resolve",
+    name: "TITAN.resources.resolve",
     maxBaseMulti: 1.0,
   },
 
@@ -59,4 +59,15 @@ TITAN.resources = {
     name: "TITAN.resources.wounds",
     maxBaseMulti: 1.0,
   },
+};
+
+TITAN.derivedStats = {
+  initiative: "TITAN.derivedStats.initiative",
+  initiativeFormula: "2d6",
+};
+
+TITAN.resiliences = {
+  focus: "TITAN.resiliences.focus",
+  reflexes: "TITAN.resiliences.reflexes",
+  willpower: "TITAN.resiliences.willpower",
 };

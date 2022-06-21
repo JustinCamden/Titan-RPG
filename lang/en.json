@@ -18,7 +18,7 @@
 
   "TITAN.resources.stamina": "Stamina",
   "TITAN.resources.wounds": "Wounds",
-  "TITAN.resources.Resolve": "Resolve",
+  "TITAN.resources.resolve": "Resolve",
 
   "TITAN.EXP": "EXP",
   "TITAN.Available": "Available",
@@ -45,6 +45,10 @@
   "TITAN.skills.survival": "Survival",
   "TITAN.skills.theology": "Theology",
 
+  "TITAN.resiliences.focus": "Focus",
+  "TITAN.resiliences.reflexes": "Reflexes",
+  "TITAN.resiliences.willpower": "Willpower",
+
   "TITAN.training": "Training",
-  "TITAN.focus": "Focus"
+  "TITAN.expertise": "Expertise"
 }
