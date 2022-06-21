@@ -1,10 +1,9 @@
 {{! Skills Tab }}
-<div class="skills-tab grid grid-3col">
-
+<div>
   {{! Resiliences List }}
-  <ol class="resiliences-list list list-1col">
+  <div class="resiliences-panel grid grid-3col border">
     {{#each data.resiliences as |resilience key|}}
-      <li class="align-center flex-group-center list-item border">
+      <div class="align-center flex-group-center border">
         <label
           for="data.resiliences.{{key}}"
           class="stat-label rollable"
@@ -43,12 +42,12 @@
             data-dtype="Number"
           />
         </div>
-      </li>
+      </div>
     {{/each}}
-  </ol>
+  </div>
 
   {{! Skills List }}
-  <ol class="skills-list grid-span-2 list list-2col">
+  <ol class="skills-list list list-4col">
     {{#each data.skills as |skill key|}}
       <li class="skill flex-group-center list-item border">
         <label

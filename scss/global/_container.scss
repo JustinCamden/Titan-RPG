@@ -5,8 +5,9 @@
 }
 
 .list {
-  list-style: none;
-  column-gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
   overflow-y: auto;
   scrollbar-width: thin;
 }
@@ -19,9 +20,20 @@
   column-count: 2;
 }
 
+.list-3col {
+  column-count: 3;
+}
+
+.list-4col {
+  column-count: 4;
+}
+
 .list-item {
   break-inside: avoid;
   page-break-inside: avoid;
   align-items: top;
-  margin-bottom: 1.5rem;
+}
+
+li.list-item:not(:last-child) { 
+  margin-bottom: 1rem;  
 }
