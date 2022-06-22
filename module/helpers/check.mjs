@@ -86,35 +86,36 @@ export default class Check {
   }
 
   async toChatMessage(inData) {
-    if (!this.evaluated || !inData) {
+    if (!this.evaluated) {
       return;
     }
 
+    // Setup the data to display
     let checkData = {
-      label: inData.label,
+      label: inData.label ? inData.label : "",
       parameters: this.parameters,
       results: this.result,
     };
 
+    // Create the html
     let chatContent = await renderTemplate(this._getChatTemplate(), checkData);
 
-    let chatData = {
-      user: inData.user,
-      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-      speaker: inData.speaker,
-      roll: this.roll,
-      rollMode: game.settings.get("core", "rollMode"),
-      content: chatContent,
-    };
-
-    /**        chatData.speaker.alias = this.actor.token ? this.actor.token.name : this.actor.data.token.name
-        if (["gmroll", "blindroll"].includes(chatData.rollMode)) {
-            chatData.whisper = ChatMessage.getWhisperRecipients("GM");
-        } else if (chatData.rollMode === "selfroll") {
-            chatData.whisper = [game.user];
-        } */
-
-    this.chatMessage = ChatMessage.create(chatData);
+    // Create and post the message
+    const messageClass = getDocumentClass("ChatMessage");
+    this.chatMessage = messageClass.create(
+      messageClass.applyRollMode(
+        {
+          user: inData.user ? inData.user : game.user.id,
+          speaker: inData.speaker,
+          roll: this.roll,
+          content: chatContent,
+          type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+        },
+        inData.rollMode
+          ? inData.rollMode
+          : game.settings.get("core", "rollMode")
+      )
+    );
 
     return this.chatMessage;
   }
