@@ -284,6 +284,17 @@ export class TitanActorSheet extends ActorSheet {
                 rollMode: game.settings.get("core", "rollMode"),
               });
 
+              const skillCheck = await this.actor.getSkillCheck({
+                skill: rollSkill,
+              });
+
+              await skillCheck.check.toChatMessage({
+                user: game.user.id,
+                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+                label: localizedLabel,
+                rollMode: game.settings.get("core", "rollMode"),
+              });
+
               return roll;
             }
           }

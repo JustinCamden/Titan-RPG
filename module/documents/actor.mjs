@@ -1,4 +1,4 @@
-import { TITAN } from "../helpers/config.mjs";
+import Check from "../helpers/check.mjs";
 
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
@@ -125,7 +125,7 @@ export class TitanActor extends Actor {
 
     // Calculate max stamina
     let maxStaminaBase =
-      totalBaseAttributeValue * TITAN.resources.stamina.maxBaseMulti;
+      totalBaseAttributeValue * CONFIG.TITAN.resources.stamina.maxBaseMulti;
     data.resources.stamina.maxBase = maxStaminaBase;
     data.resources.stamina.maxValue =
       maxStaminaBase + data.resources.stamina.staticMod;
@@ -138,7 +138,7 @@ export class TitanActor extends Actor {
 
     // Calculate max wounds
     let maxWoundsBase = Math.ceil(
-      (totalBaseAttributeValue * TITAN.resources.wounds.maxBaseMulti) / 2
+      (totalBaseAttributeValue * CONFIG.TITAN.resources.wounds.maxBaseMulti) / 2
     );
     data.resources.wounds.maxBase = maxWoundsBase;
     data.resources.wounds.maxValue =
@@ -153,14 +153,16 @@ export class TitanActor extends Actor {
     for (let [k, v] of Object.entries(data.skills)) {
       data.skills[k].training.value =
         v.training.baseValue + v.training.staticMod;
-      data.skills[k].expertise.value = v.expertise.baseValue + v.expertise.staticMod;
+      data.skills[k].expertise.value =
+        v.expertise.baseValue + v.expertise.staticMod;
     }
 
     // Calculate resilience mods
     for (let [k, v] of Object.entries(data.resiliences)) {
       data.resiliences[k].training.value =
         v.training.baseValue + v.training.staticMod;
-      data.resiliences[k].expertise.value = v.expertise.baseValue + v.expertise.staticMod;
+      data.resiliences[k].expertise.value =
+        v.expertise.baseValue + v.expertise.staticMod;
     }
   }
 
@@ -182,11 +184,11 @@ export class TitanActor extends Actor {
       const attributeBaseValue = data.attributes[attribute].baseValue;
 
       // Calculate xp cost
-      const minAttributeValue = TITAN.attributes.min;
+      const minAttributeValue = CONFIG.TITAN.attributes.min;
       if (attributeBaseValue > minAttributeValue) {
         spentExp =
           spentExp +
-          TITAN.attributes.totalExpCostByRank[
+          CONFIG.TITAN.attributes.totalExpCostByRank[
             attributeBaseValue - minAttributeValue - 1
           ];
       }
@@ -201,7 +203,9 @@ export class TitanActor extends Actor {
       if (skillTrainingBaseValue > 0) {
         spentExp =
           spentExp +
-          TITAN.skills.training.totalExpCostByRank[skillTrainingBaseValue - 1];
+          CONFIG.TITAN.skills.training.totalExpCostByRank[
+            skillTrainingBaseValue - 1
+          ];
       }
 
       // Calculate xp cost of training
@@ -209,7 +213,9 @@ export class TitanActor extends Actor {
       if (skillExpertiseBaseValue > 0) {
         spentExp =
           spentExp +
-          TITAN.skills.expertise.totalExpCostByRank[skillExpertiseBaseValue - 1];
+          CONFIG.TITAN.skills.expertise.totalExpCostByRank[
+            skillExpertiseBaseValue - 1
+          ];
       }
     }
 
@@ -222,7 +228,7 @@ export class TitanActor extends Actor {
       if (resilienceTrainingBaseValue > 0) {
         spentExp =
           spentExp +
-          TITAN.skills.training.totalExpCostByRank[
+          CONFIG.TITAN.skills.training.totalExpCostByRank[
             resilienceTrainingBaseValue - 1
           ];
       }
@@ -232,7 +238,9 @@ export class TitanActor extends Actor {
       if (resilienceExpertiseBaseValue > 0) {
         spentExp =
           spentExp +
-          TITAN.skills.expertise.totalExpCostByRank[resilienceExpertiseBaseValue - 1];
+          CONFIG.TITAN.skills.expertise.totalExpCostByRank[
+            resilienceExpertiseBaseValue - 1
+          ];
       }
     }
 
@@ -359,6 +367,49 @@ export class TitanActor extends Actor {
         outSkillTrainingMod: skillTrainingMod,
         outAttribute: attributeKey,
         outAttributeMod: attributeMod,
+      };
+
+      return retVal;
+    }
+
+    return null;
+  }
+
+  async getSkillCheck(inData) {
+    // If the skill key is valid
+    const skillData = this.data.data.skills[inData.skill];
+    if (skillData) {
+      // Calculate the skill mod
+      const skillTrainingMod = skillData.training.value;
+      const skillExpertise = skillData.expertise.value;
+
+      // Calculate the attribute mod
+      const attributes = this.data.data.attributes;
+      let attributeKey = inData.attribute;
+      let attributeData = attributes[attributeKey];
+      if (!attributeData) {
+        attributeKey = skillData.defaultAttribute;
+        attributeData = attributes[attributeKey];
+      }
+      let attributeMod = attributeData.value;
+
+      // Perform the roll
+      const skillCheck = new Check({
+        numberOfDice: attributeMod + skillTrainingMod,
+        expertise: skillExpertise,
+        difficulty: inData.difficulty ? inData.difficulty : 4,
+        complexity: inData.complexity ? inData.complexity : 4,
+      });
+
+      await skillCheck.evaluateCheck();
+
+      // Return the data
+      const retVal = {
+        check: skillCheck,
+        training: skillTrainingMod,
+        expertise: skillExpertise,
+        attribute: attributeKey,
+        attributeMod: attributeMod,
       };
 
       return retVal;

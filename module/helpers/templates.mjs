@@ -11,5 +11,6 @@ export const preloadHandlebarsTemplates = async function () {
     "systems/titan/templates/actor/parts/actor-skills.hbs",
     "systems/titan/templates/actor/parts/actor-spells.hbs",
     "systems/titan/templates/actor/parts/actor-effects.hbs",
+    "systems/titan/templates/checks/check-basic.hbs",
   ]);
 };
