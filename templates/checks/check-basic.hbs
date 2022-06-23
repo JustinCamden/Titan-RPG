@@ -16,13 +16,14 @@
             {{! Expertise }}
             {{#if dice.expertiseApplied}}
               <div class="die-critical-success expertise-border">
-                {{dice.final}}
+                {{dice.base}}
+                +{{dice.expertiseApplied}}
               </div>
 
               {{! No Expertise }}
             {{else}}
               <div class="die-critical-success normal-border">
-                {{dice.final}}
+                {{dice.base}}
               </div>
             {{/if}}
           {{else}}
@@ -30,12 +31,13 @@
             {{! Expertise }}
             {{#if dice.expertiseApplied}}
               <div class="die-success expertise-border">
-                {{dice.final}}
+                {{dice.base}}
+                +{{dice.expertiseApplied}}
               </div>
             {{else}}
               {{! No Expertise }}
               <div class="die-success normal-border">
-                {{dice.final}}
+                {{dice.base}}
               </div>
             {{/if}}
           {{/if}}
@@ -46,13 +48,14 @@
             {{! Expertise }}
             {{#if dice.expertiseApplied}}
               <div class="die-critical-failure expertise-border">
-                {{dice.final}}
+                {{dice.base}}
+                +{{dice.expertiseApplied}}
               </div>
 
               {{! No Expertise }}
             {{else}}
               <div class="die-critical-failure normal-border">
-                {{dice.final}}
+                {{dice.base}}
               </div>
             {{/if}}
 
@@ -61,13 +64,14 @@
             {{! Expertise }}
             {{#if dice.expertiseApplied}}
               <div class="die-failure expertise-border">
-                {{dice.final}}
+                {{dice.base}}
+                +{{dice.expertiseApplied}}
               </div>
             {{else}}
 
               {{! No expertise }}
               <div class="die-failure normal-border">
-                {{dice.final}}
+                {{dice.base}}
               </div>
             {{/if}}
           {{/if}}

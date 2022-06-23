@@ -4,7 +4,7 @@ export default class Check {
       numberOfDice: inData.numberOfDice ? inData.numberOfDice : 1,
       expertise: inData.expertise ? inData.expertise : 0,
       difficulty: inData.difficulty ? inData.difficulty : 4,
-      complexity: inData.complexity ? inData.complexity : 0,
+      complexity: inData.complexity ? inData.complexity : 1,
     };
 
     this.evaluated = false;

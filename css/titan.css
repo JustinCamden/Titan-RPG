@@ -347,7 +347,8 @@ li.list-item:not(:last-child) {
 }
 
 .titan .dice-container .expertise-border {
-  border-color: goldenrod;
+  border-color: blue;
+  width: 5rem;
 }
 
 .titan .results-banner {
