@@ -240,22 +240,26 @@ export class TitanActorSheet extends ActorSheet {
           // Check if the data is valid
           const rollAttribute = dataset.rollAttribute;
           if (rollAttribute) {
-            // Get the roll from the actor
-            const rollResult = await this.actor.getAttributeRoll(rollAttribute);
-            if (rollResult) {
-              // Output the roll
-              const roll = rollResult.outRoll;
-              const localizedLabel = game.i18n.localize(
-                CONFIG.TITAN.attributes[rollAttribute]
-              );
-              roll.toMessage({
-                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-                flavor: localizedLabel,
-                rollMode: game.settings.get("core", "rollMode"),
-              });
+            // Get an attribute check from the actor
+            const attributeCheck = await this.actor.getAttributeCheck({
+              attribute: rollAttribute,
+            });
 
-              return roll;
-            }
+            // Get the localized label
+            const localizedLabel = game.i18n.localize(
+              CONFIG.TITAN.attributes[rollAttribute]
+            );
+
+            // Evaluate the check
+            await attributeCheck.check.evaluateCheck();
+
+            // Post the check to chat
+            await attributeCheck.check.toChatMessage({
+              user: game.user.id,
+              speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+              label: localizedLabel,
+              rollMode: game.settings.get("core", "rollMode"),
+            });
           }
 
           break;
@@ -266,7 +270,7 @@ export class TitanActorSheet extends ActorSheet {
           // Check if the data is valid
           const rollSkill = dataset.rollSkill;
           if (rollSkill) {
-            // Get a skill check
+            // Get a skill check from the actor
             const skillCheck = await this.actor.getSkillCheck({
               skill: rollSkill,
             });

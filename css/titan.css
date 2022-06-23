@@ -329,7 +329,7 @@ li.list-item:not(:last-child) {
 }
 
 .titan .dice-container .die-failure {
-  background-color: lightgrey;
+  background-color: gold;
   width: 3rem;
   border: solid;
   border-radius: 10px;
@@ -348,7 +348,7 @@ li.list-item:not(:last-child) {
 
 .titan .dice-container .expertise-border {
   border-color: blue;
-  width: 5rem;
+  width: 5.5rem;
 }
 
 .titan .results-banner {

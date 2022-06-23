@@ -293,86 +293,28 @@ export class TitanActor extends Actor {
     super._onUpdate(changed, options, userId);
   }
 
-  async getAttributeRoll(attribute, difficulty, bonusDie) {
-    // If the skill key is valid
-    const attributeData = this.data.data.attributes[attribute];
+  async getAttributeCheck(inData) {
+    // If the attribute key is valid
+    const attributeData = this.data.data.attributes[inData.attribute];
     if (attributeData) {
-      // Calculate the attribute mod
+      // Calculate attribute mod
       const attributeMod = attributeData.value;
 
-      // Calculate the difficulty
-      let rollDifficulty = difficulty;
-      if (!rollDifficulty) {
-        rollDifficulty = 4;
-      }
-
-      // Calculate the roll formula
-      const rollFormula =
-        ("(" + attributeMod).toString() +
-        (bonusDie ? "+" + bonusDie.toString() : "") +
-        ")d6cs>=" +
-        rollDifficulty.toString();
-
       // Perform the roll
-      const roll = new Roll(rollFormula, this.getRollData());
+      const attributeCheck = new Check({
+        numberOfDice: attributeMod,
+        difficulty: inData.difficulty ? inData.difficulty : 4,
+        complexity: inData.complexity ? inData.complexity : 0,
+      });
 
       // Return the data
       const retVal = {
-        outRoll: roll,
-        outAttributeMod: attributeMod,
+        check: attributeCheck,
+        attributeMod: attributeMod,
       };
 
       return retVal;
     }
-
-    return null;
-  }
-
-  async getSkillRoll(skill, attribute, difficulty, bonusDie) {
-    // If the skill key is valid
-    const skillData = this.data.data.skills[skill];
-    if (skillData) {
-      // Calculate the skill mod
-      const skillTrainingMod = skillData.training.value;
-
-      // Calculate the attribute mod
-      const attributes = this.data.data.attributes;
-      let attributeKey = attribute;
-      let attributeData = attributes[attributeKey];
-      if (!attributeData) {
-        attributeKey = skillData.defaultAttribute;
-        attributeData = attributes[attributeKey];
-      }
-      let attributeMod = attributeData.value;
-
-      // Calculate the difficulty
-      let rollDifficulty = difficulty;
-      if (!rollDifficulty) {
-        rollDifficulty = 4;
-      }
-
-      // Calculate the roll formula
-      const rollFormula =
-        ("(" + skillTrainingMod + "+" + attributeMod).toString() +
-        (bonusDie ? "+" + bonusDie.toString() : "") +
-        ")d6cs>=" +
-        rollDifficulty.toString();
-
-      // Perform the roll
-      const roll = new Roll(rollFormula, this.getRollData());
-
-      // Return the data
-      const retVal = {
-        outRoll: roll,
-        outSkillTrainingMod: skillTrainingMod,
-        outAttribute: attributeKey,
-        outAttributeMod: attributeMod,
-      };
-
-      return retVal;
-    }
-
-    return null;
   }
 
   async getSkillCheck(inData) {
@@ -391,7 +333,7 @@ export class TitanActor extends Actor {
         attributeKey = skillData.defaultAttribute;
         attributeData = attributes[attributeKey];
       }
-      let attributeMod = attributeData.value;
+      const attributeMod = attributeData.value;
 
       // Perform the roll
       const skillCheck = new Check({
