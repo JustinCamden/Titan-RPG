@@ -50,5 +50,10 @@
   "TITAN.resiliences.willpower": "Willpower",
 
   "TITAN.training": "Training",
-  "TITAN.expertise": "Expertise"
+  "TITAN.expertise": "Expertise",
+
+  "TITAN.check.succeeded": "Succeeded",
+  "TITAN.check.failed": "Failure",
+  "TITAN.check.successes": "Successes",
+  "TITAN.check.extraSuccesses": "Extra Successes"
 }

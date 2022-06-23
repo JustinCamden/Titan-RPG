@@ -266,37 +266,30 @@ export class TitanActorSheet extends ActorSheet {
           // Check if the data is valid
           const rollSkill = dataset.rollSkill;
           if (rollSkill) {
-            // Get the roll from the actor
-            const rollResult = await this.actor.getSkillRoll(rollSkill);
-            if (rollResult) {
-              // Output the roll
-              const roll = rollResult.outRoll;
-              const localizedLabel =
-                game.i18n.localize(CONFIG.TITAN.skills[rollSkill]) +
-                " (" +
-                game.i18n.localize(
-                  CONFIG.TITAN.attributes[rollResult.outAttribute]
-                ) +
-                ")";
-              roll.toMessage({
-                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-                flavor: localizedLabel,
-                rollMode: game.settings.get("core", "rollMode"),
-              });
+            // Get a skill check
+            const skillCheck = await this.actor.getSkillCheck({
+              skill: rollSkill,
+            });
 
-              const skillCheck = await this.actor.getSkillCheck({
-                skill: rollSkill,
-              });
+            // Create a localized label
+            const localizedLabel =
+              game.i18n.localize(CONFIG.TITAN.skills[rollSkill]) +
+              " (" +
+              game.i18n.localize(
+                CONFIG.TITAN.attributes[skillCheck.attribute]
+              ) +
+              ")";
 
-              await skillCheck.check.toChatMessage({
-                user: game.user.id,
-                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-                label: localizedLabel,
-                rollMode: game.settings.get("core", "rollMode"),
-              });
+            // Evaluate the check
+            await skillCheck.check.evaluateCheck();
 
-              return roll;
-            }
+            // Post the check to chat
+            await skillCheck.check.toChatMessage({
+              user: game.user.id,
+              speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+              label: localizedLabel,
+              rollMode: game.settings.get("core", "rollMode"),
+            });
           }
 
           break;

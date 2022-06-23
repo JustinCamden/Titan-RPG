@@ -398,10 +398,8 @@ export class TitanActor extends Actor {
         numberOfDice: attributeMod + skillTrainingMod,
         expertise: skillExpertise,
         difficulty: inData.difficulty ? inData.difficulty : 4,
-        complexity: inData.complexity ? inData.complexity : 4,
+        complexity: inData.complexity ? inData.complexity : 0,
       });
-
-      await skillCheck.evaluateCheck();
 
       // Return the data
       const retVal = {

@@ -286,6 +286,87 @@ li.list-item:not(:last-child) {
   /* ----------------------------------------- */
 }
 
+.titan .dice-container {
+  font-size: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-items: center;
+  padding: 4px;
+}
+
+.titan .dice-container .die {
+  padding-right: 5px;
+  padding-bottom: 5px;
+}
+
+.titan .dice-container .die-success {
+  background-color: lightgreen;
+  width: 3rem;
+  border: solid;
+  border-radius: 10px;
+}
+
+.titan .dice-container .die-critical-success {
+  background-color: lightskyblue;
+  width: 3rem;
+  border: solid;
+  border-radius: 10px;
+}
+
+.titan .dice-container .die-failure {
+  background-color: lightgrey;
+  width: 3rem;
+  border: solid;
+  border-radius: 10px;
+}
+
+.titan .dice-container .die-critical-failure {
+  background-color: lightsalmon;
+  width: 3rem;
+  border: solid;
+  border-radius: 10px;
+}
+
+.titan .dice-container .normal-border {
+  border-color: black;
+}
+
+.titan .dice-container .expertise-border {
+  border-color: goldenrod;
+}
+
+.titan .results-banner {
+  font-size: 1.25rem;
+}
+
+.titan .results-banner .success-banner {
+  font-size: 1.5rem;
+  color: darkblue;
+}
+
+.titan .results-banner .extra-successes {
+  font-size: 1.25rem;
+}
+
+.titan .results-banner .failure-banner {
+  color: darkred;
+}
+
 .titan .item-form {
   font-family: "Roboto", sans-serif;
 }

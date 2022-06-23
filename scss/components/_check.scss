@@ -1,0 +1,61 @@
+.dice-container {
+    font-size: 2rem;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    padding: 4px;
+
+    .die{
+        padding-right: 5px;
+        padding-bottom: 5px;
+    }
+    .die-success{
+        background-color:lightgreen;
+        width: 3rem;
+        border: solid;
+        border-radius: 10px;
+    }
+    .die-critical-success{
+        background-color: lightskyblue;
+        width: 3rem;
+        border: solid;
+        border-radius: 10px;
+    }
+    .die-failure {
+        background-color:lightgrey;
+        width: 3rem;
+        border: solid;
+        border-radius: 10px;
+    }
+    .die-critical-failure {
+        background-color:lightsalmon;
+        width: 3rem;
+        border: solid;
+        border-radius: 10px;
+    } 
+
+    .normal-border {
+        border-color: black;
+    }
+    .expertise-border {
+        border-color:goldenrod;
+    }
+}
+
+.results-banner {
+    font-size: 1.25rem;
+    .success-banner {
+        font-size: 1.5rem;
+        color:darkblue;
+    }
+    .extra-successes {
+        font-size: 1.25rem;
+    }
+    .failure-banner {
+        color: darkred;
+    }
+}

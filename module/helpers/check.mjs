@@ -4,10 +4,11 @@ export default class Check {
       numberOfDice: inData.numberOfDice ? inData.numberOfDice : 1,
       expertise: inData.expertise ? inData.expertise : 0,
       difficulty: inData.difficulty ? inData.difficulty : 4,
-      complexity: inData.complexity ? inData.complexity : 1,
+      complexity: inData.complexity ? inData.complexity : 0,
     };
+
     this.evaluated = false;
-    this.result = {};
+    this.results = {};
     this.roll = null;
     this.chatMessage = null;
   }
@@ -17,61 +18,83 @@ export default class Check {
       `${this.parameters.numberOfDice}d6cs>=${this.parameters.difficulty}`
     );
     await this.roll.evaluate({ async: true });
-    const result = this._calculateResult();
+    const results = this._calculateResult();
     this.evaluated = true;
-    return result;
+    return results;
   }
 
   _calculateResult() {
-    let result = {
-      succeses: 0,
+    let results = {
+      successes: 0,
       expertiseRemaining: this.parameters.expertise,
-      expertiseAppliedByDie: [],
-      successesByDie: [],
-      finalDice: [],
-      baseDice: null,
+      dice: [],
     };
 
     // Sort the dice from the check from largest to smallist
-    result.baseDice = this._getSortedDiceFromRoll();
-    for (let i = 0; i < result.baseDice.length; i++) {
+    let sortedDice = this._getSortedDiceFromRoll();
+
+    for (let i = 0; i < sortedDice.length; i++) {
       // Log the current dice and expertise applied
-      result.finalDice.push(result.baseDice[i]);
-      result.expertiseAppliedByDie[i] = 0;
-      result.successesByDie[i] = 0;
+      results.dice[i] = {};
+      results.dice[i].base = sortedDice[i];
+      results.dice[i].final = sortedDice[i];
 
       // Log the success if appropriate
-      if (result.finalDice[i] >= this.parameters.difficulty) {
-        result.succeses = result.succeses + 1;
-        result.successesByDie[i] = 1;
+      if (results.dice[i].base >= this.parameters.difficulty) {
+        results.successes = results.successes + 1;
+        results.dice[i].success = true;
+        if (results.dice[i].base == 6) {
+          results.dice[i].criticalSuccess = true;
+        }
       }
       // Otherwise, try and and apply expertise
       else {
         // While expertise is remaining
         while (
-          result.expertiseRemaining > 0 &&
-          result.finalDice[i] < this.parameters.difficulty
+          results.expertiseRemaining > 0 &&
+          results.dice[i].final < this.parameters.difficulty
         ) {
           // Increase the roll by 1
-          result.finalDice[i] = result.finalDice[i] + 1;
+          results.dice[i].final = results.dice[i].final + 1;
 
           // Decrease the expertise remainging
-          result.expertiseRemaining = result.expertiseRemaining - 1;
+          results.expertiseRemaining = results.expertiseRemaining - 1;
 
           // Log the expertise use
-          result.expertiseAppliedByDie[i] = result.expertiseAppliedByDie[i] + 1;
+          results.dice[i].expertiseApplied = results.dice[i].expertiseApplied
+            ? results.dice[i].expertiseApplied + 1
+            : 1;
+        }
+        // If this is now a success, log the success.
+        if (results.dice[i].final >= this.parameters.difficulty) {
+          results.successes = results.successes + 1;
+          results.dice[i].success = true;
+        }
 
-          // If this is now a success, log the success.
-          if (result.finalDice[i] >= this.parameters.difficulty) {
-            result.succeses = result.succeses + 1;
-            result.successesByDie[i] = 1;
-          }
+        // Log the critical if appropriate
+        if (results.dice[i].final == 6) {
+          results.dice[i].criticalSuccess = true;
+        } else if (results.dice[i].final == 1) {
+          results.dice[i].criticalFailure = true;
         }
       }
     }
 
-    this.result = result;
-    return result;
+    // Log whether the check was a success or a failure
+    if (this.parameters.complexity > 0) {
+      if (results.successes >= this.parameters.complexity) {
+        results.succeeded = true;
+        if (results.successes > this.parameters.complexity) {
+          results.extraSuccesses =
+            results.successes - this.parameters.complexity;
+        }
+      } else {
+        results.failed = true;
+      }
+    }
+
+    this.results = results;
+    return results;
   }
 
   _getSortedDiceFromRoll() {
@@ -94,7 +117,7 @@ export default class Check {
     let checkData = {
       label: inData.label ? inData.label : "",
       parameters: this.parameters,
-      results: this.result,
+      results: this.results,
     };
 
     // Create the html
@@ -110,6 +133,7 @@ export default class Check {
           roll: this.roll,
           content: chatContent,
           type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+          sound: CONFIG.sounds.dice,
         },
         inData.rollMode
           ? inData.rollMode
