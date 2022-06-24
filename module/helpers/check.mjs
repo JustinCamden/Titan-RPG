@@ -14,6 +14,11 @@ export default class Check {
   }
 
   async evaluateCheck() {
+    let checkOptions = await getBasicCheckOptions();
+    if (checkOptions.cancelled) {
+      return;
+    }
+
     this.roll = new Roll(
       `${this.parameters.numberOfDice}d6cs>=${this.parameters.difficulty}`
     );
@@ -147,4 +152,48 @@ export default class Check {
   _getChatTemplate() {
     return "systems/titan/templates/checks/check-basic.hbs";
   }
+}
+
+async function getBasicCheckOptions(inData) {
+  let dialogData = {
+    attribute: "mind",
+    attributes: {
+      mind: "mind",
+      body: "body",
+      soul: "soul",
+    },
+  };
+  const html = await renderTemplate(
+    "systems/titan/templates/checks/check-basic-dialog.hbs",
+    dialogData
+  );
+
+  return new Promise((resolve) => {
+    const data = {
+      title: "TITLE",
+      content: html,
+      buttons: {
+        roll: {
+          label: "Roll",
+          callback: (html) =>
+            resolve(_processCheckOptions(html[0]).querySelector("form")),
+        },
+        cancel: {
+          label: "Cancel",
+          callback: (html) => resolve({ cancelled: true }),
+        },
+      },
+      default: "roll",
+      close: () => resolve({ cancelled: true }),
+    };
+
+    new Dialog(data).render(true);
+  });
+}
+
+function _processCheckOptions(form) {
+  console.log(form);
+  return {
+    attribute: form.attribute,
+  };
 }

@@ -5,6 +5,12 @@ export const TITAN = {};
  * @type {Object}
  */
 
+TITAN.attributes = {
+  body: "TITAN.attributes.body",
+  mind: "TITAN.attributes.mind",
+  soul: "TITAN.attributes.soul",
+};
+
 TITAN.local = {
   attributes: {
     body: "TITAN.attributes.body",

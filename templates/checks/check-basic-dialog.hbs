@@ -1,0 +1,14 @@
+<form>
+  <div class="form-group">
+    <label>{{localize "TITAN.attribute"}}</label>
+    <select name="attribute">
+      {{#select attribute}}
+        {{#each attributes as |option key|}}
+          <option value="{{key}}">{{localize
+              (concat "TITAN.attributes." key)
+            }}</option>
+        {{/each}}
+      {{/select}}
+    </select>
+  </div>
+</form>
