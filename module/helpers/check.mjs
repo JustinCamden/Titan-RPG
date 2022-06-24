@@ -162,7 +162,9 @@ async function getBasicCheckOptions(inData) {
       body: "body",
       soul: "soul",
     },
+    difficulty: 4,
   };
+
   const html = await renderTemplate(
     "systems/titan/templates/checks/check-basic-dialog.hbs",
     dialogData
@@ -170,13 +172,13 @@ async function getBasicCheckOptions(inData) {
 
   return new Promise((resolve) => {
     const data = {
-      title: "TITLE",
+      title: "Skill Check",
       content: html,
       buttons: {
         roll: {
           label: "Roll",
           callback: (html) =>
-            resolve(_processCheckOptions(html[0]).querySelector("form")),
+            resolve(_processCheckOptions(html[0].querySelector("form"))),
         },
         cancel: {
           label: "Cancel",
@@ -187,13 +189,17 @@ async function getBasicCheckOptions(inData) {
       close: () => resolve({ cancelled: true }),
     };
 
-    new Dialog(data).render(true);
+    new Dialog(data, null).render(true);
   });
 }
 
 function _processCheckOptions(form) {
-  console.log(form);
+  let attribute = form.attribute.value;
+  let difficulty = parseInt(form.difficulty.value);
+  console.log(attribute);
+  console.log(difficulty);
   return {
-    attribute: form.attribute,
+    attribute: attribute,
+    difficulty: difficulty,
   };
 }
