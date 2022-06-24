@@ -150,20 +150,27 @@ export class TitanActor extends Actor {
 
     // Calculate max stamina
     let maxStaminaBase =
-      totalBaseAttributeValue * CONFIG.TITAN.resources.stamina.maxBaseMulti;
+      totalBaseAttributeValue *
+      CONFIG.TITAN.settings.resources.stamina.maxBaseMulti;
     data.resources.stamina.maxBase = maxStaminaBase;
     data.resources.stamina.maxValue =
       maxStaminaBase + data.resources.stamina.staticMod;
 
     // Calculate max resolve
-    let maxResolveBase = Math.ceil(data.attributes.soul.baseValue / 2);
+    let maxResolveBase = Math.ceil(
+      (data.attributes.soul.baseValue *
+        CONFIG.TITAN.settings.resources.resolve.maxBaseMulti) /
+        2
+    );
     data.resources.resolve.maxBase = maxResolveBase;
     data.resources.resolve.maxValue =
       maxResolveBase + data.resources.resolve.staticMod;
 
     // Calculate max wounds
     let maxWoundsBase = Math.ceil(
-      (totalBaseAttributeValue * CONFIG.TITAN.resources.wounds.maxBaseMulti) / 2
+      (totalBaseAttributeValue *
+        CONFIG.TITAN.settings.resources.wounds.maxBaseMulti) /
+        2
     );
     data.resources.wounds.maxBase = maxWoundsBase;
     data.resources.wounds.maxValue =
@@ -196,7 +203,7 @@ export class TitanActor extends Actor {
       const attributeBaseValue = data.attributes[attribute].baseValue;
 
       // Calculate xp cost
-      const minAttributeValue = CONFIG.TITAN.attributes.min;
+      const minAttributeValue = CONFIG.TITAN.settings.attributes.min;
       if (attributeBaseValue > minAttributeValue) {
         spentExp =
           spentExp +

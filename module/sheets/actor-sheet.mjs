@@ -77,7 +77,7 @@ export class TitanActorSheet extends ActorSheet {
    */
   _prepareCharacterData(context) {
     for (let [k, v] of Object.entries(context.data.skills)) {
-      context.data.skills[k].label = ""; // game.i18n.localize(CONFIG.TITAN.skills[k]) ?? k;
+      game.i18n.localize(CONFIG.TITAN.local.skills[k]) ?? k;
     }
   }
 
@@ -247,7 +247,7 @@ export class TitanActorSheet extends ActorSheet {
 
             // Get the localized label
             const localizedLabel = game.i18n.localize(
-              CONFIG.TITAN.attributes[rollAttribute]
+              CONFIG.TITAN.local.attributes[rollAttribute]
             );
 
             // Evaluate the check
@@ -277,10 +277,10 @@ export class TitanActorSheet extends ActorSheet {
 
             // Create a localized label
             const localizedLabel =
-              game.i18n.localize(CONFIG.TITAN.skills[rollSkill]) +
+              game.i18n.localize(CONFIG.TITAN.local.skills[rollSkill]) +
               " (" +
               game.i18n.localize(
-                CONFIG.TITAN.attributes[skillCheck.attribute]
+                CONFIG.TITAN.local.attributes[skillCheck.attribute]
               ) +
               ")";
 
@@ -311,7 +311,7 @@ export class TitanActorSheet extends ActorSheet {
 
             // Create a localized label
             const localizedLabel = game.i18n.localize(
-              CONFIG.TITAN.resistances[rollresistance]
+              CONFIG.TITAN.local.resistances[rollresistance]
             );
 
             // Evaluate the check
@@ -337,7 +337,7 @@ export class TitanActorSheet extends ActorSheet {
             // Output the roll
             const roll = rollResult.outRoll;
             const localizedLabel = game.i18n.localize(
-              CONFIG.TITAN.derivedStats.initiative.name
+              CONFIG.TITAN.local.derivedStats.initiative.name
             );
             roll.toMessage({
               speaker: ChatMessage.getSpeaker({ actor: this.actor }),
@@ -361,13 +361,13 @@ export class TitanActorSheet extends ActorSheet {
     // Ensure the attribute is within a valid range
     const newValue = event.target.value;
 
-    const maxAttributeValue = CONFIG.TITAN.attributes.max;
+    const maxAttributeValue = CONFIG.TITAN.attributes.settings.max;
     if (newValue > maxAttributeValue) {
       event.target.value = maxAttributeValue;
     } else {
-      const minAttributeValue = CONFIG.TITAN.attributes.min;
+      const minAttributeValue = CONFIG.TITAN.attributes.settings.min;
       if (newValue < minAttributeValue) {
-        event.target.value = CONFIG.TITAN.attributes.min;
+        event.target.value = CONFIG.TITAN.attributes.settings.min;
       }
     }
 

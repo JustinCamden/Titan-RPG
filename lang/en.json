@@ -25,6 +25,7 @@
   "TITAN.Earned": "Earned",
   "TITAN.inspiration": "Inspiration",
 
+  "TITAN.skill": "Skill",
   "TITAN.skills.arcana": "Arcana",
   "TITAN.skills.athletics": "Athletics",
   "TITAN.skills.beastHandling": "Beast Handling",
@@ -55,5 +56,9 @@
   "TITAN.check.succeeded": "Succeeded",
   "TITAN.check.failed": "Failure",
   "TITAN.check.successes": "Successes",
-  "TITAN.check.extraSuccesses": "Extra Successes"
+  "TITAN.check.extraSuccesses": "Extra Successes",
+  "TITAN.check.difficulty": "Difficulty",
+  "TITAN.check.complexity": "Complexity",
+  "TITAN.check.dieMod": "Die Mod",
+  "TITAN.check.expertiseMod": "Expertise Mod"
 }
