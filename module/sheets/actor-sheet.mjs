@@ -299,33 +299,31 @@ export class TitanActorSheet extends ActorSheet {
           break;
         }
 
-        // Resilience rolls
-        case "resilience": {
+        // Resistance rolls
+        case "resistance": {
           // Check if the data is valid
-          const rollresilience = dataset.rollResilience;
-          if (rollresilience) {
+          const rollresistance = dataset.rollResistance;
+          if (rollresistance) {
             // Get the roll from the actor
-            const rollResult = await this.actor.getResilienceRoll(
-              rollresilience
-            );
-            if (rollResult) {
-              // Output the roll
-              const roll = rollResult.outRoll;
-              const localizedLabel =
-                game.i18n.localize(CONFIG.TITAN.resiliences[rollresilience]) +
-                " (" +
-                game.i18n.localize(
-                  CONFIG.TITAN.attributes[rollResult.outAttribute]
-                ) +
-                ")";
-              roll.toMessage({
-                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-                flavor: localizedLabel,
-                rollMode: game.settings.get("core", "rollMode"),
-              });
+            const resistanceCheck = await this.actor.getResistanceCheck({
+              resistance: rollresistance,
+            });
 
-              return roll;
-            }
+            // Create a localized label
+            const localizedLabel = game.i18n.localize(
+              CONFIG.TITAN.resistances[rollresistance]
+            );
+
+            // Evaluate the check
+            await resistanceCheck.check.evaluateCheck();
+
+            // Post the check to chat
+            await resistanceCheck.check.toChatMessage({
+              user: game.user.id,
+              speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+              label: localizedLabel,
+              rollMode: game.settings.get("core", "rollMode"),
+            });
           }
 
           break;
@@ -339,7 +337,7 @@ export class TitanActorSheet extends ActorSheet {
             // Output the roll
             const roll = rollResult.outRoll;
             const localizedLabel = game.i18n.localize(
-              CONFIG.TITAN.derivedStats.initiative
+              CONFIG.TITAN.derivedStats.initiative.name
             );
             roll.toMessage({
               speaker: ChatMessage.getSpeaker({ actor: this.actor }),

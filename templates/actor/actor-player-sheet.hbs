@@ -45,39 +45,22 @@
       </div>
 
       {{!-- Attributes and Derived Stats --}}
-      <div class="resources grid grid-8col">
-
-        {{!-- Mind --}}
-        <div class="attribute flex-group-center border ">
-          <label for="data.attributes.mind.value" class="stat-label rollable" data-roll-type="attribute" data-roll-attribute = "mind">
-            {{localize "TITAN.attributes.mind"}}</label>
-          <div class="stat-content flexrow flex-group-center flex-between">
-            <input class="attribute-edit" type="text" name="data.attributes.mind.baseValue"
-              value="{{data.attributes.mind.baseValue}}" data-dtype="Number" />
-          </div>
+      <div class="derived grid grid-8col">
+            {{#each data.resistances as |resistance key|}}
+      <div class="resistance flex-group-center border">
+        <label
+          for="data.resistances.{{key}}.value"
+          class="stat-label rollable"
+          data-roll-type="resistance"
+          data-roll-resistance={{key}}
+        >
+          {{localize (concat "TITAN.resistances." key)}}
+        </label>
+        <div class="stat-content flexrow flex-group-center flex-between">
+          <span>{{numberFormat resistance.value decimals=0}}</span>
         </div>
-
-        {{!-- Body --}}
-        <div class="attribute flex-group-center border">
-          <label for="data.attributes.body.value" class="stat-label rollable" data-roll-type="attribute" data-roll-attribute = "body">
-            {{localize "TITAN.attributes.body"}}
-          </label>
-          <div class="stat-content flexrow flex-group-center flex-between">
-            <input class="attribute-edit" type="number" name="data.attributes.body.baseValue"
-              value="{{data.attributes.body.baseValue}}" data-dtype="Number" />
-          </div>
-        </div>
-
-        {{!-- Soul --}}
-        <div class="attribute flex-group-center border">
-          <label for="data.attributes.soul.value" class="stat-label rollable" data-roll-type="attribute" data-roll-attribute = "soul">
-            {{localize "TITAN.attributes.soul"}}
-          </label>
-          <div class="stat-content flexrow flex-group-center flex-between">
-            <input class="attribute-edit" type="text" name="data.attributes.soul.baseValue"
-              value="{{data.attributes.soul.baseValue}}" data-dtype="Number" />
-          </div>
-        </div>
+      </div>
+    {{/each}}
 
         {{!-- Initiative --}}
         <div class="derived flex-group-center border">

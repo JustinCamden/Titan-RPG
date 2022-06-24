@@ -1,49 +1,69 @@
 {{! Skills Tab }}
 <div>
-  {{! Resiliences List }}
-  <div class="resiliences-panel grid grid-3col border">
-    {{#each data.resiliences as |resilience key|}}
-      <div class="align-center flex-group-center border">
-        <label
-          for="data.resiliences.{{key}}"
-          class="stat-label rollable"
-          data-roll-type="resilience"
-          data-roll-resilience={{key}}
-        >{{localize (concat "TITAN.resiliences." key)}}</label>
-        <div class="stat-content flexrow flex-group-center flex-between">
-          <label
-            for="data.resiliences.{{key}}.training.value"
-            class="stat-label"
-          >{{localize "TITAN.training"}}</label>
-          <label for="data.resiliences.{{key}}" class="stat-label"> </label>
-          <label
-            for="data.resiliences.{{key}}.expertise.value"
-            class="stat-label"
-          >{{localize "TITAN.expertise"}}</label>
-        </div>
-        <div class="stat-content flexrow flex-group-center flex-between">
-          <input
-            class="resilience-edit expertise-edit"
-            type="text"
-            name="data.resiliences.{{key}}.training.baseValue"
-            value="{{resilience.training.value}}"
-            data-resilience={{key}}
-            data-resilience-type="training"
-            data-dtype="Number"
-          />
-          <span> </span>
-          <input
-            class="resilience-edit expertise-edit"
-            type="text"
-            name="data.resiliences.{{key}}.expertise.baseValue"
-            value="{{resilience.expertise.value}}"
-            data-resilience={{key}}
-            data-resilience-type="expertise"
-            data-dtype="Number"
-          />
-        </div>
+  {{! Attributes}}
+  <div class="attributes-panel grid grid-3col border">
+    {{! Mind }}
+    <div class="attribute flex-group-center border">
+      <label
+        for="data.attributes.mind.value"
+        class="stat-label rollable"
+        data-roll-type="attribute"
+        data-roll-attribute="mind"
+      >
+        {{localize "TITAN.attributes.mind"}}</label>
+      <div class="stat-content flexrow flex-group-center flex-between">
+        <input
+          class="attribute-edit"
+          type="text"
+          name="data.attributes.mind.baseValue"
+          value="{{data.attributes.mind.baseValue}}"
+          data-dtype="Number"
+        />
       </div>
-    {{/each}}
+    </div>
+
+    {{! Body }}
+    <div class="attribute flex-group-center border">
+      <label
+        for="data.attributes.body.value"
+        class="stat-label rollable"
+        data-roll-type="attribute"
+        data-roll-attribute="body"
+      >
+        {{localize "TITAN.attributes.body"}}
+      </label>
+      <div class="stat-content flexrow flex-group-center flex-between">
+        <input
+          class="attribute-edit"
+          type="number"
+          name="data.attributes.body.baseValue"
+          value="{{data.attributes.body.baseValue}}"
+          data-dtype="Number"
+        />
+      </div>
+    </div>
+
+    {{! Soul }}
+    <div class="attribute flex-group-center border">
+      <label
+        for="data.attributes.soul.value"
+        class="stat-label rollable"
+        data-roll-type="attribute"
+        data-roll-attribute="soul"
+      >
+        {{localize "TITAN.attributes.soul"}}
+      </label>
+      <div class="stat-content flexrow flex-group-center flex-between">
+        <input
+          class="attribute-edit"
+          type="text"
+          name="data.attributes.soul.baseValue"
+          value="{{data.attributes.soul.baseValue}}"
+          data-dtype="Number"
+        />
+      </div>
+    </div>
+
   </div>
 
   {{! Skills List }}

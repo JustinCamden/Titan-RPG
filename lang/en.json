@@ -45,9 +45,9 @@
   "TITAN.skills.survival": "Survival",
   "TITAN.skills.theology": "Theology",
 
-  "TITAN.resiliences.focus": "Focus",
-  "TITAN.resiliences.reflexes": "Reflexes",
-  "TITAN.resiliences.willpower": "Willpower",
+  "TITAN.resistances.reflexes": "Reflexes",
+  "TITAN.resistances.resilience": "Resilience",
+  "TITAN.resistances.willpower": "Willpower",
 
   "TITAN.training": "Training",
   "TITAN.expertise": "Expertise",

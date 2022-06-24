@@ -62,12 +62,14 @@ TITAN.resources = {
 };
 
 TITAN.derivedStats = {
-  initiative: "TITAN.derivedStats.initiative",
-  initiativeFormula: "2d6",
+  initiative: {
+    name: "TITAN.derivedStats.initiative",
+    formula: "2d6",
+  },
 };
 
-TITAN.resiliences = {
-  focus: "TITAN.resiliences.focus",
-  reflexes: "TITAN.resiliences.reflexes",
-  willpower: "TITAN.resiliences.willpower",
+TITAN.resistances = {
+  reflexes: "TITAN.resistances.reflexes",
+  resilience: "TITAN.resistances.resilience",
+  willpower: "TITAN.resistances.willpower",
 };

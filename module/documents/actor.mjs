@@ -57,6 +57,19 @@ export class TitanActor extends Actor {
     // Make modifications to data here. For example:
     const data = actorData.data;
 
+    // Calculate ability mods
+    for (let [k, v] of Object.entries(data.attributes)) {
+      data.attributes[k].value = v.baseValue + v.staticMod;
+    }
+
+    // Calculate the total attribute value
+    let totalBaseAttributeValue = 0;
+    for (const attribute in data.attributes) {
+      totalBaseAttributeValue =
+        totalBaseAttributeValue + data.attributes[attribute].baseValue;
+    }
+
+    // Calculate derived stats
     // Initiative = (Mind + Training in Awareness) / 2 rounded up (+ Mod)
     data.derivedStats.initiative.baseValue =
       data.attributes.mind.baseValue +
@@ -104,7 +117,6 @@ export class TitanActor extends Actor {
       data.derivedStats.accuracy.baseValue +
       data.derivedStats.accuracy.staticMod;
 
-    // Calculate derived stats
     // Melee = (Body + Training in Melee Weapons) / 2 rounded up (+ Mod)
     data.derivedStats.melee.baseValue = Math.ceil(
       (data.attributes.body.baseValue +
@@ -116,12 +128,25 @@ export class TitanActor extends Actor {
     data.derivedStats.melee.value =
       data.derivedStats.melee.baseValue + data.derivedStats.melee.staticMod;
 
-    // Calculate the total attribute value
-    let totalBaseAttributeValue = 0;
-    for (const attribute in data.attributes) {
-      totalBaseAttributeValue =
-        totalBaseAttributeValue + data.attributes[attribute].baseValue;
-    }
+    // Reflexes = (Mind + (Body/2))
+    data.resistances.reflexes.baseValue =
+      data.attributes.mind.value + Math.ceil(data.attributes.body.value / 2);
+    data.resistances.reflexes.value =
+      data.resistances.reflexes.baseValue + data.resistances.reflexes.staticMod;
+
+    // Resilience = (Body + (Soul/2))
+    data.resistances.resilience.baseValue =
+      data.attributes.body.value + Math.ceil(data.attributes.soul.value / 2);
+    data.resistances.resilience.value =
+      data.resistances.resilience.baseValue +
+      data.resistances.resilience.staticMod;
+
+    // Willpower = (Soul + (Mind/2))
+    data.resistances.willpower.baseValue =
+      data.attributes.soul.value + Math.ceil(data.attributes.mind.value / 2);
+    data.resistances.willpower.value =
+      data.resistances.willpower.baseValue +
+      data.resistances.willpower.staticMod;
 
     // Calculate max stamina
     let maxStaminaBase =
@@ -144,24 +169,11 @@ export class TitanActor extends Actor {
     data.resources.wounds.maxValue =
       maxWoundsBase + data.resources.wounds.staticMod;
 
-    // Calculate ability mods
-    for (let [k, v] of Object.entries(data.attributes)) {
-      data.attributes[k].value = v.baseValue + v.staticMod;
-    }
-
     // Calculate skill mods
     for (let [k, v] of Object.entries(data.skills)) {
       data.skills[k].training.value =
         v.training.baseValue + v.training.staticMod;
       data.skills[k].expertise.value =
-        v.expertise.baseValue + v.expertise.staticMod;
-    }
-
-    // Calculate resilience mods
-    for (let [k, v] of Object.entries(data.resiliences)) {
-      data.resiliences[k].training.value =
-        v.training.baseValue + v.training.staticMod;
-      data.resiliences[k].expertise.value =
         v.expertise.baseValue + v.expertise.staticMod;
     }
   }
@@ -215,31 +227,6 @@ export class TitanActor extends Actor {
           spentExp +
           CONFIG.TITAN.skills.expertise.totalExpCostByRank[
             skillExpertiseBaseValue - 1
-          ];
-      }
-    }
-
-    // Add cost of current resiliences
-    for (const resilience in data.resiliences) {
-      const resilienceData = data.resiliences[resilience];
-
-      // Calculate xp cost of training
-      const resilienceTrainingBaseValue = resilienceData.training.baseValue;
-      if (resilienceTrainingBaseValue > 0) {
-        spentExp =
-          spentExp +
-          CONFIG.TITAN.skills.training.totalExpCostByRank[
-            resilienceTrainingBaseValue - 1
-          ];
-      }
-
-      // Calculate xp cost of training
-      const resilienceExpertiseBaseValue = resilienceData.expertise.baseValue;
-      if (resilienceExpertiseBaseValue > 0) {
-        spentExp =
-          spentExp +
-          CONFIG.TITAN.skills.expertise.totalExpCostByRank[
-            resilienceExpertiseBaseValue - 1
           ];
       }
     }
@@ -358,45 +345,24 @@ export class TitanActor extends Actor {
     return null;
   }
 
-  async getResilienceRoll(resilience, attribute, difficulty, bonusDie) {
-    // If the resilience key is valid
-    const resilienceData = this.data.data.resiliences[resilience];
-    if (resilienceData) {
-      // Calculate the resilience mod
-      const resilienceTrainingMod = resilienceData.training.value;
-
-      // Calculate the attribute mod
-      const attributes = this.data.data.attributes;
-      let attributeKey = attribute;
-      let attributeData = attributes[attributeKey];
-      if (!attributeData) {
-        attributeKey = resilienceData.defaultAttribute;
-        attributeData = attributes[attributeKey];
-      }
-      let attributeMod = attributeData.value;
-
-      // Calculate the difficulty
-      let rollDifficulty = difficulty;
-      if (!rollDifficulty) {
-        rollDifficulty = 4;
-      }
-
-      // Calculate the roll formula
-      const rollFormula =
-        ("(" + resilienceTrainingMod + "+" + attributeMod).toString() +
-        (bonusDie ? "+" + bonusDie.toString() : "") +
-        ")d6cs>=" +
-        rollDifficulty.toString();
+  async getResistanceCheck(inData) {
+    // If the resistance key is valid
+    const resistanceData = this.data.data.resistances[inData.resistance];
+    if (resistanceData) {
+      // Calculate the resistance mod
+      const resistanceMod = resistanceData.value;
 
       // Perform the roll
-      const roll = new Roll(rollFormula, this.getRollData());
+      const resistanceCheck = new Check({
+        numberOfDice: resistanceMod,
+        difficulty: inData.difficulty ? inData.difficulty : 4,
+        complexity: inData.complexity ? inData.complexity : 0,
+      });
 
       // Return the data
       const retVal = {
-        outRoll: roll,
-        outresilienceTrainingMod: resilienceTrainingMod,
-        outAttribute: attributeKey,
-        outAttributeMod: attributeMod,
+        check: resistanceCheck,
+        resistanceMod: resistanceMod,
       };
 
       return retVal;
@@ -405,12 +371,15 @@ export class TitanActor extends Actor {
     return null;
   }
 
-  async getInitiativeRoll(bonus) {
+  async getInitiativeRoll(inData) {
     // Calculate the initiative value
     const initiative = this.data.data.derivedStats.initiative.value;
     const roll = new Roll(
-      "2d6+" + initiative.toString() + (bonus ? bonus.toString() : ""),
-      this.getRollData()
+      "2d6+" +
+        initiative.toString() +
+        (inData != undefined && inData.bonus != undefined
+          ? inData.bonus.toString()
+          : "")
     );
     const retVal = {
       outRoll: roll,

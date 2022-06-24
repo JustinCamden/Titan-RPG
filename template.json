@@ -5,11 +5,11 @@
       "character": {
         "biography": "",
         "attributes": {
-          "mind": {
+          "body": {
             "baseValue": 1,
             "staticMod": 0
           },
-          "body": {
+          "mind": {
             "baseValue": 1,
             "staticMod": 0
           },
@@ -18,39 +18,15 @@
             "staticMod": 0
           }
         },
-        "resiliences": {
-          "focus": {
-            "defaultAttribute": "mind",
-            "training": {
-              "baseValue": 0,
-              "staticMod": 0
-            },
-            "expertise": {
-              "baseValue": 0,
-              "staticMod": 0
-            }
-          },
+        "resistances": {
           "reflexes": {
-            "defaultAttribute": "body",
-            "training": {
-              "baseValue": 0,
-              "staticMod": 0
-            },
-            "expertise": {
-              "baseValue": 0,
-              "staticMod": 0
-            }
+            "staticMod": 0
+          },
+          "resilience": {
+            "staticMod": 0
           },
           "willpower": {
-            "defaultAttribute": "soul",
-            "training": {
-              "baseValue": 0,
-              "staticMod": 0
-            },
-            "expertise": {
-              "baseValue": 0,
-              "staticMod": 0
-            }
+            "staticMod": 0
           }
         },
         "skills": {
