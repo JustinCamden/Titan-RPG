@@ -162,8 +162,8 @@ export class TitanActorSheet extends ActorSheet {
     // Rollable abilities.
     html.find(".rollable").click(this._onRoll.bind(this));
 
-    // Editing attributes
-    html.find(".attribute-edit").change(this._onAttributeEdit.bind(this));
+    // Rollable skills
+    html.find(".basic-check").click(this._onBasicCheck.bind(this));
 
     // Editing resources
     html.find(".resource-edit").change(this._onResourceEdit.bind(this));
@@ -231,26 +231,6 @@ export class TitanActorSheet extends ActorSheet {
           break;
         }
 
-        // Attribute rolls
-        case "attribute": {
-          this.getBasicCheck({
-            attribute: dataset.rollAttribute,
-            skill: "none",
-          });
-          break;
-        }
-
-        // Skill rolls
-        case "skill": {
-          this.getBasicCheck({
-            skill: dataset.rollSkill,
-            attribute: "default",
-            getOptions: true,
-          });
-
-          break;
-        }
-
         // Resistance rolls
         case "resistance": {
           // Check if the data is valid
@@ -309,6 +289,18 @@ export class TitanActorSheet extends ActorSheet {
     }
   }
 
+  async _onBasicCheck(event) {
+    const dataset = event.currentTarget.dataset;
+    const getOptions =
+      dataset.getOptions == "true" ||
+      (dataset.getOptions == "default" && event.shiftKey);
+    this.getBasicCheck({
+      attribute: dataset.attribute,
+      skill: dataset.skill,
+      getOptions: getOptions,
+    });
+  }
+
   async getBasicCheck(inData) {
     // Get a check from the actor
     let basicCheck = await this.actor.getBasicCheck({
@@ -318,9 +310,8 @@ export class TitanActorSheet extends ActorSheet {
       complexity: inData?.complexity ? inData.complexity : 0,
       diceMod: inData?.diceMod ? inData.diceMod : 0,
       expertiseMod: inData?.expertiseMod ? inData.expertiseMod : 0,
-      getOptions: inData?.getOptions ? inData.getOptions : false,
+      getOptions: inData?.getOptions || event.shiftKey ? true : false,
     });
-    console.log(inData);
     if (basicCheck.cancelled) {
       return;
     }

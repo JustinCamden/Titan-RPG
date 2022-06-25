@@ -207,7 +207,7 @@ export class TitanActor extends Actor {
       if (attributeBaseValue > minAttributeValue) {
         spentExp =
           spentExp +
-          CONFIG.TITAN.attributes.totalExpCostByRank[
+          CONFIG.TITAN.settings.attributes.totalExpCostByRank[
             attributeBaseValue - minAttributeValue - 1
           ];
       }
@@ -222,7 +222,7 @@ export class TitanActor extends Actor {
       if (skillTrainingBaseValue > 0) {
         spentExp =
           spentExp +
-          CONFIG.TITAN.skills.training.totalExpCostByRank[
+          CONFIG.TITAN.settings.skills.training.totalExpCostByRank[
             skillTrainingBaseValue - 1
           ];
       }
@@ -232,7 +232,7 @@ export class TitanActor extends Actor {
       if (skillExpertiseBaseValue > 0) {
         spentExp =
           spentExp +
-          CONFIG.TITAN.skills.expertise.totalExpCostByRank[
+          CONFIG.TITAN.settings.skills.expertise.totalExpCostByRank[
             skillExpertiseBaseValue - 1
           ];
       }
@@ -348,6 +348,18 @@ export class TitanActor extends Actor {
       // Ensure the attribute is set
       checkOptions.attribute =
         this.data.data.skills[checkOptions.skill].defaultAttribute;
+    }
+
+    // Validate difficulty
+    if (checkOptions.difficulty > 6) {
+      checkOptions.difficulty = 6;
+    } else if (checkOptions.difficulty < 2) {
+      checkOptions.difficulty = 2;
+    }
+
+    // Validate complexity
+    if (checkOptions.complexity < 0) {
+      checkOptions.complexity = 0;
     }
 
     // Get options?
