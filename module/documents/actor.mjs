@@ -287,71 +287,6 @@ export class TitanActor extends Actor {
     super._onUpdate(changed, options, userId);
   }
 
-  async getAttributeCheck(inData) {
-    // If the attribute key is valid
-    const attributeData = this.data.data.attributes[inData.attribute];
-    if (attributeData) {
-      // Calculate attribute mod
-      const attributeMod = attributeData.value;
-
-      // Perform the roll
-      const attributeCheck = new Check({
-        numberOfDice: attributeMod,
-        difficulty: inData.difficulty ? inData.difficulty : 4,
-        complexity: inData.complexity ? inData.complexity : 0,
-      });
-
-      // Return the data
-      const retVal = {
-        check: attributeCheck,
-        attributeMod: attributeMod,
-      };
-
-      return retVal;
-    }
-  }
-
-  async getSkillCheck(inData) {
-    // If the skill key is valid
-    const skillData = this.data.data.skills[inData.skill];
-    if (skillData) {
-      // Calculate the skill mod
-      const skillTrainingMod = skillData.training.value;
-      const skillExpertise = skillData.expertise.value;
-
-      // Calculate the attribute mod
-      const attributes = this.data.data.attributes;
-      let attributeKey = inData.attribute;
-      let attributeData = attributes[attributeKey];
-      if (!attributeData) {
-        attributeKey = skillData.defaultAttribute;
-        attributeData = attributes[attributeKey];
-      }
-      const attributeMod = attributeData.value;
-
-      // Perform the roll
-      const skillCheck = new Check({
-        numberOfDice: attributeMod + skillTrainingMod,
-        expertise: skillExpertise,
-        difficulty: inData.difficulty ? inData.difficulty : 4,
-        complexity: inData.complexity ? inData.complexity : 0,
-      });
-
-      // Return the data
-      const retVal = {
-        check: skillCheck,
-        training: skillTrainingMod,
-        expertise: skillExpertise,
-        attribute: attributeKey,
-        attributeMod: attributeMod,
-      };
-
-      return retVal;
-    }
-
-    return null;
-  }
-
   async getResistanceCheck(inData) {
     // If the resistance key is valid
     const resistanceData = this.data.data.resistances[inData.resistance];
@@ -396,65 +331,117 @@ export class TitanActor extends Actor {
     return retVal;
   }
 
-  async getBasicCheckOptions(inData) {
-    // Initialize dialog data
-    let dialogData = {
+  async getBasicCheck(inData) {
+    // Get a check from the actor
+    let checkOptions = {
       attribute: inData?.attribute ? inData.attribute : "body",
       skill: inData?.skill ? inData.skill : "athletics",
       difficulty: inData?.difficulty ? inData.difficulty : 4,
       complexity: inData?.complexity ? inData.complexity : 0,
       diceMod: inData?.diceMod ? inData.diceMod : 0,
-      expertiseMod: inData?.expertiseMod ? indData.expertiseMod : 0,
-      attributes: {},
-      skills: {},
+      expertiseMod: inData?.expertiseMod ? inData.expertiseMod : 0,
+      getOptions: inData?.getOptions ? inData.getOptions : false,
     };
 
-    // Add each attribute as an option to the data
-    for (let [k, v] of Object.entries(this.data.data.attributes)) {
-      dialogData.attributes[k] = k.toString();
+    // Check if the attribute is the default attribute
+    if (checkOptions.attribute == "default") {
+      // Ensure the attribute is set
+      checkOptions.attribute =
+        this.data.data.skills[checkOptions.skill].defaultAttribute;
     }
 
-    // Add each skill as an option to the data
-    for (let [k, v] of Object.entries(this.data.data.skills)) {
-      dialogData.skills[k] = k.toString();
-    }
-
-    // Create the html template
-    const html = await renderTemplate(
-      "systems/titan/templates/checks/check-basic-dialog.hbs",
-      dialogData
-    );
-
-    // Create the dialog
-    return new Promise((resolve) => {
-      const data = {
-        title: game.i18n.localize(CONFIG.TITAN.local.check),
-        content: html,
-        buttons: {
-          roll: {
-            label: game.i18n.localize(CONFIG.TITAN.local.roll),
-            callback: (html) =>
-              resolve(this._processCheckOptions(html[0].querySelector("form"))),
-          },
-          cancel: {
-            label: game.i18n.localize(CONFIG.TITAN.local.cancel),
-            callback: (html) => resolve({ cancelled: true }),
-          },
-        },
-        default: "roll",
-        close: () => resolve({ cancelled: true }),
+    // Get options?
+    if (checkOptions.getOptions) {
+      // Initialize dialog data
+      let dialogData = {
+        attribute: checkOptions.attribute,
+        skill: checkOptions.skill,
+        difficulty: checkOptions.difficulty,
+        complexity: checkOptions.complexity,
+        diceMod: checkOptions.diceMod,
+        expertiseMod: checkOptions.expertiseMod,
+        attributes: {},
+        skills: {},
       };
 
-      new Dialog(data, null).render(true);
-    });
-  }
+      // Add each attribute as an option to the data
+      for (let [k, v] of Object.entries(this.data.data.attributes)) {
+        dialogData.attributes[k] = k.toString();
+      }
 
-  // Process dialog results
-  _processCheckOptions(form) {
+      // Add each skill as an option to the data
+      for (let [k, v] of Object.entries(this.data.data.skills)) {
+        dialogData.skills[k] = k.toString();
+      }
+
+      // Create the html template
+      const html = await renderTemplate(
+        "systems/titan/templates/checks/check-basic-dialog.hbs",
+        dialogData
+      );
+
+      // Create the dialog
+      checkOptions = await new Promise((resolve) => {
+        const data = {
+          title: game.i18n.localize(CONFIG.TITAN.local.check),
+          content: html,
+          buttons: {
+            roll: {
+              label: game.i18n.localize(CONFIG.TITAN.local.roll),
+              callback: (html) =>
+                resolve(
+                  this._processCheckOptions(html[0].querySelector("form"))
+                ),
+            },
+            cancel: {
+              label: game.i18n.localize(CONFIG.TITAN.local.cancel),
+              callback: (html) => resolve({ cancelled: true }),
+            },
+          },
+          default: "roll",
+          close: () => resolve({ cancelled: true }),
+        };
+
+        new Dialog(data, null).render(true);
+      });
+
+      // Return if we canceled the check
+      if (checkOptions.canceled) {
+        return checkOptions;
+      }
+    }
+
+    // Create the check parameters
+    let checkParameters = {
+      numberOfDice:
+        this.data.data.attributes[checkOptions.attribute].value +
+        checkOptions.diceMod,
+      expertise: checkOptions.expertiseMod,
+      difficulty: checkOptions.difficulty,
+      complexity: checkOptions.complexity,
+    };
+
+    // Calculate the skill mod
+    if (checkOptions.skill != "none") {
+      const skillData = this.data.data.skills[checkOptions.skill];
+
+      // Training
+      checkParameters.numberOfDice =
+        checkParameters.numberOfDice + skillData.training.value;
+
+      // Expertise
+      checkParameters.expertise =
+        checkParameters.expertise + skillData.expertise.value;
+    }
+
+    // Perform the roll
+    const check = new Check(checkParameters);
+
+    // Return the data
     return {
-      attribute: form.attribute.value,
-      skill: form.skill.value,
-      difficulty: parseInt(form.difficulty.value),
+      check: check,
+      checkOptions: checkOptions,
+      checkParameters: checkParameters,
     };
   }
 }
