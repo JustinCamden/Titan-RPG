@@ -75,11 +75,7 @@ export class TitanActorSheet extends ActorSheet {
    *
    * @return {undefined}
    */
-  _prepareCharacterData(context) {
-    for (let [k, v] of Object.entries(context.data.skills)) {
-      game.i18n.localize(CONFIG.TITAN.local.skills[k]) ?? k;
-    }
-  }
+  _prepareCharacterData(context) {}
 
   /**
    * Organize and classify Items for Character sheets.
@@ -237,31 +233,9 @@ export class TitanActorSheet extends ActorSheet {
 
         // Attribute rolls
         case "attribute": {
-          // Check if the data is valid
-          const rollAttribute = dataset.rollAttribute;
-          if (rollAttribute) {
-            // Get an attribute check from the actor
-            const attributeCheck = await this.actor.getAttributeCheck({
-              attribute: rollAttribute,
-            });
-
-            // Get the localized label
-            const localizedLabel = game.i18n.localize(
-              CONFIG.TITAN.local.attributes[rollAttribute]
-            );
-
-            // Evaluate the check
-            await attributeCheck.check.evaluateCheck();
-
-            // Post the check to chat
-            await attributeCheck.check.toChatMessage({
-              user: game.user.id,
-              speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-              label: localizedLabel,
-              rollMode: game.settings.get("core", "rollMode"),
-            });
-          }
-
+          this._getAttributeCheck({
+            attribute: dataset.rollAttribute,
+          });
           break;
         }
 
@@ -355,6 +329,47 @@ export class TitanActorSheet extends ActorSheet {
         }
       }
     }
+  }
+
+  async _getAttributeCheck(inData) {
+    // Check for options
+    let checkOptions = await this.actor.getBasicCheckOptions({
+      attribute: inData?.attribute ? inData.attribute : "body",
+      skill: inData?.skill ? inData.skill : "athletics",
+      difficulty: inData?.difficulty ? inData.difficulty : 4,
+      complexity: inData?.complexity ? inData.complexity : 0,
+      diceMod: inData?.diceMod ? inData.diceMod : 0,
+      expertiseMod: inData?.expertiseMod ? indData.expertiseMod : 0,
+      attributes: {},
+      skills: {},
+    });
+    if (checkOptions.cancelled) {
+      return;
+    }
+
+    const attribute = checkOptions.attribute;
+
+    // Get an attribute check from the actor
+    const attributeCheck = await this.actor.getAttributeCheck({
+      attribute: attribute,
+    });
+
+    // Get the localized label
+    const localizedLabel = game.i18n.localize(
+      CONFIG.TITAN.local.attributes[attribute]
+    );
+
+    // Evaluate the check
+    await attributeCheck.check.evaluateCheck();
+
+    // Post the check to chat
+    await attributeCheck.check.toChatMessage({
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      label: localizedLabel,
+      rollMode: game.settings.get("core", "rollMode"),
+    });
+    return;
   }
 
   async _onAttributeEdit(event) {

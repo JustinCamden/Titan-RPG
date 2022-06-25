@@ -54,12 +54,16 @@
   "TITAN.training": "Training",
   "TITAN.expertise": "Expertise",
 
+  "TITAN.check.name": "Check",
   "TITAN.check.succeeded": "Succeeded",
-  "TITAN.check.failed": "Failure",
+  "TITAN.check.failed": "Failed",
   "TITAN.check.successes": "Successes",
   "TITAN.check.extraSuccesses": "Extra Successes",
   "TITAN.check.difficulty": "Difficulty",
   "TITAN.check.complexity": "Complexity",
   "TITAN.check.dieMod": "Die Mod",
-  "TITAN.check.expertiseMod": "Expertise Mod"
+  "TITAN.check.expertiseMod": "Expertise Mod",
+  "TITAN.check.roll": "Roll",
+  "TITAN.cancel": "Cancel",
+  "TITAN.none": "None"
 }

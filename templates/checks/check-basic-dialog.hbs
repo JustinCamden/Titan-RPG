@@ -2,7 +2,6 @@
   <div class="form-group">
     <label>{{localize "TITAN.attribute"}}</label>
     <select name="attribute">
-      {{log attribute}}
       {{#select attribute}}
         {{#each attributes as |option key|}}
           <option value="{{key}}">{{localize
@@ -11,7 +10,17 @@
         {{/each}}
       {{/select}}
     </select>
-          Difficulty
-      <input name ="difficulty" type="text" value="{{difficulty}}" data-dtype="Number"</input>
+    <select name="skill">
+      {{#select skill}}
+        {{#each skills as |option key|}}
+          <option value="{{key}}">{{localize
+              (concat "TITAN.skills." key)
+            }}</option>
+        {{/each}}
+        <option value="none">{{localize "TITAN.none"}}</option>
+      {{/select}}
+    </select>
+    {{localize "TITAN.check.difficulty"}}
+    <input name ="difficulty" type="text" value="{{difficulty}}" data-dtype="Number"></input>
   </div>
 </form>

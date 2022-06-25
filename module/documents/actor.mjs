@@ -395,4 +395,66 @@ export class TitanActor extends Actor {
 
     return retVal;
   }
+
+  async getBasicCheckOptions(inData) {
+    // Initialize dialog data
+    let dialogData = {
+      attribute: inData?.attribute ? inData.attribute : "body",
+      skill: inData?.skill ? inData.skill : "athletics",
+      difficulty: inData?.difficulty ? inData.difficulty : 4,
+      complexity: inData?.complexity ? inData.complexity : 0,
+      diceMod: inData?.diceMod ? inData.diceMod : 0,
+      expertiseMod: inData?.expertiseMod ? indData.expertiseMod : 0,
+      attributes: {},
+      skills: {},
+    };
+
+    // Add each attribute as an option to the data
+    for (let [k, v] of Object.entries(this.data.data.attributes)) {
+      dialogData.attributes[k] = k.toString();
+    }
+
+    // Add each skill as an option to the data
+    for (let [k, v] of Object.entries(this.data.data.skills)) {
+      dialogData.skills[k] = k.toString();
+    }
+
+    // Create the html template
+    const html = await renderTemplate(
+      "systems/titan/templates/checks/check-basic-dialog.hbs",
+      dialogData
+    );
+
+    // Create the dialog
+    return new Promise((resolve) => {
+      const data = {
+        title: game.i18n.localize(CONFIG.TITAN.local.check),
+        content: html,
+        buttons: {
+          roll: {
+            label: game.i18n.localize(CONFIG.TITAN.local.roll),
+            callback: (html) =>
+              resolve(this._processCheckOptions(html[0].querySelector("form"))),
+          },
+          cancel: {
+            label: game.i18n.localize(CONFIG.TITAN.local.cancel),
+            callback: (html) => resolve({ cancelled: true }),
+          },
+        },
+        default: "roll",
+        close: () => resolve({ cancelled: true }),
+      };
+
+      new Dialog(data, null).render(true);
+    });
+  }
+
+  // Process dialog results
+  _processCheckOptions(form) {
+    return {
+      attribute: form.attribute.value,
+      skill: form.skill.value,
+      difficulty: parseInt(form.difficulty.value),
+    };
+  }
 }

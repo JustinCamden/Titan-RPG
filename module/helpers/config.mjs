@@ -55,6 +55,9 @@ TITAN.local = {
     resilience: "TITAN.resistances.resilience",
     willpower: "TITAN.resistances.willpower",
   },
+
+  check: "TITAN.check.name",
+  roll: "TITAN.check.roll",
 };
 
 TITAN.settings = {
