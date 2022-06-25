@@ -390,7 +390,7 @@ export class TitanActor extends Actor {
               label: game.i18n.localize(CONFIG.TITAN.local.roll),
               callback: (html) =>
                 resolve(
-                  this._processCheckOptions(html[0].querySelector("form"))
+                  this._processBasicCheckOptions(html[0].querySelector("form"))
                 ),
             },
             cancel: {
@@ -442,6 +442,18 @@ export class TitanActor extends Actor {
       check: check,
       checkOptions: checkOptions,
       checkParameters: checkParameters,
+    };
+  }
+
+  // Process check dialog results
+  _processBasicCheckOptions(form) {
+    return {
+      attribute: form.attribute.value,
+      skill: form.skill.value,
+      difficulty: parseInt(form.difficulty.value),
+      complexity: 0,
+      diceMod: 0,
+      expertiseMod: 0,
     };
   }
 }

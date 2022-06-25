@@ -233,7 +233,10 @@ export class TitanActorSheet extends ActorSheet {
 
         // Attribute rolls
         case "attribute": {
-          this.getBasicCheck({ attribute: dataset.rollAttribute });
+          this.getBasicCheck({
+            attribute: dataset.rollAttribute,
+            skill: "none",
+          });
           break;
         }
 
@@ -242,6 +245,7 @@ export class TitanActorSheet extends ActorSheet {
           this.getBasicCheck({
             skill: dataset.rollSkill,
             attribute: "default",
+            getOptions: true,
           });
 
           break;
