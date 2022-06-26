@@ -43,6 +43,9 @@ Hooks.once("init", async function () {
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("titan", TitanItemSheet, { makeDefault: true });
 
+  // Register system settings
+  registerSystemSettings();
+
   // Preload Handlebars templates.
   return await preloadHandlebarsTemplates();
 });
@@ -131,4 +134,18 @@ function rollItemMacro(itemName) {
 
   // Trigger the item roll
   return item.roll();
+}
+
+/* -------------------------------------------- */
+/*  System Settings                             */
+/* -------------------------------------------- */
+function registerSystemSettings() {
+  game.settings.register("titan", "showCheckOptions", {
+    config: true,
+    scope: "client",
+    name: "SETTINGS.showCheckOptions.name",
+    hint: "SETTINGS.showCheckOptions.hint",
+    type: Boolean,
+    default: false,
+  });
 }

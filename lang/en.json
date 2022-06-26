@@ -68,5 +68,10 @@
 
 
   "TITAN.cancel": "Cancel",
-  "TITAN.none": "None"
+  "TITAN.none": "None",
+
+  "SETTINGS.showCheckOptions": {
+    "name": "Ask for Check Options by default.",
+    "hint": "Hold Shift to toggle this setting."
+  }
 }

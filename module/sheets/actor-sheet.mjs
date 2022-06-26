@@ -290,6 +290,7 @@ export class TitanActorSheet extends ActorSheet {
     const dataset = event.currentTarget.dataset;
     const getOptions =
       dataset.getOptions == "true" ||
+      game.settings.get("titan", "showCheckOptions") == true ||
       (dataset.getOptions == "default" && event.shiftKey);
     this.getBasicCheck({
       attribute: dataset.attribute,
