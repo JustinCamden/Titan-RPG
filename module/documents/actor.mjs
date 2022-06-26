@@ -145,8 +145,7 @@ export class TitanActor extends Actor {
     data.resistance.willpower.baseValue =
       data.attribute.soul.value + Math.ceil(data.attribute.mind.value / 2);
     data.resistance.willpower.value =
-      data.resistance.willpower.baseValue +
-      data.resistance.willpower.staticMod;
+      data.resistance.willpower.baseValue + data.resistance.willpower.staticMod;
 
     // Calculate max stamina
     let maxStaminaBase =
@@ -370,11 +369,11 @@ export class TitanActor extends Actor {
       // Create the dialog
       checkOptions = await new Promise((resolve) => {
         const data = {
-          title: game.i18n.localize(CONFIG.TITAN.local.check),
+          title: game.i18n.localize(CONFIG.TITAN.local.check.name),
           content: html,
           buttons: {
             roll: {
-              label: game.i18n.localize(CONFIG.TITAN.local.roll),
+              label: game.i18n.localize(CONFIG.TITAN.local.check.roll),
               callback: (html) =>
                 resolve(
                   this._processBasicCheckOptions(html[0].querySelector("form"))
@@ -496,7 +495,7 @@ export class TitanActor extends Actor {
       // Create the dialog
       checkOptions = await new Promise((resolve) => {
         const data = {
-          title: game.i18n.localize(CONFIG.TITAN.local.check),
+          title: game.i18n.localize(CONFIG.TITAN.local.check.name),
           content: html,
           buttons: {
             roll: {

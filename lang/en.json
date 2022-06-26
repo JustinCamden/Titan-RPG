@@ -47,6 +47,7 @@
   "TITAN.skill.survival": "Survival",
   "TITAN.skill.theology": "Theology",
 
+  "TITAN.resistance.name": "Resistance",
   "TITAN.resistance.reflexes": "Reflexes",
   "TITAN.resistance.resilience": "Resilience",
   "TITAN.resistance.willpower": "Willpower",
@@ -66,10 +67,10 @@
   "TITAN.check.roll": "Roll",
   "TITAN.check.bonusPenaltyDice": "Bonus / Penalty Dice",
 
-
   "TITAN.cancel": "Cancel",
   "TITAN.none": "None",
 
+  "TITAN.item.rarity.name": "Rarity",
   "TITAN.item.rarity.common": "Common",
   "TITAN.item.rarity.uncommon": "Uncommon",
   "TITAN.item.rarity.rare": "Rare",
