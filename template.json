@@ -3,7 +3,6 @@
     "types": ["player", "npc"],
     "templates": {
       "character": {
-        "biography": "",
         "attributes": {
           "body": {
             "baseValue": 1,
@@ -278,38 +277,88 @@
             }
           }
         }
+      },
+      "base": {
+        "description": "",
+        "race": "",
+        "size": "",
+        "tags": [],
+        "version": 1.0
       }
     },
     "player": {
-      "templates": ["character"],
+      "templates": ["base", "character"],
       "exp": {
         "earned": 0
       },
       "inspiration": 0
     },
     "npc": {
-      "templates": ["character"]
+      "templates": ["base", "character"]
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": ["item", "equipment", "armor", "weapon", "spell", "miracle", "talent"],
     "templates": {
       "base": {
-        "description": ""
+        "basicChecks": [],
+        "description": "",
+        "damage": [],
+        "healing": [],
+        "rarity": "common",
+        "rulesElements": [],
+        "tags": [],
+        "version": 1.0
+      },
+      "value": {
+        "value" : 0
+      }, 
+      "quantity": {
+        "quantity": 1
+      }, 
+      "expCost": {
+        "expCost" : 2
+      },
+      "equipped": {
+        "equipped": false
+      },
+      "resolveCost": {
+        "resolveCost": 0
+      },
+      "duration": {
+        "durationFormula": "S",
+        "durationPeriod": "Round"
       }
     },
     "item": {
-      "templates": ["base"],
-      "quantity": 1,
-      "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
+      "templates": ["base", "value", "quantity"]
     },
-    "feature": {
-      "templates": ["base"]
+    "equipment": {
+      "templates": ["base", "value", "equipped"]
+    },
+    "armor": {
+      "templates": ["base", "value", "equipped"],
+      "armor": 2,
+      "armorTraits": []
+    },
+    "weapon": {
+      "templates": ["base", "value", "equipped"],
+      "attacks": [],
+      "resistanceChecks": [],
+      "weaponTraits": []
     },
     "spell": {
       "templates": ["base"],
-      "spellLevel": 1
+      "lore": "",
+      "resistanceChecks": []
+    },
+    "miracle": {
+      "templates": ["base", "resolveCost", "expCost"],
+      "source": "",
+      "resistanceChecks": []
+    },
+    "talent": {
+      "templates": ["base", "resolveCost", "expCost"]
     }
   }
 }
