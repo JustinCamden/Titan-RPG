@@ -73,5 +73,13 @@
   "SETTINGS.showCheckOptions": {
     "name": "Ask for Check Options by default.",
     "hint": "Hold Shift to toggle this setting."
+  },
+
+  "SETTINGS.initiativeFormula": {
+    "name": "Initiative Formula",
+    "hint": "Configure which method is used to determine who acts first in combat.",
+    "flat": "Highest to Lowest Initative, no dice rolls",
+    "roll1d6": "Roll 1d6 + Initiative, higher go first",
+    "roll2d6": "Roll 2d6 + Initiative, higher go first"
   }
 }

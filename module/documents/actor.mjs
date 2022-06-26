@@ -290,8 +290,18 @@ export class TitanActor extends Actor {
   async getInitiativeRoll(inData) {
     // Calculate the initiative value
     const initiative = this.data.data.derivedStats.initiative.value;
+
+    // Get the initiative formula
+    let initiativeFormula = "";
+    const initiativeSettings = game.settings.get("titan", "initiativeFormula");
+    if (initiativeSettings == "roll2d6") {
+      initiativeFormula = "2d6+";
+    } else if (initiativeSettings == "roll1d6") {
+      initiativeFormula = "1d6+";
+    }
+
     const roll = new Roll(
-      "2d6+" +
+      initiativeFormula +
         initiative.toString() +
         (inData != undefined && inData.bonus != undefined
           ? inData.bonus.toString()

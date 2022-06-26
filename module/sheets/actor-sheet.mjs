@@ -159,6 +159,9 @@ export class TitanActorSheet extends ActorSheet {
       .find(".effect-control")
       .click((ev) => onManageActiveEffect(ev, this.actor));
 
+    // Initiative rolls
+    html.find(".initiative-roll").click(this._onInitiativeRoll.bind(this));
+
     // Rollable basic checks
     html.find(".basic-check").click(this._onBasicCheck.bind(this));
 
@@ -231,32 +234,36 @@ export class TitanActorSheet extends ActorSheet {
           break;
         }
 
-        // Initiative rolls
-        case "initiative": {
-          // Get the roll from the actor
-          const rollResult = await this.actor.getInitiativeRoll();
-          if (rollResult) {
-            // Output the roll
-            const roll = rollResult.outRoll;
-            const localizedLabel = game.i18n.localize(
-              CONFIG.TITAN.local.derivedStats.initiative.name
-            );
-            roll.toMessage({
-              speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-              flavor: localizedLabel,
-              rollMode: game.settings.get("core", "rollMode"),
-            });
-
-            return roll;
-          }
-        }
-
         default: {
           return null;
           break;
         }
       }
     }
+  }
+
+  // Called when the player clicks an initiative check
+  async _onInitiativeRoll(event) {
+    this.getInitiativeRoll();
+  }
+
+  async getInitiativeRoll() {
+    // Get the roll from the actor
+    const rollResult = await this.actor.getInitiativeRoll();
+    if (rollResult) {
+      // Output the roll
+      const roll = rollResult.outRoll;
+      const localizedLabel = game.i18n.localize(
+        CONFIG.TITAN.local.derivedStats.initiative
+      );
+      roll.toMessage({
+        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+        flavor: localizedLabel,
+        rollMode: game.settings.get("core", "rollMode"),
+      });
+    }
+
+    return;
   }
 
   // Called when the player clicks a basic check
