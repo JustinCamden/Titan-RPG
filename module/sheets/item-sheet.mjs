@@ -7,8 +7,8 @@ export class TitanItemSheet extends ItemSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["titan", "sheet", "item"],
-      width: 540,
-      height: 500,
+      width: 780,
+      height: 600,
       tabs: [
         {
           navSelector: ".sheet-tabs",
@@ -50,6 +50,7 @@ export class TitanItemSheet extends ItemSheet {
     // Add the actor's data to context.data for easier access, as well as flags.
     context.data = itemData.data;
     context.flags = itemData.flags;
+    context.config = CONFIG.TITAN;
 
     return context;
   }

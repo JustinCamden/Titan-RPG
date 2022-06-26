@@ -343,7 +343,15 @@
     },
     "weapon": {
       "templates": ["base", "value", "equipped"],
-      "attacks": [],
+      "attacks": [
+        {
+          "type": "melee",
+          "ability": "body",
+          "skill": "meleeWeapons",
+          "damage": "1+S",
+          "traits": []
+        }
+      ],
       "resistanceChecks": [],
       "weaponTraits": []
     },

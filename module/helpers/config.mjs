@@ -5,12 +5,6 @@ export const TITAN = {};
  * @type {Object}
  */
 
-TITAN.attributes = {
-  body: "TITAN.attributes.body",
-  mind: "TITAN.attributes.mind",
-  soul: "TITAN.attributes.soul",
-};
-
 TITAN.local = {
   attributes: {
     body: "TITAN.attributes.body",
@@ -56,9 +50,10 @@ TITAN.local = {
     willpower: "TITAN.resistances.willpower",
   },
 
-  check: "TITAN.check.name",
-  roll: "TITAN.check.roll",
-  cancel: "TITAN.cancel",
+  check: {
+    name: "TITAN.check.name",
+    roll: "TITAN.check.roll",
+  },
 };
 
 TITAN.settings = {

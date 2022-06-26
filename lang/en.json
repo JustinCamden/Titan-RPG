@@ -70,6 +70,11 @@
   "TITAN.cancel": "Cancel",
   "TITAN.none": "None",
 
+  "TITAN.item.rarity.common": "Common",
+  "TITAN.item.rarity.uncommon": "Uncommon",
+  "TITAN.item.rarity.rare": "Rare",
+  "TITAN.item.rarity.special": "Special",
+
   "SETTINGS.showCheckOptions": {
     "name": "Ask for Check Options by default.",
     "hint": "Hold Shift to toggle this setting."
