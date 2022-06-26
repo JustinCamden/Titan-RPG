@@ -3,7 +3,7 @@
     "types": ["player", "npc"],
     "templates": {
       "character": {
-        "attributes": {
+        "attribute": {
           "body": {
             "baseValue": 1,
             "staticMod": 0
@@ -17,7 +17,7 @@
             "staticMod": 0
           }
         },
-        "resistances": {
+        "resistance": {
           "reflexes": {
             "staticMod": 0
           },
@@ -28,7 +28,7 @@
             "staticMod": 0
           }
         },
-        "skills": {
+        "skill": {
           "arcana": {
             "defaultAttribute": "mind",
             "training": {

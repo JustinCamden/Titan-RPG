@@ -1,12 +1,12 @@
 <form>
   <div class="form-group">
-    <label>{{localize "TITAN.attribute"}}</label>
+    <label>{{localize "TITAN.attribute.name"}}</label>
     <select name="attribute">
       {{! Attribute options }}
       {{#select attribute}}
-        {{#each attributes as |option key|}}
+        {{#each attribute as |option key|}}
           <option value="{{key}}">{{localize
-              (concat "TITAN.attributes." key)
+              (concat "TITAN.attribute." key)
             }}</option>
         {{/each}}
       {{/select}}
@@ -15,9 +15,9 @@
     {{! Skill options }}
     <select name="skill">
       {{#select skill}}
-        {{#each skills as |option key|}}
+        {{#each skill as |option key|}}
           <option value="{{key}}">{{localize
-              (concat "TITAN.skills." key)
+              (concat "TITAN.skill." key)
             }}</option>
         {{/each}}
         {{! None option }}

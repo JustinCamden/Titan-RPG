@@ -6,36 +6,36 @@ export const TITAN = {};
  */
 
 TITAN.local = {
-  attributes: {
-    body: "TITAN.attributes.body",
-    mind: "TITAN.attributes.mind",
-    soul: "TITAN.attributes.soul",
+  attribute: {
+    body: "TITAN.attribute.body",
+    mind: "TITAN.attribute.mind",
+    soul: "TITAN.attribute.soul",
   },
 
   derivedStats: {
     initiative: "TITAN.derivedStats.initiative",
   },
 
-  skills: {
-    arcana: "TITAN.skills.arcana",
-    athletics: "TITAN.skills.athletics",
-    beastHandling: "TITAN.skills.beastHandling",
-    deception: "TITAN.skills.deception",
-    dexterity: "TITAN.skills.dexterity",
-    diplomacy: "TITAN.skills.diplomacy",
-    engineering: "TITAN.skills.engineering",
-    intimidation: "TITAN.skills.intimidation",
-    investigation: "TITAN.skills.investigation",
-    lore: "TITAN.skills.lore",
-    medicine: "TITAN.skills.medicine",
-    meleeWeapons: "TITAN.skills.meleeWeapons",
-    perception: "TITAN.skills.perception",
-    performance: "TITAN.skills.performance",
-    rangedWeapons: "TITAN.skills.rangedWeapons",
-    sleightOfHand: "TITAN.skills.sleightOfHand",
-    stealth: "TITAN.skills.stealth",
-    survival: "TITAN.skills.survival",
-    theology: "TITAN.skills.theology",
+  skill: {
+    arcana: "TITAN.skill.arcana",
+    athletics: "TITAN.skill.athletics",
+    beastHandling: "TITAN.skill.beastHandling",
+    deception: "TITAN.skill.deception",
+    dexterity: "TITAN.skill.dexterity",
+    diplomacy: "TITAN.skill.diplomacy",
+    engineering: "TITAN.skill.engineering",
+    intimidation: "TITAN.skill.intimidation",
+    investigation: "TITAN.skill.investigation",
+    lore: "TITAN.skill.lore",
+    medicine: "TITAN.skill.medicine",
+    meleeWeapons: "TITAN.skill.meleeWeapons",
+    perception: "TITAN.skill.perception",
+    performance: "TITAN.skill.performance",
+    rangedWeapons: "TITAN.skill.rangedWeapons",
+    sleightOfHand: "TITAN.skill.sleightOfHand",
+    stealth: "TITAN.skill.stealth",
+    survival: "TITAN.skill.survival",
+    theology: "TITAN.skill.theology",
   },
 
   resolve: {
@@ -44,10 +44,10 @@ TITAN.local = {
     wounds: "TITAN.resources.wounds",
   },
 
-  resistances: {
-    reflexes: "TITAN.resistances.reflexes",
-    resilience: "TITAN.resistances.resilience",
-    willpower: "TITAN.resistances.willpower",
+  resistance: {
+    reflexes: "TITAN.resistance.reflexes",
+    resilience: "TITAN.resistance.resilience",
+    willpower: "TITAN.resistance.willpower",
   },
 
   check: {
@@ -57,13 +57,13 @@ TITAN.local = {
 };
 
 TITAN.settings = {
-  attributes: {
+  attribute: {
     min: 1,
     max: 8,
     totalExpCostByRank: [2, 7, 14, 23, 34, 47, 62],
   },
 
-  skills: {
+  skill: {
     training: {
       max: 3,
       totalExpCostByRank: [1, 3, 7],

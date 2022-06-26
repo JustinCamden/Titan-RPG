@@ -20,7 +20,7 @@ export class TitanActorSheet extends ActorSheet {
         {
           navSelector: ".sheet-tabs",
           contentSelector: ".sheet-body",
-          initial: "skills",
+          initial: "skill",
         },
       ],
     });
@@ -171,7 +171,7 @@ export class TitanActorSheet extends ActorSheet {
     // Editing resources
     html.find(".resource-edit").change(this._onResourceEdit.bind(this));
 
-    // Editing skills
+    // Editing skill
     html.find(".skill-edit").change(this._onSkillEdit.bind(this));
 
     // Drag events for macros.
@@ -299,7 +299,7 @@ export class TitanActorSheet extends ActorSheet {
 
     // Get the localized label
     let localizedLabel = game.i18n.localize(
-      CONFIG.TITAN.local.attributes[basicCheck.checkOptions.attribute]
+      CONFIG.TITAN.local.attribute[basicCheck.checkOptions.attribute]
     );
 
     // Add the skill to the label if appropriate
@@ -308,7 +308,7 @@ export class TitanActorSheet extends ActorSheet {
         localizedLabel +
         " (" +
         game.i18n.localize(
-          CONFIG.TITAN.local.skills[basicCheck.checkOptions.skill]
+          CONFIG.TITAN.local.skill[basicCheck.checkOptions.skill]
         ) +
         ")";
     }
@@ -357,7 +357,7 @@ export class TitanActorSheet extends ActorSheet {
 
     // Get the localized label
     let localizedLabel = game.i18n.localize(
-      CONFIG.TITAN.local.resistances[resistanceCheck.checkOptions.resistance]
+      CONFIG.TITAN.local.resistance[resistanceCheck.checkOptions.resistance]
     );
 
     // Evaluate the check
@@ -377,13 +377,13 @@ export class TitanActorSheet extends ActorSheet {
     // Ensure the attribute is within a valid range
     const newValue = event.target.value;
 
-    const maxAttributeValue = CONFIG.TITAN.attributes.settings.max;
+    const maxAttributeValue = CONFIG.TITAN.attribute.settings.max;
     if (newValue > maxAttributeValue) {
       event.target.value = maxAttributeValue;
     } else {
-      const minAttributeValue = CONFIG.TITAN.attributes.settings.min;
+      const minAttributeValue = CONFIG.TITAN.attribute.settings.min;
       if (newValue < minAttributeValue) {
-        event.target.value = CONFIG.TITAN.attributes.settings.min;
+        event.target.value = CONFIG.TITAN.attribute.settings.min;
       }
     }
 
@@ -410,14 +410,14 @@ export class TitanActorSheet extends ActorSheet {
     const newValue = event.target.value;
 
     if (event.target.dataset.skillType == "training") {
-      const maxSkillTraining = CONFIG.TITAN.skills.training.max;
+      const maxSkillTraining = CONFIG.TITAN.skill.training.max;
       if (newValue > maxSkillTraining) {
         event.target.value = maxSkillTraining;
       } else if (newValue < 0) {
         event.target.value = 0;
       }
     } else {
-      const maxSkillExpertise = CONFIG.TITAN.skills.expertise.max;
+      const maxSkillExpertise = CONFIG.TITAN.skill.expertise.max;
       if (newValue > maxSkillExpertise) {
         event.target.value = maxSkillExpertise;
       } else if (newValue < 0) {

@@ -1,28 +1,28 @@
 {{! Skills Tab }}
 <div>
   {{! Attributes}}
-  <div class="attributes-panel grid grid-3col">
+  <div class="attribute-panel grid grid-3col">
 
     {{! For each attribute }}
-    {{#each data.attributes as |attribute key|}}
+    {{#each data.attribute as |attribute key|}}
 
       {{! Rollable Label}}
       <div class="attribute flex-group-center border">
         <label
-          for="data.attributes.{{key}}.value"
+          for="data.attribute.{{key}}.value"
           class="stat-label rollable basic-check"
           data-attribute={{key}}
           data-skill="none"
           data-get-options="default"
         >
-          {{localize (concat "TITAN.attributes." key)}}
+          {{localize (concat "TITAN.attribute." key)}}
         </label>
         {{! Value Box }}
         <div class="stat-content flexrow flex-group-center flex-between">
           <input
             class="attribute-edit"
             type="text"
-            name="data.attributes.{{key}}.baseValue"
+            name="data.attribute.{{key}}.baseValue"
             value="{{attribute.baseValue}}"
             data-dtype="Number"
           />
@@ -32,29 +32,29 @@
   </div>
 
   {{! Skills List }}
-  <ol class="skills-list list list-4col">
+  <ol class="skill-list list list-4col">
     {{! For each skill}}
-    {{#each data.skills as |skill key|}}
+    {{#each data.skill as |skill key|}}
 
       {{! Rollable label}}
       <li class="skill flex-group-center list-item border">
         <label
-          for="data.skills.{{key}}"
+          for="data.skill.{{key}}"
           class="stat-label rollable basic-check"
           data-attribute="default"
           data-skill={{key}}
           data-get-options="default"
-        >{{localize (concat "TITAN.skills." key)}}</label>
+        >{{localize (concat "TITAN.skill." key)}}</label>
 
         {{! Training value edit }}
         <div class="stat-content flexrow flex-group-center flex-between">
           <label
-            for="data.skills.{{key}}.training.value"
+            for="data.skill.{{key}}.training.value"
             class="stat-label"
           >{{localize "TITAN.training"}}</label>
-          <label for="data.skills.{{key}}" class="stat-label"> </label>
+          <label for="data.skill.{{key}}" class="stat-label"> </label>
           <label
-            for="data.skills.{{key}}.expertise.value"
+            for="data.skill.{{key}}.expertise.value"
             class="stat-label"
           >{{localize "TITAN.expertise"}}</label>
         </div>
@@ -64,7 +64,7 @@
           <input
             class="skill-edit expertise-edit"
             type="text"
-            name="data.skills.{{key}}.training.baseValue"
+            name="data.skill.{{key}}.training.baseValue"
             value="{{skill.training.value}}"
             data-skill={{key}}
             data-skill-type="training"
@@ -74,7 +74,7 @@
           <input
             class="skill-edit expertise-edit"
             type="text"
-            name="data.skills.{{key}}.expertise.baseValue"
+            name="data.skill.{{key}}.expertise.baseValue"
             value="{{skill.expertise.value}}"
             data-skill={{key}}
             data-skill-type="expertise"

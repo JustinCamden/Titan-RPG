@@ -58,36 +58,36 @@ export class TitanActor extends Actor {
     const data = actorData.data;
 
     // Calculate ability mods
-    for (let [k, v] of Object.entries(data.attributes)) {
-      data.attributes[k].value = v.baseValue + v.staticMod;
+    for (let [k, v] of Object.entries(data.attribute)) {
+      data.attribute[k].value = v.baseValue + v.staticMod;
     }
 
     // Calculate the total attribute value
     let totalBaseAttributeValue = 0;
-    for (const attribute in data.attributes) {
+    for (const attribute in data.attribute) {
       totalBaseAttributeValue =
-        totalBaseAttributeValue + data.attributes[attribute].baseValue;
+        totalBaseAttributeValue + data.attribute[attribute].baseValue;
     }
 
     // Calculate derived stats
     // Initiative = (Mind + Training in Awareness) / 2 rounded up (+ Mod)
     data.derivedStats.initiative.baseValue =
-      data.attributes.mind.baseValue +
-      data.attributes.mind.staticMod +
-      data.skills.dexterity.training.baseValue +
-      data.skills.dexterity.training.staticMod +
-      data.skills.perception.training.baseValue +
-      data.skills.perception.training.staticMod;
+      data.attribute.mind.baseValue +
+      data.attribute.mind.staticMod +
+      data.skill.dexterity.training.baseValue +
+      data.skill.dexterity.training.staticMod +
+      data.skill.perception.training.baseValue +
+      data.skill.perception.training.staticMod;
     data.derivedStats.initiative.value =
       data.derivedStats.initiative.baseValue +
       data.derivedStats.initiative.staticMod;
 
     // Awareness = (Mind + Training in Awareness) / 2 rounded up (+ Mod)
     data.derivedStats.awareness.baseValue = Math.ceil(
-      (data.attributes.mind.baseValue +
-        data.attributes.mind.staticMod +
-        data.skills.perception.training.baseValue +
-        data.skills.perception.training.staticMod) /
+      (data.attribute.mind.baseValue +
+        data.attribute.mind.staticMod +
+        data.skill.perception.training.baseValue +
+        data.skill.perception.training.staticMod) /
         2
     );
     data.derivedStats.awareness.value =
@@ -96,10 +96,10 @@ export class TitanActor extends Actor {
 
     // Defense = (Body + Training in Dexterity) / 2 rounded up (+ Mod)
     data.derivedStats.defense.baseValue = Math.ceil(
-      (data.attributes.body.baseValue +
-        data.attributes.body.staticMod +
-        data.skills.dexterity.training.baseValue +
-        data.skills.dexterity.training.staticMod) /
+      (data.attribute.body.baseValue +
+        data.attribute.body.staticMod +
+        data.skill.dexterity.training.baseValue +
+        data.skill.dexterity.training.staticMod) /
         2
     );
     data.derivedStats.defense.value =
@@ -107,10 +107,10 @@ export class TitanActor extends Actor {
 
     // Accuracy = (Mind + Training in Ranged Weapons) / 2 rounded up (+ Mod)
     data.derivedStats.accuracy.baseValue = Math.ceil(
-      (data.attributes.mind.baseValue +
-        data.attributes.mind.staticMod +
-        data.skills.rangedWeapons.training.baseValue +
-        data.skills.rangedWeapons.training.staticMod) /
+      (data.attribute.mind.baseValue +
+        data.attribute.mind.staticMod +
+        data.skill.rangedWeapons.training.baseValue +
+        data.skill.rangedWeapons.training.staticMod) /
         2
     );
     data.derivedStats.accuracy.value =
@@ -119,34 +119,34 @@ export class TitanActor extends Actor {
 
     // Melee = (Body + Training in Melee Weapons) / 2 rounded up (+ Mod)
     data.derivedStats.melee.baseValue = Math.ceil(
-      (data.attributes.body.baseValue +
-        data.attributes.body.staticMod +
-        data.skills.meleeWeapons.training.baseValue +
-        data.skills.meleeWeapons.training.staticMod) /
+      (data.attribute.body.baseValue +
+        data.attribute.body.staticMod +
+        data.skill.meleeWeapons.training.baseValue +
+        data.skill.meleeWeapons.training.staticMod) /
         2
     );
     data.derivedStats.melee.value =
       data.derivedStats.melee.baseValue + data.derivedStats.melee.staticMod;
 
     // Reflexes = (Mind + (Body/2))
-    data.resistances.reflexes.baseValue =
-      data.attributes.mind.value + Math.ceil(data.attributes.body.value / 2);
-    data.resistances.reflexes.value =
-      data.resistances.reflexes.baseValue + data.resistances.reflexes.staticMod;
+    data.resistance.reflexes.baseValue =
+      data.attribute.mind.value + Math.ceil(data.attribute.body.value / 2);
+    data.resistance.reflexes.value =
+      data.resistance.reflexes.baseValue + data.resistance.reflexes.staticMod;
 
     // Resilience = (Body + (Soul/2))
-    data.resistances.resilience.baseValue =
-      data.attributes.body.value + Math.ceil(data.attributes.soul.value / 2);
-    data.resistances.resilience.value =
-      data.resistances.resilience.baseValue +
-      data.resistances.resilience.staticMod;
+    data.resistance.resilience.baseValue =
+      data.attribute.body.value + Math.ceil(data.attribute.soul.value / 2);
+    data.resistance.resilience.value =
+      data.resistance.resilience.baseValue +
+      data.resistance.resilience.staticMod;
 
     // Willpower = (Soul + (Mind/2))
-    data.resistances.willpower.baseValue =
-      data.attributes.soul.value + Math.ceil(data.attributes.mind.value / 2);
-    data.resistances.willpower.value =
-      data.resistances.willpower.baseValue +
-      data.resistances.willpower.staticMod;
+    data.resistance.willpower.baseValue =
+      data.attribute.soul.value + Math.ceil(data.attribute.mind.value / 2);
+    data.resistance.willpower.value =
+      data.resistance.willpower.baseValue +
+      data.resistance.willpower.staticMod;
 
     // Calculate max stamina
     let maxStaminaBase =
@@ -158,7 +158,7 @@ export class TitanActor extends Actor {
 
     // Calculate max resolve
     let maxResolveBase = Math.ceil(
-      (data.attributes.soul.baseValue *
+      (data.attribute.soul.baseValue *
         CONFIG.TITAN.settings.resources.resolve.maxBaseMulti) /
         2
     );
@@ -177,10 +177,10 @@ export class TitanActor extends Actor {
       maxWoundsBase + data.resources.wounds.staticMod;
 
     // Calculate skill mods
-    for (let [k, v] of Object.entries(data.skills)) {
-      data.skills[k].training.value =
+    for (let [k, v] of Object.entries(data.skill)) {
+      data.skill[k].training.value =
         v.training.baseValue + v.training.staticMod;
-      data.skills[k].expertise.value =
+      data.skill[k].expertise.value =
         v.expertise.baseValue + v.expertise.staticMod;
     }
   }
@@ -198,31 +198,31 @@ export class TitanActor extends Actor {
     // Calculate the amount of EXP spent
     let spentExp = 0;
 
-    // Add cost of current attributes
-    for (const attribute in data.attributes) {
-      const attributeBaseValue = data.attributes[attribute].baseValue;
+    // Add cost of current attribute
+    for (const attribute in data.attribute) {
+      const attributeBaseValue = data.attribute[attribute].baseValue;
 
       // Calculate xp cost
-      const minAttributeValue = CONFIG.TITAN.settings.attributes.min;
+      const minAttributeValue = CONFIG.TITAN.settings.attribute.min;
       if (attributeBaseValue > minAttributeValue) {
         spentExp =
           spentExp +
-          CONFIG.TITAN.settings.attributes.totalExpCostByRank[
+          CONFIG.TITAN.settings.attribute.totalExpCostByRank[
             attributeBaseValue - minAttributeValue - 1
           ];
       }
     }
 
-    // Add cost of current skills
-    for (const skill in data.skills) {
-      const skillData = data.skills[skill];
+    // Add cost of current skill
+    for (const skill in data.skill) {
+      const skillData = data.skill[skill];
 
       // Calculate xp cost of training
       const skillTrainingBaseValue = skillData.training.baseValue;
       if (skillTrainingBaseValue > 0) {
         spentExp =
           spentExp +
-          CONFIG.TITAN.settings.skills.training.totalExpCostByRank[
+          CONFIG.TITAN.settings.skill.training.totalExpCostByRank[
             skillTrainingBaseValue - 1
           ];
       }
@@ -232,7 +232,7 @@ export class TitanActor extends Actor {
       if (skillExpertiseBaseValue > 0) {
         spentExp =
           spentExp +
-          CONFIG.TITAN.settings.skills.expertise.totalExpCostByRank[
+          CONFIG.TITAN.settings.skill.expertise.totalExpCostByRank[
             skillExpertiseBaseValue - 1
           ];
       }
@@ -334,7 +334,7 @@ export class TitanActor extends Actor {
     if (checkOptions.attribute == "default") {
       // Ensure the attribute is set
       checkOptions.attribute =
-        this.data.data.skills[checkOptions.skill].defaultAttribute;
+        this.data.data.skill[checkOptions.skill].defaultAttribute;
     }
 
     // Get options?
@@ -347,18 +347,18 @@ export class TitanActor extends Actor {
         complexity: checkOptions.complexity,
         diceMod: checkOptions.diceMod,
         expertiseMod: checkOptions.expertiseMod,
-        attributes: {},
-        skills: {},
+        attribute: {},
+        skill: {},
       };
 
       // Add each attribute as an option to the data
-      for (let [k, v] of Object.entries(this.data.data.attributes)) {
-        dialogData.attributes[k] = k.toString();
+      for (let [k, v] of Object.entries(this.data.data.attribute)) {
+        dialogData.attribute[k] = k.toString();
       }
 
       // Add each skill as an option to the data
-      for (let [k, v] of Object.entries(this.data.data.skills)) {
-        dialogData.skills[k] = k.toString();
+      for (let [k, v] of Object.entries(this.data.data.skill)) {
+        dialogData.skill[k] = k.toString();
       }
 
       // Create the html template
@@ -413,7 +413,7 @@ export class TitanActor extends Actor {
     // Create the check parameters
     let checkParameters = {
       numberOfDice:
-        this.data.data.attributes[checkOptions.attribute].value +
+        this.data.data.attribute[checkOptions.attribute].value +
         checkOptions.diceMod,
       expertise: checkOptions.expertiseMod,
       difficulty: checkOptions.difficulty,
@@ -422,7 +422,7 @@ export class TitanActor extends Actor {
 
     // Calculate the skill mod
     if (checkOptions.skill != "none") {
-      const skillData = this.data.data.skills[checkOptions.skill];
+      const skillData = this.data.data.skill[checkOptions.skill];
 
       // Training
       checkParameters.numberOfDice =
@@ -479,12 +479,12 @@ export class TitanActor extends Actor {
         complexity: checkOptions.complexity,
         diceMod: checkOptions.diceMod,
         expertiseMod: checkOptions.expertiseMod,
-        resistances: {},
+        resistance: {},
       };
 
       // Add each resistance as an option to the data
-      for (let [k, v] of Object.entries(this.data.data.resistances)) {
-        dialogData.resistances[k] = k.toString();
+      for (let [k, v] of Object.entries(this.data.data.resistance)) {
+        dialogData.resistance[k] = k.toString();
       }
 
       // Create the html template
@@ -541,7 +541,7 @@ export class TitanActor extends Actor {
     // Create the check parameters
     let checkParameters = {
       numberOfDice:
-        this.data.data.resistances[checkOptions.resistance].value +
+        this.data.data.resistance[checkOptions.resistance].value +
         checkOptions.diceMod,
       expertise: checkOptions.expertiseMod,
       difficulty: checkOptions.difficulty,
