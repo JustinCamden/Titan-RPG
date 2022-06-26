@@ -50,9 +50,8 @@
       <div class="resistance flex-group-center border">
         <label
           for="data.resistances.{{key}}.value"
-          class="stat-label rollable"
-          data-roll-type="resistance"
-          data-roll-resistance={{key}}
+          class="stat-label rollable resistance-check"
+          data-resistance={{key}}
         >
           {{localize (concat "TITAN.resistances." key)}}
         </label>

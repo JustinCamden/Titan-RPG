@@ -287,32 +287,6 @@ export class TitanActor extends Actor {
     super._onUpdate(changed, options, userId);
   }
 
-  async getResistanceCheck(inData) {
-    // If the resistance key is valid
-    const resistanceData = this.data.data.resistances[inData.resistance];
-    if (resistanceData) {
-      // Calculate the resistance mod
-      const resistanceMod = resistanceData.value;
-
-      // Perform the roll
-      const resistanceCheck = new Check({
-        numberOfDice: resistanceMod,
-        difficulty: inData.difficulty ? inData.difficulty : 4,
-        complexity: inData.complexity ? inData.complexity : 0,
-      });
-
-      // Return the data
-      const retVal = {
-        check: resistanceCheck,
-        resistanceMod: resistanceMod,
-      };
-
-      return retVal;
-    }
-
-    return null;
-  }
-
   async getInitiativeRoll(inData) {
     // Calculate the initiative value
     const initiative = this.data.data.derivedStats.initiative.value;
@@ -342,7 +316,7 @@ export class TitanActor extends Actor {
           : 4,
       complexity: inData?.complexity > -1 ? inData.complexity : 0,
       diceMod: inData?.diceMod ? inData.diceMod : 0,
-      expertiseMod: inData?.expertiseMod ? inData.expertiseMod : 0,
+      expertiseMod: inData?.expertiseMod > 0 ? inData.expertiseMod : 0,
       getOptions: inData?.getOptions ? inData.getOptions : false,
     };
 
@@ -465,6 +439,120 @@ export class TitanActor extends Actor {
     return {
       attribute: form.attribute.value,
       skill: form.skill.value,
+      difficulty: parseInt(form.difficulty.value),
+      complexity: parseInt(form.complexity.value),
+      diceMod: parseInt(form.diceMod.value),
+      expertiseMod: 0,
+    };
+  }
+
+  async getResistanceCheck(inData) {
+    // Get a check from the actor
+    let checkOptions = {
+      resistance: inData?.resistance ? inData.resistance : "reflexes",
+      difficulty:
+        inData?.difficulty > 1 && inData?.difficulty < 7
+          ? inData.difficulty
+          : 4,
+      complexity: inData?.complexity > -1 ? inData.complexity : 0,
+      diceMod: inData?.diceMod ? inData.diceMod : 0,
+      expertiseMod: inData?.expertiseMod > 0 ? inData.expertiseMod : 0,
+      getOptions: inData?.getOptions ? inData.getOptions : false,
+    };
+
+    // Get options?
+    if (checkOptions.getOptions) {
+      // Initialize dialog data
+      let dialogData = {
+        resistance: checkOptions.resistance,
+        difficulty: checkOptions.difficulty,
+        complexity: checkOptions.complexity,
+        diceMod: checkOptions.diceMod,
+        expertiseMod: checkOptions.expertiseMod,
+        resistances: {},
+      };
+
+      // Add each resistance as an option to the data
+      for (let [k, v] of Object.entries(this.data.data.resistances)) {
+        dialogData.resistances[k] = k.toString();
+      }
+
+      // Create the html template
+      const html = await renderTemplate(
+        "systems/titan/templates/checks/check-resistance-dialog.hbs",
+        dialogData
+      );
+
+      // Create the dialog
+      checkOptions = await new Promise((resolve) => {
+        const data = {
+          title: game.i18n.localize(CONFIG.TITAN.local.check),
+          content: html,
+          buttons: {
+            roll: {
+              label: game.i18n.localize(CONFIG.TITAN.local.roll),
+              callback: (html) =>
+                resolve(
+                  this._processResistanceCheckOptions(
+                    html[0].querySelector("form")
+                  )
+                ),
+            },
+            cancel: {
+              label: game.i18n.localize(CONFIG.TITAN.local.cancel),
+              callback: (html) => resolve({ cancelled: true }),
+            },
+          },
+          default: "roll",
+          close: () => resolve({ cancelled: true }),
+        };
+
+        new Dialog(data, null).render(true);
+      });
+
+      // Return if we cancelled the check
+      if (checkOptions.cancelled) {
+        return checkOptions;
+      }
+
+      // Validate difficulty
+      if (checkOptions.difficulty > 6) {
+        checkOptions.difficulty = 6;
+      } else if (checkOptions.difficulty < 2) {
+        checkOptions.difficulty = 2;
+      }
+
+      // Validate complexity
+      if (checkOptions.complexity < 0) {
+        checkOptions.complexity = 0;
+      }
+    }
+
+    // Create the check parameters
+    let checkParameters = {
+      numberOfDice:
+        this.data.data.resistances[checkOptions.resistance].value +
+        checkOptions.diceMod,
+      expertise: checkOptions.expertiseMod,
+      difficulty: checkOptions.difficulty,
+      complexity: checkOptions.complexity,
+    };
+
+    // Perform the roll
+    const check = new Check(checkParameters);
+
+    // Return the data
+    return {
+      check: check,
+      checkOptions: checkOptions,
+      checkParameters: checkParameters,
+    };
+  }
+
+  // Process check dialog results
+  _processResistanceCheckOptions(form) {
+    return {
+      resistance: form.resistance.value,
       difficulty: parseInt(form.difficulty.value),
       complexity: parseInt(form.complexity.value),
       diceMod: parseInt(form.diceMod.value),

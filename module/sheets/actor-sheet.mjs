@@ -159,8 +159,11 @@ export class TitanActorSheet extends ActorSheet {
       .find(".effect-control")
       .click((ev) => onManageActiveEffect(ev, this.actor));
 
-    // Rollable skills
+    // Rollable basic checks
     html.find(".basic-check").click(this._onBasicCheck.bind(this));
+
+    // Rollable resistance checks
+    html.find(".resistance-check").click(this._onResistanceCheck.bind(this));
 
     // Editing resources
     html.find(".resource-edit").change(this._onResourceEdit.bind(this));
@@ -228,36 +231,6 @@ export class TitanActorSheet extends ActorSheet {
           break;
         }
 
-        // Resistance rolls
-        case "resistance": {
-          // Check if the data is valid
-          const rollresistance = dataset.rollResistance;
-          if (rollresistance) {
-            // Get the roll from the actor
-            const resistanceCheck = await this.actor.getResistanceCheck({
-              resistance: rollresistance,
-            });
-
-            // Create a localized label
-            const localizedLabel = game.i18n.localize(
-              CONFIG.TITAN.local.resistances[rollresistance]
-            );
-
-            // Evaluate the check
-            await resistanceCheck.check.evaluateCheck();
-
-            // Post the check to chat
-            await resistanceCheck.check.toChatMessage({
-              user: game.user.id,
-              speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-              label: localizedLabel,
-              rollMode: game.settings.get("core", "rollMode"),
-            });
-          }
-
-          break;
-        }
-
         // Initiative rolls
         case "initiative": {
           // Get the roll from the actor
@@ -286,6 +259,7 @@ export class TitanActorSheet extends ActorSheet {
     }
   }
 
+  // Called when the player clicks a basic check
   async _onBasicCheck(event) {
     const dataset = event.currentTarget.dataset;
     const getOptions =
@@ -299,15 +273,17 @@ export class TitanActorSheet extends ActorSheet {
     });
   }
 
+  // Retrieves and posts a basic check
   async getBasicCheck(inData) {
     // Get a check from the actor
     let basicCheck = await this.actor.getBasicCheck({
       attribute: inData?.attribute ? inData.attribute : "body",
       skill: inData?.skill ? inData.skill : "athletics",
-      difficulty: inData?.difficulty ? inData.difficulty : 4,
-      complexity: inData?.complexity ? inData.complexity : 0,
+      difficulty:
+        inData?.difficulty > 2 && inData.difficulty < 7 ? inData.difficulty : 4,
+      complexity: inData?.complexity > 0 ? inData.complexity : 0,
       diceMod: inData?.diceMod ? inData.diceMod : 0,
-      expertiseMod: inData?.expertiseMod ? inData.expertiseMod : 0,
+      expertiseMod: inData?.expertiseMod > 0 ? inData.expertiseMod : 0,
       getOptions: inData?.getOptions || event.shiftKey ? true : false,
     });
     if (basicCheck.cancelled) {
@@ -335,6 +311,53 @@ export class TitanActorSheet extends ActorSheet {
 
     // Post the check to chat
     await basicCheck.check.toChatMessage({
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      label: localizedLabel,
+      rollMode: game.settings.get("core", "rollMode"),
+    });
+    return;
+  }
+
+  // Called when the player clicks a resistance check
+  async _onResistanceCheck(event) {
+    const dataset = event.currentTarget.dataset;
+    const getOptions =
+      dataset.getOptions == "true" ||
+      game.settings.get("titan", "showCheckOptions") == true ||
+      (dataset.getOptions == "default" && event.shiftKey);
+    this.getResistanceCheck({
+      resistance: dataset.resistance,
+      getOptions: getOptions,
+    });
+  }
+
+  // Retrieve and post a resistance check
+  async getResistanceCheck(inData) {
+    // Get a check from the actor
+    let resistanceCheck = await this.actor.getResistanceCheck({
+      resistance: inData?.resistance ? inData.resistance : "reflexes",
+      difficulty:
+        inData?.difficulty > 2 && inData.difficulty < 7 ? inData.difficulty : 4,
+      complexity: inData?.complexity > 0 ? inData.complexity : 0,
+      diceMod: inData?.diceMod ? inData.diceMod : 0,
+      expertiseMod: inData?.expertiseMod > 0 ? inData.expertiseMod : 0,
+      getOptions: inData?.getOptions || event.shiftKey ? true : false,
+    });
+    if (resistanceCheck.cancelled) {
+      return;
+    }
+
+    // Get the localized label
+    let localizedLabel = game.i18n.localize(
+      CONFIG.TITAN.local.resistances[resistanceCheck.checkOptions.resistance]
+    );
+
+    // Evaluate the check
+    await resistanceCheck.check.evaluateCheck();
+
+    // Post the check to chat
+    await resistanceCheck.check.toChatMessage({
       user: game.user.id,
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       label: localizedLabel,
