@@ -64,6 +64,9 @@
   "TITAN.check.dieMod": "Die Mod",
   "TITAN.check.expertiseMod": "Expertise Mod",
   "TITAN.check.roll": "Roll",
+  "TITAN.check.bonusPenaltyDice": "Bonus / Penalty Dice",
+
+
   "TITAN.cancel": "Cancel",
   "TITAN.none": "None"
 }

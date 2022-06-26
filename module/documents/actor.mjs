@@ -336,8 +336,11 @@ export class TitanActor extends Actor {
     let checkOptions = {
       attribute: inData?.attribute ? inData.attribute : "body",
       skill: inData?.skill ? inData.skill : "athletics",
-      difficulty: inData?.difficulty ? inData.difficulty : 4,
-      complexity: inData?.complexity ? inData.complexity : 0,
+      difficulty:
+        inData?.difficulty > 1 && inData?.difficulty < 7
+          ? inData.difficulty
+          : 4,
+      complexity: inData?.complexity > -1 ? inData.complexity : 0,
       diceMod: inData?.diceMod ? inData.diceMod : 0,
       expertiseMod: inData?.expertiseMod ? inData.expertiseMod : 0,
       getOptions: inData?.getOptions ? inData.getOptions : false,
@@ -348,18 +351,6 @@ export class TitanActor extends Actor {
       // Ensure the attribute is set
       checkOptions.attribute =
         this.data.data.skills[checkOptions.skill].defaultAttribute;
-    }
-
-    // Validate difficulty
-    if (checkOptions.difficulty > 6) {
-      checkOptions.difficulty = 6;
-    } else if (checkOptions.difficulty < 2) {
-      checkOptions.difficulty = 2;
-    }
-
-    // Validate complexity
-    if (checkOptions.complexity < 0) {
-      checkOptions.complexity = 0;
     }
 
     // Get options?
@@ -417,9 +408,21 @@ export class TitanActor extends Actor {
         new Dialog(data, null).render(true);
       });
 
-      // Return if we canceled the check
-      if (checkOptions.canceled) {
+      // Return if we cancelled the check
+      if (checkOptions.cancelled) {
         return checkOptions;
+      }
+
+      // Validate difficulty
+      if (checkOptions.difficulty > 6) {
+        checkOptions.difficulty = 6;
+      } else if (checkOptions.difficulty < 2) {
+        checkOptions.difficulty = 2;
+      }
+
+      // Validate complexity
+      if (checkOptions.complexity < 0) {
+        checkOptions.complexity = 0;
       }
     }
 
@@ -463,8 +466,8 @@ export class TitanActor extends Actor {
       attribute: form.attribute.value,
       skill: form.skill.value,
       difficulty: parseInt(form.difficulty.value),
-      complexity: 0,
-      diceMod: 0,
+      complexity: parseInt(form.complexity.value),
+      diceMod: parseInt(form.diceMod.value),
       expertiseMod: 0,
     };
   }

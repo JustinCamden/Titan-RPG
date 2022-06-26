@@ -58,6 +58,7 @@ TITAN.local = {
 
   check: "TITAN.check.name",
   roll: "TITAN.check.roll",
+  cancel: "TITAN.cancel",
 };
 
 TITAN.settings = {

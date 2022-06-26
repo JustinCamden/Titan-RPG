@@ -159,9 +159,6 @@ export class TitanActorSheet extends ActorSheet {
       .find(".effect-control")
       .click((ev) => onManageActiveEffect(ev, this.actor));
 
-    // Rollable abilities.
-    html.find(".rollable").click(this._onRoll.bind(this));
-
     // Rollable skills
     html.find(".basic-check").click(this._onBasicCheck.bind(this));
 

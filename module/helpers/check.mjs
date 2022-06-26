@@ -1,10 +1,13 @@
 export default class Check {
   constructor(inData) {
     this.parameters = {
-      numberOfDice: inData.numberOfDice ? inData.numberOfDice : 1,
-      expertise: inData.expertise ? inData.expertise : 0,
-      difficulty: inData.difficulty ? inData.difficulty : 4,
-      complexity: inData.complexity ? inData.complexity : 0,
+      numberOfDice: inData?.numberOfDice > -1 ? inData.numberOfDice : 1,
+      expertise: inData?.expertise > 0 ? inData.expertise : 0,
+      difficulty:
+        inData?.difficulty > 1 && inData?.difficulty < 7
+          ? inData.difficulty
+          : 4,
+      complexity: inData?.complexity > -1 ? inData.complexity : 0,
     };
 
     this.evaluated = false;
@@ -100,10 +103,12 @@ export default class Check {
   _getSortedDiceFromRoll() {
     let retVal = [];
     const results = this.roll.terms[0].results;
-    for (let i = 0; i < results.length; i++) {
-      retVal.push(results[i].result);
+    if (results) {
+      for (let i = 0; i < results.length; i++) {
+        retVal.push(results[i].result);
+      }
+      retVal.sort((a, b) => b - a);
     }
-    retVal.sort((a, b) => b - a);
 
     return retVal;
   }
