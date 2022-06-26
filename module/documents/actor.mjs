@@ -346,18 +346,18 @@ export class TitanActor extends Actor {
         complexity: checkOptions.complexity,
         diceMod: checkOptions.diceMod,
         expertiseMod: checkOptions.expertiseMod,
-        attribute: {},
-        skill: {},
+        attributeOptions: {},
+        skillOptions: {},
       };
 
       // Add each attribute as an option to the data
       for (let [k, v] of Object.entries(this.data.data.attribute)) {
-        dialogData.attribute[k] = k.toString();
+        dialogData.attributeOptions[k] = "TITAN.attribute." + k.toString();
       }
 
       // Add each skill as an option to the data
       for (let [k, v] of Object.entries(this.data.data.skill)) {
-        dialogData.skill[k] = k.toString();
+        dialogData.skillOptions[k] = "TITAN.skill." + k.toString();
       }
 
       // Create the html template
@@ -478,12 +478,12 @@ export class TitanActor extends Actor {
         complexity: checkOptions.complexity,
         diceMod: checkOptions.diceMod,
         expertiseMod: checkOptions.expertiseMod,
-        resistance: {},
+        resistanceOptions: {},
       };
 
       // Add each resistance as an option to the data
       for (let [k, v] of Object.entries(this.data.data.resistance)) {
-        dialogData.resistance[k] = k.toString();
+        dialogData.resistanceOptions[k] = "TITAN.resistance." + k.toString();
       }
 
       // Create the html template

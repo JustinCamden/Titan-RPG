@@ -4,10 +4,8 @@
     <select name="resistance">
       {{! Attribute options }}
       {{#select resistance}}
-        {{#each resistance as |option key|}}
-          <option value="{{key}}">{{localize
-              (concat "TITAN.resistance." key)
-            }}</option>
+        {{#each resistanceOptions as |option key|}}
+          <option value="{{key}}">{{localize option}}</option>
         {{/each}}
       {{/select}}
     </select>

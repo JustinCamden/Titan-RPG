@@ -4,10 +4,8 @@
     <select name="attribute">
       {{! Attribute options }}
       {{#select attribute}}
-        {{#each attribute as |option key|}}
-          <option value="{{key}}">{{localize
-              (concat "TITAN.attribute." key)
-            }}</option>
+        {{#each attributeOptions as |option key|}}
+          <option value="{{key}}">{{localize option}}</option>
         {{/each}}
       {{/select}}
     </select>
@@ -15,10 +13,8 @@
     {{! Skill options }}
     <select name="skill">
       {{#select skill}}
-        {{#each skill as |option key|}}
-          <option value="{{key}}">{{localize
-              (concat "TITAN.skill." key)
-            }}</option>
+        {{#each skillOptions as |option key|}}
+          <option value="{{key}}">{{localize option}}</option>
         {{/each}}
         {{! None option }}
         <option value="none">{{localize "TITAN.none"}}</option>

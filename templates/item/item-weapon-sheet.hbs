@@ -1,18 +1,24 @@
 <form class="{{cssClass}}" autocomplete="off">
+
+  {{! Header}}
   <header class="sheet-header">
     <img
-      class="profile-img"
+      class="item-img"
       src="{{item.img}}"
       data-edit="img"
       title="{{item.name}}"
     />
     <div class="header-fields grid grid-4col">
+
+      {{! Name}}
       <h1 class="item-name grid-span-2"><input
           name="name"
           type="text"
           value="{{item.name}}"
           placeholder="Name"
         /></h1>
+
+      {{! Value}}
       <div class="stat">
         <label class="stat-label">Value</label>
         <input
@@ -22,8 +28,9 @@
           data-dtype="Number"
         />
       </div>
+
+      {{! Rarity }}
       <div class="stat">
-        {{log config}}
         <label class="stat-label">Rarity</label>
         <input
           type="text"
@@ -31,6 +38,15 @@
           value="{{data.rarity}}"
           data-dtype="Number"
         />
+      <select id="difficulty">
+      {{#select difficulty}}
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      {{/select}}
+    </select>
       </div>
     </div>
   </header>
