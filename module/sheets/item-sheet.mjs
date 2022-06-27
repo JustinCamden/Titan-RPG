@@ -50,7 +50,12 @@ export class TitanItemSheet extends ItemSheet {
     // Add the actor's data to context.data for easier access, as well as flags.
     context.data = itemData.data;
     context.flags = itemData.flags;
-    context.rarityOptions = [];
+    context.rarityOptions = {
+      common: "TITAN.item.rarity.common",
+      uncommon: "TITAN.item.rarity.uncommon",
+      rare: "TITAN.item.rarity.rare",
+      special: "TITAN.item.rarity.special",
+    };
 
     return context;
   }

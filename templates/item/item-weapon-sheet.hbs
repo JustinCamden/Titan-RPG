@@ -20,7 +20,7 @@
 
       {{! Value}}
       <div class="stat">
-        <label class="stat-label">Value</label>
+        <label class="stat-label">{{localize "TITAN.item.value"}}</label>
         <input
           type="text"
           name="data.value"
@@ -30,23 +30,17 @@
       </div>
 
       {{! Rarity }}
-      <div class="stat">
-        <label class="stat-label">Rarity</label>
-        <input
-          type="text"
-          name="data.rarity"
-          value="{{data.rarity}}"
-          data-dtype="Number"
-        />
-      <select id="difficulty">
-      {{#select difficulty}}
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-      {{/select}}
-    </select>
+      <div class="stat flexcol">
+        <label class="stat-label">{{localize "TITAN.item.rarity.name"}}</label>
+        <div>
+          <select id="rarity">
+            {{#select rarity}}
+              {{#each rarityOptions as |option key|}}
+                <option value="{{key}}">{{localize option}}</option>
+              {{/each}}
+            {{/select}}
+          </select>
+        </div>
       </div>
     </div>
   </header>
@@ -68,7 +62,7 @@
     {{! Sheet Tab Navigation }}
     <nav class="sheet-tabs tabs" data-group="primary">
       <a class="item" data-tab="description">Description</a>
-      <a class="item" data-tab="attribute">attribute</a>
+      <a class="item" data-tab="attribute">Attribute</a>
     </nav>
     {{! Description Tab }}
     <div class="tab" data-group="primary" data-tab="description">

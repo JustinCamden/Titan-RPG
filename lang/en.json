@@ -75,6 +75,7 @@
   "TITAN.item.rarity.uncommon": "Uncommon",
   "TITAN.item.rarity.rare": "Rare",
   "TITAN.item.rarity.special": "Special",
+  "TITAN.item.value": "Value",
 
   "SETTINGS.showCheckOptions": {
     "name": "Ask for Check Options by default.",
