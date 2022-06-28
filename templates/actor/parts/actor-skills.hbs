@@ -46,20 +46,20 @@
           data-get-options="default"
         >{{localize (concat "TITAN.skill." key)}}</label>
 
-        {{! Training value edit }}
+        {{! Labels }}
         <div class="stat-content flexrow flex-group-center flex-between">
           <label
             for="data.skill.{{key}}.training.value"
             class="stat-label"
           >{{localize "TITAN.training"}}</label>
-          <label for="data.skill.{{key}}" class="stat-label"> </label>
+          <label for="data.skill.{{key}}" class="stat-label"></label>
           <label
             for="data.skill.{{key}}.expertise.value"
             class="stat-label"
           >{{localize "TITAN.expertise"}}</label>
         </div>
 
-        {{! Expertise value edit }}
+        {{! Training value edit }}
         <div class="stat-content flexrow flex-group-center flex-between">
           <input
             class="skill-edit expertise-edit"
@@ -71,6 +71,7 @@
             data-dtype="Number"
           />
           <span> </span>
+          {{! Expertise value edit }}
           <input
             class="skill-edit expertise-edit"
             type="text"

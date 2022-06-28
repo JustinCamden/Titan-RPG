@@ -28,12 +28,27 @@
   column-count: 4;
 }
 
-.list-item {
+.li.list-item {
   break-inside: avoid;
   page-break-inside: avoid;
   align-items: top;
+  word-wrap: normal;
 }
+
 
 li.list-item:not(:last-child) { 
   margin-bottom: 1rem;  
+}
+
+.test-flex {
+  display:flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap:10px;
+  flex-basis: auto;
+  flex: 1;
 }

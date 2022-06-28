@@ -217,10 +217,45 @@
 }
 
 .align-center {
+  -ms-flex-line-pack: center;
+  align-content: center;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.justify-center {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  text-align: center;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.padding-left10 {
+  padding-left: 10px;
+}
+
+.padding-right10 {
+  padding-right: 10px;
+}
+
+.padding-top10 {
+  padding-top: 10px;
+}
+
+.padding-bottom10 {
+  padding-bottom: 10px;
+}
+
+.line-item {
+  gap: 10px;
+  margin: 10px 0;
 }
 
 .border {
@@ -261,7 +296,7 @@
   column-count: 4;
 }
 
-.list-item {
+.li.list-item {
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
   break-inside: avoid;
@@ -269,10 +304,37 @@
   -webkit-box-align: top;
   -ms-flex-align: top;
   align-items: top;
+  word-wrap: normal;
 }
 
 li.list-item:not(:last-child) {
   margin-bottom: 1rem;
+}
+
+.test-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-line-pack: start;
+  align-content: flex-start;
+  gap: 10px;
+  -ms-flex-preferred-size: auto;
+  flex-basis: auto;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
 /* Styles limited to titan sheets */

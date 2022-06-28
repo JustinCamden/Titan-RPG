@@ -56,6 +56,10 @@ export class TitanItemSheet extends ItemSheet {
       rare: "TITAN.item.rarity.rare",
       special: "TITAN.item.rarity.special",
     };
+    context.attackTypeOptions = {
+      melee: "Melee",
+      ranged: "Ranged",
+    };
 
     return context;
   }
@@ -70,5 +74,22 @@ export class TitanItemSheet extends ItemSheet {
     if (!this.isEditable) return;
 
     // Roll handlers, click handlers, etc. would go here.
+    html.find(".attack-type-edit").change(this._onEditAttackType.bind(this));
+  }
+
+  _onEditAttackType(event) {
+    // Check if the data is valid
+    const idx = event.target.dataset.idx;
+    if (this.item.data.data.attack[idx]) {
+      // Copy the attacks array
+      let attack = this.item.data.data.attack;
+      console.log(attack);
+      attack[idx].type = event.target.value;
+      console.log(attack);
+      this.item.update({
+        data: { attack: attack },
+      });
+    }
+    return;
   }
 }

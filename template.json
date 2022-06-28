@@ -343,15 +343,14 @@
     },
     "weapon": {
       "templates": ["base", "value", "equipped"],
-      "attacks": [
-        {
-          "type": "melee",
-          "ability": "body",
-          "skill": "meleeWeapons",
-          "damage": "1+S",
-          "traits": []
-        }
-      ],
+      "attack": [{
+        "type": "melee",
+        "attribute": "body",
+        "skill": "meleeWeapons",
+        "damage": 1,
+        "plusSuccessDamage": true,
+        "tags": []
+      }],
       "resistanceChecks": [],
       "weaponTraits": []
     },

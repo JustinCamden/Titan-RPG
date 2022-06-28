@@ -2,42 +2,27 @@
 
   {{! Header}}
   <header class="sheet-header">
-    <img
-      class="item-img"
-      src="{{item.img}}"
-      data-edit="img"
-      title="{{item.name}}"
-    />
+    <img class="item-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
     <div class="header-fields grid grid-4col">
 
       {{! Name}}
-      <h1 class="item-name grid-span-2"><input
-          name="name"
-          type="text"
-          value="{{item.name}}"
-          placeholder="Name"
-        /></h1>
+      <h1 class="item-name grid-span-2"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
 
       {{! Value}}
       <div class="stat">
         <label class="stat-label">{{localize "TITAN.item.value"}}</label>
-        <input
-          type="text"
-          name="data.value"
-          value="{{data.value}}"
-          data-dtype="Number"
-        />
+        <input type="text" name="data.value" value="{{data.value}}" data-dtype="Number" />
       </div>
 
       {{! Rarity }}
       <div class="stat flexcol">
         <label class="stat-label">{{localize "TITAN.item.rarity.name"}}</label>
         <div>
-          <select id="rarity">
-            {{#select rarity}}
-              {{#each rarityOptions as |option key|}}
-                <option value="{{key}}">{{localize option}}</option>
-              {{/each}}
+          <select name="data.rarity">
+            {{#select data.rarity}}
+            {{#each rarityOptions as |option key|}}
+            <option value="{{key}}">{{localize option}}</option>
+            {{/each}}
             {{/select}}
           </select>
         </div>
@@ -45,52 +30,79 @@
     </div>
   </header>
 
-  <section>
-    <section class="main grid grid-4col">
-    <aside class="sidebar">
+  <div class="sheet-content">
+    <section class="main grid grid-10col">
+      {{! Sidebar }}
+      <aside class="sidebar border flex-group-center grid-span-3">
 
-      {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-      use both the "grid" and "grid-Ncol" class where "N" can be any number
-      from 1 to 12 and will create that number of columns. --}}
-      <div class="abilities flexcol">
-        TEST
-      </div>
-    </aside>
+        {{! Weapon attacks }}
+        <section class="attacks">
+          <label class="stat-label">{{localize "TITAN.attacks.name"}}</label>
+          <ul class="list list-1col attack-list">
 
-    {{!-- For the main features list, span the right two columns --}}
-    <section class="main sheet-body grid-span-3">
-    {{! Sheet Tab Navigation }}
-    <nav class="sheet-tabs tabs" data-group="primary">
-      <a class="item" data-tab="description">Description</a>
-      <a class="item" data-tab="attribute">Attribute</a>
-    </nav>
-    {{! Description Tab }}
-    <div class="tab" data-group="primary" data-tab="description">
-      {{! To render inline rolls in a TinyMCE editor, you need to pass the parent actor's (if any) roll data to the rollData prop. }}
-      {{editor
-        content=data.description
-        target="data.description"
-        rollData=rollData
-        button=true
-        owner=owner
-        editable=editable
-      }}
-    </div>
+            {{! For each attack }}
+            {{#each data.attack as |attack key|}}
+            <li class="list-item attack grid grid-4col">
+              <label for="attack.type" class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
+                "TITAN.type.name"}}</label>
+              <select name="attack.type" 
+                class="flex-group-right padding-right10 grid-span-2 attack-type-edit"
+                data-idx={{key}}>
+                {{#select attack.type}}
+                <option value="melee">{{localize "Melee"}}</option>
+                <option value="ranged">{{localize "Ranged"}}</option>
+                {{/select}}
+              </select>
+              <label for="data.attack.{{key}}.attribute" class="stat-label flex-group-left padding-left10">{{localize
+                "TITAN.attribute.name"}}</label>
+              <label class="flex-group-right padding-right10 grid-span-3">{{localize (concat "TITAN.attribute."
+                attack.attribute)}}</label>
+              <label for="data.attack.{{key}}.skill" class="stat-label flex-group-left padding-left10">{{localize
+                "TITAN.skill.name"}}</label>
+              <label class="flex-group-right padding-right10 grid-span-3">{{localize (concat "TITAN.skill."
+                attack.skill)}}</label>
+              <label for="data.attack.{{key}}.damage" class="stat-label flex-group-left padding-left10">{{localize
+                "TITAN.damage.name"}}</label>
+              <div class="flex-group-right padding-right10 grid-span-3">
+                <label>{{attack.damage}}</label>
+                {{localize "+ S"}}
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+        </section>
+      </aside>
 
-    {{! Attributes Tab }}
-    <div class="tab attribute" data-group="primary" data-tab="attribute">
-      {{! As you add new fields, add them in here! }}
-      <div class="resource">
-        <label class="resource-label">Roll Formula</label>
-        <input
-          type="text"
-          name="data.formula"
-          value="{{data.formula}}"
-          data-dtype="String"
-        />
-      </div>
-    </div>
-    </section>
+      {{!-- For the main features list, span the right two columns --}}
+      <section class="main sheet-body grid-span-7">
+        {{! Sheet Tab Navigation }}
+        <nav class="sheet-tabs tabs" data-group="primary">
+          <a class="item" data-tab="description">Description</a>
+          <a class="item" data-tab="attribute">Attribute</a>
+        </nav>
+        {{! Description Tab }}
+        <div class="tab" data-group="primary" data-tab="description">
+          {{! To render inline rolls in a TinyMCE editor, you need to pass the parent actor's (if any) roll data to the
+          rollData prop. }}
+          {{editor
+          content=data.description
+          target="data.description"
+          rollData=rollData
+          button=true
+          owner=owner
+          editable=editable
+          }}
+        </div>
 
-  </section>
+        {{! Attributes Tab }}
+        <div class="tab attribute" data-group="primary" data-tab="attribute">
+          {{! As you add new fields, add them in here! }}
+          <div class="resource">
+            <label class="resource-label">Roll Formula</label>
+            <input type="text" name="data.formula" value="{{data.formula}}" data-dtype="String" />
+          </div>
+        </div>
+      </section>
+
+  </div>
 </form>
