@@ -80,8 +80,8 @@
 
   "TITAN.attack.label": "Attack",
   "TITAN.attacks.label": "Attacks",
-  "TITAN.attack.type.melee.label": "Melee",
-  "TITAN.attack.type.ranged.label": "Ranged",
+  "TITAN.attack.type.option.melee.label": "Melee",
+  "TITAN.attack.type.option.ranged.label": "Ranged",
 
   "TITAN.range.label": "Range",
   "TITAN.range.option.close.label": "Close",

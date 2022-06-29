@@ -85,7 +85,7 @@ TITAN.local = {
         label: "TITAN.skill.option.performance.label",
       },
       rangedWeapons: {
-        label: "TITAN.skill.option.rangedWeapon.label",
+        label: "TITAN.skill.option.rangedWeapons.label",
       },
       sleightOfHand: {
         label: "TITAN.skill.option.sleightOfHand.label",
@@ -159,12 +159,12 @@ TITAN.local = {
 
   attack: {
     type: {
-      options: {
+      option: {
         melee: {
-          label: "TITAN.attack.type.melee.label",
+          label: "TITAN.attack.type.option.melee.label",
         },
         ranged: {
-          label: "TITAN.attack.type.ranged.label",
+          label: "TITAN.attack.type.option.ranged.label",
         },
       },
     },
