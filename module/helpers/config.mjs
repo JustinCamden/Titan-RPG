@@ -1,12 +1,8 @@
-export const TITAN = {};
-
-/**
- * The set of Ability Scores used within the sytem.
- * @type {Object}
- */
-
-TITAN.local = {
+export const TITAN = {
   attribute: {
+    min: 1,
+    max: 8,
+    totalExpCostByRank: [2, 7, 14, 23, 34, 47, 62],
     option: {
       body: {
         label: "TITAN.attribute.option.body.label",
@@ -41,6 +37,14 @@ TITAN.local = {
   },
 
   skill: {
+    training: {
+      max: 3,
+      totalExpCostByRank: [1, 3, 7],
+    },
+    expertise: {
+      max: 3,
+      totalExpCostByRank: [1, 3, 7],
+    },
     option: {
       arcana: {
         label: "TITAN.skill.option.arcana.label",
@@ -102,16 +106,19 @@ TITAN.local = {
     },
   },
 
-  resources: {
+  resource: {
     option: {
       resolve: {
-        label: "TITAN.resources.option.resolve.label",
+        label: "TITAN.resource.option.resolve.label",
+        maxBaseMulti: 1.0,
       },
       stamina: {
-        label: "TITAN.resources.option.stamina.label",
+        label: "TITAN.resource.option.stamina.label",
+        maxBaseMulti: 1.0,
       },
       wounds: {
-        label: "TITAN.resources.option.wounds.label",
+        label: "TITAN.resource.option.wounds.label",
+        maxBaseMulti: 1.0,
       },
     },
   },
@@ -131,12 +138,23 @@ TITAN.local = {
   },
 
   check: {
-    name: "TITAN.check.label",
-    roll: "TITAN.check.roll.label",
+    name: {
+      label: "TITAN.check.label",
+    },
+    roll: {
+      label: "TITAN.check.roll.label",
+    },
   },
 
-  cancel: "TITAN.cancel.label",
-  none: "TITAN.none.label",
+  cancel: {
+    label: "TITAN.cancel.label",
+  },
+  none: {
+    label: "TITAN.none.label",
+  },
+  save: {
+    label: "TITAN.save.label",
+  },
 
   item: {
     rarity: {
@@ -172,24 +190,65 @@ TITAN.local = {
       option: {
         blast: {
           label: "TITAN.attack.option.blast.label",
-        },
-        bludgeoning: {
-          label: "TITAN.attack.option.bludgeoning",
+          hasIntValue: true,
         },
         cleave: {
-          label: "TITAN.attack.option.cleave",
+          label: "TITAN.attack.option.cleave.label",
         },
         close: {
           label: "TITAN.attack.option.close.label",
         },
+        crushing: {
+          label: "TITAN.attack.option.crushing.label",
+        },
+        defensive: {
+          label: "TITAN.attack.option.defensive.label",
+        },
+        ineffective: {
+          label: "TITAN.attack.option.ineffective.label",
+        },
+        loud: {
+          label: "TITAN.attack.option.loud.label",
+        },
         magical: {
-          label: "TITAN.attack.option.magical",
+          label: "TITAN.attack.option.magical.label",
+        },
+        penetrating: {
+          label: "TITAN.attack.option.penetrating.label",
         },
         piercing: {
-          label: "TITAN.attack.option.piercing",
+          label: "TITAN.attack.option.piercing.label",
+        },
+        range: {
+          label: "TITAN.attack.option.range.label",
+        },
+        reach: {
+          label: "TITAN.attack.option.reach.label",
+        },
+        reload: {
+          label: "TITAN.attack.option.reload.label",
+        },
+        rend: {
+          label: "TITAN.attack.option.rend.label",
+        },
+        restraining: {
+          label: "TITAN.attack.option.restraining.label",
         },
         slashing: {
-          label: "TITAN.attack.option.slashing",
+          label: "TITAN.attack.option.slashing.label",
+        },
+        spread: {
+          label: "TITAN.attack.option.spread.label",
+          hasIntValue: true,
+        },
+        subtle: {
+          label: "TITAN.attack.option.subtle.label",
+        },
+        thrown: {
+          label: "TITAN.attack.option.thrown.label",
+        },
+        twoHanded: {
+          label: "TITAN.attack.option.twoHanded.label",
         },
       },
     },
@@ -210,39 +269,6 @@ TITAN.local = {
       long: {
         label: "TITAN.range.option.long.label",
       },
-    },
-  },
-};
-
-TITAN.settings = {
-  attribute: {
-    min: 1,
-    max: 8,
-    totalExpCostByRank: [2, 7, 14, 23, 34, 47, 62],
-  },
-
-  skill: {
-    training: {
-      max: 3,
-      totalExpCostByRank: [1, 3, 7],
-    },
-    expertise: {
-      max: 3,
-      totalExpCostByRank: [1, 3, 7],
-    },
-  },
-
-  resources: {
-    resolve: {
-      maxBaseMulti: 1.0,
-    },
-
-    stamina: {
-      maxBaseMulti: 1.0,
-    },
-
-    wounds: {
-      maxBaseMulti: 1.0,
     },
   },
 };

@@ -150,7 +150,7 @@ export class TitanActor extends Actor {
     // Calculate max stamina
     let maxStaminaBase =
       totalBaseAttributeValue *
-      CONFIG.TITAN.settings.resources.stamina.maxBaseMulti;
+      CONFIG.TITAN.resource.option.stamina.maxBaseMulti;
     data.resources.stamina.maxBase = maxStaminaBase;
     data.resources.stamina.maxValue =
       maxStaminaBase + data.resources.stamina.staticMod;
@@ -158,7 +158,7 @@ export class TitanActor extends Actor {
     // Calculate max resolve
     let maxResolveBase = Math.ceil(
       (data.attribute.soul.baseValue *
-        CONFIG.TITAN.settings.resources.resolve.maxBaseMulti) /
+        CONFIG.TITAN.resource.option.resolve.maxBaseMulti) /
         2
     );
     data.resources.resolve.maxBase = maxResolveBase;
@@ -168,7 +168,7 @@ export class TitanActor extends Actor {
     // Calculate max wounds
     let maxWoundsBase = Math.ceil(
       (totalBaseAttributeValue *
-        CONFIG.TITAN.settings.resources.wounds.maxBaseMulti) /
+        CONFIG.TITAN.resource.option.wounds.maxBaseMulti) /
         2
     );
     data.resources.wounds.maxBase = maxWoundsBase;
@@ -202,11 +202,11 @@ export class TitanActor extends Actor {
       const attributeBaseValue = data.attribute[attribute].baseValue;
 
       // Calculate xp cost
-      const minAttributeValue = CONFIG.TITAN.settings.attribute.min;
+      const minAttributeValue = CONFIG.TITAN.attribute.min;
       if (attributeBaseValue > minAttributeValue) {
         spentExp =
           spentExp +
-          CONFIG.TITAN.settings.attribute.totalExpCostByRank[
+          CONFIG.TITAN.attribute.totalExpCostByRank[
             attributeBaseValue - minAttributeValue - 1
           ];
       }
@@ -221,7 +221,7 @@ export class TitanActor extends Actor {
       if (skillTrainingBaseValue > 0) {
         spentExp =
           spentExp +
-          CONFIG.TITAN.settings.skill.training.totalExpCostByRank[
+          CONFIG.TITAN.skill.training.totalExpCostByRank[
             skillTrainingBaseValue - 1
           ];
       }
@@ -231,7 +231,7 @@ export class TitanActor extends Actor {
       if (skillExpertiseBaseValue > 0) {
         spentExp =
           spentExp +
-          CONFIG.TITAN.settings.skill.expertise.totalExpCostByRank[
+          CONFIG.TITAN.skill.expertise.totalExpCostByRank[
             skillExpertiseBaseValue - 1
           ];
       }
@@ -371,18 +371,18 @@ export class TitanActor extends Actor {
       // Create the dialog
       checkOptions = await new Promise((resolve) => {
         const data = {
-          title: game.i18n.localize(CONFIG.TITAN.local.check.name),
+          title: game.i18n.localize(CONFIG.TITAN.check.name),
           content: html,
           buttons: {
             roll: {
-              label: game.i18n.localize(CONFIG.TITAN.local.check.roll),
+              label: game.i18n.localize(CONFIG.TITAN.check.roll),
               callback: (html) =>
                 resolve(
                   this._processBasicCheckOptions(html[0].querySelector("form"))
                 ),
             },
             cancel: {
-              label: game.i18n.localize(CONFIG.TITAN.local.cancel),
+              label: game.i18n.localize(CONFIG.TITAN.cancel),
               callback: (html) => resolve({ cancelled: true }),
             },
           },
@@ -498,11 +498,11 @@ export class TitanActor extends Actor {
       // Create the dialog
       checkOptions = await new Promise((resolve) => {
         const data = {
-          title: game.i18n.localize(CONFIG.TITAN.local.check.name),
+          title: game.i18n.localize(CONFIG.TITAN.check.label),
           content: html,
           buttons: {
             roll: {
-              label: game.i18n.localize(CONFIG.TITAN.local.roll),
+              label: game.i18n.localize(CONFIG.TITAN.roll.label),
               callback: (html) =>
                 resolve(
                   this._processResistanceCheckOptions(
@@ -511,7 +511,7 @@ export class TitanActor extends Actor {
                 ),
             },
             cancel: {
-              label: game.i18n.localize(CONFIG.TITAN.local.cancel),
+              label: game.i18n.localize(CONFIG.TITAN.cancel.label),
               callback: (html) => resolve({ cancelled: true }),
             },
           },

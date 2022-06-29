@@ -64,4 +64,62 @@ export class TitanItem extends Item {
       return roll;
     }
   }
+
+  async editTags(inTags) {
+    // If the tag options are valid is valid
+    if (inData?.tagOptions) {
+      // Initialize the dialog data
+      let dialogData = {
+        tagOptions: inData.tagOptions,
+      };
+
+      // For each tag option
+      for (let [k, v] of Object.entries(inData.tagOptions)) {
+        // Add the option to the list
+        dialogData.tagOptions[k].label = v.label;
+
+        // Set whether the tag is currently selected based on the current tags
+        dialogData.tagOptions[k].selected =
+          inData.currentTags && indata.currentTags[k] ? true : false;
+
+        // Set whether the tag has an intValue
+        const hasIntValue = inData.tagOptions[k].hasIntValue;
+        dialogData.tagOptions[k].hasIntValue = hasIntValue;
+        if (hasIntValue) {
+          dialogData.tagOptions[k].intValue = indata.currentTags;
+        }
+      }
+
+      // Create the html template
+      const html = await renderTemplate(
+        "systems/titan/templates/item/item-tag-dialog.hbs",
+        dialogData
+      );
+
+      // Create the dialog
+      let newTags = await new Promise((resolve) => {
+        const data = {
+          title: game.i18n.localize(CONFIG.TITAN.check.name),
+          content: html,
+          buttons: {
+            save: {
+              label: game.i18n.localize(CONFIG.TITAN.save.label),
+              callback: (html) =>
+                resolve(
+                  this._processBasicCheckOptions(html[0].querySelector("form"))
+                ),
+            },
+            cancel: {
+              label: game.i18n.localize(CONFIG.TITAN.cancel.label),
+              callback: (html) => resolve({ cancelled: true }),
+            },
+          },
+          default: "save",
+          close: () => resolve({ cancelled: true }),
+        };
+
+        new Dialog(data, null).render(true);
+      });
+    }
+  }
 }

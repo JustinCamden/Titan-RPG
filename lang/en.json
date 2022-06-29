@@ -17,9 +17,9 @@
   "TITAN.derivedStats.melee.label": "Melee",
   "TITAN.derivedStats.accuracy.label": "Accuracy",
 
-  "TITAN.resources.option.stamina.label": "Stamina",
-  "TITAN.resources.option.wounds.label": "Wounds",
-  "TITAN.resources.option.resolve.label": "Resolve",
+  "TITAN.resource.option.stamina.label": "Stamina",
+  "TITAN.resource.option.wounds.label": "Wounds",
+  "TITAN.resource.option.resolve.label": "Resolve",
 
   "TITAN.exp.label": "EXP",
   "TITAN.available.label": "Available",
@@ -67,6 +67,7 @@
   "TITAN.check.roll.label": "Roll",
   "TITAN.check.bonusPenaltyDice.label": "Bonus / Penalty Dice",
 
+  "TITAN.save.label": "Save",
   "TITAN.cancel.label": "Cancel",
   "TITAN.none.label": "None",
   "TITAN.type.label": "Type",
@@ -91,6 +92,28 @@
 
   "TITAN.damage.label": "Damage",
   "TITAN.label": "Name",
+
+  "TITAN.tags.edit.label": "Edit Tags",
+  "TITAN.tags.blast.label": "Blast",
+  "TITAN.tags.cleave.label": "Cleave",
+  "TITAN.tags.close.label": "Close",
+  "TITAN.tags.crushing.label": "Crushing",
+  "TITAN.tags.defensive.label": "defensive",
+  "TITAN.tags.ineffective.label": "Ineffective",
+  "TITAN.tags.loud.label": "Loud",
+  "TITAN.tags.magical.label": "Magical",
+  "TITAN.tags.penetrating.label": "Penetrating",
+  "TITAN.tags.piercing.label": "Piercing",
+  "TITAN.tags.range.label": "Range",
+  "TITAN.tags.reach.label": "Reach",
+  "TITAN.tags.reload.label": "Reload",
+  "TITAN.tags.rend.label": "Rend",
+  "TITAN.tags.restraining.label": "Restraining",
+  "TITAN.tags.slashing.label": "Slashing",
+  "TITAN.tags.spread.label": "Spread",
+  "TITAN.tags.subtle.label": "Subtle",
+  "TITAN.tags.thrown.label": "Thrown",
+  "TITAN.tags.twoHanded.label": "Two-Handed",
 
   "SETTINGS.showCheckOptions": {
     "name": "Ask for Check Options by default.",

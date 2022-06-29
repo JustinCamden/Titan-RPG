@@ -254,7 +254,7 @@ export class TitanActorSheet extends ActorSheet {
       // Output the roll
       const roll = rollResult.outRoll;
       const localizedLabel = game.i18n.localize(
-        CONFIG.TITAN.local.derivedStats.initiative
+        CONFIG.TITAN.derivedStats.initiative
       );
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
@@ -299,7 +299,7 @@ export class TitanActorSheet extends ActorSheet {
 
     // Get the localized label
     let localizedLabel = game.i18n.localize(
-      CONFIG.TITAN.local.attribute.option[basicCheck.checkOptions.attribute]
+      CONFIG.TITAN.attribute.option[basicCheck.checkOptions.attribute]
         .label
     );
 
@@ -309,7 +309,7 @@ export class TitanActorSheet extends ActorSheet {
         localizedLabel +
         " (" +
         game.i18n.localize(
-          CONFIG.TITAN.local.skill.option[basicCheck.checkOptions.skill].label
+          CONFIG.TITAN.skill.option[basicCheck.checkOptions.skill].label
         ) +
         ")";
     }
@@ -358,7 +358,7 @@ export class TitanActorSheet extends ActorSheet {
 
     // Get the localized label
     let localizedLabel = game.i18n.localize(
-      CONFIG.TITAN.local.resistance.option[
+      CONFIG.TITAN.resistance.option[
         resistanceCheck.checkOptions.resistance
       ].label
     );
@@ -414,14 +414,14 @@ export class TitanActorSheet extends ActorSheet {
 
     // Cap the training values within range
     if (event.target.dataset.skillType == "training") {
-      const maxSkillTraining = CONFIG.TITAN.settings.skill.training.max;
+      const maxSkillTraining = CONFIG.TITAN.skill.training.max;
       if (newValue > maxSkillTraining) {
         event.target.value = maxSkillTraining;
       } else if (newValue < 0) {
         event.target.value = 0;
       }
     } else {
-      const maxSkillExpertise = CONFIG.TITAN.settings.skill.expertise.max;
+      const maxSkillExpertise = CONFIG.TITAN.skill.expertise.max;
       if (newValue > maxSkillExpertise) {
         event.target.value = maxSkillExpertise;
       } else if (newValue < 0) {
