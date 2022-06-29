@@ -10,13 +10,13 @@
 
       {{! Value}}
       <div class="stat flex-group-right">
-        <label class="stat-label flex-group-right">{{localize "TITAN.item.value"}}</label>
+        <label class="stat-label flex-group-right">{{localize "TITAN.item.value.label"}}</label>
         <input type="text" name="data.value" class="flex-group-right" value="{{data.value}}" data-dtype="Number" />
       </div>
 
       {{! Rarity }}
       <div class="stat flexcol flex-group-right">
-        <label class="stat-label">{{localize "TITAN.item.rarity.name"}}</label>
+        <label class="stat-label">{{localize "TITAN.item.rarity.label"}}</label>
         <div>
           <select name="data.rarity">
             {{selectOptions rarityOptions selected=data.rarity localize=true}}
@@ -33,7 +33,7 @@
 
         {{! Weapon attacks }}
         <section class="attacks full-height">
-          <label class="stat-label">{{localize "TITAN.attacks.name"}}</label>
+          <label class="stat-label">{{localize "TITAN.attacks.label"}}</label>
           <ul class="list list-1col attack-list">
 
             {{! For each attack }}
@@ -42,7 +42,7 @@
 
               {{! Name Label }}
               <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
-                "TITAN.name"}}</label>
+                "TITAN.label"}}</label>
 
               {{! Name input }}
               <input
@@ -55,7 +55,7 @@
 
               {{! Type Label }}
               <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
-                "TITAN.type.name"}}</label>
+                "TITAN.type.label"}}</label>
 
               {{! Type Selector }}
               <select
@@ -66,7 +66,7 @@
 
               {{! Range Label }}
               <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
-                "TITAN.range.name"}}</label>
+                "TITAN.range.label"}}</label>
 
               {{! Range Selector }}
               <select
@@ -77,7 +77,7 @@
 
               {{! Attribute Label }}
               <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
-                "TITAN.attribute.name"}}</label>
+                "TITAN.attribute.label"}}</label>
 
               {{! Attribute Selector}}
               <select
@@ -89,7 +89,7 @@
               {{! Skill Label}}
               <label 
                 class="stat-label flex-group-left padding-left10 select-attack-skill full-height">
-                {{localize "TITAN.skill.name"}}
+                {{localize "TITAN.skill.label"}}
               </label>
 
               {{! Skill Selector }}
@@ -100,7 +100,7 @@
 
               {{! Damage Label }}
               <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
-                "TITAN.damage.name"}}</label>
+                "TITAN.damage.label"}}</label>
 
               {{! Damage Input }}
               <input

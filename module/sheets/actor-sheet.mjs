@@ -299,7 +299,7 @@ export class TitanActorSheet extends ActorSheet {
 
     // Get the localized label
     let localizedLabel = game.i18n.localize(
-      CONFIG.TITAN.local.attribute[basicCheck.checkOptions.attribute]
+      CONFIG.TITAN.local.attribute.option[basicCheck.checkOptions.attribute]
     );
 
     // Add the skill to the label if appropriate
@@ -308,7 +308,7 @@ export class TitanActorSheet extends ActorSheet {
         localizedLabel +
         " (" +
         game.i18n.localize(
-          CONFIG.TITAN.local.skill[basicCheck.checkOptions.skill]
+          CONFIG.TITAN.local.skill.option[basicCheck.checkOptions.skill]
         ) +
         ")";
     }
@@ -357,7 +357,9 @@ export class TitanActorSheet extends ActorSheet {
 
     // Get the localized label
     let localizedLabel = game.i18n.localize(
-      CONFIG.TITAN.local.resistance[resistanceCheck.checkOptions.resistance]
+      CONFIG.TITAN.local.resistance.option[
+        resistanceCheck.checkOptions.resistance
+      ]
     );
 
     // Evaluate the check
@@ -409,15 +411,16 @@ export class TitanActorSheet extends ActorSheet {
     // Ensure the skill is within a valid range
     const newValue = event.target.value;
 
+    // Cap the training values within range
     if (event.target.dataset.skillType == "training") {
-      const maxSkillTraining = CONFIG.TITAN.skill.training.max;
+      const maxSkillTraining = CONFIG.TITAN.settings.skill.training.max;
       if (newValue > maxSkillTraining) {
         event.target.value = maxSkillTraining;
       } else if (newValue < 0) {
         event.target.value = 0;
       }
     } else {
-      const maxSkillExpertise = CONFIG.TITAN.skill.expertise.max;
+      const maxSkillExpertise = CONFIG.TITAN.settings.skill.expertise.max;
       if (newValue > maxSkillExpertise) {
         event.target.value = maxSkillExpertise;
       } else if (newValue < 0) {

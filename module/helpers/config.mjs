@@ -7,51 +7,65 @@ export const TITAN = {};
 
 TITAN.local = {
   attribute: {
-    body: "TITAN.attribute.body",
-    mind: "TITAN.attribute.mind",
-    soul: "TITAN.attribute.soul",
+    option: {
+      body: "TITAN.attribute.option.body",
+      mind: "TITAN.attribute.option.mind",
+      soul: "TITAN.attribute.option.soul",
+    },
   },
 
   derivedStats: {
-    initiative: "TITAN.derivedStats.initiative",
+    option: {
+      initiative: "TITAN.derivedStats.option.initiative",
+      awareness: "TITAN.derivedStats.option.awareness",
+      defense: "TITAN.derivedStats.option.defense",
+      melee: "TITAN.derivedStats.option.melee",
+      accuracy: "TITAN.derivedStats.option.accuracy",
+    },
   },
 
   skill: {
-    arcana: "TITAN.skill.arcana",
-    athletics: "TITAN.skill.athletics",
-    beastHandling: "TITAN.skill.beastHandling",
-    deception: "TITAN.skill.deception",
-    dexterity: "TITAN.skill.dexterity",
-    diplomacy: "TITAN.skill.diplomacy",
-    engineering: "TITAN.skill.engineering",
-    intimidation: "TITAN.skill.intimidation",
-    investigation: "TITAN.skill.investigation",
-    lore: "TITAN.skill.lore",
-    medicine: "TITAN.skill.medicine",
-    meleeWeapons: "TITAN.skill.meleeWeapons",
-    perception: "TITAN.skill.perception",
-    performance: "TITAN.skill.performance",
-    rangedWeapons: "TITAN.skill.rangedWeapons",
-    sleightOfHand: "TITAN.skill.sleightOfHand",
-    stealth: "TITAN.skill.stealth",
-    survival: "TITAN.skill.survival",
-    theology: "TITAN.skill.theology",
+    option: {
+      arcana: "TITAN.skill.option.arcana",
+      athletics: "TITAN.skill.option.athletics",
+      beastHandling: "TITAN.skill.option.beastHandling",
+      deception: "TITAN.skill.option.deception",
+      dexterity: "TITAN.skill.option.dexterity",
+      diplomacy: "TITAN.skill.option.diplomacy",
+      engineering: "TITAN.skill.option.engineering",
+      intimidation: "TITAN.skill.option.intimidation",
+      investigation: "TITAN.skill.option.investigation",
+      lore: "TITAN.skill.option.lore",
+      medicine: "TITAN.skill.option.medicine",
+      meleeWeapons: "TITAN.skill.option.meleeWeapons",
+      perception: "TITAN.skill.option.perception",
+      performance: "TITAN.skill.option.performance",
+      rangedWeapons: "TITAN.skill.option.rangedWeapons",
+      sleightOfHand: "TITAN.skill.option.sleightOfHand",
+      stealth: "TITAN.skill.option.stealth",
+      survival: "TITAN.skill.option.survival",
+      theology: "TITAN.skill.option.theology",
+    },
   },
 
-  resolve: {
-    resolve: "TITAN.resources.resolve",
-    stamina: "TITAN.resources.stamina",
-    wounds: "TITAN.resources.wounds",
+  resources: {
+    option: {
+      resolve: "TITAN.resources.optionresolve",
+      stamina: "TITAN.resources.optionstamina",
+      wounds: "TITAN.resources.optionwounds",
+    },
   },
 
   resistance: {
-    reflexes: "TITAN.resistance.reflexes",
-    resilience: "TITAN.resistance.resilience",
-    willpower: "TITAN.resistance.willpower",
+    option: {
+      reflexes: "TITAN.resistance.option.reflexes",
+      resilience: "TITAN.resistance.option.resilience",
+      willpower: "TITAN.resistance.option.willpower",
+    },
   },
 
   check: {
-    name: "TITAN.check.name",
+    name: "TITAN.check.label",
     roll: "TITAN.check.roll",
   },
 
@@ -60,10 +74,12 @@ TITAN.local = {
 
   item: {
     rarity: {
-      common: "TITAN.item.rarity.common",
-      uncommon: "TITAN.item.rarity.uncommon",
-      rare: "TITAN.item.rarity.rare",
-      special: "TITAN.item.rarity.special",
+      option: {
+        common: "TITAN.item.rarity.option.common",
+        uncommon: "TITAN.item.rarity.option.uncommon",
+        rare: "TITAN.item.rarity.option.rare",
+        special: "TITAN.item.rarity.option.special",
+      },
     },
   },
 

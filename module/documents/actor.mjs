@@ -352,12 +352,13 @@ export class TitanActor extends Actor {
 
       // Add each attribute as an option to the data
       for (let [k, v] of Object.entries(this.data.data.attribute)) {
-        dialogData.attributeOptions[k] = "TITAN.attribute." + k.toString();
+        dialogData.attributeOptions[k] =
+          "TITAN.attribute.option." + k.toString();
       }
 
       // Add each skill as an option to the data
       for (let [k, v] of Object.entries(this.data.data.skill)) {
-        dialogData.skillOptions[k] = "TITAN.skill." + k.toString();
+        dialogData.skillOptions[k] = "TITAN.skill.option." + k.toString();
       }
 
       // Create the html template
@@ -483,7 +484,8 @@ export class TitanActor extends Actor {
 
       // Add each resistance as an option to the data
       for (let [k, v] of Object.entries(this.data.data.resistance)) {
-        dialogData.resistanceOptions[k] = "TITAN.resistance." + k.toString();
+        dialogData.resistanceOptions[k] =
+          "TITAN.resistance.option." + k.toString();
       }
 
       // Create the html template

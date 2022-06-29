@@ -143,7 +143,7 @@ function registerSystemSettings() {
   game.settings.register("titan", "showCheckOptions", {
     config: true,
     scope: "client",
-    name: "SETTINGS.showCheckOptions.name",
+    name: "SETTINGS.showCheckOptions.label",
     hint: "SETTINGS.showCheckOptions.hint",
     type: Boolean,
     default: false,
@@ -152,7 +152,7 @@ function registerSystemSettings() {
   game.settings.register("titan", "initiativeFormula", {
     config: true,
     scope: "world",
-    name: "SETTINGS.initiativeFormula.name",
+    name: "SETTINGS.initiativeFormula.label",
     hint: "SETTINGS.initiativeFormula.hint",
     type: String,
     restricted: true,

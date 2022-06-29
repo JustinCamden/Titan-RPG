@@ -53,7 +53,7 @@ export class TitanItemSheet extends ItemSheet {
 
     // Add item rarity options
     context.rarityOptions = {};
-    for (let [k, v] of Object.entries(CONFIG.TITAN.local.item.rarity)) {
+    for (let [k, v] of Object.entries(CONFIG.TITAN.local.item.rarity.option)) {
       context.rarityOptions[k] = v;
     }
 
@@ -73,13 +73,13 @@ export class TitanItemSheet extends ItemSheet {
 
       // Attributes
       context.attributeOptions = {};
-      for (let [k, v] of Object.entries(CONFIG.TITAN.local.attribute)) {
+      for (let [k, v] of Object.entries(CONFIG.TITAN.local.attribute.option)) {
         context.attributeOptions[k] = v;
       }
 
       // Skills
       context.skillOptions = {};
-      for (let [k, v] of Object.entries(CONFIG.TITAN.local.skill)) {
+      for (let [k, v] of Object.entries(CONFIG.TITAN.local.skill.option)) {
         context.skillOptions[k] = v;
       }
     }

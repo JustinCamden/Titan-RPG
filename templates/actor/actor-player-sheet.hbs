@@ -30,11 +30,11 @@
 
         {{!-- Exp --}}
         <div class="flex-group-center border">
-          <label for="data.exp" class="stat-label">{{localize "TITAN.EXP"}}</label>
+          <label for="data.exp" class="stat-label">{{localize "TITAN.exp"}}</label>
           <div class="stat-content flexrow flex-group-center flex-between">
-            <label for="data.exp.available" class="stat-label">{{localize "TITAN.Available"}}</label>
+            <label for="data.exp.available" class="stat-label">{{localize "TITAN.available"}}</label>
             <label for="data.exp.available" class="stat-label"> </label>
-            <label for="data.exp.available" class="stat-label">{{localize "TITAN.Earned"}}</label>
+            <label for="data.exp.available" class="stat-label">{{localize "TITAN.earned"}}</label>
           </div>
           <div class="stat-content flexrow flex-group-center flex-between">
             <span>{{numberFormat data.exp.available decimals=0}}</span>
@@ -44,22 +44,22 @@
         </div>
       </div>
 
-      {{!-- Attributes and Derived Stats --}}
+      {{!-- Derived Stats --}}
       <div class="derived grid grid-8col">
-            {{#each data.resistance as |resistance key|}}
-      <div class="resistance flex-group-center border">
-        <label
-          for="data.resistance.{{key}}.value"
-          class="stat-label rollable resistance-check"
-          data-resistance={{key}}
-        >
-          {{localize (concat "TITAN.resistance." key)}}
-        </label>
-        <div class="stat-content flexrow flex-group-center flex-between">
-          <span>{{numberFormat resistance.value decimals=0}}</span>
+      {{#each data.resistance as |resistance key|}}
+        <div class="resistance flex-group-center border">
+          <label
+            for="data.resistance.{{key}}.value"
+            class="stat-label rollable resistance-check"
+            data-resistance={{key}}
+          >
+            {{localize (concat "TITAN.resistance.option." key)}}
+          </label>
+          <div class="stat-content flexrow flex-group-center flex-between">
+            <span>{{numberFormat resistance.value decimals=0}}</span>
+          </div>
         </div>
-      </div>
-    {{/each}}
+      {{/each}}
 
         {{!-- Initiative --}}
         <div class="derived flex-group-center border">
@@ -111,7 +111,7 @@
 
         {{!-- Stamina --}}
         <div class="resource flex-group-center border">
-          <label for="data.resources.stamina.value" class="stat-label">{{localize "TITAN.resources.stamina"}}</label>
+          <label for="data.resources.stamina.value" class="stat-label">{{localize "TITAN.resources.option.stamina"}}</label>
           <div class="stat-content flexrow flex-group-center flex-between">
             <input class="resource-edit" data-resource="stamina" type="text" name="data.resources.stamina.value"
               value="{{data.resources.stamina.value}}" data-dtype="Number" />
@@ -122,7 +122,7 @@
 
         {{!-- Resolve --}}
         <div class="resource flex-group-center border">
-          <label for="data.resources.resolve.value" class="stat-label">{{localize "TITAN.resources.resolve"}}</label>
+          <label for="data.resources.resolve.value" class="stat-label">{{localize "TITAN.resources.option.resolve"}}</label>
           <div class="stat-content flexrow flex-group-center flex-between">
             <input class="resource-edit" data-resource="resolve" type="text" name="data.resources.resolve.value"
               value="{{data.resources.resolve.value}}" data-dtype="Number" />
@@ -133,7 +133,7 @@
 
         {{!-- Wounds --}}
         <div class="resource flex-group-center border">
-          <label for="data.resources.wounds.value" class="stat-label">{{localize "TITAN.resources.wounds"}}</label>
+          <label for="data.resources.wounds.value" class="stat-label">{{localize "TITAN.resources.option.wounds"}}</label>
           <div class="stat-content flexrow flex-group-center flex-between">
             <input class="resource-edit" data-resource="wounds" type="text" name="data.resources.wounds.value"
               value="{{data.resources.wounds.value}}" data-dtype="Number" />
