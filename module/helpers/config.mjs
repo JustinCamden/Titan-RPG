@@ -57,6 +57,32 @@ TITAN.local = {
 
   cancel: "TITAN.cancel",
   none: "TITAN.none",
+
+  item: {
+    rarity: {
+      common: "TITAN.item.rarity.common",
+      uncommon: "TITAN.item.rarity.uncommon",
+      rare: "TITAN.item.rarity.rare",
+      special: "TITAN.item.rarity.special",
+    },
+  },
+
+  attack: {
+    type: {
+      melee: "TITAN.attack.type.melee",
+      ranged: "TITAN.attack.type.ranged",
+    },
+  },
+
+  range: {
+    name: "name",
+    option: {
+      close: "TITAN.range.option.close",
+      uncommon: "TITAN.range.option.short",
+      medium: "TITAN.range.option.medium",
+      long: "TITAN.range.option.long",
+    },
+  },
 };
 
 TITAN.settings = {

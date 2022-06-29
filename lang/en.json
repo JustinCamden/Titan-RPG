@@ -83,7 +83,14 @@
   "TITAN.attack.type.melee": "Melee",
   "TITAN.attack.type.ranged": "Ranged",
 
+  "TITAN.range.name": "Range",
+  "TITAN.range.option.close": "Close",
+  "TITAN.range.option.short": "Short",
+  "TITAN.range.option.medium": "Medium",
+  "TITAN.range.option.long": "Long",
+
   "TITAN.damage.name": "Damage",
+  "TITAN.name": "Name",
 
   "SETTINGS.showCheckOptions": {
     "name": "Ask for Check Options by default.",

@@ -6,24 +6,20 @@
     <div class="header-fields grid grid-4col">
 
       {{! Name}}
-      <h1 class="item-name grid-span-2"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
+      <h1 class="item-name grid-span-2 flex-group-left"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
 
       {{! Value}}
-      <div class="stat">
-        <label class="stat-label">{{localize "TITAN.item.value"}}</label>
-        <input type="text" name="data.value" value="{{data.value}}" data-dtype="Number" />
+      <div class="stat flex-group-right">
+        <label class="stat-label flex-group-right">{{localize "TITAN.item.value"}}</label>
+        <input type="text" name="data.value" class="flex-group-right" value="{{data.value}}" data-dtype="Number" />
       </div>
 
       {{! Rarity }}
-      <div class="stat flexcol">
+      <div class="stat flexcol flex-group-right">
         <label class="stat-label">{{localize "TITAN.item.rarity.name"}}</label>
         <div>
           <select name="data.rarity">
-            {{#select data.rarity}}
-            {{#each rarityOptions as |option key|}}
-            <option value="{{key}}">{{localize option}}</option>
-            {{/each}}
-            {{/select}}
+            {{selectOptions rarityOptions selected=data.rarity localize=true}}
           </select>
         </div>
       </div>
@@ -33,40 +29,87 @@
   <div class="sheet-content">
     <section class="main grid grid-10col">
       {{! Sidebar }}
-      <aside class="sidebar border flex-group-center grid-span-3">
+      <aside class="sidebar flex-group-center grid-span-3">
 
         {{! Weapon attacks }}
-        <section class="attacks">
+        <section class="attacks full-height">
           <label class="stat-label">{{localize "TITAN.attacks.name"}}</label>
           <ul class="list list-1col attack-list">
 
             {{! For each attack }}
             {{#each data.attack as |attack key|}}
-            <li class="list-item attack grid grid-4col">
-              <label for="attack.type" class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
+            <li class="list-item attack grid grid-4col full-height border">
+
+              {{! Name Label }}
+              <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
+                "TITAN.name"}}</label>
+
+              {{! Name input }}
+              <input
+                class="flex-group-right padding-right10 grid-span-2 full-height edit-attack-name"
+                type="text"
+                value="{{attack.name}}"
+                data-idx={{key}}
+                data-dtype="text"
+              />
+
+              {{! Type Label }}
+              <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
                 "TITAN.type.name"}}</label>
-              <select name="attack.type" 
-                class="flex-group-right padding-right10 grid-span-2 attack-type-edit"
+
+              {{! Type Selector }}
+              <select
+                class="flex-group-right padding-right10 grid-span-2 full-height select-attack-type"
                 data-idx={{key}}>
-                {{#select attack.type}}
-                <option value="melee">{{localize "Melee"}}</option>
-                <option value="ranged">{{localize "Ranged"}}</option>
-                {{/select}}
+                {{selectOptions ../attackTypeOptions selected=attack.type localize=true}}
               </select>
-              <label for="data.attack.{{key}}.attribute" class="stat-label flex-group-left padding-left10">{{localize
+
+              {{! Range Label }}
+              <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
+                "TITAN.range.name"}}</label>
+
+              {{! Range Selector }}
+              <select
+                class="flex-group-right padding-right10 grid-span-2 full-height select-attack-range"
+                data-idx={{key}}>
+                {{selectOptions ../attackRangeOptions selected=attack.range localize=true}}
+              </select>
+
+              {{! Attribute Label }}
+              <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
                 "TITAN.attribute.name"}}</label>
-              <label class="flex-group-right padding-right10 grid-span-3">{{localize (concat "TITAN.attribute."
-                attack.attribute)}}</label>
-              <label for="data.attack.{{key}}.skill" class="stat-label flex-group-left padding-left10">{{localize
-                "TITAN.skill.name"}}</label>
-              <label class="flex-group-right padding-right10 grid-span-3">{{localize (concat "TITAN.skill."
-                attack.skill)}}</label>
-              <label for="data.attack.{{key}}.damage" class="stat-label flex-group-left padding-left10">{{localize
+
+              {{! Attribute Selector}}
+              <select
+                class="flex-group-right padding-right10 grid-span-2 full-height select-attack-attribute"
+                data-idx={{key}}>
+                {{selectOptions ../attributeOptions selected=attack.attribute localize=true}}
+              </select>
+
+              {{! Skill Label}}
+              <label 
+                class="stat-label flex-group-left padding-left10 select-attack-skill full-height">
+                {{localize "TITAN.skill.name"}}
+              </label>
+
+              {{! Skill Selector }}
+              <select class="flex-group-right padding-right10 grid-span-3 full-height select-attack-skill"
+                data-idx={{key}}>
+                {{selectOptions ../skillOptions selected=attack.skill localize=true}}
+              </select>
+
+              {{! Damage Label }}
+              <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
                 "TITAN.damage.name"}}</label>
-              <div class="flex-group-right padding-right10 grid-span-3">
-                <label>{{attack.damage}}</label>
-                {{localize "+ S"}}
-              </div>
+
+              {{! Damage Input }}
+              <input
+                class="flex-group-right padding-right10 grid-span-2 full-height edit-attack-damage"
+                type="number"
+                value="{{attack.damage}}"
+                data-idx={{key}}
+                data-dtype="Number"
+              />
             </li>
             {{/each}}
           </ul>

@@ -344,7 +344,9 @@
     "weapon": {
       "templates": ["base", "value", "equipped"],
       "attack": [{
+        "name": "Attack",
         "type": "melee",
+        "range": "close",
         "attribute": "body",
         "skill": "meleeWeapons",
         "damage": 1,
