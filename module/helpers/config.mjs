@@ -8,95 +8,208 @@ export const TITAN = {};
 TITAN.local = {
   attribute: {
     option: {
-      body: "TITAN.attribute.option.body",
-      mind: "TITAN.attribute.option.mind",
-      soul: "TITAN.attribute.option.soul",
+      body: {
+        label: "TITAN.attribute.option.body.label",
+      },
+      mind: {
+        label: "TITAN.attribute.option.mind.label",
+      },
+      soul: {
+        label: "TITAN.attribute.option.soul.label",
+      },
     },
   },
 
   derivedStats: {
     option: {
-      initiative: "TITAN.derivedStats.option.initiative",
-      awareness: "TITAN.derivedStats.option.awareness",
-      defense: "TITAN.derivedStats.option.defense",
-      melee: "TITAN.derivedStats.option.melee",
-      accuracy: "TITAN.derivedStats.option.accuracy",
+      initiative: {
+        label: "TITAN.derivedStats.option.initiative.label",
+      },
+      awareness: {
+        label: "TITAN.derivedStats.option.awareness.label",
+      },
+      defense: {
+        label: "TITAN.derivedStats.option.defense.label",
+      },
+      melee: {
+        label: "TITAN.derivedStats.option.melee.label",
+      },
+      accuracy: {
+        label: "TITAN.derivedStats.option.accuracy.label",
+      },
     },
   },
 
   skill: {
     option: {
-      arcana: "TITAN.skill.option.arcana",
-      athletics: "TITAN.skill.option.athletics",
-      beastHandling: "TITAN.skill.option.beastHandling",
-      deception: "TITAN.skill.option.deception",
-      dexterity: "TITAN.skill.option.dexterity",
-      diplomacy: "TITAN.skill.option.diplomacy",
-      engineering: "TITAN.skill.option.engineering",
-      intimidation: "TITAN.skill.option.intimidation",
-      investigation: "TITAN.skill.option.investigation",
-      lore: "TITAN.skill.option.lore",
-      medicine: "TITAN.skill.option.medicine",
-      meleeWeapons: "TITAN.skill.option.meleeWeapons",
-      perception: "TITAN.skill.option.perception",
-      performance: "TITAN.skill.option.performance",
-      rangedWeapons: "TITAN.skill.option.rangedWeapons",
-      sleightOfHand: "TITAN.skill.option.sleightOfHand",
-      stealth: "TITAN.skill.option.stealth",
-      survival: "TITAN.skill.option.survival",
-      theology: "TITAN.skill.option.theology",
+      arcana: {
+        label: "TITAN.skill.option.arcana.label",
+      },
+      athletics: {
+        label: "TITAN.skill.option.athletics.label",
+      },
+      beastHandling: {
+        label: "TITAN.skill.option.beastHandling.label",
+      },
+      deception: {
+        label: "TITAN.skill.option.deception.label",
+      },
+      dexterity: {
+        label: "TITAN.skill.option.dexterity.label",
+      },
+      diplomacy: {
+        label: "TITAN.skill.option.diplomacy.label",
+      },
+      engineering: {
+        label: "TITAN.skill.option.engineering.label",
+      },
+      intimidation: {
+        label: "TITAN.skill.option.intimidation.label",
+      },
+      investigation: {
+        label: "TITAN.skill.option.investigation.label",
+      },
+      lore: {
+        label: "TITAN.skill.option.lore.label",
+      },
+      medicine: {
+        label: "TITAN.skill.option.medicine.label",
+      },
+      meleeWeapons: {
+        label: "TITAN.skill.option.meleeWeapons.label",
+      },
+      perception: {
+        label: "TITAN.skill.option.perception.label",
+      },
+      performance: {
+        label: "TITAN.skill.option.performance.label",
+      },
+      rangedWeapons: {
+        label: "TITAN.skill.option.rangedWeapon.label",
+      },
+      sleightOfHand: {
+        label: "TITAN.skill.option.sleightOfHand.label",
+      },
+      stealth: {
+        label: "TITAN.skill.option.stealth.label",
+      },
+      survival: {
+        label: "TITAN.skill.option.survival.label",
+      },
+      theology: {
+        label: "TITAN.skill.option.theology.label",
+      },
     },
   },
 
   resources: {
     option: {
-      resolve: "TITAN.resources.optionresolve",
-      stamina: "TITAN.resources.optionstamina",
-      wounds: "TITAN.resources.optionwounds",
+      resolve: {
+        label: "TITAN.resources.option.resolve.label",
+      },
+      stamina: {
+        label: "TITAN.resources.option.stamina.label",
+      },
+      wounds: {
+        label: "TITAN.resources.option.wounds.label",
+      },
     },
   },
 
   resistance: {
     option: {
-      reflexes: "TITAN.resistance.option.reflexes",
-      resilience: "TITAN.resistance.option.resilience",
-      willpower: "TITAN.resistance.option.willpower",
+      reflexes: {
+        label: "TITAN.resistance.option.reflexes.label",
+      },
+      resilience: {
+        label: "TITAN.resistance.option.resilience.label",
+      },
+      willpower: {
+        label: "TITAN.resistance.option.willpower.label",
+      },
     },
   },
 
   check: {
     name: "TITAN.check.label",
-    roll: "TITAN.check.roll",
+    roll: "TITAN.check.roll.label",
   },
 
-  cancel: "TITAN.cancel",
-  none: "TITAN.none",
+  cancel: "TITAN.cancel.label",
+  none: "TITAN.none.label",
 
   item: {
     rarity: {
       option: {
-        common: "TITAN.item.rarity.option.common",
-        uncommon: "TITAN.item.rarity.option.uncommon",
-        rare: "TITAN.item.rarity.option.rare",
-        special: "TITAN.item.rarity.option.special",
+        common: {
+          label: "TITAN.item.rarity.option.common.label",
+        },
+        uncommon: {
+          label: "TITAN.item.rarity.option.uncommon.label",
+        },
+        rare: {
+          label: "TITAN.item.rarity.option.rare.label",
+        },
+        special: {
+          label: "TITAN.item.rarity.option.special.label",
+        },
       },
     },
   },
 
   attack: {
     type: {
-      melee: "TITAN.attack.type.melee",
-      ranged: "TITAN.attack.type.ranged",
+      options: {
+        melee: {
+          label: "TITAN.attack.type.melee.label",
+        },
+        ranged: {
+          label: "TITAN.attack.type.ranged.label",
+        },
+      },
+    },
+    tag: {
+      option: {
+        blast: {
+          label: "TITAN.attack.option.blast.label",
+        },
+        bludgeoning: {
+          label: "TITAN.attack.option.bludgeoning",
+        },
+        cleave: {
+          label: "TITAN.attack.option.cleave",
+        },
+        close: {
+          label: "TITAN.attack.option.close.label",
+        },
+        magical: {
+          label: "TITAN.attack.option.magical",
+        },
+        piercing: {
+          label: "TITAN.attack.option.piercing",
+        },
+        slashing: {
+          label: "TITAN.attack.option.slashing",
+        },
+      },
     },
   },
 
   range: {
     name: "name",
     option: {
-      close: "TITAN.range.option.close",
-      uncommon: "TITAN.range.option.short",
-      medium: "TITAN.range.option.medium",
-      long: "TITAN.range.option.long",
+      close: {
+        label: "TITAN.range.option.close.label",
+      },
+      uncommon: {
+        label: "TITAN.range.option.short.label",
+      },
+      medium: {
+        label: "TITAN.range.option.medium.label",
+      },
+      long: {
+        label: "TITAN.range.option.long.label",
+      },
     },
   },
 };
@@ -130,12 +243,6 @@ TITAN.settings = {
 
     wounds: {
       maxBaseMulti: 1.0,
-    },
-  },
-
-  derivedStats: {
-    initiative: {
-      formula: "2d6",
     },
   },
 };

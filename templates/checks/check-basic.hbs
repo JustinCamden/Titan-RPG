@@ -85,18 +85,18 @@
   </div>
   <div class="results-banner align-center flex-group-center border">
     {{results.successes}}
-    {{localize "TITAN.check.successes"}}
+    {{localize "TITAN.check.successes.label"}}
     {{#if results.succeeded}}
       <div class="success-banner">
-        {{localize "TITAN.check.succeeded"}}
+        {{localize "TITAN.check.succeeded.label"}}
       </div>
       {{#if results.extraSuccesses}}
-        {{localize "TITAN.check.extraSuccesses"}}:
+        {{localize "TITAN.check.extraSuccesses.label"}}:
         {{results.extraSuccesses}}
       {{/if}}
     {{else if results.failed}}
       <div class="failure-banner">
-        {{localize "TITAN.check.failed"}}
+        {{localize "TITAN.check.failed.label"}}
       </div>
     {{/if}}
   </div>

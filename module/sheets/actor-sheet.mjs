@@ -300,6 +300,7 @@ export class TitanActorSheet extends ActorSheet {
     // Get the localized label
     let localizedLabel = game.i18n.localize(
       CONFIG.TITAN.local.attribute.option[basicCheck.checkOptions.attribute]
+        .label
     );
 
     // Add the skill to the label if appropriate
@@ -308,7 +309,7 @@ export class TitanActorSheet extends ActorSheet {
         localizedLabel +
         " (" +
         game.i18n.localize(
-          CONFIG.TITAN.local.skill.option[basicCheck.checkOptions.skill]
+          CONFIG.TITAN.local.skill.option[basicCheck.checkOptions.skill].label
         ) +
         ")";
     }
@@ -359,7 +360,7 @@ export class TitanActorSheet extends ActorSheet {
     let localizedLabel = game.i18n.localize(
       CONFIG.TITAN.local.resistance.option[
         resistanceCheck.checkOptions.resistance
-      ]
+      ].label
     );
 
     // Evaluate the check

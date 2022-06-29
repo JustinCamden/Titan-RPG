@@ -15,7 +15,7 @@
           data-skill="none"
           data-get-options="default"
         >
-          {{localize (concat "TITAN.attribute.option." key)}}
+          {{localize (concat "TITAN.attribute.option." key ".label")}}
         </label>
         {{! Value Box }}
         <div class="stat-content flexrow flex-group-center flex-between">
@@ -44,19 +44,19 @@
           data-attribute="default"
           data-skill={{key}}
           data-get-options="default"
-        >{{localize (concat "TITAN.skill.option." key)}}</label>
+        >{{localize (concat "TITAN.skill.option." key ".label")}}</label>
 
         {{! Labels }}
         <div class="stat-content flexrow flex-group-center flex-between">
           <label
             for="data.skill.{{key}}.training.value"
             class="stat-label"
-          >{{localize "TITAN.training"}}</label>
+          >{{localize "TITAN.training.label"}}</label>
           <label for="data.skill.{{key}}" class="stat-label"></label>
           <label
             for="data.skill.{{key}}.expertise.value"
             class="stat-label"
-          >{{localize "TITAN.expertise"}}</label>
+          >{{localize "TITAN.expertise.label"}}</label>
         </div>
 
         {{! Training value edit }}

@@ -54,33 +54,35 @@ export class TitanItemSheet extends ItemSheet {
     // Add item rarity options
     context.rarityOptions = {};
     for (let [k, v] of Object.entries(CONFIG.TITAN.local.item.rarity.option)) {
-      context.rarityOptions[k] = v;
+      context.rarityOptions[k] = v.label;
     }
 
     // Add weapon options
     if (itemData.type == "weapon") {
       // Attack type
       context.attackTypeOptions = {};
-      for (let [k, v] of Object.entries(CONFIG.TITAN.local.attack.type)) {
-        context.attackTypeOptions[k] = v;
+      for (let [k, v] of Object.entries(
+        CONFIG.TITAN.local.attack.type.option
+      )) {
+        context.attackTypeOptions[k] = v.label;
       }
 
       // Attack type
       context.attackRangeOptions = {};
       for (let [k, v] of Object.entries(CONFIG.TITAN.local.range.option)) {
-        context.attackRangeOptions[k] = v;
+        context.attackRangeOptions[k] = v.label;
       }
 
       // Attributes
       context.attributeOptions = {};
       for (let [k, v] of Object.entries(CONFIG.TITAN.local.attribute.option)) {
-        context.attributeOptions[k] = v;
+        context.attributeOptions[k] = v.label;
       }
 
       // Skills
       context.skillOptions = {};
       for (let [k, v] of Object.entries(CONFIG.TITAN.local.skill.option)) {
-        context.skillOptions[k] = v;
+        context.skillOptions[k] = v.label;
       }
     }
 

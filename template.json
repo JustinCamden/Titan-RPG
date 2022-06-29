@@ -291,7 +291,7 @@
       "exp": {
         "earned": 0
       },
-      "inspiration": 0
+      "inspiration.label": 0
     },
     "npc": {
       "templates": ["base", "character"]
