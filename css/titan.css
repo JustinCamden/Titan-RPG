@@ -216,6 +216,17 @@
   text-align: right;
 }
 
+.align-items-left {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+}
+
 .align-center {
   -ms-flex-line-pack: center;
   align-content: center;
@@ -256,6 +267,15 @@
 .line-item {
   gap: 10px;
   margin: 10px 0;
+}
+
+.block {
+  display: block;
+}
+
+.flex-wrap {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .border {
@@ -307,34 +327,14 @@
   word-wrap: normal;
 }
 
-li.list-item:not(:last-child) {
+li.list-item.vertical-list:not(:last-child) {
   margin-bottom: 1rem;
 }
 
-.test-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  -ms-flex-line-pack: start;
-  align-content: flex-start;
-  gap: 10px;
-  -ms-flex-preferred-size: auto;
-  flex-basis: auto;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+li.list-item.horizontal-list {
+  margin-bottom: 1rem;
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
 }
 
 /* Styles limited to titan sheets */

@@ -36,19 +36,16 @@
 }
 
 
-li.list-item:not(:last-child) { 
-  margin-bottom: 1rem;  
+li.list-item.vertical-list:not(:last-child) { 
+  margin-bottom: 1rem; 
 }
 
-.test-flex {
-  display:flex;
-  height: 100%;
-  width: 100%;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  align-content: flex-start;
-  gap:10px;
-  flex-basis: auto;
-  flex: 1;
+li.list-item.horizontal-list{
+  margin-bottom: 1rem;  
+  margin-right: 0.25rem; 
+  margin-left: 0.25rem; 
+}
+
+li.list-item.horizontal-list:not(:last-child) { 
+ 
 }

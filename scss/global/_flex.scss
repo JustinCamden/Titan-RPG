@@ -40,6 +40,12 @@
   text-align: right;
 }
 
+.align-items-left {
+  align-items: flex-start;
+  flex-shrink: 1;
+  flex-grow: 0;
+}
+
 .align-center {
   align-content: center;
   text-align: center;
@@ -80,4 +86,13 @@ padding-left: 10px;
 .line-item {
   gap: 10px;
   margin: 10px 0;
+}
+
+
+.block {
+  display: block;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
