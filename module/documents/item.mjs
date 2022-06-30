@@ -74,6 +74,7 @@ export class TitanItem extends Item {
       const traitData = {
         traitOptions: deepClone(CONFIG.TITAN.attack.trait.option),
         currentTraits: attack[idx].traits,
+        label: attack[idx].name,
       };
 
       // Edit the traits in the traits dialog
@@ -133,7 +134,12 @@ export class TitanItem extends Item {
       // Create the dialog
       return await new Promise((resolve) => {
         const data = {
-          title: game.i18n.localize(CONFIG.TITAN.trait.edit.label),
+          title:
+            game.i18n.localize(CONFIG.TITAN.trait.edit.label) +
+            " (" +
+            this.data.name +
+            (inData.label ? ": " + inData.label : "") +
+            ")",
           content: html,
           buttons: {
             save: {
