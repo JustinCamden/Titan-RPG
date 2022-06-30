@@ -209,4 +209,33 @@ export class TitanItem extends Item {
 
     return retVal;
   }
+
+  async addAttack() {
+    // Create the new attack
+    const newAttack = {
+      name: "Attack",
+      type: "melee",
+      range: "close",
+      attribute: "body",
+      skill: "meleeWeapons",
+      damage: 1,
+      plusSuccessDamage: true,
+      traits: [],
+    };
+
+    // Add the attack and update the item
+    let attack = this.data.data.attack;
+    console.log(attack);
+    console.log(this.data.data.attack);
+    attack.push(newAttack);
+    console.log(attack);
+    this.update({
+      data: {
+        attack: attack,
+      },
+    });
+    console.log(this.data.data.attack);
+
+    return;
+  }
 }

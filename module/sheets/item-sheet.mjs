@@ -65,7 +65,7 @@ export class TitanItemSheet extends ItemSheet {
         context.attackTypeOptions[k] = v.label;
       }
 
-      // Attack type
+      // Attack range
       context.attackRangeOptions = {};
       for (let [k, v] of Object.entries(CONFIG.TITAN.range.option)) {
         context.attackRangeOptions[k] = v.label;
@@ -127,6 +127,8 @@ export class TitanItemSheet extends ItemSheet {
         html
           .find(".edit-attack-traits")
           .click(this._onEditAttackTraits.bind(this));
+
+        html.find(".add-attack").click(this._onAddAttack.bind(this));
         break;
       }
 
@@ -265,6 +267,11 @@ export class TitanItemSheet extends ItemSheet {
 
   _onEditAttackTraits(event) {
     this.item.editAttackTraits(event.target.dataset.idx);
+    return;
+  }
+
+  _onAddAttack(event) {
+    this.item.addAttack();
     return;
   }
 }
