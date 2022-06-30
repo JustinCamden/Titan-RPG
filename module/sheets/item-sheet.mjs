@@ -162,9 +162,12 @@ export class TitanItemSheet extends ItemSheet {
       // Update the atttack type
       attack[idx].type = event.target.value;
 
-      // Update skill and attribute if appropriate
-      // If switching to melee from defaults for ranged
+      // If switching to melee to ranged
       if (attack[idx].type == "melee") {
+        // Set the range to close
+        attack[idx].range = "close";
+
+        // Update the attribute and skill if neither are overridden
         if (
           attack[idx].attribute == "mind" &&
           attack[idx].skill == "rangedWeapons"
@@ -174,13 +177,19 @@ export class TitanItemSheet extends ItemSheet {
           attack[idx].skill = "meleeWeapons";
         }
         // Else, if switching to ranged from melee defaults
-      } else if (
-        attack[idx].attribute == "body" &&
-        attack[idx].skill == "meleeWeapons"
-      ) {
-        // Set ranged defaults
-        attack[idx].attribute = "mind";
-        attack[idx].skill = "rangedWeapons";
+      } else {
+        // Set the range to medium
+        attack[idx].range = "medium";
+
+        // Update the attribute and skill if neither are overridden
+        if (
+          attack[idx].attribute == "body" &&
+          attack[idx].skill == "meleeWeapons"
+        ) {
+          // Set ranged defaults
+          attack[idx].attribute = "mind";
+          attack[idx].skill = "rangedWeapons";
+        }
       }
 
       this.item.update({

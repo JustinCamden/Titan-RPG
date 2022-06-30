@@ -15,13 +15,15 @@
 
             {{! Trait input }}
             {{#if option.numberValue includeZero=true}}
-              <input
-                class="flex-group-right"
-                type="text"
-                name="{{key}}.numberValue"
-                value="{{option.numberValue}}"
-                data-dtype="Number"
-              />
+              <div class="flex-group-right">
+                <input
+                  type="text"
+                  name="{{key}}.numberValue"
+                  value="{{option.numberValue}}"
+                  data-dtype="Number"
+                />
+              </div>
+
             {{else}}
               <input
                 class="flex-group-right"

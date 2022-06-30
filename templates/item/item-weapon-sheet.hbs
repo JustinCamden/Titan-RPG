@@ -64,16 +64,20 @@
                 {{selectOptions ../attackTypeOptions selected=attack.type localize=true}}
               </select>
 
-              {{! Range Label }}
-              <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
-                "TITAN.range.label"}}</label>
+              {{! Only show the range selector if this is a ranged attack }}
+              {{#if (equals attack.type "ranged")}}
+                {{! Range Label }}
+                <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
+                  "TITAN.range.label"}}</label>
 
-              {{! Range Selector }}
-              <select
-                class="flex-group-right padding-right10 grid-span-2 full-height select-attack-range"
-                data-idx={{key}}>
-                {{selectOptions ../attackRangeOptions selected=attack.range localize=true}}
-              </select>
+                {{! Range Selector }}
+                <select
+                  class="flex-group-right padding-right10 grid-span-2 full-height select-attack-range"
+                  data-idx={{key}}>
+                  {{selectOptions ../attackRangeOptions selected=attack.range localize=true}}
+                </select>
+              {{/if}}
+
 
               {{! Attribute Label }}
               <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize

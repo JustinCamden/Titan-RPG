@@ -76,6 +76,9 @@ Handlebars.registerHelper("toLowerCase", function (str) {
 Hooks.once("ready", async function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(data, slot));
+  Handlebars.registerHelper("equals", (a, b) => {
+    return a == b;
+  });
 });
 
 /* -------------------------------------------- */
