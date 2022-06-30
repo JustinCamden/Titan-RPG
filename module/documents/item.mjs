@@ -225,16 +225,25 @@ export class TitanItem extends Item {
 
     // Add the attack and update the item
     let attack = this.data.data.attack;
-    console.log(attack);
-    console.log(this.data.data.attack);
     attack.push(newAttack);
-    console.log(attack);
     this.update({
       data: {
         attack: attack,
       },
     });
-    console.log(this.data.data.attack);
+
+    return;
+  }
+
+  async deleteAttack(idx) {
+    // Remove the attack and update the item
+    let attack = this.data.data.attack;
+    attack.splice(idx, 1);
+    this.update({
+      data: {
+        attack: attack,
+      },
+    });
 
     return;
   }

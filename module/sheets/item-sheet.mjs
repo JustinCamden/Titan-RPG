@@ -129,6 +129,8 @@ export class TitanItemSheet extends ItemSheet {
           .click(this._onEditAttackTraits.bind(this));
 
         html.find(".add-attack").click(this._onAddAttack.bind(this));
+
+        html.find(".delete-attack").click(this._onDeleteAttack.bind(this));
         break;
       }
 
@@ -155,6 +157,7 @@ export class TitanItemSheet extends ItemSheet {
   }
 
   _onSelectAttackType(event) {
+    event.preventDefault();
     // Check if the data is valid
     const idx = event.target.dataset.idx;
     if (this.item.data.data.attack[idx]) {
@@ -202,6 +205,7 @@ export class TitanItemSheet extends ItemSheet {
   }
 
   _onSelectAttackRange(event) {
+    event.preventDefault();
     // Check if the data is valid
     const idx = event.target.dataset.idx;
     if (this.item.data.data.attack[idx]) {
@@ -218,6 +222,7 @@ export class TitanItemSheet extends ItemSheet {
   }
 
   _onSelectAttackAttribute(event) {
+    event.preventDefault();
     // Check if the data is valid
     const idx = event.target.dataset.idx;
     if (this.item.data.data.attack[idx]) {
@@ -234,6 +239,7 @@ export class TitanItemSheet extends ItemSheet {
   }
 
   _onSelectAttackSkill(event) {
+    event.preventDefault();
     // Check if the data is valid
     const idx = event.target.dataset.idx;
     if (this.item.data.data.attack[idx]) {
@@ -250,6 +256,7 @@ export class TitanItemSheet extends ItemSheet {
   }
 
   _onEditAttackDamage(event) {
+    event.preventDefault();
     // Check if the data is valid
     const idx = event.target.dataset.idx;
     if (this.item.data.data.attack[idx]) {
@@ -266,12 +273,21 @@ export class TitanItemSheet extends ItemSheet {
   }
 
   _onEditAttackTraits(event) {
+    event.preventDefault();
     this.item.editAttackTraits(event.target.dataset.idx);
     return;
   }
 
   _onAddAttack(event) {
+    event.preventDefault();
     this.item.addAttack();
+    return;
+  }
+
+  _onDeleteAttack(event) {
+    event.preventDefault();
+    console.log(event.target.dataset);
+    this.item.deleteAttack(event.target.dataset.idx);
     return;
   }
 }

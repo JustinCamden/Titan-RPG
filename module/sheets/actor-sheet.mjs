@@ -244,6 +244,7 @@ export class TitanActorSheet extends ActorSheet {
 
   // Called when the player clicks an initiative check
   async _onInitiativeRoll(event) {
+    event.preventDefault();
     this.getInitiativeRoll();
   }
 
@@ -268,6 +269,7 @@ export class TitanActorSheet extends ActorSheet {
 
   // Called when the player clicks a basic check
   async _onBasicCheck(event) {
+    event.preventDefault();
     const dataset = event.currentTarget.dataset;
     const getOptions =
       dataset.getOptions == "true" ||
@@ -299,8 +301,7 @@ export class TitanActorSheet extends ActorSheet {
 
     // Get the localized label
     let localizedLabel = game.i18n.localize(
-      CONFIG.TITAN.attribute.option[basicCheck.checkOptions.attribute]
-        .label
+      CONFIG.TITAN.attribute.option[basicCheck.checkOptions.attribute].label
     );
 
     // Add the skill to the label if appropriate
@@ -329,6 +330,7 @@ export class TitanActorSheet extends ActorSheet {
 
   // Called when the player clicks a resistance check
   async _onResistanceCheck(event) {
+    event.preventDefault();
     const dataset = event.currentTarget.dataset;
     const getOptions =
       dataset.getOptions == "true" ||
@@ -358,9 +360,8 @@ export class TitanActorSheet extends ActorSheet {
 
     // Get the localized label
     let localizedLabel = game.i18n.localize(
-      CONFIG.TITAN.resistance.option[
-        resistanceCheck.checkOptions.resistance
-      ].label
+      CONFIG.TITAN.resistance.option[resistanceCheck.checkOptions.resistance]
+        .label
     );
 
     // Evaluate the check

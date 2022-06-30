@@ -49,3 +49,14 @@ li.list-item.horizontal-list{
 li.list-item.horizontal-list:not(:last-child) { 
  
 }
+
+.item-sidebar {
+  .scrolling {
+    max-height: 26rem;
+    overflow-y: scroll;
+  }
+}
+
+.fixed {
+
+}

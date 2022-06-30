@@ -1,7 +1,7 @@
 <form class="{{cssClass}}" autocomplete="off">
 
   {{! Header}}
-  <header class="sheet-header">
+  <header class="sheet-header fixed">
     <img class="item-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
     <div class="header-fields grid grid-4col">
 
@@ -28,131 +28,141 @@
 
   <div class="sheet-content">
     <section class="main grid grid-10col">
-      {{! Sidebar }}
-      <aside class="sidebar flex-group-center grid-span-3">
-
-        {{! Weapon attacks }}
-        <section class="attacks">
+      <div class="flexcol, flex-group-center grid-span-3 item-sidebar">
+        {{! Sidebar }}
+        <div class="border">
           <label class="stat-label">{{localize "TITAN.attacks.label"}}</label>
-          <ul class="list list-1col attack-list">
+        </div>
+         
+         {{! Scrolling }}
+        <div class="scrolling">
+          {{! Weapon attacks }}
+          <section class="attacks">
+            <ul class="list list-1col attack-list">
 
-            {{! For each attack }}
-            {{#each data.attack as |attack key|}}
-              <li class="list-item attack grid grid-4col full-height border">
+              {{! For each attack }}
+              {{#each data.attack as |attack key|}}
+                <li class="list-item attack grid grid-4col border">
 
-                {{! Name Label }}
-                <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
-                  "TITAN.label"}}</label>
+                  {{! Name Label }}
+                  <label class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
+                    "TITAN.label"}}</label>
 
-                {{! Name input }}
-                <input
-                  class="flex-group-right padding-right10 grid-span-2 full-height edit-attack-name"
-                  type="text"
-                  value="{{attack.name}}"
-                  data-idx={{key}}
-                  data-dtype="text"
-                />
+                  {{! Name input }}
+                  <input
+                    class="flex-group-right padding-right10 grid-span-2 edit-attack-name"
+                    type="text"
+                    value="{{attack.name}}"
+                    data-idx={{key}}
+                    data-dtype="text"
+                  />
 
-                {{! Type Label }}
-                <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
-                  "TITAN.type.label"}}</label>
+                  {{! Type Label }}
+                  <label class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
+                    "TITAN.type.label"}}</label>
 
-                {{! Type Selector }}
-                <select
-                  class="flex-group-right padding-right10 grid-span-2 full-height select-attack-type"
-                  data-idx={{key}}>
-                  {{selectOptions ../attackTypeOptions selected=attack.type localize=true}}
-                </select>
-
-                {{! Only show the range selector if this is a ranged attack }}
-                {{#if (equals attack.type "ranged")}}
-                  {{! Range Label }}
-                  <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
-                    "TITAN.range.label"}}</label>
-
-                  {{! Range Selector }}
+                  {{! Type Selector }}
                   <select
-                    class="flex-group-right padding-right10 grid-span-2 full-height select-attack-range"
+                    class="flex-group-right padding-right10 grid-span-2 select-attack-type"
                     data-idx={{key}}>
-                    {{selectOptions ../attackRangeOptions selected=attack.range localize=true}}
+                    {{selectOptions ../attackTypeOptions selected=attack.type localize=true}}
                   </select>
-                {{/if}}
+
+                  {{! Only show the range selector if this is a ranged attack }}
+                  {{#if (equals attack.type "ranged")}}
+                    {{! Range Label }}
+                    <label class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
+                      "TITAN.range.label"}}</label>
+
+                    {{! Range Selector }}
+                    <select
+                      class="flex-group-right padding-right10 grid-span-2 select-attack-range"
+                      data-idx={{key}}>
+                      {{selectOptions ../attackRangeOptions selected=attack.range localize=true}}
+                    </select>
+                  {{/if}}
 
 
-                {{! Attribute Label }}
-                <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
-                  "TITAN.attribute.label"}}</label>
+                  {{! Attribute Label }}
+                  <label class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
+                    "TITAN.attribute.label"}}</label>
 
-                {{! Attribute Selector}}
-                <select
-                  class="flex-group-right padding-right10 grid-span-2 full-height select-attack-attribute"
-                  data-idx={{key}}>
-                  {{selectOptions ../attributeOptions selected=attack.attribute localize=true}}
-                </select>
+                  {{! Attribute Selector}}
+                  <select
+                    class="flex-group-right padding-right10 grid-span-2 select-attack-attribute"
+                    data-idx={{key}}>
+                    {{selectOptions ../attributeOptions selected=attack.attribute localize=true}}
+                  </select>
 
-                {{! Skill Label}}
-                <label 
-                  class="stat-label flex-group-left padding-left10 select-attack-skill full-height">
-                  {{localize "TITAN.skill.label"}}
-                </label>
+                  {{! Skill Label}}
+                  <label 
+                    class="stat-label flex-group-left padding-left10 select-attack-skill">
+                    {{localize "TITAN.skill.label"}}
+                  </label>
 
-                {{! Skill Selector }}
-                <select class="flex-group-right padding-right10 grid-span-3 full-height select-attack-skill"
-                  data-idx={{key}}>
-                  {{selectOptions ../skillOptions selected=attack.skill localize=true}}
-                </select>
+                  {{! Skill Selector }}
+                  <select class="flex-group-right padding-right10 grid-span-3 select-attack-skill"
+                    data-idx={{key}}>
+                    {{selectOptions ../skillOptions selected=attack.skill localize=true}}
+                  </select>
 
-                {{! Damage Label }}
-                <label class="stat-label flex-group-left padding-left10 grid-span-2 full-height">{{localize
-                  "TITAN.damage.label"}}</label>
+                  {{! Damage Label }}
+                  <label class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
+                    "TITAN.damage.label"}}</label>
 
-                {{! Damage Input }}
-                <input
-                  class="flex-group-right padding-right10 grid-span-2 full-height edit-attack-damage"
-                  type="number"
-                  value="{{attack.damage}}"
-                  data-idx={{key}}
-                  data-dtype="Number"
-                />
+                  {{! Damage Input }}
+                  <input
+                    class="flex-group-right padding-right10 grid-span-2 edit-attack-damage"
+                    type="number"
+                    value="{{attack.damage}}"
+                    data-idx={{key}}
+                    data-dtype="Number"
+                  />
 
-                {{! Traits Label }}
-                <label class="stat-label flex-group-left padding-left10 grid-span-3 full-height">{{localize
-                  "TITAN.traits.label"}}</label>
+                  {{! Traits Label }}
+                  <label class="stat-label flex-group-left padding-left10 grid-span-3">{{localize
+                    "TITAN.traits.label"}}</label>
 
-                {{! Traits Edit}}
-                <a class="fas fa-edit flex-group-right padding-right10 grid-span-1 full-height edit-attack-traits" data-idx={{key}}></a>
+                  {{! Traits Edit}}
+                  <a class="fas fa-edit flex-group-right padding-right10 grid-span-1 edit-attack-traits" data-idx={{key}}></a>
 
-                {{! Traits container }}
-                {{#if attack.traits.length}}
-                  <div class="traits grid-span-4">
-                    <div class="grid grid-2co full-heightl">
-                      {{#each attack.traits as |trait key|}}
-                        <div class="border flex-group-center full-height">
-                          {{#if trait.numberValue}}
-                            <div class="full-height">
+                  {{! Traits container }}
+                  {{#if attack.traits.length}}
+                    <div class="traits grid-span-4">
+                      <div class="grid grid-2col">
+                        {{#each attack.traits as |trait key|}}
+                          <div class="border flex-group-center">
+                            {{#if trait.numberValue}}
+                              <div class="full-height">
+                                {{localize (concat "TITAN.attack.trait.option." trait.name ".label")}}
+                                {{concat "(" trait.numberValue ")"}}
+                              </div>
+                            {{else}}
                               {{localize (concat "TITAN.attack.trait.option." trait.name ".label")}}
-                              {{concat "(" trait.numberValue ")"}}
-                            </div>
-                          {{else}}
-                            {{localize (concat "TITAN.attack.trait.option." trait.name ".label")}}
-                          {{/if}}
-                        </div>
-                      {{/each}}
+                            {{/if}}
+                          </div>
+                        {{/each}}
+                      </div>
                     </div>
+                  {{/if}}
+
+                  {{! Delete attack }}
+                  <div class="border grid-span-4 flex-group-center">
+                    <a class="fas fa-trash delete-attack" data-idx={{key}}></a>
                   </div>
-                {{/if}}
-              </li>
-            {{/each}}
-            {{! Adding a new attack }}
-            <div class="flex-group-center padding-right10 grid-span-4 full-height border">
-              <a class="fas fa-plus-circle add-attack" data-idx={{key}}></a>
-            </div>
-          </ul>
-        </section>
-      </aside>
+                </li>
+              {{/each}}
+              {{! Adding a new attack }}
+              <div class="flex-group-center padding-right10 grid-span-4 border">
+                <a class="fas fa-plus-circle add-attack"></a>
+              </div>
+            </ul>
+          </section>
+        </div>
+      </div>
 
       {{!-- For the main features list, span the right two columns --}}
-      <section class="main sheet-body grid-span-7">
+      <section class="main sheet-body grid-span-7 fixed">
         {{! Sheet Tab Navigation }}
         <nav class="sheet-tabs tabs" data-group="primary">
           <a class="item" data-tab="description">Description</a>

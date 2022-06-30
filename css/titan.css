@@ -337,6 +337,11 @@ li.list-item.horizontal-list {
   margin-left: 0.25rem;
 }
 
+.item-sidebar .scrolling {
+  max-height: 26rem;
+  overflow-y: scroll;
+}
+
 /* Styles limited to titan sheets */
 .titan {
   /* ----------------------------------------- */
