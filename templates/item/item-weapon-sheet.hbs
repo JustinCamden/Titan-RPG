@@ -110,6 +110,13 @@
                 data-idx={{key}}
                 data-dtype="Number"
               />
+
+              {{! Traits Label }}
+              <label class="stat-label flex-group-left padding-left10 grid-span-3 full-height">{{localize
+                "TITAN.traits.label"}}</label>
+
+              {{! Traits Edit}}
+              <a class="fas fa-edit flex-group-right padding-right10 grid-span-1 full-height edit-attack-traits" data-idx={{key}}></a>
             </li>
             {{/each}}
           </ul>

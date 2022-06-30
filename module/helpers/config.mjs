@@ -138,12 +138,15 @@ export const TITAN = {
   },
 
   check: {
-    name: {
-      label: "TITAN.check.label",
-    },
-    roll: {
-      label: "TITAN.check.roll.label",
-    },
+    label: "TITAN.check.label",
+  },
+
+  roll: {
+    label: "TITAN.roll.label",
+  },
+
+  traits: {
+    label: "TITAN.traits.label",
   },
 
   cancel: {
@@ -174,7 +177,11 @@ export const TITAN = {
       },
     },
   },
-
+  trait: {
+    edit: {
+      label: "TITAN.trait.edit.label",
+    },
+  },
   attack: {
     type: {
       option: {
@@ -186,69 +193,69 @@ export const TITAN = {
         },
       },
     },
-    tag: {
+    trait: {
       option: {
         blast: {
-          label: "TITAN.attack.option.blast.label",
-          hasIntValue: true,
+          label: "TITAN.attack.trait.option.blast.label",
+          numberValue: 0,
         },
         cleave: {
-          label: "TITAN.attack.option.cleave.label",
+          label: "TITAN.attack.trait.option.cleave.label",
         },
         close: {
-          label: "TITAN.attack.option.close.label",
+          label: "TITAN.attack.trait.option.close.label",
         },
         crushing: {
-          label: "TITAN.attack.option.crushing.label",
+          label: "TITAN.attack.trait.option.crushing.label",
         },
         defensive: {
-          label: "TITAN.attack.option.defensive.label",
+          label: "TITAN.attack.trait.option.defensive.label",
         },
         ineffective: {
-          label: "TITAN.attack.option.ineffective.label",
+          label: "TITAN.attack.trait.option.ineffective.label",
         },
         loud: {
-          label: "TITAN.attack.option.loud.label",
+          label: "TITAN.attack.trait.option.loud.label",
         },
         magical: {
-          label: "TITAN.attack.option.magical.label",
+          label: "TITAN.attack.trait.option.magical.label",
         },
         penetrating: {
-          label: "TITAN.attack.option.penetrating.label",
+          label: "TITAN.attack.trait.option.penetrating.label",
         },
         piercing: {
-          label: "TITAN.attack.option.piercing.label",
+          label: "TITAN.attack.trait.option.piercing.label",
         },
         range: {
-          label: "TITAN.attack.option.range.label",
+          label: "TITAN.attack.trait.option.range.label",
         },
         reach: {
-          label: "TITAN.attack.option.reach.label",
+          label: "TITAN.attack.trait.option.reach.label",
         },
         reload: {
-          label: "TITAN.attack.option.reload.label",
+          label: "TITAN.attack.trait.option.reload.label",
         },
         rend: {
-          label: "TITAN.attack.option.rend.label",
+          label: "TITAN.attack.trait.option.rend.label",
         },
         restraining: {
-          label: "TITAN.attack.option.restraining.label",
+          label: "TITAN.attack.trait.option.restraining.label",
         },
         slashing: {
-          label: "TITAN.attack.option.slashing.label",
+          label: "TITAN.attack.trait.option.slashing.label",
         },
         spread: {
-          label: "TITAN.attack.option.spread.label",
-          hasIntValue: true,
+          label: "TITAN.attack.trait.option.spread.label",
+          numberValue: 0,
         },
         subtle: {
-          label: "TITAN.attack.option.subtle.label",
+          label: "TITAN.attack.trait.option.subtle.label",
         },
         thrown: {
-          label: "TITAN.attack.option.thrown.label",
+          label: "TITAN.attack.trait.option.thrown.label",
         },
         twoHanded: {
-          label: "TITAN.attack.option.twoHanded.label",
+          label: "TITAN.attack.trait.option.twoHanded.label",
         },
       },
     },

@@ -1,4 +1,4 @@
-<form>
+<form class="titan check-dialog resistance-check">
   <div class="form-group">
     <label>{{localize "TITAN.resistance.label"}}</label>
     <select name="resistance">
@@ -12,7 +12,7 @@
 
     {{! Difficulty Options}}
     {{localize "TITAN.check.difficulty.label"}}
-    <select id="difficulty">
+    <select name="difficulty">
       {{#select difficulty}}
         <option value="2">2</option>
         <option value="3">3</option>
@@ -24,7 +24,7 @@
 
     {{! Complexity Options}}
     {{localize "TITAN.check.complexity.label"}}
-    <select id="complexity">
+    <select name="complexity">
       {{#select complexity}}
         <option value="0">0</option>
         <option value="1">1</option>
@@ -48,5 +48,14 @@
     {{! Dice Mod}}
     {{localize "TITAN.check.bonusPenaltyDice.label"}}
     <input type="number" name="diceMod" value={{diceMod}} data-dtype="Number" />
+
+    {{! Expertise Mod}}
+    {{localize "TITAN.check.expertiseMod.label"}}
+    <input
+      type="number"
+      name="expertiseMod"
+      value={{expertiseMod}}
+      data-dtype="Number"
+    />
   </div>
 </form>

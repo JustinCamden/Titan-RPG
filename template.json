@@ -307,7 +307,7 @@
         "healing": [],
         "rarity": "common",
         "rulesElements": [],
-        "tags": [],
+        "traits": [],
         "version": 1.0
       },
       "value": {
@@ -351,7 +351,7 @@
         "skill": "meleeWeapons",
         "damage": 1,
         "plusSuccessDamage": true,
-        "tags": []
+        "traits": []
       }],
       "resistanceChecks": [],
       "weaponTraits": []

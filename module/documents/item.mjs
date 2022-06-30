@@ -65,48 +65,85 @@ export class TitanItem extends Item {
     }
   }
 
-  async editTags(inTags) {
-    // If the tag options are valid is valid
-    if (inData?.tagOptions) {
-      // Initialize the dialog data
-      let dialogData = {
-        tagOptions: inData.tagOptions,
+  async editAttackTraits(idx) {
+    // Check if the data is valid
+
+    let attack = this.data.data.attack;
+    if (attack[idx]) {
+      // Get the trait options
+      const traitData = {
+        traitOptions: deepClone(CONFIG.TITAN.attack.trait.option),
+        currentTraits: attack[idx].traits,
       };
 
-      // For each tag option
-      for (let [k, v] of Object.entries(inData.tagOptions)) {
-        // Add the option to the list
-        dialogData.tagOptions[k].label = v.label;
+      // Edit the traits in the traits dialog
+      const newTraits = await this._editTraits(traitData);
 
-        // Set whether the tag is currently selected based on the current tags
-        dialogData.tagOptions[k].selected =
-          inData.currentTags && indata.currentTags[k] ? true : false;
+      // Edit the traits if appropriate
+      if (!newTraits.cancelled) {
+        // Add the traits to the attack
+        attack[idx].traits = newTraits;
 
-        // Set whether the tag has an intValue
-        const hasIntValue = inData.tagOptions[k].hasIntValue;
-        dialogData.tagOptions[k].hasIntValue = hasIntValue;
-        if (hasIntValue) {
-          dialogData.tagOptions[k].intValue = indata.currentTags;
+        // Update the item
+        this.update({
+          data: {
+            attack: attack,
+          },
+        });
+      }
+    }
+
+    return;
+  }
+
+  async _editTraits(inData) {
+    // If the trait options are valid
+    if (inData?.traitOptions) {
+      // Initialize the dialog data
+      let dialogData = {
+        traitOptions: inData.traitOptions,
+      };
+      const currentTraits = inData.currentTraits;
+
+      // For each trait option
+      if (currentTraits) {
+        for (let idx = 0; idx < currentTraits.length; idx++) {
+          // Get the name of the trait
+          const name = currentTraits[idx].name;
+
+          // Set the number value of the trait if appropriate
+          if (currentTraits[idx].numberValue > 0) {
+            dialogData.traitOptions[name].numberValue =
+              currentTraits[idx].numberValue;
+          }
+
+          // Otherwise, set the trait to active
+          else {
+            dialogData.traitOptions[name].isTraitActive = true;
+          }
         }
       }
 
       // Create the html template
       const html = await renderTemplate(
-        "systems/titan/templates/item/item-tag-dialog.hbs",
+        "systems/titan/templates/item/item-trait-dialog.hbs",
         dialogData
       );
 
       // Create the dialog
-      let newTags = await new Promise((resolve) => {
+      return await new Promise((resolve) => {
         const data = {
-          title: game.i18n.localize(CONFIG.TITAN.check.name),
+          title: game.i18n.localize(CONFIG.TITAN.trait.edit.label),
           content: html,
           buttons: {
             save: {
               label: game.i18n.localize(CONFIG.TITAN.save.label),
               callback: (html) =>
                 resolve(
-                  this._processBasicCheckOptions(html[0].querySelector("form"))
+                  this._processEditTraits({
+                    form: html[0].querySelector("form"),
+                    traitOptions: dialogData.traitOptions,
+                  })
                 ),
             },
             cancel: {
@@ -118,8 +155,52 @@ export class TitanItem extends Item {
           close: () => resolve({ cancelled: true }),
         };
 
-        new Dialog(data, null).render(true);
+        const dialogOptions = {
+          width: 500,
+        };
+
+        new Dialog(data, dialogOptions).render(true);
       });
     }
+
+    return;
+  }
+
+  _processEditTraits(inData) {
+    let retVal = [];
+
+    // For each trait
+    for (let [k, v] of Object.entries(inData.traitOptions)) {
+      // If this is a trait with a number value
+      if (v.numberValue > -1) {
+        // If the number is > 0
+        let numberValue = parseInt(
+          inData.form[k.toString() + ".numberValue"].value
+        );
+        if (numberValue > 0) {
+          // Prepare the trait
+          let trait = {
+            name: k.toString(),
+            numberValue: numberValue,
+          };
+
+          // Add the trait to retVal
+          retVal.push(trait);
+        }
+      }
+
+      // Otherwise, if the trait is checked as active
+      if (inData.form[k.toString() + ".isTraitActive"]?.checked) {
+        // Prepare the trait
+        let trait = {
+          name: k.toString(),
+        };
+
+        // Add the trait to the retval
+        retVal.push(trait);
+      }
+    }
+
+    return retVal;
   }
 }

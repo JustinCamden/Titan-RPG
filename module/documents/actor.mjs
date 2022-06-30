@@ -371,7 +371,7 @@ export class TitanActor extends Actor {
       // Create the dialog
       checkOptions = await new Promise((resolve) => {
         const data = {
-          title: game.i18n.localize(CONFIG.TITAN.check.name),
+          title: game.i18n.localize(CONFIG.TITAN.check.label),
           content: html,
           buttons: {
             roll: {
@@ -382,7 +382,7 @@ export class TitanActor extends Actor {
                 ),
             },
             cancel: {
-              label: game.i18n.localize(CONFIG.TITAN.cancel),
+              label: game.i18n.localize(CONFIG.TITAN.cancel.label),
               callback: (html) => resolve({ cancelled: true }),
             },
           },
@@ -453,7 +453,7 @@ export class TitanActor extends Actor {
       difficulty: parseInt(form.difficulty.value),
       complexity: parseInt(form.complexity.value),
       diceMod: parseInt(form.diceMod.value),
-      expertiseMod: 0,
+      expertiseMod: parseInt(form.expertiseMod.value),
     };
   }
 
@@ -568,7 +568,7 @@ export class TitanActor extends Actor {
       difficulty: parseInt(form.difficulty.value),
       complexity: parseInt(form.complexity.value),
       diceMod: parseInt(form.diceMod.value),
-      expertiseMod: 0,
+      expertiseMod: parseInt(form.expertiseMod.value),
     };
   }
 }

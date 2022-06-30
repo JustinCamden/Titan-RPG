@@ -61,9 +61,7 @@ export class TitanItemSheet extends ItemSheet {
     if (itemData.type == "weapon") {
       // Attack type
       context.attackTypeOptions = {};
-      for (let [k, v] of Object.entries(
-        CONFIG.TITAN.attack.type.option
-      )) {
+      for (let [k, v] of Object.entries(CONFIG.TITAN.attack.type.option)) {
         context.attackTypeOptions[k] = v.label;
       }
 
@@ -98,28 +96,44 @@ export class TitanItemSheet extends ItemSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
 
-    // Roll handlers, click handlers, etc. would go here.
-    html.find(".edit-attack-name").change(this._onEditAttackName.bind(this));
+    // Roll handlers, click handlers, etc. go here.
+    switch (this.item.data.type) {
+      // Weapon listeners
+      case "weapon": {
+        html
+          .find(".edit-attack-name")
+          .change(this._onEditAttackName.bind(this));
 
-    html
-      .find(".select-attack-type")
-      .change(this._onSelectAttackType.bind(this));
+        html
+          .find(".select-attack-type")
+          .change(this._onSelectAttackType.bind(this));
 
-    html
-      .find(".select-attack-range")
-      .change(this._onSelectAttackRange.bind(this));
+        html
+          .find(".select-attack-range")
+          .change(this._onSelectAttackRange.bind(this));
 
-    html
-      .find(".select-attack-attribute")
-      .change(this._onSelectAttackAttribute.bind(this));
+        html
+          .find(".select-attack-attribute")
+          .change(this._onSelectAttackAttribute.bind(this));
 
-    html
-      .find(".select-attack-skill")
-      .change(this._onSelectAttackSkill.bind(this));
+        html
+          .find(".select-attack-skill")
+          .change(this._onSelectAttackSkill.bind(this));
 
-    html
-      .find(".edit-attack-damage")
-      .change(this._onEditAttackDamage.bind(this));
+        html
+          .find(".edit-attack-damage")
+          .change(this._onEditAttackDamage.bind(this));
+
+        html
+          .find(".edit-attack-traits")
+          .click(this._onEditAttackTraits.bind(this));
+        break;
+      }
+
+      default: {
+        break;
+      }
+    }
   }
 
   _onEditAttackName(event) {
@@ -237,6 +251,11 @@ export class TitanItemSheet extends ItemSheet {
         data: { attack: attack },
       });
     }
+    return;
+  }
+
+  _onEditAttackTraits(event) {
+    this.item.editAttackTraits(event.target.dataset.idx);
     return;
   }
 }
