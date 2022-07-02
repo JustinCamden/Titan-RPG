@@ -212,21 +212,12 @@ export class TitanItem extends Item {
 
   async addAttack() {
     // Create the new attack
-    const newAttack = {
-      name: "Attack",
-      type: "melee",
-      range: "close",
-      attribute: "body",
-      skill: "meleeWeapons",
-      damage: 1,
-      plusSuccessDamage: true,
-      traits: [],
-    };
+    const newAttack = foundry.utils.deepClone(CONFIG.TITAN.attack.template);
 
     // Add the attack and update the item
     let attack = this.data.data.attack;
     attack.push(newAttack);
-    this.update({
+    await this.update({
       data: {
         attack: attack,
       },
@@ -239,12 +230,34 @@ export class TitanItem extends Item {
     // Remove the attack and update the item
     let attack = this.data.data.attack;
     attack.splice(idx, 1);
-    this.update({
-      data: {
-        attack: attack,
-      },
-    });
+
+    // If we have no more attacks, ensure we have at least one
+    if (attack.length <= 0) {
+      this.addAttack();
+
+      // Otherwise, update the item
+    } else {
+      await this.update({
+        data: {
+          attack: attack,
+        },
+      });
+    }
 
     return;
   }
+
+  async onAddAttackDescription() {
+    let attackDescription = this.data.data.attackDescription;
+    if (attackDescription == "") {
+      attackDescription = "Attack Description";
+      await this.update({
+        data: {
+          attackDescription: attackDescription,
+        },
+      });
+    }
+  }
+
+  async;
 }

@@ -51,10 +51,12 @@ li.list-item.horizontal-list:not(:last-child) {
 }
 
 .item-sidebar {
-  .scrolling {
-    //
-    overflow-y: scroll;
-  }
+
+}
+
+.scrolling {
+  //
+  overflow-y: scroll;
 }
 
 .fixed {
@@ -63,6 +65,10 @@ li.list-item.horizontal-list:not(:last-child) {
 
 details summary { 
   cursor: pointer;
+}
+
+details summary > * {
+  display: inline;
 }
 
 .max-height-20 {
@@ -87,4 +93,37 @@ details summary {
 
 .max-height-25 {
   max-height: 25rem;
+}
+
+.min-height-10 {
+  height: 10rem;
+}
+
+.min-height-5 {
+  height: 5rem;
+}
+
+// Size styles
+.full-height {
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.half-height {
+  height: 50%;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.height-85 {
+  height: 85%;
+}
+
+.height-60 {
+  height: 60%;
 }

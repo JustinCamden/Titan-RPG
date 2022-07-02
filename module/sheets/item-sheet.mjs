@@ -142,6 +142,10 @@ export class TitanItemSheet extends ItemSheet {
 
         html.find(".delete-attack").click(this._onDeleteAttack.bind(this));
 
+        html
+          .find(".add-attack-description")
+          .click(this._onAddAttackDescription.bind(this));
+
         break;
       }
 
@@ -151,7 +155,7 @@ export class TitanItemSheet extends ItemSheet {
     }
   }
 
-  _onEditAttackName(event) {
+  async _onEditAttackName(event) {
     // Check if the data is valid
     const idx = event.target.dataset.idx;
     if (this.item.data.data.attack[idx]) {
@@ -167,7 +171,7 @@ export class TitanItemSheet extends ItemSheet {
     return;
   }
 
-  _onSelectAttackType(event) {
+  async _onSelectAttackType(event) {
     event.preventDefault();
     // Check if the data is valid
     const idx = event.target.dataset.idx;
@@ -215,7 +219,7 @@ export class TitanItemSheet extends ItemSheet {
     return;
   }
 
-  _onSelectAttackRange(event) {
+  async _onSelectAttackRange(event) {
     event.preventDefault();
     // Check if the data is valid
     const idx = event.target.dataset.idx;
@@ -232,7 +236,7 @@ export class TitanItemSheet extends ItemSheet {
     return;
   }
 
-  _onSelectAttackAttribute(event) {
+  async _onSelectAttackAttribute(event) {
     event.preventDefault();
     // Check if the data is valid
     const idx = event.target.dataset.idx;
@@ -249,7 +253,7 @@ export class TitanItemSheet extends ItemSheet {
     return;
   }
 
-  _onSelectAttackSkill(event) {
+  async _onSelectAttackSkill(event) {
     event.preventDefault();
     // Check if the data is valid
     const idx = event.target.dataset.idx;
@@ -266,7 +270,7 @@ export class TitanItemSheet extends ItemSheet {
     return;
   }
 
-  _onEditAttackDamage(event) {
+  async _onEditAttackDamage(event) {
     event.preventDefault();
     // Check if the data is valid
     const idx = event.target.dataset.idx;
@@ -283,21 +287,25 @@ export class TitanItemSheet extends ItemSheet {
     return;
   }
 
-  _onEditAttackTraits(event) {
+  async _onEditAttackTraits(event) {
     event.preventDefault();
     this.item.editAttackTraits(event.target.dataset.idx);
     return;
   }
 
-  _onAddAttack(event) {
+  async _onAddAttack(event) {
     event.preventDefault();
     this.item.addAttack();
     return;
   }
 
-  _onDeleteAttack(event) {
+  async _onDeleteAttack(event) {
     event.preventDefault();
     this.item.deleteAttack(event.target.dataset.idx);
     return;
+  }
+
+  async _onAddAttackDescription(event) {
+    this.item.onAddAttackDescription();
   }
 }

@@ -229,9 +229,6 @@ export const TITAN = {
         range: {
           label: "TITAN.attack.trait.option.range.label",
         },
-        reach: {
-          label: "TITAN.attack.trait.option.reach.label",
-        },
         reload: {
           label: "TITAN.attack.trait.option.reload.label",
         },
@@ -258,6 +255,16 @@ export const TITAN = {
           label: "TITAN.attack.trait.option.twoHanded.label",
         },
       },
+    },
+    template: {
+      name: "Attack",
+      type: "melee",
+      range: "close",
+      attribute: "body",
+      skill: "meleeWeapons",
+      damage: 1,
+      plusSuccessDamage: true,
+      traits: [],
     },
   },
 
