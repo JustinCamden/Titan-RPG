@@ -5,7 +5,8 @@ import { TitanItem } from "./documents/item.mjs";
 import { TitanActorSheet } from "./sheets/actor-sheet.mjs";
 import { TitanItemSheet } from "./sheets/item-sheet.mjs";
 // Import helper/utility classes and constants.
-import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
+import { preloadHandlebarsTemplates } from "./handlebars/handlebars-templates.mjs";
+import { registerHandlebarsHelpers } from "./handlebars/handlebars-helpers.mjs";
 import { TITAN } from "./helpers/config.mjs";
 import { TitanUtility } from "./helpers/utility.mjs";
 
@@ -47,8 +48,11 @@ Hooks.once("init", async function () {
   // Register system settings
   registerSystemSettings();
 
-  // Preload Handlebars templates.
-  return await preloadHandlebarsTemplates();
+  // Handlebars
+  await registerHandlebarsHelpers();
+  await preloadHandlebarsTemplates();
+
+  return;
 });
 
 /* -------------------------------------------- */
@@ -77,10 +81,6 @@ Handlebars.registerHelper("toLowerCase", function (str) {
 Hooks.once("ready", async function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(data, slot));
-
-  Handlebars.registerHelper("equals", (a, b) => {
-    return a == b;
-  });
 });
 
 /* -------------------------------------------- */
