@@ -22,7 +22,7 @@ export class TitanItemSheet extends ItemSheet {
 
   /** @override */
   get template() {
-    const path = "systems/titan/templates/item";
+    const path = `systems/titan/templates/item/${this.item.data.type}/`;
     // Return a single sheet for all item types.
     // return `${path}/item-sheet.hbs`;
 
