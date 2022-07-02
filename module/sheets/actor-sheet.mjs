@@ -86,44 +86,68 @@ export class TitanActorSheet extends ActorSheet {
    */
   _prepareItems(context) {
     // Initialize containers.
+    const ability = [];
+    const armor = [];
+    const equipment = [];
     const gear = [];
-    const features = [];
-    const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: [],
-    };
+    const miracle = [];
+    const spell = [];
+    const weapon = [];
 
     // Iterate through items, allocating to containers
-    for (let i of context.items) {
-      i.img = i.img || DEFAULT_TOKEN;
-      // Append to gear.
-      if (i.type === "item") {
-        gear.push(i);
-      }
-      // Append to features.
-      else if (i.type === "feature") {
-        features.push(i);
-      }
-      // Append to spells.
-      else if (i.type === "spell") {
-        if (i.data.spellLevel != undefined) {
-          spells[i.data.spellLevel].push(i);
+    for (const item of context.items) {
+      switch (item.type) {
+        case "ability": {
+          ability.push(item);
+          break;
+        }
+        case "armor": {
+          armor.push(item);
+          break;
+        }
+
+        case "equipment": {
+          equipment.push(item);
+          break;
+        }
+
+        case "gear": {
+          gear.push(item);
+          break;
+        }
+
+        case "miracle": {
+          miracle.push(item);
+          break;
+        }
+
+        case "spell": {
+          spell.push(item);
+          break;
+        }
+
+        case "weapon": {
+          weapon.push(item);
+          break;
+        }
+
+        default: {
+          break;
         }
       }
     }
 
     // Assign and return
     context.gear = gear;
-    context.features = features;
-    context.spells = spells;
+    context.ability = ability;
+    context.armor = armor;
+    context.equipment = equipment;
+    context.gear = gear;
+    context.miracle = miracle;
+    context.spell = spell;
+    context.weapon = weapon;
+
+    return;
   }
 
   /* -------------------------------------------- */

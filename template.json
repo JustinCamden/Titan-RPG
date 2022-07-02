@@ -330,7 +330,7 @@
         "durationPeriod": "Round"
       }
     },
-    "item": {
+    "gear": {
       "templates": ["base", "value", "quantity"]
     },
     "equipment": {
@@ -367,7 +367,7 @@
       "source": "",
       "resistanceChecks": []
     },
-    "talent": {
+    "ability": {
       "templates": ["base", "resolveCost", "expCost"]
     }
   }
