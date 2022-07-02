@@ -67,10 +67,16 @@ export class TitanItemSheet extends ItemSheet {
       }
 
       // Attack range
-      context.attackRangeOptions = {};
-      for (let [k, v] of Object.entries(CONFIG.TITAN.range.option)) {
-        context.attackRangeOptions[k] = v.label;
-      }
+      context.meleeRangeOptions = {
+        close: "TITAN.range.option.close.label",
+        short: "TITAN.range.option.short.label",
+      };
+      context.rangedRangeOptions = {
+        short: "TITAN.range.option.short.label",
+        medium: "TITAN.range.option.medium.label",
+        long: "TITAN.range.option.long.label",
+        extreme: "TITAN.range.option.extreme.label",
+      };
 
       // Attributes
       context.attributeOptions = {};

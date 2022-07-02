@@ -51,13 +51,18 @@
       <div class="main sheet-body fixed">
         {{! Sheet Tab Navigation }}
         <nav class="sheet-tabs tabs" data-group="primary">
-          <a class="item" data-tab="description">Description</a>
-          <a class="item" data-tab="attribute">Attribute</a>
+          <a class="item" data-tab="description">{{localize "TITAN.description.label"}}</a>
+          <a class="item" data-tab="attacks">{{localize "TITAN.attacks.label"}}</a>
         </nav>
         
         {{! Description Tab }}
         <div class="tab" data-group="primary" data-tab="description">
           {{> "systems/titan/templates/item/weapon/weapon-description-tab.hbs"}}
+        </div>
+
+        {{! Attacks Tab }}
+        <div class="tab" data-group="primary" data-tab="attacks">
+          {{> "systems/titan/templates/item/weapon/weapon-attacks-tab.hbs"}}
         </div>
 
         {{! Attributes Tab }}

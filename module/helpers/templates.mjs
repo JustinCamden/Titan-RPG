@@ -19,5 +19,6 @@ export const preloadHandlebarsTemplates = async function () {
 
     // Item partials
     "systems/titan/templates/item/weapon/weapon-description-tab.hbs",
+    "systems/titan/templates/item/weapon/weapon-attacks-tab.hbs",
   ]);
 };

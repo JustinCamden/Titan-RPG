@@ -70,6 +70,26 @@
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
+.grid-13col {
+  grid-column: span 13 / span 13;
+  grid-template-columns: repeat(13, minmax(0, 1fr));
+}
+
+.grid-14col {
+  grid-column: span 14 / span 14;
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+}
+
+.grid-15col {
+  grid-column: span 15 / span 15;
+  grid-template-columns: repeat(15, minmax(0, 1fr));
+}
+
+.grid-16col {
+  grid-column: span 16 / span 16;
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+}
+
 .grid-start-2 {
   grid-column-start: 2;
 }
@@ -156,6 +176,22 @@
 
 .grid-span-12 {
   grid-column-end: span 12;
+}
+
+.grid-span-13 {
+  grid-column-end: span 13;
+}
+
+.grid-span-14 {
+  grid-column-end: span 14;
+}
+
+.grid-span-15 {
+  grid-column-end: span 15;
+}
+
+.grid-span-16 {
+  grid-column-end: span 16;
 }
 
 .flex-group-center,
@@ -347,6 +383,10 @@ details summary {
 
 .max-height-20 {
   max-height: 20rem;
+}
+
+.max-height-21 {
+  max-height: 21rem;
 }
 
 .max-height-22 {

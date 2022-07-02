@@ -1,14 +1,14 @@
 <div class="grid grid-10col weapon-description-tab full-height">
   {{! Sidebar }}
-  <div class="flexcol, flex-group-center grid-span-3 item-sidebar">
+  <div class="flexcol, flex-group-center grid-span-3">
     <div class="border">
       <label class="stat-label">{{localize "TITAN.attacks.label"}}</label>
     </div>
     
     {{! Scrolling }}
-    <div class="max-height-23 scrolling">
+    <div class="max-height-20">
       {{! Weapon attacks }}
-      <section class="attacks">
+      <div class="attacks">
         <ul class="list list-1col attack-list">
 
           {{! For each attack }}
@@ -30,8 +30,10 @@
 
               <details 
                 class="grid-span-4 toggle-attack-collapsed-sidebar"
-                data-idx={{key}}
                 open>
+                  <summary class="stat-label">
+                    {{localize "TITAN.details.label"}}
+                  </summary>
                 <div class="grid grid-4col">
 
                   {{! Type Label }}
@@ -45,20 +47,20 @@
                     {{selectOptions ../attackTypeOptions selected=attack.type localize=true}}
                   </select>
 
-                  {{! Only show the range selector if this is a ranged attack }}
-                  {{#if (equals attack.type "ranged")}}
-                    {{! Range Label }}
-                    <label class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
-                      "TITAN.range.label"}}</label>
+                  {{! Range Label }}
+                  <label class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
+                    "TITAN.range.label"}}</label>
 
-                    {{! Range Selector }}
-                    <select
-                      class="flex-group-right padding-right10 grid-span-2 select-attack-range"
-                      data-idx={{key}}>
-                      {{selectOptions ../attackRangeOptions selected=attack.range localize=true}}
-                    </select>
-                  {{/if}}
-
+                  {{! Range Selector }}
+                  <select
+                    class="flex-group-right padding-right10 grid-span-2 select-attack-range"
+                    data-idx={{key}}>
+                    {{#if (equals attack.type "ranged")}}
+                      {{selectOptions ../rangedRangeOptions selected=attack.range localize=true}}
+                    {{else}}
+                      {{selectOptions ../meleeRangeOptions selected=attack.range localize=true}}
+                    {{/if}}
+                  </select>
 
                   {{! Attribute Label }}
                   <label class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
@@ -136,7 +138,7 @@
             <a class="fas fa-plus-circle add-attack"></a>
           </div>
         </ul>
-      </section>
+      </div>
     </div>
   </div>
 

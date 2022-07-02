@@ -276,6 +276,9 @@ export const TITAN = {
       long: {
         label: "TITAN.range.option.long.label",
       },
+      extreme: {
+        label: "TITAN.range.option.extreme.label",
+      },
     },
   },
 };

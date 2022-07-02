@@ -71,6 +71,8 @@
   "TITAN.none.label": "None",
   "TITAN.type.label": "Type",
   "TITAN.roll.label": "Roll",
+  "TITAN.details.label": "Details",
+  "TITAN.description.label": "Description",
 
   "TITAN.item.rarity.label": "Rarity",
   "TITAN.item.rarity.option.common.label": "Common",
@@ -89,6 +91,7 @@
   "TITAN.range.option.short.label": "Short",
   "TITAN.range.option.medium.label": "Medium",
   "TITAN.range.option.long.label": "Long",
+  "TITAN.range.option.extreme.label": "Extreme",
 
   "TITAN.damage.label": "Damage",
   "TITAN.label": "Name",
