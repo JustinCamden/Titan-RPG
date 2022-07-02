@@ -96,6 +96,7 @@
   "TITAN.damage.label": "Damage",
   "TITAN.label": "Name",
   "TITAN.traits.label": "Traits",
+  "TITAN.plusSuccessDamage.label": "+S Damage",
 
   "TITAN.trait.edit.label": "Edit Traits",
   "TITAN.attack.trait.option.blast.label": "Blast",

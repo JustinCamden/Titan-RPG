@@ -1,3 +1,6 @@
+import { TITAN } from "../helpers/config.mjs";
+import { TitanUtility } from "../helpers/utility.mjs";
+
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
@@ -8,7 +11,7 @@ export class TitanItemSheet extends ItemSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["titan", "sheet", "item"],
       width: 780,
-      height: 600,
+      height: 620,
       tabs: [
         {
           navSelector: ".sheet-tabs",

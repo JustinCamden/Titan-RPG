@@ -7,6 +7,7 @@ import { TitanItemSheet } from "./sheets/item-sheet.mjs";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { TITAN } from "./helpers/config.mjs";
+import { TitanUtility } from "./helpers/utility.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */

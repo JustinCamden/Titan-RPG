@@ -351,8 +351,10 @@
         "skill": "meleeWeapons",
         "damage": 1,
         "plusSuccessDamage": true,
-        "traits": []
+        "traits": [],
+        "description": "Description"
       }],
+      "attackDescription": "",
       "resistanceChecks": [],
       "weaponTraits": []
     },
