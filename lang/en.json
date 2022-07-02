@@ -1,11 +1,4 @@
 {
-  "TITAN.EffectCreate": "Create Effect",
-  "TITAN.EffectToggle": "Toggle Effect",
-  "TITAN.EffectEdit": "Edit Effect",
-  "TITAN.EffectDelete": "Delete Effect",
-
-  "TITAN.add.label": "Add",
-
   "TITAN.attribute.label": "Attribute",
   "TITAN.attribute.option.body.label": "Body",
   "TITAN.attribute.option.mind.label": "Mind",
@@ -20,11 +13,6 @@
   "TITAN.resource.option.stamina.label": "Stamina",
   "TITAN.resource.option.wounds.label": "Wounds",
   "TITAN.resource.option.resolve.label": "Resolve",
-
-  "TITAN.exp.label": "EXP",
-  "TITAN.available.label": "Available",
-  "TITAN.earned.label": "Earned",
-  "TITAN.inspiration.label": "Inspiration",
 
   "TITAN.skill.label": "Skill",
   "TITAN.skill.option.arcana.label": "Arcana",
@@ -66,14 +54,6 @@
   "TITAN.check.expertiseMod.label": "Expertise Mod",
   "TITAN.check.bonusPenaltyDice.label": "Bonus / Penalty Dice",
 
-  "TITAN.save.label": "Save",
-  "TITAN.cancel.label": "Cancel",
-  "TITAN.none.label": "None",
-  "TITAN.type.label": "Type",
-  "TITAN.roll.label": "Roll",
-  "TITAN.details.label": "Details",
-  "TITAN.description.label": "Description",
-
   "TITAN.item.rarity.label": "Rarity",
   "TITAN.item.rarity.option.common.label": "Common",
   "TITAN.item.rarity.option.uncommon.label": "Uncommon",
@@ -99,6 +79,7 @@
   "TITAN.plusSuccessDamage.label": "+S Damage",
 
   "TITAN.trait.edit.label": "Edit Traits",
+  "TITAN.attack.description.label": "Attack Description",
   "TITAN.attack.trait.option.blast.label": "Blast",
   "TITAN.attack.trait.option.cleave.label": "Cleave",
   "TITAN.attack.trait.option.close.label": "Close",
@@ -118,6 +99,20 @@
   "TITAN.attack.trait.option.subtle.label": "Subtle",
   "TITAN.attack.trait.option.thrown.label": "Thrown",
   "TITAN.attack.trait.option.twoHanded.label": "Two-Handed",
+
+  "TITAN.save.label": "Save",
+  "TITAN.cancel.label": "Cancel",
+  "TITAN.none.label": "None",
+  "TITAN.type.label": "Type",
+  "TITAN.roll.label": "Roll",
+  "TITAN.details.label": "Details",
+  "TITAN.description.label": "Description",
+  "TITAN.exp.label": "EXP",
+  "TITAN.available.label": "Available",
+  "TITAN.earned.label": "Earned",
+  "TITAN.inspiration.label": "Inspiration",
+  "TITAN.add.label": "Add",
+
 
   "SETTINGS.showCheckOptions": {
     "name": "Ask for Check Options by default.",
