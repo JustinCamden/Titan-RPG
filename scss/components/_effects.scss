@@ -12,3 +12,8 @@
     border: none;
   }
 }
+
+details summary { 
+  //display: inline;
+  cursor: pointer;
+}

@@ -16,6 +16,7 @@ export class TitanItemSheet extends ItemSheet {
           initial: "description",
         },
       ],
+      scrollY: [".scrolling"],
     });
   }
 

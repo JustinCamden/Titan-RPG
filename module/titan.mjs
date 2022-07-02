@@ -79,6 +79,7 @@ Hooks.once("ready", async function () {
   Handlebars.registerHelper("equals", (a, b) => {
     return a == b;
   });
+  console.log(CONFIG);
 });
 
 /* -------------------------------------------- */

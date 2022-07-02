@@ -172,6 +172,14 @@
         <div class="tab" data-group="primary" data-tab="description">
           {{! To render inline rolls in a TinyMCE editor, you need to pass the parent actor's (if any) roll data to the
           rollData prop. }}
+          <details open="true">
+            <summary>Summary</summary>
+            <blockquote>
+              <p>
+                Here is where I want my collapsible content.
+              </p>
+            </blockquote>
+          </details>
           {{editor
           content=data.description
           target="data.description"
