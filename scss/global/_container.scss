@@ -52,11 +52,35 @@ li.list-item.horizontal-list:not(:last-child) {
 
 .item-sidebar {
   .scrolling {
-    max-height: 26rem;
+    //
     overflow-y: scroll;
   }
 }
 
 .fixed {
 
+}
+
+details summary { 
+  cursor: pointer;
+}
+
+.max-height-20 {
+  max-height: 20rem;
+}
+
+.max-height-22 {
+  max-height: 22rem;
+}
+
+.max-height-23 {
+  max-height: 23rem;
+}
+
+.max-height-24 {
+  max-height: 24rem;
+}
+
+.max-height-25 {
+  max-height: 25rem;
 }

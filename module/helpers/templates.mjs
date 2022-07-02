@@ -11,8 +11,13 @@ export const preloadHandlebarsTemplates = async function () {
     "systems/titan/templates/actor/parts/actor-skills.hbs",
     "systems/titan/templates/actor/parts/actor-spells.hbs",
     "systems/titan/templates/actor/parts/actor-effects.hbs",
+
+    // Dialogs
     "systems/titan/templates/checks/check-basic.hbs",
     "systems/titan/templates/checks/check-basic-dialog.hbs",
     "systems/titan/templates/item/item-trait-dialog.hbs",
+
+    // Item partials
+    "systems/titan/templates/item/weapon/weapon-description-tab.hbs",
   ]);
 };

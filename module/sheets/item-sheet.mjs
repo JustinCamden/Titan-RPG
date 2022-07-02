@@ -22,13 +22,13 @@ export class TitanItemSheet extends ItemSheet {
 
   /** @override */
   get template() {
-    const path = `systems/titan/templates/item/${this.item.data.type}/`;
+    const path = `systems/titan/templates/item/${this.item.data.type}`;
     // Return a single sheet for all item types.
     // return `${path}/item-sheet.hbs`;
 
     // Alternatively, you could use the following return statement to do a
     // unique item sheet by type, like `weapon-sheet.hbs`.
-    return `${path}/item-${this.item.data.type}-sheet.hbs`;
+    return `${path}/${this.item.data.type}-sheet.hbs`;
   }
 
   /* -------------------------------------------- */
@@ -132,6 +132,7 @@ export class TitanItemSheet extends ItemSheet {
         html.find(".add-attack").click(this._onAddAttack.bind(this));
 
         html.find(".delete-attack").click(this._onDeleteAttack.bind(this));
+
         break;
       }
 
@@ -287,7 +288,6 @@ export class TitanItemSheet extends ItemSheet {
 
   _onDeleteAttack(event) {
     event.preventDefault();
-    console.log(event.target.dataset);
     this.item.deleteAttack(event.target.dataset.idx);
     return;
   }
