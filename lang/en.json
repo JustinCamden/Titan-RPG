@@ -15,6 +15,7 @@
   "TITAN.resource.option.resolve.label": "Resolve",
 
   "TITAN.skill.label": "Skill",
+  "TITAN.skills.label": "Skills",
   "TITAN.skill.option.arcana.label": "Arcana",
   "TITAN.skill.option.athletics.label": "Athletics",
   "TITAN.skill.option.beastHandling.label": "Beast Handling",
@@ -112,6 +113,7 @@
   "TITAN.earned.label": "Earned",
   "TITAN.inspiration.label": "Inspiration",
   "TITAN.add.label": "Add",
+  "TITAN.inventory.label": "Inventory",
 
 
   "SETTINGS.showCheckOptions": {
