@@ -46,6 +46,7 @@ export class TitanActorSheet extends ActorSheet {
 
     // Add the actor's data to context.data for easier access, as well as flags.
     context.system = actorData.system;
+    context.flags = actorData.flags;
 
     // Prepare player data and items.
     if (actorData.type == "player") {

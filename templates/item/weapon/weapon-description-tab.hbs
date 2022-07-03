@@ -12,12 +12,12 @@
         <ul class="list list-1col attack-list">
 
           {{! For each attack }}
-          {{#each data.attack as |attack key|}}
+          {{#each system.attack as |attack key|}}
           <li class="list-item attack grid grid-4col border">
 
             {{! Name Label }}
             <label class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
-              "TITAN.label"}}</label>
+              "TITAN.name.label"}}</label>
 
             {{! Name input }}
             <input class="flex-group-right padding-right10 grid-span-2 edit-attack-name" type="text"

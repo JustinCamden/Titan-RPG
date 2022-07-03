@@ -25,13 +25,13 @@ export class TitanItemSheet extends ItemSheet {
 
   /** @override */
   get template() {
-    const path = `systems/titan/templates/item/${this.item.data.type}`;
+    const path = `systems/titan/templates/item/${this.item.type}`;
     // Return a single sheet for all item types.
     // return `${path}/item-sheet.hbs`;
 
     // Alternatively, you could use the following return statement to do a
     // unique item sheet by type, like `weapon-sheet.hbs`.
-    return `${path}/${this.item.data.type}-sheet.hbs`;
+    return `${path}/${this.item.type}-sheet.hbs`;
   }
 
   /* -------------------------------------------- */
@@ -42,7 +42,11 @@ export class TitanItemSheet extends ItemSheet {
     const context = super.getData();
 
     // Use a safe clone of the item data for further operations.
-    const itemData = context.item.data;
+    const itemData = this.item.toObject(false);
+
+    // Add the items's data to context.data for easier access, as well as flags.
+    context.system = itemData.system;
+    context.flags = itemData.flags;
 
     // Retrieve the roll data for TinyMCE editors.
     context.rollData = {};
@@ -51,18 +55,15 @@ export class TitanItemSheet extends ItemSheet {
       context.rollData = actor.getRollData();
     }
 
-    // Add the actor's data to context.data for easier access, as well as flags.
-    context.data = itemData.data;
-    context.flags = itemData.flags;
-
     // Add item rarity options
     context.rarityOptions = {};
     for (let [k, v] of Object.entries(CONFIG.TITAN.item.rarity.option)) {
       context.rarityOptions[k] = v.label;
     }
 
-    // Add weapon options
-    if (itemData.type == "weapon") {
+    // Add type specific options
+    context.type;
+    if (context.item.type == "weapon") {
       // Attack type
       context.attackTypeOptions = {};
       for (let [k, v] of Object.entries(CONFIG.TITAN.attack.type.option)) {
@@ -107,7 +108,7 @@ export class TitanItemSheet extends ItemSheet {
     if (!this.isEditable) return;
 
     // Roll handlers, click handlers, etc. go here.
-    switch (this.item.data.type) {
+    switch (this.item.system.type) {
       // Weapon listeners
       case "weapon": {
         html
@@ -158,14 +159,14 @@ export class TitanItemSheet extends ItemSheet {
   async _onEditAttackName(event) {
     // Check if the data is valid
     const idx = event.target.dataset.idx;
-    if (this.item.data.data.attack[idx]) {
+    if (this.item.system.attack[idx]) {
       // Copy the attacks array
-      let attack = this.item.data.data.attack;
+      let attack = this.item.system.attack;
 
       // Update the attack damage
       attack[idx].name = event.target.value;
       this.item.update({
-        data: { attack: attack },
+        system: { attack: attack },
       });
     }
     return;
@@ -175,9 +176,9 @@ export class TitanItemSheet extends ItemSheet {
     event.preventDefault();
     // Check if the data is valid
     const idx = event.target.dataset.idx;
-    if (this.item.data.data.attack[idx]) {
+    if (this.item.system.attack[idx]) {
       // Copy the attacks array
-      let attack = this.item.data.data.attack;
+      let attack = this.item.system.attack;
 
       // Update the atttack type
       attack[idx].type = event.target.value;
@@ -213,7 +214,7 @@ export class TitanItemSheet extends ItemSheet {
       }
 
       this.item.update({
-        data: { attack: attack },
+        system: { attack: attack },
       });
     }
     return;
@@ -223,14 +224,14 @@ export class TitanItemSheet extends ItemSheet {
     event.preventDefault();
     // Check if the data is valid
     const idx = event.target.dataset.idx;
-    if (this.item.data.data.attack[idx]) {
+    if (this.item.system.attack[idx]) {
       // Copy the attacks array
-      let attack = this.item.data.data.attack;
+      let attack = this.item.system.attack;
 
       // Update the attack range
       attack[idx].range = event.target.value;
       this.item.update({
-        data: { attack: attack },
+        system: { attack: attack },
       });
     }
     return;
@@ -240,14 +241,14 @@ export class TitanItemSheet extends ItemSheet {
     event.preventDefault();
     // Check if the data is valid
     const idx = event.target.dataset.idx;
-    if (this.item.data.data.attack[idx]) {
+    if (this.item.system.attack[idx]) {
       // Copy the attacks array
-      let attack = this.item.data.data.attack;
+      let attack = this.item.system.attack;
 
       // Update the attack attribute
       attack[idx].attribute = event.target.value;
       this.item.update({
-        data: { attack: attack },
+        system: { attack: attack },
       });
     }
     return;
@@ -257,14 +258,14 @@ export class TitanItemSheet extends ItemSheet {
     event.preventDefault();
     // Check if the data is valid
     const idx = event.target.dataset.idx;
-    if (this.item.data.data.attack[idx]) {
+    if (this.item.system.attack[idx]) {
       // Copy the attacks array
-      let attack = this.item.data.data.attack;
+      let attack = this.item.system.attack;
 
       // Update the attack skill
       attack[idx].skill = event.target.value;
       this.item.update({
-        data: { attack: attack },
+        system: { attack: attack },
       });
     }
     return;
@@ -274,14 +275,14 @@ export class TitanItemSheet extends ItemSheet {
     event.preventDefault();
     // Check if the data is valid
     const idx = event.target.dataset.idx;
-    if (this.item.data.data.attack[idx]) {
+    if (this.item.system.attack[idx]) {
       // Copy the attacks array
-      let attack = this.item.data.data.attack;
+      let attack = this.item.system.attack;
 
       // Update the attack damage
       attack[idx].damage = event.target.value;
       this.item.update({
-        data: { attack: attack },
+        system: { attack: attack },
       });
     }
     return;

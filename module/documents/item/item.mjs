@@ -20,7 +20,7 @@ export class TitanItem extends Item {
     // If present, return the actor's roll data.
     if (!this.actor) return null;
     const rollData = this.actor.getRollData();
-    rollData.item = foundry.utils.deepClone(this.data.data);
+    rollData.item = foundry.utils.deepClone(this.system);
 
     return rollData;
   }
@@ -31,20 +31,18 @@ export class TitanItem extends Item {
    * @private
    */
   async roll() {
-    const item = this.data;
-
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.actor });
     const rollMode = game.settings.get("core", "rollMode");
     const label = `[${item.type}] ${item.name}`;
 
     // If there's no roll data, send a chat message.
-    if (!this.data.data.formula) {
+    if (!this.system.formula) {
       ChatMessage.create({
         speaker: speaker,
         rollMode: rollMode,
         flavor: label,
-        content: item.data.description ?? "",
+        content: this.system.description ?? "",
       });
     }
     // Otherwise, create a roll and send a chat message from it.
@@ -68,7 +66,7 @@ export class TitanItem extends Item {
   async editAttackTraits(idx) {
     // Check if the data is valid
 
-    let attack = this.data.data.attack;
+    let attack = this.system.attack;
     if (attack[idx]) {
       // Get the trait options
       const traitData = {
@@ -87,7 +85,7 @@ export class TitanItem extends Item {
 
         // Update the item
         this.update({
-          data: {
+          system: {
             attack: attack,
           },
         });
@@ -137,7 +135,7 @@ export class TitanItem extends Item {
           title:
             game.i18n.localize(CONFIG.TITAN.trait.edit.label) +
             " (" +
-            this.data.name +
+            this.name +
             (inData.label ? ": " + inData.label : "") +
             ")",
           content: html,
@@ -215,10 +213,10 @@ export class TitanItem extends Item {
     const newAttack = foundry.utils.deepClone(CONFIG.TITAN.attack.template);
 
     // Add the attack and update the item
-    let attack = this.data.data.attack;
+    let attack = this.system.attack;
     attack.push(newAttack);
     await this.update({
-      data: {
+      system: {
         attack: attack,
       },
     });
@@ -228,7 +226,7 @@ export class TitanItem extends Item {
 
   async deleteAttack(idx) {
     // Remove the attack and update the item
-    let attack = this.data.data.attack;
+    let attack = this.system.attack;
     attack.splice(idx, 1);
 
     // If we have no more attacks, ensure we have at least one
@@ -238,25 +236,13 @@ export class TitanItem extends Item {
       // Otherwise, update the item
     } else {
       await this.update({
-        data: {
+        system: {
           attack: attack,
         },
       });
     }
 
     return;
-  }
-
-  async onAddAttackDescription() {
-    let attackDescription = this.data.data.attackDescription;
-    if (attackDescription == "") {
-      attackDescription = "Attack Description";
-      await this.update({
-        data: {
-          attackDescription: attackDescription,
-        },
-      });
-    }
   }
 
   async;

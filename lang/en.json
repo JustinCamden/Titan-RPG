@@ -74,9 +74,7 @@
   "TITAN.range.option.long.label": "Long",
   "TITAN.range.option.extreme.label": "Extreme",
 
-  "TITAN.damage.label": "Damage",
-  "TITAN.label": "Name",
-  "TITAN.traits.label": "Traits",
+
   "TITAN.plusSuccessDamage.label": "+S Damage",
 
   "TITAN.trait.edit.label": "Edit Traits",
@@ -101,8 +99,7 @@
   "TITAN.attack.trait.option.thrown.label": "Thrown",
   "TITAN.attack.trait.option.twoHanded.label": "Two-Handed",
 
-  "TITAN.weapons.label": "Labels",
-
+  "TITAN.weapons.label": "Weapons",
   "TITAN.save.label": "Save",
   "TITAN.cancel.label": "Cancel",
   "TITAN.none.label": "None",
@@ -116,6 +113,9 @@
   "TITAN.inspiration.label": "Inspiration",
   "TITAN.add.label": "Add",
   "TITAN.inventory.label": "Inventory",
+  "TITAN.damage.label": "Damage",
+  "TITAN.traits.label": "Traits",
+  "TITAN.name.label": "Name",
 
 
   "SETTINGS.showCheckOptions": {
