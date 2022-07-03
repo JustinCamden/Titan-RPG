@@ -28,7 +28,7 @@ export class TitanActorSheet extends ActorSheet {
 
   /** @override */
   get template() {
-    return `systems/titan/templates/actor/actor-${this.actor.data.type}-sheet.hbs`;
+    return `systems/titan/templates/actor/actor-${this.actor.type}-sheet.hbs`;
   }
 
   /* -------------------------------------------- */
