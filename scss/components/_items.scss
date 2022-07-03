@@ -69,11 +69,16 @@
 
   // Individual Item
   .item {
+    break-inside: avoid;
     align-items: center;
-    padding: 0 2px; // to align with the header border
-    border-bottom: 1px solid $c-faint;
-    &:last-child { border-bottom: none; }
-    .item-name {
+    page-break-inside: avoid;
+    word-wrap: normal;
+    padding: .5rem;
+    border: solid;
+    border-radius: 10px;
+    width: 100%;
+    &:last-child {margin-bottom: 1rem;  }
+    /* .item-name {
       color: $c-dark;
       .item-image {
         flex: 0 0 30px;
@@ -82,6 +87,12 @@
         border: none;
         margin-right: 5px;
       }
+    } */
+    .item-header {
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
     }
   }
 

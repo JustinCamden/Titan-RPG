@@ -20,11 +20,17 @@ export class TitanActorSheet extends ActorSheet {
         {
           navSelector: ".sheet-tabs",
           contentSelector: ".sheet-body",
-          initial: "skills",
+          initial: "inventory",
         },
       ],
     });
   }
+
+  /**
+   * Temporary data that will be reset on page load
+   */
+  // Expended state
+  isExpanded = {};
 
   /** @override */
   get template() {
@@ -197,6 +203,9 @@ export class TitanActorSheet extends ActorSheet {
 
     // Editing skill
     html.find(".skill-edit").change(this._onSkillEdit.bind(this));
+
+    // Expandable toggles
+    html.find(".expand").click(this._onExpandElement.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -455,5 +464,18 @@ export class TitanActorSheet extends ActorSheet {
     }
 
     return;
+  }
+
+  async _onExpandElement(event) {
+    event.preventDefault();
+
+    // Get the parent element
+    let parent = $(event.currentTarget).parents(".expandable-parent");
+
+    // Get the content element
+    let content = parent.find(".expandable-content");
+
+    // Toggle the collapsed class
+    content.toggleClass("collapsed");
   }
 }

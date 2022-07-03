@@ -3,17 +3,18 @@
 
   {{! Weapons }}
   <div>
-    <ol class="items-list weapons-list">
-      <li "item flexrow items-header">
-        <div class="item-name">
-          {{localize "TITAN.name.label"}}
-        </div>
-      </li>
-      {{log weapon}}
-      {{#each weapon as |weapon id|}}
-      <li "item flexrow items-header">
-        <div class="item-name" data-item-id="{{weapon._id}}">
-          {{weapon.system.name}}
+    <ol class="items-list list list-4col">
+      {{! For each skill}}
+      {{#each weapon as |weapon key|}}
+
+      {{! Rollable label}}
+      <li class="item expandable-parent">
+        <a class="item-header expand">
+          {{weapon.name}}
+        </a>
+        <div class="expandable-content collapsed">
+          {{{weapon.system.description}}}
+          <div>test</div>
         </div>
       </li>
       {{/each}}
