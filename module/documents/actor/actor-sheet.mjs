@@ -1,8 +1,8 @@
 import {
   onManageActiveEffect,
   prepareActiveEffectCategories,
-} from "../helpers/effects.mjs";
-import { TitanActor } from "../documents/actor.mjs";
+} from "../../helpers/effects.mjs";
+import { TitanActor } from "./actor.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications

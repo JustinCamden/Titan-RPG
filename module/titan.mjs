@@ -1,9 +1,9 @@
 // Import document classes.
-import { TitanActor } from "./documents/actor.mjs";
-import { TitanItem } from "./documents/item.mjs";
+import { TitanActor } from "./documents/actor/actor.mjs";
+import { TitanItem } from "./documents/item/item.mjs";
 // Import sheet classes.
-import { TitanActorSheet } from "./sheets/actor-sheet.mjs";
-import { TitanItemSheet } from "./sheets/item-sheet.mjs";
+import { TitanActorSheet } from "./documents/actor/actor-sheet.mjs";
+import { TitanItemSheet } from "./documents/item/item-sheet.mjs";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./handlebars/handlebars-templates.mjs";
 import { registerHandlebarsHelpers } from "./handlebars/handlebars-helpers.mjs";

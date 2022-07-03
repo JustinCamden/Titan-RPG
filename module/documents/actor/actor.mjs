@@ -2,6 +2,8 @@
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
  */
+
+import { TitanCheck } from "../../helpers/check.mjs";
 export class TitanActor extends Actor {
   /** @override */
   prepareData() {

@@ -1,5 +1,5 @@
-import { TITAN } from "../helpers/config.mjs";
-import { TitanUtility } from "../helpers/utility.mjs";
+import { TITAN } from "../../helpers/config.mjs";
+import { TitanUtility } from "../../helpers/utility.mjs";
 
 /**
  * Extend the basic ItemSheet with some very simple modifications
