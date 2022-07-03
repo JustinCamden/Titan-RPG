@@ -42,11 +42,10 @@ export class TitanActorSheet extends ActorSheet {
     const context = super.getData();
 
     // Use a safe clone of the actor data for further operations.
-    const actorData = this.actor.data.toObject(false);
+    const actorData = this.actor.toObject(false);
 
     // Add the actor's data to context.data for easier access, as well as flags.
-    context.data = actorData.data;
-    context.flags = actorData.flags;
+    context.system = actorData.system;
 
     // Prepare player data and items.
     if (actorData.type == "player") {
@@ -421,7 +420,7 @@ export class TitanActorSheet extends ActorSheet {
   async _onResourceEdit(event) {
     // Ensure the resource is within a valid range
     const resource =
-      this.object.data.data.resources[event.target.dataset.resource];
+      this.object.system.resources[event.target.dataset.resource];
     const newValue = event.target.value;
 
     if (newValue > resource.maxValue) {

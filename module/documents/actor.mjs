@@ -1,5 +1,3 @@
-import Check from "../helpers/check.mjs";
-
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
@@ -30,19 +28,15 @@ export class TitanActor extends Actor {
    * is queried and has a roll executed directly from it).
    */
   prepareDerivedData() {
-    const actorData = this.data;
-    const data = actorData.data;
-    const flags = actorData.flags.titan || {};
-
     // Make separate methods for each Actor type (player, npc, etc.) to keep
     // things organized.
-    switch (actorData.type) {
+    switch (this.type) {
       case "player": {
-        this._preparePlayerData(actorData);
+        this._preparePlayerData();
         break;
       }
       case "npc": {
-        this._prepareNpcData(actorData);
+        this._prepareNpcData();
         break;
       }
       default: {
@@ -53,117 +47,124 @@ export class TitanActor extends Actor {
   }
 
   // Prepare Character type specific data
-  _prepareCharacterData(actorData) {
+  _prepareCharacterData() {
     // Make modifications to data here. For example:
-    const data = actorData.data;
+    const systemData = this.system;
 
     // Calculate ability mods
-    for (let [k, v] of Object.entries(data.attribute)) {
-      data.attribute[k].value = v.baseValue + v.staticMod;
+    for (let [k, v] of Object.entries(systemData.attribute)) {
+      systemData.attribute[k].value = v.baseValue + v.staticMod;
     }
 
     // Calculate the total attribute value
     let totalBaseAttributeValue = 0;
-    for (const attribute in data.attribute) {
+    for (const attribute in systemData.attribute) {
       totalBaseAttributeValue =
-        totalBaseAttributeValue + data.attribute[attribute].baseValue;
+        totalBaseAttributeValue + systemData.attribute[attribute].baseValue;
     }
 
     // Calculate derived stats
     // Initiative = (Mind + Training in Awareness) / 2 rounded up (+ Mod)
-    data.derivedStats.initiative.baseValue =
-      data.attribute.mind.baseValue +
-      data.attribute.mind.staticMod +
-      data.skill.dexterity.training.baseValue +
-      data.skill.dexterity.training.staticMod +
-      data.skill.perception.training.baseValue +
-      data.skill.perception.training.staticMod;
-    data.derivedStats.initiative.value =
-      data.derivedStats.initiative.baseValue +
-      data.derivedStats.initiative.staticMod;
+    systemData.derivedStats.initiative.baseValue =
+      systemData.attribute.mind.baseValue +
+      systemData.attribute.mind.staticMod +
+      systemData.skill.dexterity.training.baseValue +
+      systemData.skill.dexterity.training.staticMod +
+      systemData.skill.perception.training.baseValue +
+      systemData.skill.perception.training.staticMod;
+    systemData.derivedStats.initiative.value =
+      systemData.derivedStats.initiative.baseValue +
+      systemData.derivedStats.initiative.staticMod;
 
     // Awareness = (Mind + Training in Awareness) / 2 rounded up (+ Mod)
-    data.derivedStats.awareness.baseValue = Math.ceil(
-      (data.attribute.mind.baseValue +
-        data.attribute.mind.staticMod +
-        data.skill.perception.training.baseValue +
-        data.skill.perception.training.staticMod) /
+    systemData.derivedStats.awareness.baseValue = Math.ceil(
+      (systemData.attribute.mind.baseValue +
+        systemData.attribute.mind.staticMod +
+        systemData.skill.perception.training.baseValue +
+        systemData.skill.perception.training.staticMod) /
         2
     );
-    data.derivedStats.awareness.value =
-      data.derivedStats.awareness.baseValue +
-      data.derivedStats.awareness.staticMod;
+    systemData.derivedStats.awareness.value =
+      systemData.derivedStats.awareness.baseValue +
+      systemData.derivedStats.awareness.staticMod;
 
     // Defense = (Body + Training in Dexterity) / 2 rounded up (+ Mod)
-    data.derivedStats.defense.baseValue = Math.ceil(
-      (data.attribute.body.baseValue +
-        data.attribute.body.staticMod +
-        data.skill.dexterity.training.baseValue +
-        data.skill.dexterity.training.staticMod) /
+    systemData.derivedStats.defense.baseValue = Math.ceil(
+      (systemData.attribute.body.baseValue +
+        systemData.attribute.body.staticMod +
+        systemData.skill.dexterity.training.baseValue +
+        systemData.skill.dexterity.training.staticMod) /
         2
     );
-    data.derivedStats.defense.value =
-      data.derivedStats.defense.baseValue + data.derivedStats.defense.staticMod;
+    systemData.derivedStats.defense.value =
+      systemData.derivedStats.defense.baseValue +
+      systemData.derivedStats.defense.staticMod;
 
     // Accuracy = (Mind + Training in Ranged Weapons) / 2 rounded up (+ Mod)
-    data.derivedStats.accuracy.baseValue = Math.ceil(
-      (data.attribute.mind.baseValue +
-        data.attribute.mind.staticMod +
-        data.skill.rangedWeapons.training.baseValue +
-        data.skill.rangedWeapons.training.staticMod) /
+    systemData.derivedStats.accuracy.baseValue = Math.ceil(
+      (systemData.attribute.mind.baseValue +
+        systemData.attribute.mind.staticMod +
+        systemData.skill.rangedWeapons.training.baseValue +
+        systemData.skill.rangedWeapons.training.staticMod) /
         2
     );
-    data.derivedStats.accuracy.value =
-      data.derivedStats.accuracy.baseValue +
-      data.derivedStats.accuracy.staticMod;
+    systemData.derivedStats.accuracy.value =
+      systemData.derivedStats.accuracy.baseValue +
+      systemData.derivedStats.accuracy.staticMod;
 
     // Melee = (Body + Training in Melee Weapons) / 2 rounded up (+ Mod)
-    data.derivedStats.melee.baseValue = Math.ceil(
-      (data.attribute.body.baseValue +
-        data.attribute.body.staticMod +
-        data.skill.meleeWeapons.training.baseValue +
-        data.skill.meleeWeapons.training.staticMod) /
+    systemData.derivedStats.melee.baseValue = Math.ceil(
+      (systemData.attribute.body.baseValue +
+        systemData.attribute.body.staticMod +
+        systemData.skill.meleeWeapons.training.baseValue +
+        systemData.skill.meleeWeapons.training.staticMod) /
         2
     );
-    data.derivedStats.melee.value =
-      data.derivedStats.melee.baseValue + data.derivedStats.melee.staticMod;
+    systemData.derivedStats.melee.value =
+      systemData.derivedStats.melee.baseValue +
+      systemData.derivedStats.melee.staticMod;
 
     // Reflexes = (Mind + (Body/2))
-    data.resistance.reflexes.baseValue =
-      data.attribute.mind.value + Math.ceil(data.attribute.body.value / 2);
-    data.resistance.reflexes.value =
-      data.resistance.reflexes.baseValue + data.resistance.reflexes.staticMod;
+    systemData.resistance.reflexes.baseValue =
+      systemData.attribute.mind.value +
+      Math.ceil(systemData.attribute.body.value / 2);
+    systemData.resistance.reflexes.value =
+      systemData.resistance.reflexes.baseValue +
+      systemData.resistance.reflexes.staticMod;
 
     // Resilience = (Body + (Soul/2))
-    data.resistance.resilience.baseValue =
-      data.attribute.body.value + Math.ceil(data.attribute.soul.value / 2);
-    data.resistance.resilience.value =
-      data.resistance.resilience.baseValue +
-      data.resistance.resilience.staticMod;
+    systemData.resistance.resilience.baseValue =
+      systemData.attribute.body.value +
+      Math.ceil(systemData.attribute.soul.value / 2);
+    systemData.resistance.resilience.value =
+      systemData.resistance.resilience.baseValue +
+      systemData.resistance.resilience.staticMod;
 
     // Willpower = (Soul + (Mind/2))
-    data.resistance.willpower.baseValue =
-      data.attribute.soul.value + Math.ceil(data.attribute.mind.value / 2);
-    data.resistance.willpower.value =
-      data.resistance.willpower.baseValue + data.resistance.willpower.staticMod;
+    systemData.resistance.willpower.baseValue =
+      systemData.attribute.soul.value +
+      Math.ceil(systemData.attribute.mind.value / 2);
+    systemData.resistance.willpower.value =
+      systemData.resistance.willpower.baseValue +
+      systemData.resistance.willpower.staticMod;
 
     // Calculate max stamina
     let maxStaminaBase =
       totalBaseAttributeValue *
       CONFIG.TITAN.resource.option.stamina.maxBaseMulti;
-    data.resources.stamina.maxBase = maxStaminaBase;
-    data.resources.stamina.maxValue =
-      maxStaminaBase + data.resources.stamina.staticMod;
+    systemData.resources.stamina.maxBase = maxStaminaBase;
+    systemData.resources.stamina.maxValue =
+      maxStaminaBase + systemData.resources.stamina.staticMod;
 
     // Calculate max resolve
     let maxResolveBase = Math.ceil(
-      (data.attribute.soul.baseValue *
+      (systemData.attribute.soul.baseValue *
         CONFIG.TITAN.resource.option.resolve.maxBaseMulti) /
         2
     );
-    data.resources.resolve.maxBase = maxResolveBase;
-    data.resources.resolve.maxValue =
-      maxResolveBase + data.resources.resolve.staticMod;
+    systemData.resources.resolve.maxBase = maxResolveBase;
+    systemData.resources.resolve.maxValue =
+      maxResolveBase + systemData.resources.resolve.staticMod;
 
     // Calculate max wounds
     let maxWoundsBase = Math.ceil(
@@ -171,15 +172,15 @@ export class TitanActor extends Actor {
         CONFIG.TITAN.resource.option.wounds.maxBaseMulti) /
         2
     );
-    data.resources.wounds.maxBase = maxWoundsBase;
-    data.resources.wounds.maxValue =
-      maxWoundsBase + data.resources.wounds.staticMod;
+    systemData.resources.wounds.maxBase = maxWoundsBase;
+    systemData.resources.wounds.maxValue =
+      maxWoundsBase + systemData.resources.wounds.staticMod;
 
     // Calculate skill mods
-    for (let [k, v] of Object.entries(data.skill)) {
-      data.skill[k].training.value =
+    for (let [k, v] of Object.entries(systemData.skill)) {
+      systemData.skill[k].training.value =
         v.training.baseValue + v.training.staticMod;
-      data.skill[k].expertise.value =
+      systemData.skill[k].expertise.value =
         v.expertise.baseValue + v.expertise.staticMod;
     }
   }
@@ -187,19 +188,19 @@ export class TitanActor extends Actor {
   /**
    * Prepare Player type specific data
    */
-  _preparePlayerData(actorData) {
+  _preparePlayerData() {
     // Prepare template data
-    this._prepareCharacterData(actorData);
+    this._prepareCharacterData();
 
     // Make modifications to data here.
-    const data = actorData.data;
+    const systemData = this.system;
 
     // Calculate the amount of EXP spent
     let spentExp = 0;
 
     // Add cost of current attribute
-    for (const attribute in data.attribute) {
-      const attributeBaseValue = data.attribute[attribute].baseValue;
+    for (const attribute in systemData.attribute) {
+      const attributeBaseValue = systemData.attribute[attribute].baseValue;
 
       // Calculate xp cost
       const minAttributeValue = CONFIG.TITAN.attribute.min;
@@ -213,8 +214,8 @@ export class TitanActor extends Actor {
     }
 
     // Add cost of current skill
-    for (const skill in data.skill) {
-      const skillData = data.skill[skill];
+    for (const skill in systemData.skill) {
+      const skillData = systemData.skill[skill];
 
       // Calculate xp cost of training
       const skillTrainingBaseValue = skillData.training.baseValue;
@@ -237,7 +238,7 @@ export class TitanActor extends Actor {
       }
     }
 
-    data.exp.available = data.exp.earned - spentExp;
+    systemData.exp.available = systemData.exp.earned - spentExp;
   }
 
   /**
@@ -245,30 +246,27 @@ export class TitanActor extends Actor {
    */
   _prepareNpcData(actorData) {
     // Prepare template data
-    this._prepareCharacterData(actorData);
-
-    // Make modifications to data here. For example:
-    const data = actorData.data;
+    this._prepareCharacterData();
   }
 
   /**
    * Override getRollData() that's supplied to rolls.
    */
   getRollData() {
-    const data = super.getRollData();
+    const rollData = super.getRollData();
 
     // Prepare player roll data.
-    this._getPlayerRollData(data);
-    this._getNpcRollData(data);
+    this._getPlayerRollData(rollData);
+    this._getNpcRollData(rollData);
 
-    return data;
+    return rollData;
   }
 
   /**
    * Prepare player roll data.
    */
   _getPlayerRollData(data) {
-    if (this.data.type !== "player") return;
+    if (this.type !== "player") return;
 
     // Copy the ability scores to the top level, so that rolls can use
   }
@@ -277,7 +275,7 @@ export class TitanActor extends Actor {
    * Prepare NPC roll data.
    */
   _getNpcRollData(data) {
-    if (this.data.type !== "npc") return;
+    if (this.type !== "npc") return;
 
     // Process additional NPC data here.
   }
@@ -288,7 +286,7 @@ export class TitanActor extends Actor {
 
   async getInitiativeRoll(inData) {
     // Calculate the initiative value
-    const initiative = this.data.data.derivedStats.initiative.value;
+    const initiative = this.system.derivedStats.initiative.value;
 
     // Get the initiative formula
     let initiativeFormula = "";
@@ -333,7 +331,7 @@ export class TitanActor extends Actor {
     if (checkOptions.attribute == "default") {
       // Ensure the attribute is set
       checkOptions.attribute =
-        this.data.data.skill[checkOptions.skill].defaultAttribute;
+        this.system.skill[checkOptions.skill].defaultAttribute;
     }
 
     // Get options?
@@ -351,13 +349,13 @@ export class TitanActor extends Actor {
       };
 
       // Add each attribute as an option to the data
-      for (let [k, v] of Object.entries(this.data.data.attribute)) {
+      for (let [k, v] of Object.entries(this.system.attribute)) {
         dialogData.attributeOptions[k] =
           "TITAN.attribute.option." + k.toString() + ".label";
       }
 
       // Add each skill as an option to the data
-      for (let [k, v] of Object.entries(this.data.data.skill)) {
+      for (let [k, v] of Object.entries(this.system.skill)) {
         dialogData.skillOptions[k] =
           "TITAN.skill.option." + k.toString() + ".label";
       }
@@ -414,7 +412,7 @@ export class TitanActor extends Actor {
     // Create the check parameters
     let checkParameters = {
       numberOfDice:
-        this.data.data.attribute[checkOptions.attribute].value +
+        this.system.attribute[checkOptions.attribute].value +
         checkOptions.diceMod,
       expertise: checkOptions.expertiseMod,
       difficulty: checkOptions.difficulty,
@@ -423,7 +421,7 @@ export class TitanActor extends Actor {
 
     // Calculate the skill mod
     if (checkOptions.skill != "none") {
-      const skillData = this.data.data.skill[checkOptions.skill];
+      const skillData = this.system.skill[checkOptions.skill];
 
       // Training
       checkParameters.numberOfDice =
@@ -435,7 +433,7 @@ export class TitanActor extends Actor {
     }
 
     // Perform the roll
-    const check = new Check(checkParameters);
+    const check = new TitanCheck(checkParameters);
 
     // Return the data
     return {
@@ -484,7 +482,7 @@ export class TitanActor extends Actor {
       };
 
       // Add each resistance as an option to the data
-      for (let [k, v] of Object.entries(this.data.data.resistance)) {
+      for (let [k, v] of Object.entries(this.system.resistance)) {
         dialogData.resistanceOptions[k] =
           "TITAN.resistance.option." + k.toString() + ".label";
       }
@@ -543,7 +541,7 @@ export class TitanActor extends Actor {
     // Create the check parameters
     let checkParameters = {
       numberOfDice:
-        this.data.data.resistance[checkOptions.resistance].value +
+        this.system.resistance[checkOptions.resistance].value +
         checkOptions.diceMod,
       expertise: checkOptions.expertiseMod,
       difficulty: checkOptions.difficulty,
@@ -551,7 +549,7 @@ export class TitanActor extends Actor {
     };
 
     // Perform the roll
-    const check = new Check(checkParameters);
+    const check = new TitanCheck(checkParameters);
 
     // Return the data
     return {

@@ -1,4 +1,4 @@
-export default class Check {
+export class TitanCheck {
   constructor(inData) {
     this.parameters = {
       numberOfDice: inData?.numberOfDice > -1 ? inData.numberOfDice : 1,
