@@ -1,20 +1,19 @@
 {{! Item Tab }}
 <div>
-
   {{! Weapons }}
   <div>
     <ol class="items-list list list-4col">
-      {{! For each skill}}
+      {{! For each weapon }}
       {{#each weapon as |weapon key|}}
-
-      {{! Rollable label}}
       <li class="item expandable-parent">
-        <a class="item-header expand">
+        {{! Expandable Header }}
+        <a class="item-header expand" data-id={{weapon._id}}>
           {{weapon.name}}
         </a>
-        <div class="expandable-content collapsed">
+
+        {{! Expandable Content }}
+        <div class="expandable-content{{#unless (lookup ../isExpanded weapon._id)}} collapsed{{/unless}}">
           {{{weapon.system.description}}}
-          <div>test</div>
         </div>
       </li>
       {{/each}}

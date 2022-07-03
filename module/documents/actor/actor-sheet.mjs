@@ -153,6 +153,8 @@ export class TitanActorSheet extends ActorSheet {
     context.spell = spell;
     context.weapon = weapon;
 
+    context.isExpanded = this.isExpanded;
+
     return;
   }
 
@@ -475,7 +477,21 @@ export class TitanActorSheet extends ActorSheet {
     // Get the content element
     let content = parent.find(".expandable-content");
 
-    // Toggle the collapsed class
-    content.toggleClass("collapsed");
+    // If the content is collapsed
+    if (content.hasClass("collapsed")) {
+      // Remove the collapsed class
+      content.removeClass("collapsed");
+
+      // Update the collapsed state
+      this.isExpanded[event.target.dataset.id.toString()] = true;
+    } else {
+      // Add the collapsed class
+      content.addClass("collapsed");
+
+      // Update the collapsed state
+      this.isExpanded[event.target.dataset.id.toString()] = false;
+    }
+
+    console.log(this.isExpanded);
   }
 }
