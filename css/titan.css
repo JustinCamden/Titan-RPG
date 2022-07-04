@@ -629,7 +629,7 @@ details summary > * {
   font-weight: bold;
 }
 
-.titan .items-list {
+.titan .item-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -638,7 +638,7 @@ details summary > * {
   color: #444;
 }
 
-.titan .items-list .item {
+.titan .item-list .item {
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
   break-inside: avoid;
@@ -663,11 +663,11 @@ details summary > * {
     } */
 }
 
-.titan .items-list .item:last-child {
+.titan .item-list .item:last-child {
   margin-bottom: 1rem;
 }
 
-.titan .items-list .item .item-header {
+.titan .item-list .item .item-header {
   font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -685,7 +685,7 @@ details summary > * {
   text-align: center;
 }
 
-.titan .items-list .item .item-header .item-label {
+.titan .item-list .item .item-header .item-label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -701,12 +701,12 @@ details summary > * {
   align-items: center;
 }
 
-.titan .items-list .item .item-header .item-label .item-image {
+.titan .item-list .item .item-header .item-label .item-image {
   height: 2rem;
   border: none;
 }
 
-.titan .items-list .item .item-footer {
+.titan .item-list .item .item-footer {
   font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;

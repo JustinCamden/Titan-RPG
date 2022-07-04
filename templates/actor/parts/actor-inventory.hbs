@@ -1,10 +1,10 @@
 {{! Item Tab }}
 <div class="grid grid-4col">
   {{! Weapons }}
-  <ol class="items-list list list-1col">
+  <ol class="item-list list list-1col">
     {{! For each weapon }}
     {{#each weapon as |weapon key|}}
-    <li class="item expandable-parent">
+    <li class="item expandable-parent" data-item-id={{weapon._id}}>
       {{! Expandable Header }}
       <div class="item-header">
 
