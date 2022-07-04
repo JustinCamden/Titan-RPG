@@ -6,14 +6,24 @@
     {{#each weapon as |weapon key|}}
     <li class="item expandable-parent">
       {{! Expandable Header }}
-      <a class="item-header expand" data-id={{weapon._id}}>
-        <span class="item-name">{{weapon.name}}</span>
+      <a class="item-header" data-id={{weapon._id}}>
+
+        {{! Label }}
+        <div class="item-label expand">
+          <img class="item-image" src="{{weapon.img}}" />
+          <span class="item-name">{{weapon.name}}</span>
+        </div>
+
+        {{! Edit Buttons }}
       </a>
 
       {{! Expandable Content }}
       <div class="item-details expandable-content{{#unless (lookup ../isExpanded weapon._id)}} collapsed{{/unless}}">
+        {{! Description }}
         {{{weapon.system.description}}}
         {{{weapon.system.attackDescription}}}
+
+        {{! Footer }}
         <div class="item-footer">
           <span class="item-rarity">{{localize (concat "TITAN.item.rarity.option."
             weapon.system.rarity

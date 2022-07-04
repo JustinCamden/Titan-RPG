@@ -703,6 +703,27 @@ details summary > * {
   text-align: center;
 }
 
+.titan .items-list .item .item-header .item-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.titan .items-list .item .item-header .item-label .item-image {
+  height: 2rem;
+  border: none;
+}
+
 .titan .items-list .item .item-footer {
   font-weight: bold;
   display: -webkit-box;
