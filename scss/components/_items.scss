@@ -10,18 +10,6 @@
   scrollbar-width: thin;
   color: $c-tan;
 
-  // Control Buttons
-  .item-controls {
-    display: flex;
-    flex: 0 0 100px;
-    justify-content: flex-end;
-    a {
-      font-size: 12px;
-      text-align: center;
-      margin: 0 6px;
-    }
-  }
-
   // Individual Item
   .item {
     break-inside: avoid;

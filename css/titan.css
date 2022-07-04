@@ -638,24 +638,6 @@ details summary > * {
   color: #444;
 }
 
-.titan .items-list .item-controls {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 100px;
-  flex: 0 0 100px;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-}
-
-.titan .items-list .item-controls a {
-  font-size: 12px;
-  text-align: center;
-  margin: 0 6px;
-}
-
 .titan .items-list .item {
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;

@@ -164,27 +164,12 @@ export class TitanActorSheet extends ActorSheet {
   activateListeners(html) {
     super.activateListeners(html);
 
-    // Render the item sheet for viewing/editing prior to the editable check.
-    html.find(".item-edit").click((ev) => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
-      item.sheet.render(true);
-    });
-
     // -------------------------------------------------------------
     // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
 
     // Add Inventory Item
     html.find(".item-create").click(this._onItemCreate.bind(this));
-
-    // Delete Inventory Item
-    html.find(".item-delete").click((ev) => {
-      const li = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(li.data("itemId"));
-      item.delete();
-      li.slideUp(200, () => this.render(false));
-    });
 
     // Active Effect management
     html
@@ -208,6 +193,12 @@ export class TitanActorSheet extends ActorSheet {
 
     // Expandable toggles
     html.find(".expand").click(this._onExpandElement.bind(this));
+
+    // Item edit
+    html.find(".item-edit").click(this._onItemEdit.bind(this));
+
+    // Item delete
+    html.find(".item-delete").click(this._onItemDelete.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -491,5 +482,17 @@ export class TitanActorSheet extends ActorSheet {
       // Update the collapsed state
       this.isExpanded[event.target.dataset.id.toString()] = false;
     }
+  }
+
+  _onItemEdit(event) {
+    const item = this.actor.items.get(event.target.dataset.id);
+    item.sheet.render(true);
+    return;
+  }
+
+  _onItemDelete(event) {
+    const item = this.actor.items.get(event.target.dataset.id);
+    item.delete();
+    return;
   }
 }
