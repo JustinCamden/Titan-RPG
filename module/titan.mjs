@@ -4,6 +4,7 @@ import { TitanItem } from "./documents/item/item.mjs";
 // Import sheet classes.
 import { TitanActorSheet } from "./documents/actor/actor-sheet.mjs";
 import { TitanItemSheet } from "./documents/item/item-sheet.mjs";
+import { TitanWeaponSheet } from "./documents/item/weapon-sheet.mjs";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./handlebars/handlebars-templates.mjs";
 import { registerHandlebarsHelpers } from "./handlebars/handlebars-helpers.mjs";
@@ -44,7 +45,10 @@ Hooks.once("init", async function () {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("titan", TitanActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("titan", TitanItemSheet, { makeDefault: true });
+  Items.registerSheet("titan", TitanWeaponSheet, {
+    types: ["weapon"],
+    makeDefault: true,
+  });
 
   // Register system settings
   registerSystemSettings();
