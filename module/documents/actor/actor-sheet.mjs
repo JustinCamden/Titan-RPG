@@ -464,33 +464,36 @@ export class TitanActorSheet extends ActorSheet {
       content.removeClass("collapsed");
 
       // Update the collapsed state
-      this.isExpanded[event.target.dataset.id.toString()] = true;
+      const id =
+        event.currentTarget.closest(".expandable-parent").dataset.expandableId;
+      this.isExpanded[id.toString()] = true;
     } else {
       // Add the collapsed class
       content.addClass("collapsed");
 
       // Update the collapsed state
-      this.isExpanded[event.target.dataset.id.toString()] = false;
+      const id =
+        event.currentTarget.closest(".expandable-parent").dataset.expandableId;
+      this.isExpanded[id.toString()] = false;
     }
   }
 
   _onItemEdit(event) {
-    const item = this.actor.items.get(event.target.dataset.id);
+    const itemId = event.currentTarget.closest(".item").dataset.itemId;
+    const item = this.actor.items.get(itemId);
     item.sheet.render(true);
     return;
   }
 
   _onItemDelete(event) {
-    const item = this.actor.items.get(event.target.dataset.id);
+    const itemId = event.currentTarget.closest(".item").dataset.itemId;
+    const item = this.actor.items.get(itemId);
     item.delete();
     return;
   }
 
   /**
-   * Handle a drop event for an existing embedded Item to sort that Item relative to its siblings
-   * @param {Event} event
-   * @param {Object} itemData
-   * @private
+   * This is a temp override until foundry fixes its bug
    */
   _onSortItem(event, itemData) {
     // Get the drag source and drop target
