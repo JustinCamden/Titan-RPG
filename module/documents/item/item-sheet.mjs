@@ -107,7 +107,7 @@ export class TitanItemSheet extends ItemSheet {
     if (!this.isEditable) return;
 
     // Roll handlers, click handlers, etc. go here.
-    switch (this.item.system.type) {
+    switch (this.item.type) {
       // Weapon listeners
       case "weapon": {
         html
@@ -141,10 +141,6 @@ export class TitanItemSheet extends ItemSheet {
         html.find(".add-attack").click(this._onAddAttack.bind(this));
 
         html.find(".delete-attack").click(this._onDeleteAttack.bind(this));
-
-        html
-          .find(".add-attack-description")
-          .click(this._onAddAttackDescription.bind(this));
 
         break;
       }
@@ -289,23 +285,21 @@ export class TitanItemSheet extends ItemSheet {
 
   async _onEditAttackTraits(event) {
     event.preventDefault();
-    this.item.editAttackTraits(event.target.dataset.idx);
+    this.item.weapon.editAttackTraits(event.target.dataset.idx);
     return;
   }
 
   async _onAddAttack(event) {
+    console.log("HEre");
     event.preventDefault();
-    this.item.addAttack();
+    console.log(this.item.weapon);
+    this.item.weapon.addAttack();
     return;
   }
 
   async _onDeleteAttack(event) {
     event.preventDefault();
-    this.item.deleteAttack(event.target.dataset.idx);
+    this.item.weapon.deleteAttack(event.target.dataset.idx);
     return;
-  }
-
-  async _onAddAttackDescription(event) {
-    this.item.onAddAttackDescription();
   }
 }
