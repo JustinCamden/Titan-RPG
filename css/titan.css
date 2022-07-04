@@ -629,6 +629,25 @@ details summary > * {
   font-weight: bold;
 }
 
+.titan .item-list-header {
+  word-wrap: normal;
+  padding: .5rem;
+  border: solid;
+  border-radius: 10px;
+  margin-bottom: .5rem;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
 .titan .item-list {
   list-style: none;
   margin: 0;
@@ -679,10 +698,6 @@ details summary > * {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
 }
 
 .titan .item-list .item .item-header .item-label {

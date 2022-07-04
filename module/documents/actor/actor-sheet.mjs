@@ -168,9 +168,6 @@ export class TitanActorSheet extends ActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
 
-    // Add Inventory Item
-    html.find(".item-create").click(this._onItemCreate.bind(this));
-
     // Active Effect management
     html
       .find(".effect-control")
@@ -199,6 +196,9 @@ export class TitanActorSheet extends ActorSheet {
 
     // Item delete
     html.find(".item-delete").click(this._onItemDelete.bind(this));
+
+    // Item Create
+    html.find(".item-create").click(this._onItemCreate.bind(this));
   }
 
   /**
@@ -208,13 +208,18 @@ export class TitanActorSheet extends ActorSheet {
    */
   async _onItemCreate(event) {
     event.preventDefault();
+
     const header = event.currentTarget;
+
     // Get the type of item to create.
     const type = header.dataset.type;
+
     // Grab any data associated with this control.
     const data = duplicate(header.dataset);
+
     // Initialize a default name.
     const name = `New ${type.capitalize()}`;
+
     // Prepare the item object.
     const itemData = {
       name: name,

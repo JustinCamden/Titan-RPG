@@ -2,6 +2,18 @@
 /*  Items Lists                              */
 /* ----------------------------------------- */
 
+.item-list-header {
+  word-wrap: normal;
+  padding: .5rem;
+  border: solid;
+  border-radius: 10px;
+  margin-bottom: .5rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+
 .item-list {
   list-style: none;
   margin: 0;
@@ -36,8 +48,6 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      align-items: center;
-      text-align: center;
       .item-label {
         display: flex;
         justify-content: flex-start;
