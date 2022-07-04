@@ -1,4 +1,4 @@
-export class TitanUtility {
+export default class TitanUtility {
   // Adds an item to an object, assuming an index from 0 to infinity.
   // Contains checks to make sure it does not overwrite an xisting item
   static pushWithSparseKey(object, item) {

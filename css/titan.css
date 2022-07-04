@@ -439,6 +439,14 @@ details summary > * {
   height: 60%;
 }
 
+.expandable-parent .collapsed {
+  display: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 /* Styles limited to titan sheets */
 .titan {
   /* ----------------------------------------- */
@@ -733,10 +741,10 @@ details summary > * {
 }
 
 .titan .items-list .item .item-header {
+  font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
@@ -744,6 +752,7 @@ details summary > * {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  width: 100%;
 }
 
 .titan .items-list .item-prop {
@@ -793,8 +802,4 @@ details summary > * {
 
 .titan .effects .item .effect-controls {
   border: none;
-}
-
-.titan .expandable-parent .collapsed {
-  display: none;
 }

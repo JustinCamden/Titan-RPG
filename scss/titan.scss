@@ -12,6 +12,8 @@
 @import 'global/grid';
 @import 'global/flex';
 @import 'global/container';
+@import 'global/expandable';
+@import 'global/fonts';
 
 /* Styles limited to titan sheets */
 .titan {
@@ -21,5 +23,4 @@
   @import 'components/items';
   @import 'components/effects';
   @import 'components/skills';
-  @import 'components/expandable';
 }

@@ -3,7 +3,6 @@
  * @extends {Actor}
  */
 
-import { TitanCheck } from "../../helpers/check.mjs";
 export class TitanActor extends Actor {
   /** @override */
   prepareData() {

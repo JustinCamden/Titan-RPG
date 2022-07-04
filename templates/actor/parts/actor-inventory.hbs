@@ -9,10 +9,12 @@
         {{! Expandable Header }}
         <a class="item-header expand" data-id={{weapon._id}}>
           {{weapon.name}}
+          {{log weapon}}
+          {{localize weapon.system.value}}
         </a>
 
         {{! Expandable Content }}
-        <div class="expandable-content{{#unless (lookup ../isExpanded weapon._id)}} collapsed{{/unless}}">
+        <div class="item-details expandable-content{{#unless (lookup ../isExpanded weapon._id)}} collapsed{{/unless}}">
           {{{weapon.system.description}}}
         </div>
       </li>
