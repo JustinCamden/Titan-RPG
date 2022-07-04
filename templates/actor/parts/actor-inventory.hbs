@@ -1,24 +1,27 @@
 {{! Item Tab }}
-<div>
+<div class="grid grid-4col">
   {{! Weapons }}
-  <div>
-    <ol class="items-list list list-4col">
-      {{! For each weapon }}
-      {{#each weapon as |weapon key|}}
-      <li class="item expandable-parent">
-        {{! Expandable Header }}
-        <a class="item-header expand" data-id={{weapon._id}}>
-          {{weapon.name}}
-          {{log weapon}}
-          {{localize weapon.system.value}}
-        </a>
+  <ol class="items-list list list-1col">
+    {{! For each weapon }}
+    {{#each weapon as |weapon key|}}
+    <li class="item expandable-parent">
+      {{! Expandable Header }}
+      <a class="item-header expand" data-id={{weapon._id}}>
+        <span class="item-name">{{weapon.name}}</span>
+      </a>
 
-        {{! Expandable Content }}
-        <div class="item-details expandable-content{{#unless (lookup ../isExpanded weapon._id)}} collapsed{{/unless}}">
-          {{{weapon.system.description}}}
+      {{! Expandable Content }}
+      <div class="item-details expandable-content{{#unless (lookup ../isExpanded weapon._id)}} collapsed{{/unless}}">
+        {{{weapon.system.description}}}
+        {{{weapon.system.attackDescription}}}
+        <div class="item-footer">
+          <span class="item-rarity">{{localize (concat "TITAN.item.rarity.option."
+            weapon.system.rarity
+            ".label")}}</span>
+          <span class="item-value">{{localize "TITAN.item.value.label"}}: {{localize weapon.system.value}}</span>
         </div>
-      </li>
-      {{/each}}
-    </ol>
-  </div>
+      </div>
+    </li>
+    {{/each}}
+  </ol>
 </div>

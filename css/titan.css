@@ -452,7 +452,6 @@ details summary > * {
   /* ----------------------------------------- */
   /*  Items Lists                              */
   /* ----------------------------------------- */
-  /* Example style for Titan (can be removed if not needed) */
   /* ----------------------------------------- */
   /*  Items Lists                              */
   /* ----------------------------------------- */
@@ -630,32 +629,6 @@ details summary > * {
   font-weight: bold;
 }
 
-.titan .items-header {
-  height: 28px;
-  margin: 2px 0;
-  padding: 0;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.05);
-  border: 2px groove #eeede0;
-  font-weight: bold;
-}
-
-.titan .items-header > * {
-  font-size: 14px;
-  text-align: center;
-}
-
-.titan .items-header .item-name {
-  font-weight: bold;
-  padding-left: 5px;
-  text-align: left;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .titan .items-list {
   list-style: none;
   margin: 0;
@@ -663,34 +636,6 @@ details summary > * {
   overflow-y: auto;
   scrollbar-width: thin;
   color: #444;
-}
-
-.titan .items-list .item-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.titan .items-list .item-name {
-  -webkit-box-flex: 2;
-  -ms-flex: 2;
-  flex: 2;
-  margin: 0;
-  overflow: hidden;
-  font-size: 13px;
-  text-align: left;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.titan .items-list .item-name h3, .titan .items-list .item-name h4 {
-  margin: 0;
-  white-space: nowrap;
-  overflow-x: hidden;
 }
 
 .titan .items-list .item-controls {
@@ -723,7 +668,7 @@ details summary > * {
   padding: .5rem;
   border: solid;
   border-radius: 10px;
-  width: 100%;
+  margin-bottom: .5rem;
   /* .item-name {
       color: $c-dark;
       .item-image {
@@ -752,43 +697,28 @@ details summary > * {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  width: 100%;
-}
-
-.titan .items-list .item-prop {
-  text-align: center;
-  border-left: 1px solid #c9c7b8;
-  border-right: 1px solid #c9c7b8;
-  font-size: 12px;
-}
-
-.titan .items-list .items-header {
-  height: 28px;
-  margin: 2px 0;
-  padding: 0;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.05);
-  border: 2px groove #eeede0;
-  font-weight: bold;
-}
-
-.titan .items-list .items-header > * {
-  font-size: 12px;
   text-align: center;
 }
 
-.titan .items-list .items-header .item-name {
-  padding-left: 5px;
-  text-align: left;
-}
-
-.titan .item-formula {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 200px;
-  flex: 0 0 200px;
-  padding: 0 8px;
+.titan .items-list .item .item-footer {
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
 }
 
 .titan .effects .item .effect-source,

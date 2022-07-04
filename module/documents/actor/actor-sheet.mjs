@@ -491,7 +491,5 @@ export class TitanActorSheet extends ActorSheet {
       // Update the collapsed state
       this.isExpanded[event.target.dataset.id.toString()] = false;
     }
-
-    console.log(this.isExpanded);
   }
 }

@@ -227,9 +227,7 @@ export class TitanWeaponSheet extends TitanItemSheet {
   }
 
   async _onAddAttack(event) {
-    console.log("HEre");
     event.preventDefault();
-    console.log(this.item.weapon);
     this.item.weapon.addAttack();
     return;
   }
