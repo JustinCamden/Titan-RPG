@@ -79,6 +79,10 @@ export class TitanWeaponSheet extends TitanItemSheet {
       .find(".edit-attack-damage")
       .change(this._onEditAttackDamage.bind(this));
 
+    html
+      .find(".edit-attack-plus-success-damage")
+      .change(this._onEditAttackPlusSuccessDamage.bind(this));
+
     html.find(".edit-attack-traits").click(this._onEditAttackTraits.bind(this));
 
     html.find(".add-attack").click(this._onAddAttack.bind(this));
@@ -213,6 +217,23 @@ export class TitanWeaponSheet extends TitanItemSheet {
 
       // Update the attack damage
       attack[idx].damage = event.target.value;
+      this.item.update({
+        system: { attack: attack },
+      });
+    }
+    return;
+  }
+
+  async _onEditAttackPlusSuccessDamage(event) {
+    event.preventDefault();
+    // Check if the data is valid
+    const idx = event.target.dataset.idx;
+    if (this.item.system.attack[idx]) {
+      // Copy the attacks array
+      let attack = this.item.system.attack;
+
+      // Update the attack damage
+      attack[idx].plusSuccessDamage = event.target.checked;
       this.item.update({
         system: { attack: attack },
       });

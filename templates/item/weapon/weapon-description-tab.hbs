@@ -1,33 +1,31 @@
-<div class="grid grid-3col weapon-description-tab full-height">
+<div class="grid grid-3col weapon-description-tab">
   {{! Sidebar }}
-  <div class="flex-group-center sidebar">
+  <div class="flex-group-center weapon-details">
     <div class="border">
       <label class="stat-label">{{localize "TITAN.attacks.label"}}</label>
     </div>
 
     {{! Scrolling }}
-    <div class="max-height-25 scrolling">
+    <div class="max-height-25 scrolling weapon-details-content">
       {{! Weapon attacks }}
       <div class="attacks">
-        <ul class="list list-1col attack-list">
-
-          {{! For each attack }}
-          {{#each system.attack as |attack key|}}
-          {{> "systems/titan/templates/item/weapon/weapon-attack-sheet-vertical.hbs"
-          attack=attack
-          key=key
-          attackTypeOptions=../attackTypeOptions
-          rangedRangeOptions=../rangedRangeOptions
-          meleeRangeOptions=../meleeRangeOptions
-          attributeOptions=../attributeOptions
-          skillOptions=../skillOptions
-          }}
-          {{/each}}
-          {{! Adding a new attack }}
-          <div class="flex-group-center padding-right10 grid-span-4 border">
-            <a class="fas fa-plus-circle add-attack"></a>
-          </div>
-        </ul>
+        {{! For each attack }}
+        {{#each system.attack as |attack key|}}
+        {{> "systems/titan/templates/item/weapon/weapon-attack-sheet-vertical.hbs"
+        attack=attack
+        key=key
+        attackTypeOptions=../attackTypeOptions
+        rangedRangeOptions=../rangedRangeOptions
+        meleeRangeOptions=../meleeRangeOptions
+        attributeOptions=../attributeOptions
+        skillOptions=../skillOptions
+        tab="description"
+        }}
+        {{/each}}
+        {{! Adding a new attack }}
+        <div class="flex-group-center padding-right10 grid-span-4 border">
+          <a class="fas fa-plus-circle add-attack"></a>
+        </div>
       </div>
     </div>
   </div>

@@ -36,7 +36,6 @@ export class TitanWeapon {
   }
 
   async addAttack() {
-    console.log(this);
     // Create the new attack
     const newAttack = foundry.utils.deepClone(CONFIG.TITAN.attack.template);
 
