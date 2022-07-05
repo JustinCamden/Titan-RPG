@@ -864,7 +864,7 @@ details summary > * {
   -ms-flex-align: center;
   align-items: center;
   text-align: start;
-  width: 75%;
+  width: 60%;
 }
 
 .titan .weapon-sheet .attack-sheet-vertical .attack-header .attack-name .attack-name-label {
@@ -873,6 +873,26 @@ details summary > * {
 
 .titan .weapon-sheet .attack-sheet-vertical .attack-header .attack-name .attack-name-input {
   margin: .25rem;
+}
+
+.titan .weapon-sheet .attack-sheet-vertical .attack-header .attack-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.titan .weapon-sheet .attack-sheet-vertical .attack-header .attack-controls .fas {
+  margin-left: 0.5rem;
 }
 
 .titan .weapon-sheet .attack-sheet-vertical .attack-field {

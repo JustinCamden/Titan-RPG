@@ -21,6 +21,13 @@ export class TitanItemSheet extends ItemSheet {
       scrollY: [".scrolling"],
     });
   }
+
+  /**
+   * Temporary data that will be reset on page load
+   */
+  // Expended state
+  isExpanded = {};
+
   /* -------------------------------------------- */
 
   /** @override */
@@ -47,6 +54,7 @@ export class TitanItemSheet extends ItemSheet {
     for (let [k, v] of Object.entries(CONFIG.TITAN.item.rarity.option)) {
       context.rarityOptions[k] = v.label;
     }
+    context.isExpanded = this.isExpanded;
 
     return context;
   }
@@ -62,6 +70,37 @@ export class TitanItemSheet extends ItemSheet {
       return;
     }
 
+    // Expandable toggles
+    html.find(".expand").click(this._onExpandElement.bind(this));
+
     return;
+  }
+
+  async _onExpandElement(event) {
+    event.preventDefault();
+    // Get the parent element
+    let parent = $(event.currentTarget).parents(".expandable-parent");
+
+    // Get the content element
+    let content = parent.find(".expandable-content");
+
+    // If the content is collapsed
+    if (content.hasClass("collapsed")) {
+      // Remove the collapsed class
+      content.removeClass("collapsed");
+
+      // Update the collapsed state
+      const id =
+        event.currentTarget.closest(".expandable-parent").dataset.expandableId;
+      this.isExpanded[id.toString()] = true;
+    } else {
+      // Add the collapsed class
+      content.addClass("collapsed");
+
+      // Update the collapsed state
+      const id =
+        event.currentTarget.closest(".expandable-parent").dataset.expandableId;
+      this.isExpanded[id.toString()] = false;
+    }
   }
 }

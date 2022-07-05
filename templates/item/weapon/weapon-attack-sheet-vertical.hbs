@@ -1,4 +1,4 @@
-<div class="attack-sheet-vertical">
+<div class="attack-sheet-vertical expandable-parent" data-expandable-id={{concat tab key}}>
 
   {{! Header }}
   <div class="attack-header">
@@ -7,126 +7,137 @@
     <div class="attack-name">
 
       {{! Label }}
-      <label class="attack-name-label">{{localize "TITAN.name.label"}}</label>
+      <label class="attack-name-label">{{localize "TITAN.name.label"}}: </label>
 
       {{! Input }}
       <input class="attack-name-input edit-attack-name" type="text" value="{{attack.name}}" data-idx={{key}}
         data-dtype="text" />
     </div>
 
-    {{! Delete Attack }}
-    <a class="fas fa-trash delete-attack" data-idx={{key}}></a>
+    {{! Controls }}
+    <div class="attack-controls">
+
+      {{! Expand }}
+      <a class="fas fa-angles-down expand"></a>
+
+      {{! Delete }}
+      <a class="fas fa-trash delete-attack" data-idx={{key}}></a>
+    </div>
   </div>
 
-  {{! Type }}
-  <div class="attack-field">
+  {{! Expandable content }}
+  <div class="expandable-content{{#unless (lookup isExpanded (concat tab key))}} collapsed{{/unless}}">
+    {{! Type }}
+    <div class="attack-field">
 
-    {{! Label }}
-    <label class="attack-label">{{localize
-      "TITAN.type.label"}}</label>
+      {{! Label }}
+      <label class="attack-label">{{localize
+        "TITAN.type.label"}}</label>
 
-    {{! Selector }}
-    <select class="attack-value select-attack-type" data-idx={{key}}>
-      {{selectOptions attackTypeOptions selected=attack.type localize=true}}
-    </select>
+      {{! Selector }}
+      <select class="attack-value select-attack-type" data-idx={{key}}>
+        {{selectOptions attackTypeOptions selected=attack.type localize=true}}
+      </select>
+    </div>
+
+    {{! Range }}
+    <div class="attack-field">
+
+      {{! Label }}
+      <label class="attack-label">{{localize
+        "TITAN.range.label"}}</label>
+
+      {{! Selector }}
+      <select class="attack-value select-attack-range" data-idx={{key}}>
+        {{#if (equals attack.type "ranged")}}
+        {{selectOptions rangedRangeOptions selected=attack.range localize=true}}
+        {{else}}
+        {{selectOptions meleeRangeOptions selected=attack.range localize=true}}
+        {{/if}}
+      </select>
+    </div>
+
+    {{! Attribute }}
+    <div class="attack-field">
+
+      {{! Label }}
+      <label class="attack-label">{{localize
+        "TITAN.attribute.label"}}</label>
+
+      {{! Selector }}
+      <select class="attack-value select-attack-attribute" data-idx={{key}}>
+        {{selectOptions attributeOptions selected=attack.attribute localize=true}}
+      </select>
+    </div>
+
+    {{! Skill }}
+    <div class="attack-field">
+
+      {{! Label }}
+      <label class="attack-label">{{localize
+        "TITAN.skill.label"}}</label>
+
+      {{! Selector }}
+      <select class="attack-value extra-wide select-attack-skill" data-idx={{key}}>
+        {{selectOptions skillOptions selected=attack.skill localize=true}}
+      </select>
+    </div>
+
+    {{! Damage }}
+    <div class="attack-field">
+
+      {{! Label }}
+      <label class="attack-label">{{localize
+        "TITAN.damage.label"}}</label>
+
+      {{! Input }}
+      <input class="attack-value edit-attack-damage" type="number" value="{{attack.damage}}" data-idx={{key}}
+        data-dtype="Number" />
+    </div>
+
+    {{! +S Damage }}
+    <div class="attack-field">
+
+      {{! Label }}
+      <label class="attack-label">{{localize
+        "TITAN.plusSuccessDamage.label"}}</label>
+
+      {{! Input }}
+      <input class="attack-value edit-attack-plus-success-damage" type="checkbox" data-idx={{key}} {{checked
+        attack.plusSuccessDamage}} />
+    </div>
+
+    {{! Traits }}
+    <div class="attack-field">
+
+      {{! Label }}
+      <label class="attack-label">{{localize
+        "TITAN.traits.label"}}</label>
+
+      {{! Edit Button }}
+      <a class="fas fa-edit attack-value edit-attack-traits" data-idx={{key}}></a>
+    </div>
+    {{! Traits container }}
+    {{#if attack.traits.length}}
+    <div class="attack-traits-container">
+
+      {{! Trait }}
+      {{#each attack.traits as |trait key|}}
+      <label class="attack-trait">
+
+        {{! Numbered Trait }}
+        {{#if trait.numberValue}}
+        {{localize (concat "TITAN.attack.trait.option." trait.name ".label")}}
+        {{concat "(" trait.numberValue ")"}}
+
+        {{!Normal trait}}
+        {{else}}
+        {{localize (concat "TITAN.attack.trait.option." trait.name ".label")}}
+        {{/if}}
+      </label>
+      {{/each}}
+    </div>
+    {{/if}}
   </div>
 
-  {{! Range }}
-  <div class="attack-field">
-
-    {{! Label }}
-    <label class="attack-label">{{localize
-      "TITAN.range.label"}}</label>
-
-    {{! Selector }}
-    <select class="attack-value select-attack-range" data-idx={{key}}>
-      {{#if (equals attack.type "ranged")}}
-      {{selectOptions rangedRangeOptions selected=attack.range localize=true}}
-      {{else}}
-      {{selectOptions meleeRangeOptions selected=attack.range localize=true}}
-      {{/if}}
-    </select>
-  </div>
-
-  {{! Attribute }}
-  <div class="attack-field">
-
-    {{! Label }}
-    <label class="attack-label">{{localize
-      "TITAN.attribute.label"}}</label>
-
-    {{! Selector }}
-    <select class="attack-value select-attack-attribute" data-idx={{key}}>
-      {{selectOptions attributeOptions selected=attack.attribute localize=true}}
-    </select>
-  </div>
-
-  {{! Skill }}
-  <div class="attack-field">
-
-    {{! Label }}
-    <label class="attack-label">{{localize
-      "TITAN.skill.label"}}</label>
-
-    {{! Selector }}
-    <select class="attack-value extra-wide select-attack-skill" data-idx={{key}}>
-      {{selectOptions skillOptions selected=attack.skill localize=true}}
-    </select>
-  </div>
-
-  {{! Damage }}
-  <div class="attack-field">
-
-    {{! Label }}
-    <label class="attack-label">{{localize
-      "TITAN.damage.label"}}</label>
-
-    {{! Input }}
-    <input class="attack-value edit-attack-damage" type="number" value="{{attack.damage}}" data-idx={{key}}
-      data-dtype="Number" />
-  </div>
-
-  {{! +S Damage }}
-  <div class="attack-field">
-
-    {{! Label }}
-    <label class="attack-label">{{localize
-      "TITAN.plusSuccessDamage.label"}}</label>
-
-    {{! Input }}
-    <input class="attack-value edit-attack-plus-success-damage" type="checkbox" data-idx={{key}} {{checked
-      attack.plusSuccessDamage}} />
-  </div>
-
-  {{! Traits }}
-  <div class="attack-field">
-
-    {{! Label }}
-    <label class="attack-label">{{localize
-      "TITAN.traits.label"}}</label>
-
-    {{! Edit Button }}
-    <a class="fas fa-edit attack-value edit-attack-traits" data-idx={{key}}></a>
-  </div>
-  {{! Traits container }}
-  {{#if attack.traits.length}}
-  <div class="attack-traits-container">
-
-    {{! Trait }}
-    {{#each attack.traits as |trait key|}}
-    <label class="attack-trait">
-
-      {{! Numbered Trait }}
-      {{#if trait.numberValue}}
-      {{localize (concat "TITAN.attack.trait.option." trait.name ".label")}}
-      {{concat "(" trait.numberValue ")"}}
-
-      {{!Normal trait}}
-      {{else}}
-      {{localize (concat "TITAN.attack.trait.option." trait.name ".label")}}
-      {{/if}}
-    </label>
-    {{/each}}
-  </div>
-  {{/if}}
 </div>

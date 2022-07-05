@@ -20,6 +20,7 @@
         attributeOptions=../attributeOptions
         skillOptions=../skillOptions
         tab="description"
+        isExpanded=../isExpanded
         }}
         {{/each}}
         {{! Adding a new attack }}
@@ -30,13 +31,13 @@
     </div>
   </div>
 
-  <div class="grid-span-2 flexcol max-height-23">
+  <div class="grid-span-2 flexcol max-height-25 scrolling">
     <div>
-      <h2>{{localize "TITAN.attack.description.label"}}</h2>
+      <h2>{{localize "TITAN.weapon.description.label"}}</h2>
       <div class="editor">
         {{editor
-        system.attackDescription
-        target="system.attackDescription"
+        system.description
+        target="system.description"
         rollData=rollData
         button=true
         owner=owner
@@ -46,11 +47,11 @@
     </div>
 
     <div>
-      <h2>{{localize "TITAN.description.label"}}</h2>
+      <h2>{{localize "TITAN.attack.description.label"}}</h2>
       <div class="editor">
         {{editor
-        system.description
-        target="system.description"
+        system.attackDescription
+        target="system.attackDescription"
         rollData=rollData
         button=true
         owner=owner

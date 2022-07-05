@@ -255,7 +255,22 @@ export class TitanWeaponSheet extends TitanItemSheet {
 
   async _onDeleteAttack(event) {
     event.preventDefault();
-    this.item.weapon.deleteAttack(event.target.dataset.idx);
+    const attackIdx = event.target.dataset.idx;
+    const oldLastIdx = this.item.system.attack.length - 1;
+    this.item.weapon.deleteAttack(attackIdx);
+    for (let idx = attackIdx; idx < this.item.system.attack.length; idx++) {
+      const currentKey = parseInt(idx, 10);
+      const nextIdx = idx + 1;
+      const nextKey = parseInt(nextIdx, 10);
+      this.isExpanded["description" + currentKey] =
+        this.isExpanded["description" + nextKey];
+      this.isExpanded["attacks" + currentKey] =
+        this.isExpanded["attacks" + nextKey];
+    }
+    const oldLastKey = parseInt(oldLastIdx, 10);
+    this.isExpanded["description" + oldLastKey] = false;
+    this.isExpanded["attacks" + oldLastKey] = false;
+
     return;
   }
 }

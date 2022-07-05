@@ -68,7 +68,7 @@
         justify-content:flex-start;
         align-items: center;
         text-align: start;
-        width: 75%;
+        width: 60%;
 
         .attack-name-label {
           font-weight: bold;
@@ -76,6 +76,17 @@
   
         .attack-name-input {
           margin: .25rem;
+        }
+      }
+
+      .attack-controls {
+        display: flex;
+        flex-direction: row;
+        justify-content:flex-end;
+        align-items: center;
+
+        .fas {
+          margin-left: 0.5rem;
         }
       }
     }
