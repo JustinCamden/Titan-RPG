@@ -1,0 +1,46 @@
+/* ----------------------------------------- */
+/*  Weapons                             */
+/* ----------------------------------------- */
+
+.weapon-sheet {
+  word-wrap: normal;
+
+  .weapon-header {
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+
+    .weapon-label {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row;
+      align-items: center;
+
+      .weapon-name {
+        height: 3rem;
+        padding: 0px;
+        margin: 5px 0;
+        border-bottom: 0;
+
+        input {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+        }
+      }
+      
+      .weapon-image {
+        height: 5rem;
+        border: none;
+      }
+    }
+
+    .weapon-content {
+      
+    }
+  }
+
+  
+}

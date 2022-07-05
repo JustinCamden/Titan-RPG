@@ -276,6 +276,11 @@
               "base": 1
             }
           }
+        },
+        "equipped": {
+          "rightHand": null,
+          "leftHand:": null,
+          "armor": null
         }
       },
       "base": {
@@ -354,6 +359,7 @@
         "traits": []
       }],
       "attackDescription": "",
+      "grip": "oneHanded",
       "resistanceChecks": [],
       "weaponTraits": []
     },

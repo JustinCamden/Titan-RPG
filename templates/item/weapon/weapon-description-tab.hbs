@@ -13,114 +13,15 @@
 
           {{! For each attack }}
           {{#each system.attack as |attack key|}}
-          <li class="list-item attack grid grid-4col border">
-
-            {{! Name Label }}
-            <label class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
-              "TITAN.name.label"}}</label>
-
-            {{! Name input }}
-            <input class="flex-group-right padding-right10 grid-span-2 edit-attack-name" type="text"
-              value="{{attack.name}}" data-idx={{key}} data-dtype="text" />
-
-            <details class="grid-span-4 toggle-attack-collapsed-sidebar" open>
-              <summary class="stat-label">
-                {{localize "TITAN.details.label"}}
-              </summary>
-              <div class="grid grid-4col">
-
-                {{! Type Label }}
-                <label class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
-                  "TITAN.type.label"}}</label>
-
-                {{! Type Selector }}
-                <select class="flex-group-right padding-right10 grid-span-2 select-attack-type" data-idx={{key}}>
-                  {{selectOptions ../attackTypeOptions selected=attack.type localize=true}}
-                </select>
-
-                {{! Range Label }}
-                <label class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
-                  "TITAN.range.label"}}</label>
-
-                {{! Range Selector }}
-                <select class="flex-group-right padding-right10 grid-span-2 select-attack-range" data-idx={{key}}>
-                  {{#if (equals attack.type "ranged")}}
-                  {{selectOptions ../rangedRangeOptions selected=attack.range localize=true}}
-                  {{else}}
-                  {{selectOptions ../meleeRangeOptions selected=attack.range localize=true}}
-                  {{/if}}
-                </select>
-
-                {{! Attribute Label }}
-                <label class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
-                  "TITAN.attribute.label"}}</label>
-
-                {{! Attribute Selector}}
-                <select class="flex-group-right padding-right10 grid-span-2 select-attack-attribute" data-idx={{key}}>
-                  {{selectOptions ../attributeOptions selected=attack.attribute localize=true}}
-                </select>
-
-                {{! Skill Label}}
-                <label class="stat-label flex-group-left padding-left10 select-attack-skill">
-                  {{localize "TITAN.skill.label"}}
-                </label>
-
-                {{! Skill Selector }}
-                <select class="flex-group-right padding-right10 grid-span-3 select-attack-skill" data-idx={{key}}>
-                  {{selectOptions ../skillOptions selected=attack.skill localize=true}}
-                </select>
-
-                {{! Damage Label }}
-                <label class="stat-label flex-group-left padding-left10 grid-span-2">{{localize
-                  "TITAN.damage.label"}}</label>
-
-                {{! Damage Input }}
-                <input class="flex-group-right padding-right10 grid-span-2 edit-attack-damage" type="number"
-                  value="{{attack.damage}}" data-idx={{key}} data-dtype="Number" />
-
-                {{! +S Damage }}
-                <label class="stat-label flex-group-left padding-left10 grid-span-3">{{localize
-                  "TITAN.plusSuccessDamage.label"}}</label>
-
-                {{! +S Damage Checkbox }}
-                <input class="flex-group-right padding-right10 edit-attack-damage" type="checkbox" {{checked
-                  attack.plusSuccessDamage}} />
-
-                {{! Traits Label }}
-                <label class="stat-label flex-group-left padding-left10 grid-span-3">{{localize
-                  "TITAN.traits.label"}}</label>
-
-                {{! Traits Edit}}
-                <a class="fas fa-edit flex-group-right padding-right10 grid-span-1 edit-attack-traits"
-                  data-idx={{key}}></a>
-
-                {{! Traits container }}
-                {{#if attack.traits.length}}
-                <div class="traits grid-span-4">
-                  <div class="grid grid-2col">
-                    {{#each attack.traits as |trait key|}}
-                    <div class="border flex-group-center">
-                      {{#if trait.numberValue}}
-                      <div>
-                        {{localize (concat "TITAN.attack.trait.option." trait.name ".label")}}
-                        {{concat "(" trait.numberValue ")"}}
-                      </div>
-                      {{else}}
-                      {{localize (concat "TITAN.attack.trait.option." trait.name ".label")}}
-                      {{/if}}
-                    </div>
-                    {{/each}}
-                  </div>
-                </div>
-                {{/if}}
-              </div>
-            </details>
-
-            {{! Delete attack }}
-            <div class="border grid-span-4 flex-group-center">
-              <a class="fas fa-trash delete-attack" data-idx={{key}}></a>
-            </div>
-          </li>
+          {{> "systems/titan/templates/item/weapon/weapon-attack-sheet-vertical.hbs"
+          attack=attack
+          key=key
+          attackTypeOptions=../attackTypeOptions
+          rangedRangeOptions=../rangedRangeOptions
+          meleeRangeOptions=../meleeRangeOptions
+          attributeOptions=../attributeOptions
+          skillOptions=../skillOptions
+          }}
           {{/each}}
           {{! Adding a new attack }}
           <div class="flex-group-center padding-right10 grid-span-4 border">

@@ -455,6 +455,9 @@ details summary > * {
   /* ----------------------------------------- */
   /*  Items Lists                              */
   /* ----------------------------------------- */
+  /* ----------------------------------------- */
+  /*  Weapons                             */
+  /* ----------------------------------------- */
 }
 
 .titan .dice-container {
@@ -749,5 +752,60 @@ details summary > * {
 }
 
 .titan .effects .item .effect-controls {
+  border: none;
+}
+
+.titan .weapon-sheet {
+  word-wrap: normal;
+}
+
+.titan .weapon-sheet .weapon-header {
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.titan .weapon-sheet .weapon-header .weapon-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.titan .weapon-sheet .weapon-header .weapon-label .weapon-name {
+  height: 3rem;
+  padding: 0px;
+  margin: 5px 0;
+  border-bottom: 0;
+}
+
+.titan .weapon-sheet .weapon-header .weapon-label .weapon-name input {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.titan .weapon-sheet .weapon-header .weapon-label .weapon-image {
+  height: 5rem;
   border: none;
 }
