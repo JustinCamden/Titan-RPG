@@ -20,7 +20,7 @@ export class TitanActorSheet extends ActorSheet {
         {
           navSelector: ".sheet-tabs",
           contentSelector: ".sheet-body",
-          initial: "inventory",
+          initial: "actions-tab",
         },
       ],
     });

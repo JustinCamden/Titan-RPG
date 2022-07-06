@@ -4,11 +4,9 @@
 export const registerHandlebarsHelpers = async function () {
   return loadTemplates([
     // Actor partials.
-    "systems/titan/templates/actor/parts/actor-features.hbs",
-    "systems/titan/templates/actor/parts/actor-inventory.hbs",
-    "systems/titan/templates/actor/parts/actor-skills.hbs",
-    "systems/titan/templates/actor/parts/actor-spells.hbs",
-    "systems/titan/templates/actor/parts/actor-effects.hbs",
+    "systems/titan/templates/actor/parts/actor-actions-tab.hbs",
+    "systems/titan/templates/actor/parts/actor-inventory-tab.hbs",
+    "systems/titan/templates/actor/parts/actor-skills-tab.hbs",
 
     // Dialogs
     "systems/titan/templates/checks/check-basic.hbs",

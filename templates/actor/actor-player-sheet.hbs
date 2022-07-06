@@ -148,21 +148,27 @@
   {{!-- Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
     {{!-- Default tab is specified in actor-sheet.mjs --}}
-    <a class="item" data-tab="skills">{{localize "TITAN.skills.label"}}</a>
-    <a class="item" data-tab="inventory">{{localize "TITAN.inventory.label"}}</a>
+    <a class="item" data-tab="skills-tab">{{localize "TITAN.skills.label"}}</a>
+    <a class="item" data-tab="actions-tab">{{localize "TITAN.actions.label"}}</a>
+    <a class="item" data-tab="inventory-tab">{{localize "TITAN.inventory.label"}}</a>
   </nav>
 
   {{!-- Sheet Body --}}
   <section class="sheet-body">
 
     {{!-- Skills Tab --}}
-    <div class="tab skills" data-group="primary" data-tab="skills">
-      {{> "systems/titan/templates/actor/parts/actor-skills.hbs"}}
+    <div class="tab" data-group="primary" data-tab="skills-tab">
+      {{> "systems/titan/templates/actor/parts/actor-skills-tab.hbs"}}
+    </div>
+
+    {{!-- Actions Tab --}}
+    <div class="tab" data-group="primary" data-tab="actions-tab">
+      {{> "systems/titan/templates/actor/parts/actor-actions-tab.hbs"}}
     </div>
 
     {{!-- Inventory Tab --}}
-    <div class="tab inventory" data-group="primary" data-tab="inventory">
-      {{> "systems/titan/templates/actor/parts/actor-inventory.hbs"}}
+    <div class="tab" data-group="primary" data-tab="inventory-tab">
+      {{> "systems/titan/templates/actor/parts/actor-inventory-tab.hbs"}}
     </div>
   </section>
 </form>

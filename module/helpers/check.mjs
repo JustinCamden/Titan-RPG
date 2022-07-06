@@ -1,4 +1,5 @@
 export default class TitanCheck {
+  // Constructor
   constructor(inData) {
     this.parameters = {
       numberOfDice: inData?.numberOfDice > -1 ? inData.numberOfDice : 1,
@@ -16,6 +17,7 @@ export default class TitanCheck {
     this.chatMessage = null;
   }
 
+  // Evalyates the check
   async evaluateCheck() {
     this.roll = new Roll(
       `${this.parameters.numberOfDice}d6cs>=${this.parameters.difficulty}`
@@ -26,6 +28,7 @@ export default class TitanCheck {
     return results;
   }
 
+  // Calculates the result of the check
   _calculateResult() {
     let results = {
       successes: 0,
