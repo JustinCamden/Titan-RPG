@@ -1,6 +1,6 @@
-<div class="grid grid-3col weapon-description-tab">
+<div class="weapon-description-tab">
   {{! Sidebar }}
-  <div class="flex-group-center weapon-details">
+  <div class="attack-details">
     <div class="border">
       <label class="stat-label">{{localize "TITAN.attacks.label"}}</label>
     </div>
@@ -31,8 +31,8 @@
     </div>
   </div>
 
-  <div class="grid-span-2 flexcol max-height-25 scrolling">
-    <div>
+  <div class="scrolling weapon-editors">
+    <div class="weapon-description">
       <h2>{{localize "TITAN.weapon.description.label"}}</h2>
       <div class="editor">
         {{editor
@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <div>
+    <div class="attack-description">
       <h2>{{localize "TITAN.attack.description.label"}}</h2>
       <div class="editor">
         {{editor
