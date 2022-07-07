@@ -32,6 +32,12 @@ export class TitanWeaponSheet extends TitanItemSheet {
       extreme: "TITAN.range.option.extreme.label",
     };
 
+    // Grip options
+    context.gripOptions = {};
+    for (let [k, v] of Object.entries(CONFIG.TITAN.weapon.grip.option)) {
+      context.gripOptions[k] = v.label;
+    }
+
     // Attributes
     context.attributeOptions = {};
     for (let [k, v] of Object.entries(CONFIG.TITAN.attribute.option)) {

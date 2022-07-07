@@ -11,22 +11,36 @@
       <h1 class="weapon-name"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
     </div>
 
-    {{! Rarity }}
-    <div class="flex-group-right">
-      <label class="stat-label">{{localize "TITAN.item.rarity.label"}}</label>
-      <div>
-        <select name="system.rarity">
-          {{selectOptions rarityOptions selected=system.rarity localize=true}}
-        </select>
-      </div>
-    </div>
+    {{! Fields }}
+    <div class="weapon-header-fields">
 
-    {{! Value}}
-    <div class="flex-group-right">
-      <label class="stat-label flex-group-right">{{localize
-        "TITAN.item.value.label"
-        }}</label>
-      <input type="text" name="system.value" class="flex-group-right" value="{{system.value}}" data-dtype="Number" />
+      {{! Grip }}
+      <div class="weapon-grip">
+        <label class="stat-label">{{localize "TITAN.weapon.grip.label"}}</label>
+        <div>
+          <select name="system.grip">
+            {{selectOptions gripOptions selected=system.grip localize=true}}
+          </select>
+        </div>
+      </div>
+
+      {{! Rarity }}
+      <div class="weapon-rarity">
+        <label class="stat-label">{{localize "TITAN.item.rarity.label"}}</label>
+        <div>
+          <select name="system.rarity">
+            {{selectOptions rarityOptions selected=system.rarity localize=true}}
+          </select>
+        </div>
+      </div>
+
+      {{! Value}}
+      <div class="weapon-value">
+        <label class="stat-label flex-group-right">{{localize
+          "TITAN.item.value.label"
+          }}</label>
+        <input type="text" name="system.value" class="flex-group-right" value="{{system.value}}" data-dtype="Number" />
+      </div>
     </div>
   </div>
 

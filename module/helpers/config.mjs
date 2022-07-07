@@ -288,4 +288,17 @@ export const TITAN = {
       },
     },
   },
+
+  weapon: {
+    grip: {
+      option: {
+        oneHanded: {
+          label: "TITAN.weapon.grip.option.oneHanded.label",
+        },
+        twoHanded: {
+          label: "TITAN.weapon.grip.option.twoHanded.label",
+        },
+      },
+    },
+  },
 };

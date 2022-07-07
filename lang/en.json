@@ -77,10 +77,9 @@
   "TITAN.weapons.label": "Weapons",
   "TITAN.weapon.label": "Weapon",
   "TITAN.weapon.description.label": "Weapon Description",
-
-  "TITAN.grip.label": "Grip",
-  "TITAN.grip.option.oneHanded.label": "One-Handed",
-  "TITAN.grip.option.twoHanded.label": "Two-Handed",
+  "TITAN.weapon.grip.label": "Grip",
+  "TITAN.weapon.grip.option.oneHanded.label": "One-Handed",
+  "TITAN.weapon.grip.option.twoHanded.label": "Two-Handed",
 
   "TITAN.attack.description.label": "Attack Description",
   "TITAN.attack.trait.option.blast.label": "Blast",
