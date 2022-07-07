@@ -570,4 +570,29 @@ export class TitanActor extends Actor {
       expertiseMod: parseInt(form.expertiseMod.value),
     };
   }
+
+  async attack(inData) {
+    // Get the weapon
+    let attackOptions = {
+      weapon: this.items.get(inData?.weaponId),
+    };
+    if (!attackOptions.weapon) {
+      console.log("TITAN | Invalid Weapon " + inData);
+      return;
+    }
+
+    // Get the attack
+    attackOptions.attack = attackOptions.weapon.system.attack[inData.attackIdx];
+    if (!attackOptions.attack) {
+      console.log("TITAN | Invalid Attack " + inData);
+    }
+
+    // User targets
+    attackOptions.targets = Array.from(game.user.targets);
+    console.log(Array.from(game.user.targets));
+
+    console.log(attackOptions);
+
+    return;
+  }
 }

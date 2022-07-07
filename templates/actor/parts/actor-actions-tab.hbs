@@ -9,41 +9,47 @@
     <ol class="action-list list list-1col">
       {{! For each weapon }}
       {{#each weapon as |weapon key|}}
-        <li class="action expandable-parent" data-action-id={{weapon._id}} data-expandable-id={{concat 'action'
-          weapon._id}}>
-          {{! Expandable Header }}
-          <div class="action-header">
+      <li class="action weapon expandable-parent" data-weapon-id={{weapon._id}} data-expandable-id={{concat 'action'
+        weapon._id}}>
+        {{! Expandable Header }}
+        <div class="action-header">
 
-            {{! Label }}
-            <a class="action-label expand">
-              <img class="action-image" src="{{weapon.img}}" />
-              <span class="action-name">{{weapon.name}}</span>
+          {{! Label }}
+          <a class="action-label expand">
+            <img class="action-image" src="{{weapon.img}}" />
+            <span class="action-name">{{weapon.name}}</span>
+          </a>
+
+          {{! Controls}}
+          <div class="action-controls">
+            <a class="fas fa-edit action-edit"></a>
+            <a class="fas fa-trash action-delete"></a>
+          </div>
+        </div>
+
+        {{! Weapon Actions }}
+        <div class="weapon-actions">
+          <div class="weapon-attacks">
+            {{#each weapon.system.attack as |attack idx|}}
+            <a class="weapon-attack" data-attack-idx={{idx}}>
+              {{localize attack.name}}
             </a>
-
-            {{! Controls}}
-            <div class="action-controls">
-              <a class="fas fa-edit action-edit"></a>
-              <a class="fas fa-trash action-delete"></a>
-            </div>
+            {{/each}}
           </div>
+        </div>
 
-          {{! Weapon Actions }}
-          <div class="weapon-actions">
-            <a class="weapon-action weapon-attack">{{localize "TITAN.attack.label"}}</a>
-          </div>
-
-          {{! Expandable Content }}
-          <div class="action-details expandable-content {{#unless (lookup ../isExpanded (concat 'action' weapon._id))}}
+        {{! Expandable Content }}
+        <div class="action-details expandable-content {{#unless (lookup ../isExpanded (concat 'action' weapon._id))}}
             collapsed{{/unless}}">
-            {{! Description }}
-            <div class="description">
-              {{{weapon.system.attackDescription}}}
-            </div>
-            {{! Footer }}
-            <div class="action-footer">
-            </div>
+          {{! Description }}
+          <div class="description">
+            {{{weapon.system.attackDescription}}}
           </div>
-        </li>
+          {{! Footer }}
+          <div class="action-footer">
+          </div>
+        </div>
+      </li>
       {{/each}}
     </ol>
   </div>

@@ -199,6 +199,9 @@ export class TitanActorSheet extends ActorSheet {
 
     // Item Create
     html.find(".item-create").click(this._onItemCreate.bind(this));
+
+    // Weapon Attack
+    html.find(".weapon-attack").click(this._onWeaponAttack.bind(this));
   }
 
   /**
@@ -503,6 +506,15 @@ export class TitanActorSheet extends ActorSheet {
     delete this.isExpanded["actions" + itemId];
 
     return;
+  }
+
+  async _onWeaponAttack(event) {
+    const weaponId = event.currentTarget.closest(".weapon").dataset.weaponId;
+    const attackIdx = event.target.dataset.attackIdx;
+    return await this.actor.attack({
+      weaponId: weaponId,
+      attackIdx: attackIdx,
+    });
   }
 
   /**

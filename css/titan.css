@@ -587,6 +587,10 @@ details summary > * {
 
 .titan .action-list .action .weapon-actions {
   margin-top: 0.25rem;
+}
+
+.titan .action-list .action .weapon-actions .weapon-attacks {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -594,16 +598,18 @@ details summary > * {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
-.titan .action-list .action .weapon-actions .weapon-action {
+.titan .action-list .action .weapon-actions .weapon-attacks .weapon-attack {
   padding: .25rem;
   border: solid;
   border-radius: 10px;
+  margin-right: 0.5rem;
 }
 
 .titan .action-list .action .action-details {
