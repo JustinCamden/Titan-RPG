@@ -36,8 +36,9 @@
           <div class="action-details expandable-content {{#unless (lookup ../isExpanded (concat 'action' weapon._id))}}
             collapsed{{/unless}}">
             {{! Description }}
-            {{{weapon.system.attackDescription}}}
-
+            <div class="description">
+              {{{weapon.system.attackDescription}}}
+            </div>
             {{! Footer }}
             <div class="action-footer">
             </div>

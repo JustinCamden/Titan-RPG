@@ -501,16 +501,6 @@ details summary > * {
 }
 
 .titan .action-list .action {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
   break-inside: avoid;
@@ -596,6 +586,7 @@ details summary > * {
 }
 
 .titan .action-list .action .weapon-actions {
+  margin-top: 0.25rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -606,6 +597,10 @@ details summary > * {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  width: 100%;
+}
+
+.titan .action-list .action .weapon-actions .weapon-action {
   padding: .25rem;
   border: solid;
   border-radius: 10px;
