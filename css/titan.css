@@ -450,6 +450,9 @@ details summary > * {
 /* Styles limited to titan sheets */
 .titan {
   /* ----------------------------------------- */
+  /*  actions Lists                              */
+  /* ----------------------------------------- */
+  /* ----------------------------------------- */
   /*  Items Lists                              */
   /* ----------------------------------------- */
   /* ----------------------------------------- */
@@ -458,6 +461,176 @@ details summary > * {
   /* ----------------------------------------- */
   /*  Weapons                             */
   /* ----------------------------------------- */
+}
+
+.titan .action-list-header {
+  word-wrap: normal;
+  padding: .5rem;
+  border: solid;
+  border-radius: 10px;
+  margin-bottom: .5rem;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.titan .action-list-header .action-category-name {
+  padding: 0px;
+  border-bottom: 0;
+  font-weight: 300;
+  font-size: 1.25rem;
+}
+
+.titan .action-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.titan .action-list .action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  break-inside: avoid;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  page-break-inside: avoid;
+  word-wrap: normal;
+  padding: .5rem;
+  border: solid;
+  border-radius: 10px;
+  margin-bottom: .5rem;
+  /* .action-name {
+      color: $c-dark;
+      .action-image {
+        flex: 0 0 30px;
+        height: 30px;
+        background-size: 30px;
+        border: none;
+        margin-right: 5px;
+      }
+    } */
+}
+
+.titan .action-list .action:last-child {
+  margin-bottom: 1rem;
+}
+
+.titan .action-list .action .action-header {
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.titan .action-list .action .action-header .action-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.titan .action-list .action .action-header .action-label .action-image {
+  height: 2rem;
+  border: none;
+}
+
+.titan .action-list .action .action-header .action-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.titan .action-list .action .action-header .action-controls .fas {
+  margin-left: 0.25rem;
+}
+
+.titan .action-list .action .weapon-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: .25rem;
+  border: solid;
+  border-radius: 10px;
+}
+
+.titan .action-list .action .action-details {
+  word-wrap: break-word;
+}
+
+.titan .action-list .action .action-details .action-footer {
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
 }
 
 .titan .dice-container {
@@ -647,6 +820,16 @@ details summary > * {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.titan .item-list-header .item-category-name {
+  padding: 0px;
+  border-bottom: 0;
+  font-weight: 300;
+  font-size: 1.25rem;
 }
 
 .titan .item-list {
@@ -722,7 +905,32 @@ details summary > * {
   border: none;
 }
 
-.titan .item-list .item .item-footer {
+.titan .item-list .item .item-header .item-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.titan .item-list .item .item-header .item-controls .fas {
+  margin-left: 0.25rem;
+}
+
+.titan .item-list .item .item-details {
+  word-wrap: break-word;
+}
+
+.titan .item-list .item .item-details .item-footer {
+  margin-top: 0.25rem;
   font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;

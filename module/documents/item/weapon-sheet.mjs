@@ -261,10 +261,19 @@ export class TitanWeaponSheet extends TitanItemSheet {
 
   async _onDeleteAttack(event) {
     event.preventDefault();
+
+    // Get the attack idx
     const attackIdx = event.target.dataset.idx;
+
+    // Cache the old last attack idx
     const oldLastIdx = this.item.system.attack.length - 1;
+
+    // Delete the attack
     this.item.weapon.deleteAttack(attackIdx);
+
+    // Adjust the expanded array
     for (let idx = attackIdx; idx < this.item.system.attack.length; idx++) {
+      // Shift each current key down
       const currentKey = parseInt(idx, 10);
       const nextIdx = idx + 1;
       const nextKey = parseInt(nextIdx, 10);
@@ -273,6 +282,8 @@ export class TitanWeaponSheet extends TitanItemSheet {
       this.isExpanded["attacks" + currentKey] =
         this.isExpanded["attacks" + nextKey];
     }
+
+    // Set the old end of the expanded array to false
     const oldLastKey = parseInt(oldLastIdx, 10);
     this.isExpanded["description" + oldLastKey] = false;
     this.isExpanded["attacks" + oldLastKey] = false;

@@ -62,11 +62,6 @@
   "TITAN.item.rarity.option.special.label": "Special",
   "TITAN.item.value.label": "Value",
 
-  "TITAN.attack.label": "Attack",
-  "TITAN.attacks.label": "Attacks",
-  "TITAN.attack.type.option.melee.label": "Melee",
-  "TITAN.attack.type.option.ranged.label": "Ranged",
-
   "TITAN.range.label": "Range",
   "TITAN.range.option.close.label": "Close",
   "TITAN.range.option.short.label": "Short",
@@ -81,6 +76,10 @@
   "TITAN.weapon.grip.option.oneHanded.label": "One-Handed",
   "TITAN.weapon.grip.option.twoHanded.label": "Two-Handed",
 
+  "TITAN.attack.label": "Attack",
+  "TITAN.attacks.label": "Attacks",
+  "TITAN.attack.type.option.melee.label": "Melee",
+  "TITAN.attack.type.option.ranged.label": "Ranged",
   "TITAN.attack.description.label": "Attack Description",
   "TITAN.attack.trait.option.blast.label": "Blast",
   "TITAN.attack.trait.option.cleave.label": "Cleave",

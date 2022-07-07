@@ -17,6 +17,7 @@
 
 /* Styles limited to titan sheets */
 .titan {
+  @import 'components/actions';
   @import 'components/check';
   @import 'components/forms';
   @import 'components/stats';

@@ -1,17 +1,18 @@
 {{! Item Tab }}
-<div class="grid grid-3col actor-items-tab">
+<div class="grid grid-3col actor-inventory-tab">
   {{! Weapons }}
   <div>
     {{! Weapons Header }}
     <div class="item-list-header">
       <div></div>
-      {{localize "TITAN.weapons.label"}}
+      <div class="item-category-name">{{localize "TITAN.weapons.label"}}</div>
       <a class="fas fa-circle-plus item-create" data-type="weapon"></a>
     </div>
     <ol class="item-list list list-1col">
       {{! For each weapon }}
       {{#each weapon as |weapon key|}}
-      <li class="item expandable-parent" data-item-id={{weapon._id}} data-expandable-id={{weapon._id}}>
+      <li class="item expandable-parent" data-item-id={{weapon._id}} data-expandable-id={{concat "inventory"
+        weapon._id}}>
         {{! Expandable Header }}
         <div class="item-header">
 
@@ -22,14 +23,15 @@
           </a>
 
           {{! Controls}}
-          <div>
+          <div class="item-controls">
             <a class="fas fa-edit item-edit"></a>
             <a class="fas fa-trash item-delete"></a>
           </div>
         </div>
 
         {{! Expandable Content }}
-        <div class="item-details expandable-content{{#unless (lookup ../isExpanded weapon._id)}} collapsed{{/unless}}">
+        <div class="item-details expandable-content{{#unless (lookup ../isExpanded (concat " inventory" weapon._id))}}
+          collapsed{{/unless}}">
           {{! Description }}
           {{{weapon.system.description}}}
           {{{weapon.system.attackDescription}}}

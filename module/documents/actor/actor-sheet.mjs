@@ -491,9 +491,17 @@ export class TitanActorSheet extends ActorSheet {
   }
 
   _onItemDelete(event) {
+    // Get the item id
     const itemId = event.currentTarget.closest(".item").dataset.itemId;
+
+    // Delete the item
     const item = this.actor.items.get(itemId);
     item.delete();
+
+    // Delete the entries from the expanded array
+    delete this.isExpanded["inventory" + itemId];
+    delete this.isExpanded["actions" + itemId];
+
     return;
   }
 

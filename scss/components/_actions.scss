@@ -1,8 +1,8 @@
 /* ----------------------------------------- */
-/*  Items Lists                              */
+/*  actions Lists                              */
 /* ----------------------------------------- */
 
-.item-list-header {
+.action-list-header {
   word-wrap: normal;
   padding: .5rem;
   border: solid;
@@ -11,9 +11,10 @@
   font-weight: bold;
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content:center;
   align-items: center;
-  .item-category-name {
+
+  .action-category-name {
     padding: 0px;
     border-bottom: 0;
     font-weight: 300;
@@ -21,16 +22,18 @@
   }
 }
 
-.item-list {
+.action-list {
   list-style: none;
   margin: 0;
   padding: 0;
   overflow-y: auto;
   scrollbar-width: thin;
-  color: $c-tan;
 
-  // Individual Item
-  .item {
+  // Individual action
+  .action {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     break-inside: avoid;
     align-items: center;
     page-break-inside: avoid;
@@ -40,9 +43,9 @@
     border-radius: 10px;
     margin-bottom: .5rem;
     &:last-child {margin-bottom: 1rem;  }
-    /* .item-name {
+    /* .action-name {
       color: $c-dark;
-      .item-image {
+      .action-image {
         flex: 0 0 30px;
         height: 30px;
         background-size: 30px;
@@ -50,23 +53,26 @@
         margin-right: 5px;
       }
     } */
-    .item-header {
+    .action-header {
       font-weight: bold;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      .item-label {
+      width: 100%;
+
+      .action-label {
         display: flex;
         justify-content: flex-start;
         flex-direction: row;
         align-items: center;
-        .item-image {
+
+        .action-image {
           height: 2rem;
           border: none;
         }
       }
 
-      .item-controls {
+      .action-controls {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -76,10 +82,20 @@
         }
       }
     }
-    .item-details {
+
+    .weapon-actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: .25rem;
+      border: solid;
+      border-radius: 10px;
+    }
+
+    .action-details {
       word-wrap: break-word;
-      .item-footer {
-        margin-top: 0.25rem;
+
+      .action-footer {
         font-weight: bold;
         display: flex;
         flex-direction: row;
