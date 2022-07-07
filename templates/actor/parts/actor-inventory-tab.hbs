@@ -11,40 +11,40 @@
     <ol class="item-list list list-1col">
       {{! For each weapon }}
       {{#each weapon as |weapon key|}}
-      <li class="item expandable-parent" data-item-id={{weapon._id}} data-expandable-id={{concat "inventory"
-        weapon._id}}>
-        {{! Expandable Header }}
-        <div class="item-header">
+        <li class="item expandable-parent" data-item-id={{weapon._id}} data-expandable-id={{concat 'inventory'
+          weapon._id}}>
+          {{! Expandable Header }}
+          <div class="item-header">
 
-          {{! Label }}
-          <a class="item-label expand">
-            <img class="item-image" src="{{weapon.img}}" />
-            <span class="item-name">{{weapon.name}}</span>
-          </a>
+            {{! Label }}
+            <a class="item-label expand">
+              <img class="item-image" src="{{weapon.img}}" />
+              <span class="item-name">{{weapon.name}}</span>
+            </a>
 
-          {{! Controls}}
-          <div class="item-controls">
-            <a class="fas fa-edit item-edit"></a>
-            <a class="fas fa-trash item-delete"></a>
+            {{! Controls}}
+            <div class="item-controls">
+              <a class="fas fa-edit item-edit"></a>
+              <a class="fas fa-trash item-delete"></a>
+            </div>
           </div>
-        </div>
 
-        {{! Expandable Content }}
-        <div class="item-details expandable-content{{#unless (lookup ../isExpanded (concat " inventory" weapon._id))}}
+          {{! Expandable Content }}
+          <div class="item-details expandable-content {{#unless (lookup ../isExpanded (concat 'inventory' weapon._id))}}
           collapsed{{/unless}}">
-          {{! Description }}
-          {{{weapon.system.description}}}
-          {{{weapon.system.attackDescription}}}
+            {{! Description }}
+            {{{weapon.system.description}}}
+            {{{weapon.system.attackDescription}}}
 
-          {{! Footer }}
-          <div class="item-footer">
-            <span class="item-rarity">{{localize (concat "TITAN.item.rarity.option."
+            {{! Footer }}
+            <div class="item-footer">
+              <span class="item-rarity">{{localize (concat "TITAN.item.rarity.option."
               weapon.system.rarity
               ".label")}}</span>
-            <span class="item-value">{{localize "TITAN.item.value.label"}}: {{localize weapon.system.value}}</span>
+              <span class="item-value">{{localize "TITAN.item.value.label"}}: {{localize weapon.system.value}}</span>
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
       {{/each}}
     </ol>
   </div>
