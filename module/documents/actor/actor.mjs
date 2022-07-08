@@ -1,3 +1,6 @@
+import TitanCheck from "../../helpers/check.mjs";
+import TitanAttackCheck from "../../helpers/attack-check.mjs";
+
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
@@ -571,27 +574,79 @@ export class TitanActor extends Actor {
     };
   }
 
-  async attack(inData) {
+  async getAttackCheck(inData) {
     // Get the weapon
-    let attackOptions = {
+    let checkOptions = {
       weapon: this.items.get(inData?.weaponId),
     };
-    if (!attackOptions.weapon) {
+    if (!checkOptions.weapon) {
       console.log("TITAN | Invalid Weapon " + inData);
       return;
     }
 
     // Get the attack
-    attackOptions.attack = attackOptions.weapon.system.attack[inData.attackIdx];
-    if (!attackOptions.attack) {
+    checkOptions.attack = checkOptions.weapon.system.attack[inData.attackIdx];
+    if (!checkOptions.attack) {
       console.log("TITAN | Invalid Attack " + inData);
+      return;
     }
 
-    // User targets
-    attackOptions.targets = Array.from(game.user.targets);
-    console.log(Array.from(game.user.targets));
+    // If the user has a valid target
+    const userTargets = Array.from(game.user.targets);
+    if (userTargets[0]) {
+      // Cache the target
+      checkOptions.target = game.actors.get(userTargets[0].document.actorId);
 
-    console.log(attackOptions);
+      // Calculate the difficulty to hit the target
+      checkOptions.difficulty =
+        4 +
+        checkOptions.target.system.derivedStats.defense.value -
+        (checkOptions.attack.type == "melee"
+          ? this.system.derivedStats.melee.value
+          : this.system.derivedStats.accuracy.value);
+      if (checkOptions.difficulty > 6) {
+        checkOptions.difficulty = 6;
+      } else if (checkOptions.difficulty < 2) {
+        checkOptions.difficulty = 2;
+      }
+    } else {
+      checkOptions.target = false;
+      checkOptions.difficulty = 4;
+    }
+
+    // Calculate default check options
+    checkOptions.complexity = 1;
+    checkOptions.diceMod = 0;
+    checkOptions.expertiseMod = 0;
+    checkOptions.skill = checkOptions.attack.skill;
+    checkOptions.attribute = checkOptions.attack.attribute;
+    checkOptions.baseDamage = checkOptions.attack.damage;
+    checkOptions.plusSuccessDamage = checkOptions.attack.plusSuccessDamage;
+
+    // Create check parameters
+    let checkParameters = {
+      numberOfDice:
+        this.system.attribute[checkOptions.attribute].value +
+        this.system.skill[checkOptions.skill].training.value +
+        checkOptions.diceMod,
+      expertise:
+        this.system.skill[checkOptions.skill].expertise.value +
+        checkOptions.expertiseMod,
+      difficulty: checkOptions.difficulty,
+      complexity: checkOptions.complexity,
+      baseDamage: checkOptions.baseDamage,
+      plusSuccessDamage: checkOptions.plusSuccessDamage,
+    };
+
+    // Create the check
+    const check = new TitanAttackCheck(checkParameters);
+
+    // Return the data
+    return {
+      check: check,
+      checkOptions: checkOptions,
+      checkParameters: checkParameters,
+    };
 
     return;
   }
