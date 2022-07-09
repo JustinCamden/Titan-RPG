@@ -439,6 +439,7 @@ export class TitanActorSheet extends ActorSheet {
       label: localizedLabel,
       attackName: attackCheck.checkOptions.attack.name,
       weaponName: attackCheck.checkOptions.weapon.name,
+      type: attackCheck.checkOptions.attack.type,
       rollMode: game.settings.get("core", "rollMode"),
     });
     return;

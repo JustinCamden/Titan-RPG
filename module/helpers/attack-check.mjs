@@ -38,9 +38,9 @@ export default class TitanAttackCheck extends TitanCheck {
       label: inData.label ? inData.label : inData.label,
       attackName: inData.attackName ? inData.attackName : false,
       weaponName: inData.weaponName ? inData.weaponName : false,
+      type: inData.type ? inData.type : false,
       parameters: this.parameters,
       results: this.results,
-      canRollDamage: this.roller === game.user || game.user.isGM,
     };
 
     // Create the html

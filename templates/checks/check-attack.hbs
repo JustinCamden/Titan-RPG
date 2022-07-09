@@ -1,15 +1,16 @@
 <div class="titan check">
-  <h2 class="title">
-    {{label}}
-    <div data-visibility="owner">
-      Is Owner
-    </div>
-
-    <div data-visibility="author">
-      Is Author
-    </div>
-    {{localize (concat parameters.difficulty ":" parameters.complexity)}}
+  <h2>
+    {{weaponName}}
   </h2>
+  {{#if type}}
+  <h3>
+    {{type}}
+  </h3>
+  {{/if}}
+  <h3>
+    {{label}}
+    {{localize (concat parameters.difficulty ":" parameters.complexity)}}
+  </h3>
 
   {{! Dice }}
   <div class="dice-container">
