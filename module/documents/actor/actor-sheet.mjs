@@ -201,7 +201,7 @@ export class TitanActorSheet extends ActorSheet {
     html.find(".item-create").click(this._onItemCreate.bind(this));
 
     // Weapon Attack
-    html.find(".weapon-attack").click(this._onWeaponAttack.bind(this));
+    html.find(".attack-check").click(this._onAttackCheck.bind(this));
   }
 
   /**
@@ -299,7 +299,7 @@ export class TitanActorSheet extends ActorSheet {
       dataset.getOptions == "true" ||
       game.settings.get("titan", "showCheckOptions") == true ||
       (dataset.getOptions == "default" && event.shiftKey);
-    this.getBasicCheck({
+    return await this.getBasicCheck({
       attribute: dataset.attribute,
       skill: dataset.skill,
       getOptions: getOptions,
@@ -309,16 +309,7 @@ export class TitanActorSheet extends ActorSheet {
   // Retrieves and posts a basic check
   async getBasicCheck(inData) {
     // Get a check from the actor
-    let basicCheck = await this.actor.getBasicCheck({
-      attribute: inData?.attribute ? inData.attribute : "body",
-      skill: inData?.skill ? inData.skill : "athletics",
-      difficulty:
-        inData?.difficulty > 2 && inData.difficulty < 7 ? inData.difficulty : 4,
-      complexity: inData?.complexity > 0 ? inData.complexity : 0,
-      diceMod: inData?.diceMod ? inData.diceMod : 0,
-      expertiseMod: inData?.expertiseMod > 0 ? inData.expertiseMod : 0,
-      getOptions: inData?.getOptions || event.shiftKey ? true : false,
-    });
+    let basicCheck = await this.actor.getBasicCheck(inData);
     if (basicCheck.cancelled) {
       return;
     }
@@ -360,7 +351,7 @@ export class TitanActorSheet extends ActorSheet {
       dataset.getOptions == "true" ||
       game.settings.get("titan", "showCheckOptions") == true ||
       (dataset.getOptions == "default" && event.shiftKey);
-    this.getResistanceCheck({
+    return await this.getResistanceCheck({
       resistance: dataset.resistance,
       getOptions: getOptions,
     });
@@ -369,15 +360,7 @@ export class TitanActorSheet extends ActorSheet {
   // Retrieve and post a resistance check
   async getResistanceCheck(inData) {
     // Get a check from the actor
-    let resistanceCheck = await this.actor.getResistanceCheck({
-      resistance: inData?.resistance ? inData.resistance : "reflexes",
-      difficulty:
-        inData?.difficulty > 2 && inData.difficulty < 7 ? inData.difficulty : 4,
-      complexity: inData?.complexity > 0 ? inData.complexity : 0,
-      diceMod: inData?.diceMod ? inData.diceMod : 0,
-      expertiseMod: inData?.expertiseMod > 0 ? inData.expertiseMod : 0,
-      getOptions: inData?.getOptions || event.shiftKey ? true : false,
-    });
+    let resistanceCheck = await this.actor.getResistanceCheck(inData);
     if (resistanceCheck.cancelled) {
       return;
     }
@@ -396,6 +379,66 @@ export class TitanActorSheet extends ActorSheet {
       user: game.user.id,
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       label: localizedLabel,
+      rollMode: game.settings.get("core", "rollMode"),
+    });
+    return;
+  }
+
+  async _onAttackCheck(event) {
+    // Get the weapon id
+    const weaponId = event.currentTarget.closest(".weapon").dataset.weaponId;
+
+    // Get the attack idx
+    const dataset = event.currentTarget.dataset;
+    const attackIdx = dataset.attackIdx;
+
+    const getOptions =
+      dataset.getOptions == "true" ||
+      game.settings.get("titan", "showCheckOptions") == true ||
+      (dataset.getOptions == "default" && event.shiftKey);
+
+    return await this.getAttackCheck({
+      weaponId: weaponId,
+      attackIdx: attackIdx,
+      getOptions: getOptions,
+    });
+  }
+
+  async getAttackCheck(inData) {
+    // Get an attack check
+    let attackCheck = await this.actor.getAttackCheck(inData);
+
+    // Cancel if appropriate
+    if (attackCheck.cancelled) {
+      return;
+    }
+
+    // Get the localized label
+    let localizedLabel = game.i18n.localize(
+      CONFIG.TITAN.attribute.option[attackCheck.checkOptions.attribute].label
+    );
+
+    // Add the skill to the label if appropriate
+    if (attackCheck.checkOptions.skill != "none") {
+      localizedLabel =
+        localizedLabel +
+        " (" +
+        game.i18n.localize(
+          CONFIG.TITAN.skill.option[attackCheck.checkOptions.skill].label
+        ) +
+        ")";
+    }
+
+    // Evaluate the check
+    await attackCheck.check.evaluateCheck();
+
+    // Post the check to chat
+    await attackCheck.check.toChatMessage({
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      label: localizedLabel,
+      attackName: attackCheck.checkOptions.attack.name,
+      weaponName: attackCheck.checkOptions.weapon.name,
       rollMode: game.settings.get("core", "rollMode"),
     });
     return;
@@ -505,54 +548,6 @@ export class TitanActorSheet extends ActorSheet {
     delete this.isExpanded["inventory" + itemId];
     delete this.isExpanded["actions" + itemId];
 
-    return;
-  }
-
-  async _onWeaponAttack(event) {
-    // Get the weapon id
-    const weaponId = event.currentTarget.closest(".weapon").dataset.weaponId;
-
-    // Get the attack idx
-    const attackIdx = event.target.dataset.attackIdx;
-
-    // Get an attack check
-    let attackCheck = await this.actor.getAttackCheck({
-      weaponId: weaponId,
-      attackIdx: attackIdx,
-    });
-
-    // Cancel if appropriate
-    if (attackCheck.cancelled) {
-      return;
-    }
-
-    // Get the localized label
-    let localizedLabel = game.i18n.localize(
-      CONFIG.TITAN.attribute.option[attackCheck.checkOptions.attribute].label
-    );
-
-    // Add the skill to the label if appropriate
-    if (attackCheck.checkOptions.skill != "none") {
-      localizedLabel =
-        localizedLabel +
-        " (" +
-        game.i18n.localize(
-          CONFIG.TITAN.skill.option[attackCheck.checkOptions.skill].label
-        ) +
-        ")";
-    }
-
-    // Evaluate the check
-    await attackCheck.check.evaluateCheck();
-    console.log(attackCheck.check.results);
-
-    // Post the check to chat
-    await attackCheck.check.toChatMessage({
-      user: game.user.id,
-      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      label: localizedLabel,
-      rollMode: game.settings.get("core", "rollMode"),
-    });
     return;
   }
 

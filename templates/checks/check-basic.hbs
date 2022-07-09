@@ -1,103 +1,105 @@
 <div class="titan check">
   <h2 class="title">
+    {{#if label}}
     {{label}}
+    {{/if}}
     {{localize (concat parameters.difficulty ":" parameters.complexity)}}
   </h2>
 
   {{! Dice }}
   <div class="dice-container">
     {{#each results.dice as |dice idx|}}
-      <div class="align-center flex-group-center die d6">
-        {{#if dice.success}}
+    <div class="align-center flex-group-center die d6">
+      {{#if dice.success}}
 
-          {{! Critical Success }}
-          {{#if dice.criticalSuccess}}
+      {{! Critical Success }}
+      {{#if dice.criticalSuccess}}
 
-            {{! Expertise }}
-            {{#if dice.expertiseApplied}}
-              <div class="die-critical-success expertise-border">
-                {{dice.base}}
-                +
-                {{dice.expertiseApplied}}
-              </div>
-
-              {{! No Expertise }}
-            {{else}}
-              <div class="die-critical-success normal-border">
-                {{dice.base}}
-              </div>
-            {{/if}}
-          {{else}}
-            {{! Success }}
-            {{! Expertise }}
-            {{#if dice.expertiseApplied}}
-              <div class="die-success expertise-border">
-                {{dice.base}}
-                +
-                {{dice.expertiseApplied}}
-              </div>
-            {{else}}
-              {{! No Expertise }}
-              <div class="die-success normal-border">
-                {{dice.base}}
-              </div>
-            {{/if}}
-          {{/if}}
-        {{else}}
-          {{! Critical Failure }}
-          {{#if dice.criticalFailure}}
-
-            {{! Expertise }}
-            {{#if dice.expertiseApplied}}
-              <div class="die-critical-failure expertise-border">
-                {{dice.base}}
-                +
-                {{dice.expertiseApplied}}
-              </div>
-
-              {{! No Expertise }}
-            {{else}}
-              <div class="die-critical-failure normal-border">
-                {{dice.base}}
-              </div>
-            {{/if}}
-
-          {{else}}
-            {{! Failure }}
-            {{! Expertise }}
-            {{#if dice.expertiseApplied}}
-              <div class="die-failure expertise-border">
-                {{dice.base}}
-                +
-                {{dice.expertiseApplied}}
-              </div>
-            {{else}}
-
-              {{! No expertise }}
-              <div class="die-failure normal-border">
-                {{dice.base}}
-              </div>
-            {{/if}}
-          {{/if}}
-        {{/if}}
+      {{! Expertise }}
+      {{#if dice.expertiseApplied}}
+      <div class="die-critical-success expertise-border">
+        {{dice.base}}
+        +
+        {{dice.expertiseApplied}}
       </div>
+
+      {{! No Expertise }}
+      {{else}}
+      <div class="die-critical-success normal-border">
+        {{dice.base}}
+      </div>
+      {{/if}}
+      {{else}}
+      {{! Success }}
+      {{! Expertise }}
+      {{#if dice.expertiseApplied}}
+      <div class="die-success expertise-border">
+        {{dice.base}}
+        +
+        {{dice.expertiseApplied}}
+      </div>
+      {{else}}
+      {{! No Expertise }}
+      <div class="die-success normal-border">
+        {{dice.base}}
+      </div>
+      {{/if}}
+      {{/if}}
+      {{else}}
+      {{! Critical Failure }}
+      {{#if dice.criticalFailure}}
+
+      {{! Expertise }}
+      {{#if dice.expertiseApplied}}
+      <div class="die-critical-failure expertise-border">
+        {{dice.base}}
+        +
+        {{dice.expertiseApplied}}
+      </div>
+
+      {{! No Expertise }}
+      {{else}}
+      <div class="die-critical-failure normal-border">
+        {{dice.base}}
+      </div>
+      {{/if}}
+
+      {{else}}
+      {{! Failure }}
+      {{! Expertise }}
+      {{#if dice.expertiseApplied}}
+      <div class="die-failure expertise-border">
+        {{dice.base}}
+        +
+        {{dice.expertiseApplied}}
+      </div>
+      {{else}}
+
+      {{! No expertise }}
+      <div class="die-failure normal-border">
+        {{dice.base}}
+      </div>
+      {{/if}}
+      {{/if}}
+      {{/if}}
+    </div>
     {{/each}}
   </div>
   <div class="results-banner align-center flex-group-center border">
     {{results.successes}}
     {{localize "TITAN.check.successes.label"}}
     {{#if results.succeeded}}
-      <div class="success-banner">
-        {{localize "TITAN.check.succeeded.label"}}
-      </div>
-      {{#if results.extraSuccesses}}
-        {{localize "TITAN.check.extraSuccesses.label"}}:
-        {{results.extraSuccesses}}
-      {{/if}}
+    <div class="success-banner">
+      {{localize "TITAN.check.succeeded.label"}}
+    </div>
+    {{#if results.extraSuccesses}}
+    {{localize "TITAN.check.extraSuccesses.label"}}:
+    {{results.extraSuccesses}}
+    {{/if}}
     {{else if results.failed}}
-      <div class="failure-banner">
-        {{localize "TITAN.check.failed.label"}}
-      </div>
+    <div class="failure-banner">
+      {{localize "TITAN.check.failed.label"}}
+    </div>
     {{/if}}
   </div>
 </div>

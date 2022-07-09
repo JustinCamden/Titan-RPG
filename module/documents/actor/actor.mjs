@@ -581,14 +581,14 @@ export class TitanActor extends Actor {
     };
     if (!checkOptions.weapon) {
       console.log("TITAN | Invalid Weapon " + inData);
-      return;
+      return { cancelled: true };
     }
 
     // Get the attack
     checkOptions.attack = checkOptions.weapon.system.attack[inData.attackIdx];
     if (!checkOptions.attack) {
       console.log("TITAN | Invalid Attack " + inData);
-      return;
+      return { cancelled: true };
     }
 
     // If the user has a valid target

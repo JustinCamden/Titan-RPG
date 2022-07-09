@@ -123,7 +123,8 @@ export default class TitanCheck {
 
     // Setup the data to display
     let checkData = {
-      label: inData.label ? inData.label : "",
+      actorName: inData.actorName,
+      label: inData.label ? inData.label : false,
       parameters: this.parameters,
       results: this.results,
     };

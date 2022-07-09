@@ -1,6 +1,7 @@
 // Import document classes.
 import { TitanActor } from "./documents/actor/actor.mjs";
 import { TitanItem } from "./documents/item/item.mjs";
+import { TitanChatMessage } from "./documents/chat-message/chat-message.mjs";
 // Import sheet classes.
 import { TitanActorSheet } from "./documents/actor/actor-sheet.mjs";
 import { TitanItemSheet } from "./documents/item/item-sheet.mjs";
@@ -40,6 +41,7 @@ Hooks.once("init", async function () {
   // Define custom Document classes
   CONFIG.Actor.documentClass = TitanActor;
   CONFIG.Item.documentClass = TitanItem;
+  CONFIG.ChatMessage.documentClass = TitanChatMessage;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);

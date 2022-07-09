@@ -31,7 +31,7 @@
         <div class="weapon-actions">
           <div class="weapon-attacks">
             {{#each weapon.system.attack as |attack idx|}}
-            <a class="weapon-attack" data-attack-idx={{idx}}>
+            <a class="weapon-attack attack-check" data-attack-idx={{idx}}>
               {{localize attack.name}}
             </a>
             {{/each}}
