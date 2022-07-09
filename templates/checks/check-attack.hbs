@@ -1,10 +1,13 @@
 <div class="titan check">
-  <h2 class="title" data-visibility="secret">
+  <h2 class="title">
     {{label}}
     <div data-visibility="owner">
-      Can Roll Damage
+      Is Owner
     </div>
 
+    <div data-visibility="author">
+      Is Author
+    </div>
     {{localize (concat parameters.difficulty ":" parameters.complexity)}}
   </h2>
 
