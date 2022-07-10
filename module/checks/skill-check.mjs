@@ -1,3 +1,4 @@
+import TitanUtility from "../helpers/utility.mjs";
 import TitanAttributeCheck from "./attribute-check.mjs";
 
 export default class TitanSkillCheck extends TitanAttributeCheck {
@@ -53,5 +54,100 @@ export default class TitanSkillCheck extends TitanAttributeCheck {
     finalData.totalExpertise = totalExpertise;
 
     return finalData;
+  }
+
+  // Creates a dialog for getting options for this skill check
+  static async createOptionsDialog(initialOptions) {
+    // Initialize dialog data
+    const dialogData = {
+      attribute: initialOptions.attribute ?? "body",
+      skill: initialOptions.skill ?? "athletics",
+      difficulty: initialOptions.difficulty
+        ? TitanUtility.clamp(initialOptions.difficulty, 2, 6)
+        : 4,
+      complexity: initialOptions.complexity
+        ? Math.max(checkOptions.complexity, 0)
+        : 0,
+      diceMod: initialOptions.diceMod ?? 0,
+      expertiseMod: initialOptions.expertiseMod ?? 0,
+      doubleExpertise: initialOptions.doubleExpertise ?? false,
+      maximizeSuccesses: initialOptions.maximizeSuccesses ?? false,
+      extraSuccessOnCritical: initialOptions.extraSuccessOnCritical ?? false,
+      extraFailureOnCritical: initialOptions.extraFailureOnCritical ?? false,
+      attributeOptions: {},
+      skillOptions: {},
+    };
+
+    // Add each attribute as an option to the data
+    for (let [k, v] of Object.entries(this.system.attribute)) {
+      dialogData.attributeOptions[k] =
+        "TITAN.attribute.option." + k.toString() + ".label";
+    }
+
+    // Add each skill as an option to the data
+    for (let [k, v] of Object.entries(this.system.skill)) {
+      dialogData.skillOptions[k] =
+        "TITAN.skill.option." + k.toString() + ".label";
+    }
+    // Add none as a skill option
+    dialogData.skillOptions.none = "TITAN.none.label";
+
+    // Create the html template
+    const html = await renderTemplate(
+      "systems/titan/templates/checks/check-basic-dialog.hbs",
+      dialogData
+    );
+
+    // Create the dialog
+    const checkOptions = await new Promise((resolve) => {
+      const data = {
+        title: game.i18n.localize(CONFIG.TITAN.check.label),
+        content: html,
+        buttons: {
+          roll: {
+            label: game.i18n.localize(CONFIG.TITAN.roll.label),
+            callback: (html) =>
+              resolve(
+                TitanSkillCheck._processSkillCheckOptions(
+                  html[0].querySelector("form")
+                )
+              ),
+          },
+          cancel: {
+            label: game.i18n.localize(CONFIG.TITAN.cancel.label),
+            callback: (html) => resolve({ cancelled: true }),
+          },
+        },
+        default: "roll",
+        close: () => resolve({ cancelled: true }),
+      };
+
+      new Dialog(data, null).render(true);
+    });
+
+    // Return if we cancelled the check
+    if (checkOptions.cancelled) {
+      return checkOptions;
+    }
+
+    // Validate difficulty
+    checkOptions.difficulty = TitanUtility.clamp(checkOptions.difficulty, 2, 6);
+
+    // Validate complexity
+    checkOptions.complexity = Math.max(checkOptions.complexity, 0);
+
+    return checkOptions;
+  }
+
+  // Proccesses the results of a skill check dialog
+  static _processSkillCheckOptions(form) {
+    return {
+      attribute: form.attribute.value,
+      skill: form.skill.value,
+      difficulty: parseInt(form.difficulty.value),
+      complexity: parseInt(form.complexity.value),
+      diceMod: parseInt(form.diceMod.value),
+      expertiseMod: parseInt(form.expertiseMod.value),
+    };
   }
 }

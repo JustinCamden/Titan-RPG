@@ -345,79 +345,15 @@ export class TitanActor extends Actor {
         this.system.skill[checkOptions.skill].defaultAttribute;
     }
 
-    // If Get Options is true
+    // Get the options from a dialog if appropriate
     if (inData?.getOptions) {
       // Initialize dialog data
-      let dialogData = {
-        attribute: checkOptions.attribute,
-        skill: checkOptions.skill,
-        difficulty: checkOptions.difficulty,
-        complexity: checkOptions.complexity,
-        diceMod: checkOptions.diceMod,
-        expertiseMod: checkOptions.expertiseMod,
-        attributeOptions: {},
-        skillOptions: {},
-      };
+      checkOptions = TitanSkillCheck.createOptionsDialog(checkOptions);
 
-      // Add each attribute as an option to the data
-      for (let [k, v] of Object.entries(this.system.attribute)) {
-        dialogData.attributeOptions[k] =
-          "TITAN.attribute.option." + k.toString() + ".label";
-      }
-
-      // Add each skill as an option to the data
-      for (let [k, v] of Object.entries(this.system.skill)) {
-        dialogData.skillOptions[k] =
-          "TITAN.skill.option." + k.toString() + ".label";
-      }
-      // Add none as a skill option
-      dialogData.skillOptions.none = "TITAN.none.label";
-
-      // Create the html template
-      const html = await renderTemplate(
-        "systems/titan/templates/checks/check-basic-dialog.hbs",
-        dialogData
-      );
-
-      // Create the dialog
-      checkOptions = await new Promise((resolve) => {
-        const data = {
-          title: game.i18n.localize(CONFIG.TITAN.check.label),
-          content: html,
-          buttons: {
-            roll: {
-              label: game.i18n.localize(CONFIG.TITAN.roll.label),
-              callback: (html) =>
-                resolve(
-                  this._processSkillCheckOptions(html[0].querySelector("form"))
-                ),
-            },
-            cancel: {
-              label: game.i18n.localize(CONFIG.TITAN.cancel.label),
-              callback: (html) => resolve({ cancelled: true }),
-            },
-          },
-          default: "roll",
-          close: () => resolve({ cancelled: true }),
-        };
-
-        new Dialog(data, null).render(true);
-      });
-
-      // Return if we cancelled the check
+      // Return if cancelled
       if (checkOptions.cancelled) {
-        return checkOptions;
+        return;
       }
-
-      // Validate difficulty
-      checkOptions.difficulty = TitanUtility.clamp(
-        checkOptions.difficulty,
-        2,
-        6
-      );
-
-      // Validate complexity
-      checkOptions.complexity = Math.max(checkOptions.complexity, 0);
     }
 
     // Add this actor ID to the check options
@@ -435,18 +371,6 @@ export class TitanActor extends Actor {
     // Otherwise, do a skill check
     const skillCheck = new TitanSkillCheck(checkOptions);
     return skillCheck;
-  }
-
-  // Process check dialog results
-  _processSkillCheckOptions(form) {
-    return {
-      attribute: form.attribute.value,
-      skill: form.skill.value,
-      difficulty: parseInt(form.difficulty.value),
-      complexity: parseInt(form.complexity.value),
-      diceMod: parseInt(form.diceMod.value),
-      expertiseMod: parseInt(form.expertiseMod.value),
-    };
   }
 
   async getResistanceCheck(inData) {
