@@ -62,7 +62,7 @@ export default class TitanResistanceCheck extends TitanCheck {
 
     // Create the html template
     const html = await renderTemplate(
-      "systems/titan/templates/checks/check-resistance-dialog.hbs",
+      "systems/titan/templates/checks/resistance-check-dialog.hbs",
       dialogData
     );
 
@@ -116,5 +116,9 @@ export default class TitanResistanceCheck extends TitanCheck {
     }
 
     return checkOptions;
+  }
+
+  _getChatTemplate() {
+    return "systems/titan/templates/checks/resistance-check-chat-message.hbs";
   }
 }

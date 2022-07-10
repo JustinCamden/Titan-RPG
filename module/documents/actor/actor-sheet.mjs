@@ -348,12 +348,6 @@ export class TitanActorSheet extends ActorSheet {
       return;
     }
 
-    // Get the localized label
-    let localizedLabel = game.i18n.localize(
-      CONFIG.TITAN.resistance.option[resistanceCheck.parameters.resistance]
-        .label
-    );
-
     // Evaluate the check
     await resistanceCheck.evaluateCheck();
 
@@ -361,7 +355,6 @@ export class TitanActorSheet extends ActorSheet {
     await resistanceCheck.sendToChat({
       user: game.user.id,
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      label: localizedLabel,
       rollMode: game.settings.get("core", "rollMode"),
     });
     return;
