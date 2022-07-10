@@ -1,5 +1,6 @@
-import TitanCheck from "../../helpers/check.mjs";
-import TitanAttackCheck from "../../helpers/attack-check.mjs";
+import TitanAttackCheck from "../../checks/attack-check.mjs";
+import TitanSkillCheck from "../../checks/skill-check.mjs";
+import TitanUtility from "../../helpers/utility.mjs";
 
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
@@ -316,30 +317,34 @@ export class TitanActor extends Actor {
     return retVal;
   }
 
-  async getBasicCheck(inData) {
-    // Get a check from the actor
+  // Get a check from the actor
+  async getSkillCheck(inData) {
+    // Initialize options
     let checkOptions = {
-      attribute: inData?.attribute ? inData.attribute : "body",
-      skill: inData?.skill ? inData.skill : "athletics",
-      difficulty:
-        inData?.difficulty > 1 && inData?.difficulty < 7
-          ? inData.difficulty
-          : 4,
-      complexity: inData?.complexity > -1 ? inData.complexity : 0,
-      diceMod: inData?.diceMod ? inData.diceMod : 0,
-      expertiseMod: inData?.expertiseMod > 0 ? inData.expertiseMod : 0,
-      getOptions: inData?.getOptions ? inData.getOptions : false,
+      attribute: inData?.attribute ?? "body",
+      skill: inData?.skill ?? "athletics",
+      difficulty: inData?.difficulty
+        ? TitanUtility.clamp(inData.difficulty, 2, 6)
+        : 4,
+      complexity: inData?.complexity ? Math.max(inData.complexity, 0) : 0,
+      diceMod: inData?.diceMod ?? 0,
+      trainingMod: inData?.trainingMod ?? 0,
+      expertiseMod: inData?.expertiseMod ?? 0,
+      doubleExpertise: inData.doubleExpertise ?? false,
+      maximizeSuccesses: inData.maximizeSuccesses ?? false,
+      extraSuccessOnCritical: inData.extraSuccessOnCritical ?? false,
+      extraFailureOnCritical: inData.extraFailureOnCritical ?? false,
     };
 
-    // Check if the attribute is the default attribute
+    // Check if the attribute set to default
     if (checkOptions.attribute == "default") {
-      // Ensure the attribute is set
+      // If so, ensure the attribute is set
       checkOptions.attribute =
         this.system.skill[checkOptions.skill].defaultAttribute;
     }
 
-    // Get options?
-    if (checkOptions.getOptions) {
+    // If Get Options is true
+    if (inData?.getOptions) {
       // Initialize dialog data
       let dialogData = {
         attribute: checkOptions.attribute,
@@ -380,7 +385,7 @@ export class TitanActor extends Actor {
               label: game.i18n.localize(CONFIG.TITAN.check.roll),
               callback: (html) =>
                 resolve(
-                  this._processBasicCheckOptions(html[0].querySelector("form"))
+                  this._processSkillCheckOptions(html[0].querySelector("form"))
                 ),
             },
             cancel: {
@@ -401,54 +406,26 @@ export class TitanActor extends Actor {
       }
 
       // Validate difficulty
-      if (checkOptions.difficulty > 6) {
-        checkOptions.difficulty = 6;
-      } else if (checkOptions.difficulty < 2) {
-        checkOptions.difficulty = 2;
-      }
+      checkOptions.difficulty = TitanUtility.clamp(
+        checkOptions.difficulty,
+        2,
+        6
+      );
 
       // Validate complexity
-      if (checkOptions.complexity < 0) {
-        checkOptions.complexity = 0;
-      }
-    }
-
-    // Create the check parameters
-    let checkParameters = {
-      numberOfDice:
-        this.system.attribute[checkOptions.attribute].value +
-        checkOptions.diceMod,
-      expertise: checkOptions.expertiseMod,
-      difficulty: checkOptions.difficulty,
-      complexity: checkOptions.complexity,
-    };
-
-    // Calculate the skill mod
-    if (checkOptions.skill != "none") {
-      const skillData = this.system.skill[checkOptions.skill];
-
-      // Training
-      checkParameters.numberOfDice =
-        checkParameters.numberOfDice + skillData.training.value;
-
-      // Expertise
-      checkParameters.expertise =
-        checkParameters.expertise + skillData.expertise.value;
+      checkOptions.complexity = Math.max(checkOptions.complexity, 0);
     }
 
     // Perform the roll
-    const check = new TitanCheck(checkParameters);
+    checkOptions.actorId = this.id;
+    const skillCheck = new TitanSkillCheck(checkOptions);
 
     // Return the data
-    return {
-      check: check,
-      checkOptions: checkOptions,
-      checkParameters: checkParameters,
-    };
+    return skillCheck;
   }
 
   // Process check dialog results
-  _processBasicCheckOptions(form) {
+  _processSkillCheckOptions(form) {
     return {
       attribute: form.attribute.value,
       skill: form.skill.value,
@@ -647,7 +624,10 @@ export class TitanActor extends Actor {
       checkOptions: checkOptions,
       checkParameters: checkParameters,
     };
+  }
 
-    return;
+  getCheckData() {
+    const checkData = this.system;
+    return checkData;
   }
 }

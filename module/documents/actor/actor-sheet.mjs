@@ -177,7 +177,7 @@ export class TitanActorSheet extends ActorSheet {
     html.find(".initiative-roll").click(this._onInitiativeRoll.bind(this));
 
     // Rollable basic checks
-    html.find(".basic-check").click(this._onBasicCheck.bind(this));
+    html.find(".skill-check").click(this._onSkillCheck.bind(this));
 
     // Rollable resistance checks
     html.find(".resistance-check").click(this._onResistanceCheck.bind(this));
@@ -292,14 +292,14 @@ export class TitanActorSheet extends ActorSheet {
   }
 
   // Called when the player clicks a basic check
-  async _onBasicCheck(event) {
+  async _onSkillCheck(event) {
     event.preventDefault();
     const dataset = event.currentTarget.dataset;
     const getOptions =
       dataset.getOptions == "true" ||
       game.settings.get("titan", "showCheckOptions") == true ||
       (dataset.getOptions == "default" && event.shiftKey);
-    return await this.getBasicCheck({
+    return await this.getSkillCheck({
       attribute: dataset.attribute,
       skill: dataset.skill,
       getOptions: getOptions,
@@ -307,34 +307,34 @@ export class TitanActorSheet extends ActorSheet {
   }
 
   // Retrieves and posts a basic check
-  async getBasicCheck(inData) {
+  async getSkillCheck(inData) {
     // Get a check from the actor
-    let basicCheck = await this.actor.getBasicCheck(inData);
-    if (basicCheck.cancelled) {
+    let skillCheck = await this.actor.getSkillCheck(inData);
+    if (skillCheck.cancelled) {
       return;
     }
 
     // Get the localized label
     let localizedLabel = game.i18n.localize(
-      CONFIG.TITAN.attribute.option[basicCheck.checkOptions.attribute].label
+      CONFIG.TITAN.attribute.option[skillCheck.parameters.attribute].label
     );
 
     // Add the skill to the label if appropriate
-    if (basicCheck.checkOptions.skill != "none") {
+    if (skillCheck.parameters.skill != "none") {
       localizedLabel =
         localizedLabel +
         " (" +
         game.i18n.localize(
-          CONFIG.TITAN.skill.option[basicCheck.checkOptions.skill].label
+          CONFIG.TITAN.skill.option[skillCheck.parameters.skill].label
         ) +
         ")";
     }
 
     // Evaluate the check
-    await basicCheck.check.evaluateCheck();
+    await skillCheck.evaluateCheck();
 
     // Post the check to chat
-    await basicCheck.check.toChatMessage({
+    await skillCheck.sendToChat({
       user: game.user.id,
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       label: localizedLabel,

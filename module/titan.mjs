@@ -10,8 +10,6 @@ import { TitanWeaponSheet } from "./documents/item/weapon-sheet.mjs";
 import { preloadHandlebarsTemplates } from "./handlebars/handlebars-templates.mjs";
 import { registerHandlebarsHelpers } from "./handlebars/handlebars-helpers.mjs";
 import { TITAN } from "./helpers/config.mjs";
-import TitanUtility from "./helpers/utility.mjs";
-import TitanCheck from "./helpers/check.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */

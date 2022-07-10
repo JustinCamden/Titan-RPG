@@ -8,7 +8,7 @@
 
     {{! Rollable Label}}
     <div class="attribute flex-group-center border">
-      <label for="system.attribute.{{key}}.value" class="stat-label rollable basic-check" data-attribute={{key}}
+      <label for="system.attribute.{{key}}.value" class="stat-label rollable skill-check" data-attribute={{key}}
         data-skill="none" data-get-options="default">
         {{localize (concat "TITAN.attribute.option." key ".label")}}
       </label>
@@ -28,7 +28,7 @@
 
     {{! Rollable label}}
     <li class="skill flex-group-center list-item vertical-list border">
-      <label for="system.skill.{{key}}" class="stat-label rollable basic-check" data-attribute="default"
+      <label for="system.skill.{{key}}" class="stat-label rollable skill-check" data-attribute="default"
         data-skill={{key}} data-get-options="default">{{localize (concat "TITAN.skill.option." key ".label")}}</label>
 
       {{! Labels }}
