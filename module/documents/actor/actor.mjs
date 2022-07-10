@@ -388,7 +388,7 @@ export class TitanActor extends Actor {
     checkOptions.actorId = this.id;
     const userTargets = Array.from(game.user.targets);
     if (userTargets[0]) {
-      checkOptions.targetId = userTargets[0].document.id;
+      checkOptions.targetId = userTargets[0].document.actorId;
     } else {
       checkOptions.targetId = false;
     }

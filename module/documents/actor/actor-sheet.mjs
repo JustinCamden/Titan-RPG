@@ -310,7 +310,7 @@ export class TitanActorSheet extends ActorSheet {
   async getSkillCheck(inData) {
     // Get a check from the actor
     let skillCheck = await this.actor.getSkillCheck(inData);
-    if (skillCheck.cancelled) {
+    if (skillCheck.cancelled || !skillCheck.isValid) {
       return;
     }
 
@@ -344,7 +344,7 @@ export class TitanActorSheet extends ActorSheet {
   async getResistanceCheck(inData) {
     // Get a check from the actor
     let resistanceCheck = await this.actor.getResistanceCheck(inData);
-    if (resistanceCheck.cancelled) {
+    if (resistanceCheck.cancelled || !resistanceCheck.isValid) {
       return;
     }
 
@@ -385,37 +385,17 @@ export class TitanActorSheet extends ActorSheet {
     let attackCheck = await this.actor.getAttackCheck(inData);
 
     // Cancel if appropriate
-    if (attackCheck.cancelled) {
+    if (attackCheck.cancelled || !attackCheck.isValid) {
       return;
     }
 
-    // Get the localized label
-    let localizedLabel = game.i18n.localize(
-      CONFIG.TITAN.attribute.option[attackCheck.checkOptions.attribute].label
-    );
-
-    // Add the skill to the label if appropriate
-    if (attackCheck.checkOptions.skill != "none") {
-      localizedLabel =
-        localizedLabel +
-        " (" +
-        game.i18n.localize(
-          CONFIG.TITAN.skill.option[attackCheck.checkOptions.skill].label
-        ) +
-        ")";
-    }
-
     // Evaluate the check
-    await attackCheck.check.evaluateCheck();
+    await attackCheck.evaluateCheck();
 
     // Post the check to chat
-    await attackCheck.check.toChatMessage({
+    await attackCheck.sendToChat({
       user: game.user.id,
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      label: localizedLabel,
-      attackName: attackCheck.checkOptions.attack.name,
-      weaponName: attackCheck.checkOptions.weapon.name,
-      type: attackCheck.checkOptions.attack.type,
       rollMode: game.settings.get("core", "rollMode"),
     });
     return;

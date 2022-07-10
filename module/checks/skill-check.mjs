@@ -13,7 +13,7 @@ export default class TitanSkillCheck extends TitanAttributeCheck {
 
     /// Initialize skill parameters
     this.parameters.skill = inData.skill ?? "athletics";
-    this.parameters.trainingMod = inData.trainingMod ?? false;
+    this.parameters.trainingMod = inData.trainingMod ?? 0;
     this.parameters.doubleTraining = inData.doubleTraining ?? false;
 
     return this;
