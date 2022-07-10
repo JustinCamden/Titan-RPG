@@ -41,6 +41,11 @@ export default class TitanAttackCheck extends TitanCheck {
       return this;
     }
 
+    // Initialize state variables
+    this.isValid = true;
+    this.isPrepared = false;
+    this.isEvaluated = false;
+
     // Initialize parameters
     this.parameters = {
       actorId: inData.actorId,
@@ -53,6 +58,7 @@ export default class TitanAttackCheck extends TitanCheck {
       attackerMelee: inData.attackerMelee ?? false,
       attackerAccuracy: inData.attackerAccuracy ?? false,
       difficulty: inData.difficulty ?? false,
+      complexity: 1,
       diceMod: inData.diceMod ?? 0,
       trainingMod: inData.trainingMod ?? 0,
       expertiseMod: inData.expertiseMod ?? 0,
@@ -107,6 +113,10 @@ export default class TitanAttackCheck extends TitanCheck {
     const skill = actorCheckData.skill[checkAttack.skill];
     checkData.skillTrainingDice = skill.training.value;
     checkData.skillExpertise = skill.expertise.value;
+
+    // Calculate the difficulty
+    if (!inData.difficulty) {
+    }
 
     return checkData;
   }
