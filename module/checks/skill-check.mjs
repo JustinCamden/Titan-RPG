@@ -93,7 +93,7 @@ export default class TitanSkillCheck extends TitanAttributeCheck {
 
     // Create the html template
     const html = await renderTemplate(
-      "systems/titan/templates/checks/check-basic-dialog.hbs",
+      "systems/titan/templates/checks/skill-check-dialog.hbs",
       dialogData
     );
 

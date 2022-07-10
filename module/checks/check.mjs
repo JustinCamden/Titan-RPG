@@ -234,7 +234,7 @@ export default class TitanCheck {
       }
       // If failed
       else {
-        results.succeeded = false;
+        results.failed = true;
       }
     }
     return results;
@@ -299,6 +299,6 @@ export default class TitanCheck {
   }
 
   _getChatTemplate() {
-    return "systems/titan/templates/checks/check-basic.hbs";
+    return "systems/titan/templates/checks/skill-check-chat-message.hbs";
   }
 }

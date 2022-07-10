@@ -1,0 +1,27 @@
+{{! Results }}
+<div class="results-banner">
+  {{! Successes }}
+  {{results.successes}}
+  {{localize "TITAN.check.successes.label"}}
+
+  {{! Succeeded banner}}
+  {{#if results.succeeded}}
+  <div class="succeeded">
+    {{localize "TITAN.check.succeeded.label"}}
+  </div>
+
+  {{! Extra successes }}
+  <div class="extra-successes">
+    {{#if results.extraSuccesses}}
+    {{localize "TITAN.check.extraSuccesses.label"}}:
+    {{results.extraSuccesses}}
+    {{/if}}
+  </div>
+
+  {{! Failure Banner }}
+  {{else if results.failed}}
+  <div class="failed">
+    {{localize "TITAN.check.failed.label"}}
+  </div>
+  {{/if}}
+</div>

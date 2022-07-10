@@ -634,7 +634,10 @@ details summary > * {
   text-align: center;
 }
 
-.titan .dice-container {
+.titan.check .dice-container {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   font-size: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -645,75 +648,87 @@ details summary > * {
   flex-direction: row;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -ms-flex-line-pack: center;
-  align-content: center;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-items: center;
-  padding: 4px;
+  text-align: center;
+  padding: 0.25rem;
+  width: 100%;
 }
 
-.titan .dice-container .die {
-  padding-right: 5px;
-  padding-bottom: 5px;
-}
-
-.titan .dice-container .die-success {
-  background-color: lightgreen;
+.titan.check .dice-container .die {
+  margin-left: 0.5rem;
+  margin-bottom: 0.25rem;
   width: 3rem;
   border: solid;
   border-radius: 10px;
-}
-
-.titan .dice-container .die-critical-success {
-  background-color: lightskyblue;
-  width: 3rem;
-  border: solid;
-  border-radius: 10px;
-}
-
-.titan .dice-container .die-failure {
-  background-color: gold;
-  width: 3rem;
-  border: solid;
-  border-radius: 10px;
-}
-
-.titan .dice-container .die-critical-failure {
-  background-color: lightsalmon;
-  width: 3rem;
-  border: solid;
-  border-radius: 10px;
-}
-
-.titan .dice-container .normal-border {
   border-color: black;
 }
 
-.titan .dice-container .expertise-border {
+.titan.check .dice-container .die:first-child {
+  margin-left: 0;
+}
+
+.titan.check .dice-container .die.critical-success {
+  background-color: lightskyblue;
+}
+
+.titan.check .dice-container .die.success {
+  background-color: lightgreen;
+}
+
+.titan.check .dice-container .die.failure {
+  background-color: gold;
+}
+
+.titan.check .dice-container .die.critical-failure {
+  background-color: lightsalmon;
+}
+
+.titan.check .dice-container .die.expertise-applied {
   border-color: blue;
   width: 5.5rem;
 }
 
-.titan .results-banner {
+.titan.check .results-banner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  border: solid;
+  border-radius: 10px;
+  border-color: black;
   font-size: 1.25rem;
+  color: black;
+  padding: 0.5rem;
 }
 
-.titan .results-banner .success-banner {
+.titan.check .results-banner .succeeded {
   font-size: 1.5rem;
   color: darkblue;
 }
 
-.titan .results-banner .extra-successes {
+.titan.check .results-banner .extra-successes {
+  color: black;
   font-size: 1.25rem;
 }
 
-.titan .results-banner .failure-banner {
+.titan.check .results-banner .failed {
   color: darkred;
+  font-size: 1.5rem;
 }
 
 .titan .item-form {

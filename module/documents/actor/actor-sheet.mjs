@@ -314,22 +314,6 @@ export class TitanActorSheet extends ActorSheet {
       return;
     }
 
-    // Get the localized label
-    let localizedLabel = game.i18n.localize(
-      CONFIG.TITAN.attribute.option[skillCheck.parameters.attribute].label
-    );
-
-    // Add the skill to the label if appropriate
-    if (skillCheck.parameters.skill) {
-      localizedLabel =
-        localizedLabel +
-        " (" +
-        game.i18n.localize(
-          CONFIG.TITAN.skill.option[skillCheck.parameters.skill].label
-        ) +
-        ")";
-    }
-
     // Evaluate the check
     await skillCheck.evaluateCheck();
 
@@ -337,7 +321,6 @@ export class TitanActorSheet extends ActorSheet {
     await skillCheck.sendToChat({
       user: game.user.id,
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      label: localizedLabel,
       rollMode: game.settings.get("core", "rollMode"),
     });
     return;

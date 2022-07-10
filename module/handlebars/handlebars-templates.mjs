@@ -7,5 +7,30 @@ export const preloadHandlebarsTemplates = async function () {
     return a == b;
   });
 
-  return;
+  // Die class helper
+  Handlebars.registerHelper("dieClasses", (die) => {
+    let retVal = "die";
+
+    // Success and failure classes
+    if (die.success) {
+      if (die.criticalSuccess) {
+        retVal = retVal + " critical-success";
+      } else {
+        retVal = retVal + " success";
+      }
+    } else {
+      if (die.criticalFailure) {
+        retVal = retVal + " critical-failure";
+      } else {
+        retVal = retVal + " failure";
+      }
+    }
+
+    // Expertise class
+    if (die.expertiseApplied) {
+      retVal = retVal + " expertise-applied";
+    }
+
+    return retVal;
+  });
 };

@@ -1,0 +1,19 @@
+{{! Dice }}
+<ol class="dice-container">
+
+  {{! For each die}}
+  {{#each results.dice as |die idx|}}
+  <li class="{{dieClasses die}}">
+    {{! Expertise Die }}
+    {{#if die.expertiseApplied}}
+    {{die.base}}
+    +
+    {{die.expertiseApplied}}
+    {{else}}
+
+    {{! Normal Die }}
+    {{die.base}}
+    {{/if}}
+  </li>
+  {{/each}}
+</ol>
