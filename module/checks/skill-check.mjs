@@ -19,35 +19,35 @@ export default class TitanSkillCheck extends TitanAttributeCheck {
     return this;
   }
 
-  _calculateActorData(checkData) {
-    const actorData = super._calculateActorData(checkData);
+  _calculateCheckData(actorCheckData) {
+    const checkData = super._calculateCheckData(actorCheckData);
 
     // Get the skill training and expertise values
-    const skill = checkData.skill[this.parameters.skill];
-    actorData.skillTrainingDice = skill.training.value;
-    actorData.skillExpertise = skill.expertise.value;
+    const skill = actorCheckData.skill[this.parameters.skill];
+    checkData.skillTrainingDice = skill.training.value;
+    checkData.skillExpertise = skill.expertise.value;
 
-    return actorData;
+    return checkData;
   }
 
-  _calculateFinalData(actorData) {
+  _calculateFinalData(checkData) {
     // Calculate the final total dice and expertise
-    const finalData = super._calculateFinalData(actorData);
+    const finalData = super._calculateFinalData(checkData);
 
     // Calculate the total training dice
     const totalTrainingDice =
-      actorData.skillTrainingDice + this.parameters.trainingMod;
+      checkData.skillTrainingDice + this.parameters.trainingMod;
     if (this.parameters.doubleTraining) {
       totalTrainingDice *= 2;
     }
 
     // Add the training dice to the total dice
     finalData.totalDice =
-      this.parameters.diceMod + actorData.attributeDice + totalTrainingDice;
+      this.parameters.diceMod + checkData.attributeDice + totalTrainingDice;
 
     // Calculcate the total expertise
     const totalExpertise =
-      actorData.skillExpertise + this.parameters.expertiseMod;
+      checkData.skillExpertise + this.parameters.expertiseMod;
     if (this.parameters.doubleExpertise) {
       totalExpertise *= 2;
     }

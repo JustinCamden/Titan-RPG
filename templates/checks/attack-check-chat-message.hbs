@@ -1,4 +1,5 @@
-<div class="titan check">
+<div class="titan check attack-check">
+  {{! Wea}}
   <h2>
     {{weaponName}}
   </h2>
@@ -11,6 +12,30 @@
     {{label}}
     {{localize (concat parameters.difficulty ":" parameters.complexity)}}
   </h3>
+
+  {{! Check title }}
+  <div class="check-title">
+    {{! Label is appropriate}}
+    {{#if label}}
+    <h2 class="check-label">
+      {{label}}
+    </h2>
+
+    {{! Stats rolled }}
+    <h3 class="check-stats">
+      {{localize (concat "TITAN.resistance.option." parameters.resistance ".label")}}
+      {{concat parameters.difficulty ":" parameters.complexity}}
+      {{concat parameters.difficulty ":" parameters.complexity}}
+    </h3>
+    {{else}}
+
+    {{! Use the stats as the label if there is no label }}
+    <h2 class="check-label">
+      {{localize (concat "TITAN.resistance.option." parameters.resistance ".label")}}
+      {{concat parameters.difficulty ":" parameters.complexity}}
+    </h2>
+    {{/if}}
+  </div>
 
   {{! Dice }}
   <div class="dice-container">

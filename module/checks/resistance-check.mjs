@@ -17,22 +17,22 @@ export default class TitanResistanceCheck extends TitanCheck {
     return this;
   }
 
-  _calculateActorData(checkData) {
-    const actorData = super._calculateActorData(checkData);
+  _calculateCheckData(actorCheckData) {
+    const checkData = super._calculateCheckData(actorCheckData);
 
     // Get the resistance value
-    actorData.resistanceDice =
-      checkData.resistance[this.parameters.resistance].value;
+    checkData.resistanceDice =
+      actorCheckData.resistance[this.parameters.resistance].value;
 
-    return actorData;
+    return checkData;
   }
 
-  _calculateFinalData(actorData) {
+  _calculateFinalData(checkData) {
     // Calculate the final total dice and expertise
-    const finalData = super._calculateFinalData(actorData);
+    const finalData = super._calculateFinalData(checkData);
 
     // Add the training dice to the total dice
-    finalData.totalDice = this.parameters.diceMod + actorData.resistanceDice;
+    finalData.totalDice = this.parameters.diceMod + checkData.resistanceDice;
 
     return finalData;
   }

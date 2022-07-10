@@ -57,21 +57,21 @@ export default class TitanCheck {
     }
 
     // Get the check data from the actor
-    const checkData = checkActor.getCheckData();
-    this.actorData = this._calculateActorData(checkData);
-    this.finalData = this._calculateFinalData(this.actorData);
+    const actorCheckData = checkActor.getCheckData();
+    this.checkData = this._calculateCheckData(actorCheckData);
+    this.finalData = this._calculateFinalData(this.checkData);
 
     this.isPrepared = true;
 
     return true;
   }
 
-  _calculateActorData(checkData) {
+  _calculateCheckData(actorCheckData) {
     // Use the check data to calculate the check data
     return {};
   }
 
-  _calculateFinalData(actorData) {
+  _calculateFinalData(checkData) {
     // Calculate the final total dice and expertise
     const finalData = {
       totalDice: this.parameters.diceMod,
@@ -266,7 +266,7 @@ export default class TitanCheck {
     const messageData = {
       label: inData.label ? inData.label : false,
       parameters: this.parameters,
-      actorData: this.actorData,
+      checkData: this.checkData,
       finalData: this.finalData,
       results: this.results,
     };

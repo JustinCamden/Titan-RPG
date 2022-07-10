@@ -322,21 +322,7 @@ export class TitanActor extends Actor {
   // Get a check from the actor
   async getSkillCheck(inData) {
     // Initialize options
-    let checkOptions = {
-      attribute: inData?.attribute ?? "body",
-      skill: inData?.skill ?? "athletics",
-      difficulty: inData?.difficulty
-        ? TitanUtility.clamp(inData.difficulty, 2, 6)
-        : 4,
-      complexity: inData?.complexity ? Math.max(inData.complexity, 0) : 0,
-      diceMod: inData?.diceMod ?? 0,
-      trainingMod: inData?.trainingMod ?? 0,
-      expertiseMod: inData?.expertiseMod ?? 0,
-      doubleExpertise: inData?.doubleExpertise ?? false,
-      maximizeSuccesses: inData?.maximizeSuccesses ?? false,
-      extraSuccessOnCritical: inData?.extraSuccessOnCritical ?? false,
-      extraFailureOnCritical: inData?.extraFailureOnCritical ?? false,
-    };
+    let checkOptions = inData;
 
     // Check if the attribute set to default
     if (checkOptions.attribute == "default") {
@@ -374,19 +360,7 @@ export class TitanActor extends Actor {
 
   async getResistanceCheck(inData) {
     // Get a check from the actor
-    let checkOptions = {
-      resistance: inData?.resistance ?? "reflexes",
-      difficulty: inData?.difficulty
-        ? TitanUtility.clamp(inData.difficulty, 2, 6)
-        : 4,
-      complexity: inData?.complexity ? Math.max(inData.complexity, 0) : 0,
-      diceMod: inData?.diceMod ?? 0,
-      expertiseMod: inData?.expertiseMod ?? 0,
-      doubleExpertise: inData?.doubleExpertise ?? false,
-      maximizeSuccesses: inData?.maximizeSuccesses ?? false,
-      extraSuccessOnCritical: inData?.extraSuccessOnCritical ?? false,
-      extraFailureOnCritical: inData?.extraFailureOnCritical ?? false,
-    };
+    let checkOptions = inData;
 
     // Get options?
     if (inData?.getOptions) {
@@ -409,78 +383,29 @@ export class TitanActor extends Actor {
   }
 
   async getAttackCheck(inData) {
-    // Get the weapon
-    let checkOptions = {
-      weapon: this.items.get(inData?.weaponId),
-    };
-    if (!checkOptions.weapon) {
-      console.log("TITAN | Invalid Weapon " + inData);
-      return { cancelled: true };
-    }
-
-    // Get the attack
-    checkOptions.attack = checkOptions.weapon.system.attack[inData.attackIdx];
-    if (!checkOptions.attack) {
-      console.log("TITAN | Invalid Attack " + inData);
-      return { cancelled: true };
-    }
-
-    // If the user has a valid target
+    // Initialize check options
+    let checkOptions = inData;
+    checkOptions.actorId = this.id;
     const userTargets = Array.from(game.user.targets);
     if (userTargets[0]) {
-      // Cache the target
-      checkOptions.target = game.actors.get(userTargets[0].document.actorId);
-
-      // Calculate the difficulty to hit the target
-      checkOptions.difficulty =
-        4 +
-        checkOptions.target.system.attackStats.defense.value -
-        (checkOptions.attack.type == "melee"
-          ? this.system.attackStats.melee.value
-          : this.system.attackStats.accuracy.value);
-      if (checkOptions.difficulty > 6) {
-        checkOptions.difficulty = 6;
-      } else if (checkOptions.difficulty < 2) {
-        checkOptions.difficulty = 2;
-      }
+      checkOptions.targetId = userTargets[0].document.id;
     } else {
-      checkOptions.target = false;
-      checkOptions.difficulty = 4;
+      checkOptions.targetId = false;
     }
 
-    // Calculate default check options
-    checkOptions.complexity = 1;
-    checkOptions.diceMod = 0;
-    checkOptions.expertiseMod = 0;
-    checkOptions.skill = checkOptions.attack.skill;
-    checkOptions.attribute = checkOptions.attack.attribute;
-    checkOptions.baseDamage = checkOptions.attack.damage;
-    checkOptions.plusSuccessDamage = checkOptions.attack.plusSuccessDamage;
+    // Get the options from a dialog if appropriate
+    if (inData.getOptions) {
+      checkOptions = await TitanAttackCheck.getOptionsFromDialog(checkOptions);
 
-    // Create check parameters
-    let checkParameters = {
-      numberOfDice:
-        this.system.attribute[checkOptions.attribute].value +
-        this.system.skill[checkOptions.skill].training.value +
-        checkOptions.diceMod,
-      expertise:
-        this.system.skill[checkOptions.skill].expertise.value +
-        checkOptions.expertiseMod,
-      difficulty: checkOptions.difficulty,
-      complexity: checkOptions.complexity,
-      baseDamage: checkOptions.baseDamage,
-      plusSuccessDamage: checkOptions.plusSuccessDamage,
-    };
+      // Return if cancelled
+      if (checkOptions.cancelled) {
+        return;
+      }
+    }
 
-    // Create the check
-    const check = new TitanAttackCheck(checkParameters);
-
-    // Return the data
-    return {
-      check: check,
-      checkOptions: checkOptions,
-      checkParameters: checkParameters,
-    };
+    // Perform the attack
+    const attackCheck = new TitanAttackCheck(checkOptions);
+    return attackCheck;
   }
 
   getCheckData() {
