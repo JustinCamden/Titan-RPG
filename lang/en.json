@@ -4,11 +4,11 @@
   "TITAN.attribute.option.mind.label": "Mind",
   "TITAN.attribute.option.soul.label": "Soul",
 
-  "TITAN.derivedStats.initiative.label": "Initiative",
-  "TITAN.derivedStats.awareness.label": "Awareness",
-  "TITAN.derivedStats.defense.label": "Defense",
-  "TITAN.derivedStats.melee.label": "Melee",
-  "TITAN.derivedStats.accuracy.label": "Accuracy",
+  "TITAN.initiative.label": "Initiative",
+  "TITAN.attackStats.awareness.label": "Awareness",
+  "TITAN.attackStats.defense.label": "Defense",
+  "TITAN.attackStats.melee.label": "Melee",
+  "TITAN.attackStats.accuracy.label": "Accuracy",
 
   "TITAN.resource.option.stamina.label": "Stamina",
   "TITAN.resource.option.wounds.label": "Wounds",

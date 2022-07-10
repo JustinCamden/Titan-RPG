@@ -1,5 +1,7 @@
+import TitanResistanceCheck from "../../checks/resistance-check.mjs";
 import TitanAttackCheck from "../../checks/attack-check.mjs";
 import TitanSkillCheck from "../../checks/skill-check.mjs";
+import TitanCheck from "../../checks/check.mjs";
 import TitanUtility from "../../helpers/utility.mjs";
 
 /**
@@ -70,64 +72,63 @@ export class TitanActor extends Actor {
 
     // Calculate derived stats
     // Initiative = (Mind + Training in Awareness) / 2 rounded up (+ Mod)
-    systemData.derivedStats.initiative.baseValue =
+    systemData.initiative.baseValue =
       systemData.attribute.mind.baseValue +
       systemData.attribute.mind.staticMod +
       systemData.skill.dexterity.training.baseValue +
       systemData.skill.dexterity.training.staticMod +
       systemData.skill.perception.training.baseValue +
       systemData.skill.perception.training.staticMod;
-    systemData.derivedStats.initiative.value =
-      systemData.derivedStats.initiative.baseValue +
-      systemData.derivedStats.initiative.staticMod;
+    systemData.initiative.value =
+      systemData.initiative.baseValue + systemData.initiative.staticMod;
 
     // Awareness = (Mind + Training in Awareness) / 2 rounded up (+ Mod)
-    systemData.derivedStats.awareness.baseValue = Math.ceil(
+    systemData.attackStats.awareness.baseValue = Math.ceil(
       (systemData.attribute.mind.baseValue +
         systemData.attribute.mind.staticMod +
         systemData.skill.perception.training.baseValue +
         systemData.skill.perception.training.staticMod) /
         2
     );
-    systemData.derivedStats.awareness.value =
-      systemData.derivedStats.awareness.baseValue +
-      systemData.derivedStats.awareness.staticMod;
+    systemData.attackStats.awareness.value =
+      systemData.attackStats.awareness.baseValue +
+      systemData.attackStats.awareness.staticMod;
 
     // Defense = (Body + Training in Dexterity) / 2 rounded up (+ Mod)
-    systemData.derivedStats.defense.baseValue = Math.ceil(
+    systemData.attackStats.defense.baseValue = Math.ceil(
       (systemData.attribute.body.baseValue +
         systemData.attribute.body.staticMod +
         systemData.skill.dexterity.training.baseValue +
         systemData.skill.dexterity.training.staticMod) /
         2
     );
-    systemData.derivedStats.defense.value =
-      systemData.derivedStats.defense.baseValue +
-      systemData.derivedStats.defense.staticMod;
+    systemData.attackStats.defense.value =
+      systemData.attackStats.defense.baseValue +
+      systemData.attackStats.defense.staticMod;
 
     // Accuracy = (Mind + Training in Ranged Weapons) / 2 rounded up (+ Mod)
-    systemData.derivedStats.accuracy.baseValue = Math.ceil(
+    systemData.attackStats.accuracy.baseValue = Math.ceil(
       (systemData.attribute.mind.baseValue +
         systemData.attribute.mind.staticMod +
         systemData.skill.rangedWeapons.training.baseValue +
         systemData.skill.rangedWeapons.training.staticMod) /
         2
     );
-    systemData.derivedStats.accuracy.value =
-      systemData.derivedStats.accuracy.baseValue +
-      systemData.derivedStats.accuracy.staticMod;
+    systemData.attackStats.accuracy.value =
+      systemData.attackStats.accuracy.baseValue +
+      systemData.attackStats.accuracy.staticMod;
 
     // Melee = (Body + Training in Melee Weapons) / 2 rounded up (+ Mod)
-    systemData.derivedStats.melee.baseValue = Math.ceil(
+    systemData.attackStats.melee.baseValue = Math.ceil(
       (systemData.attribute.body.baseValue +
         systemData.attribute.body.staticMod +
         systemData.skill.meleeWeapons.training.baseValue +
         systemData.skill.meleeWeapons.training.staticMod) /
         2
     );
-    systemData.derivedStats.melee.value =
-      systemData.derivedStats.melee.baseValue +
-      systemData.derivedStats.melee.staticMod;
+    systemData.attackStats.melee.value =
+      systemData.attackStats.melee.baseValue +
+      systemData.attackStats.melee.staticMod;
 
     // Reflexes = (Mind + (Body/2))
     systemData.resistance.reflexes.baseValue =
@@ -291,7 +292,7 @@ export class TitanActor extends Actor {
 
   async getInitiativeRoll(inData) {
     // Calculate the initiative value
-    const initiative = this.system.derivedStats.initiative.value;
+    const initiative = this.system.attackStats.initiative.value;
 
     // Get the initiative formula
     let initiativeFormula = "";
@@ -368,6 +369,8 @@ export class TitanActor extends Actor {
         dialogData.skillOptions[k] =
           "TITAN.skill.option." + k.toString() + ".label";
       }
+      // Add none as a skill option
+      dialogData.skillOptions.none = "TITAN.none.label";
 
       // Create the html template
       const html = await renderTemplate(
@@ -382,7 +385,7 @@ export class TitanActor extends Actor {
           content: html,
           buttons: {
             roll: {
-              label: game.i18n.localize(CONFIG.TITAN.check.roll),
+              label: game.i18n.localize(CONFIG.TITAN.roll.label),
               callback: (html) =>
                 resolve(
                   this._processSkillCheckOptions(html[0].querySelector("form"))
@@ -416,11 +419,20 @@ export class TitanActor extends Actor {
       checkOptions.complexity = Math.max(checkOptions.complexity, 0);
     }
 
-    // Perform the roll
+    // Add this actor ID to the check options
     checkOptions.actorId = this.id;
-    const skillCheck = new TitanSkillCheck(checkOptions);
 
-    // Return the data
+    // Check if the skill is none
+    if (checkOptions.skill == "none") {
+      // If so, do an attribute check
+      delete checkOptions.skill;
+      delete checkOptions.trainingMod;
+      const attributeCheck = new TitanCheck(checkOptions);
+      return attributeCheck;
+    }
+
+    // Otherwise, do a skill check
+    const skillCheck = new TitanSkillCheck(checkOptions);
     return skillCheck;
   }
 
@@ -447,11 +459,10 @@ export class TitanActor extends Actor {
       complexity: inData?.complexity > -1 ? inData.complexity : 0,
       diceMod: inData?.diceMod ? inData.diceMod : 0,
       expertiseMod: inData?.expertiseMod > 0 ? inData.expertiseMod : 0,
-      getOptions: inData?.getOptions ? inData.getOptions : false,
     };
 
     // Get options?
-    if (checkOptions.getOptions) {
+    if (inData?.getOptions) {
       // Initialize dialog data
       let dialogData = {
         resistance: checkOptions.resistance,
@@ -507,37 +518,22 @@ export class TitanActor extends Actor {
       }
 
       // Validate difficulty
-      if (checkOptions.difficulty > 6) {
-        checkOptions.difficulty = 6;
-      } else if (checkOptions.difficulty < 2) {
-        checkOptions.difficulty = 2;
-      }
+      checkOptions.difficulty = TitanUtility.clamp(
+        checkOptions.difficulty,
+        2,
+        6
+      );
 
       // Validate complexity
-      if (checkOptions.complexity < 0) {
-        checkOptions.complexity = 0;
-      }
+      checkOptions.complexity = Math.max(checkOptions.complexity, 0);
     }
 
-    // Create the check parameters
-    let checkParameters = {
-      numberOfDice:
-        this.system.resistance[checkOptions.resistance].value +
-        checkOptions.diceMod,
-      expertise: checkOptions.expertiseMod,
-      difficulty: checkOptions.difficulty,
-      complexity: checkOptions.complexity,
-    };
-
     // Perform the roll
-    const check = new TitanCheck(checkParameters);
+    checkOptions.actorId = this.id;
+    const resistanceCheck = new TitanResistanceCheck(checkOptions);
 
     // Return the data
-    return {
-      check: check,
-      checkOptions: checkOptions,
-      checkParameters: checkParameters,
-    };
+    return resistanceCheck;
   }
 
   // Process check dialog results
@@ -577,10 +573,10 @@ export class TitanActor extends Actor {
       // Calculate the difficulty to hit the target
       checkOptions.difficulty =
         4 +
-        checkOptions.target.system.derivedStats.defense.value -
+        checkOptions.target.system.attackStats.defense.value -
         (checkOptions.attack.type == "melee"
-          ? this.system.derivedStats.melee.value
-          : this.system.derivedStats.accuracy.value);
+          ? this.system.attackStats.melee.value
+          : this.system.attackStats.accuracy.value);
       if (checkOptions.difficulty > 6) {
         checkOptions.difficulty = 6;
       } else if (checkOptions.difficulty < 2) {

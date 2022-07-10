@@ -320,7 +320,7 @@ export class TitanActorSheet extends ActorSheet {
     );
 
     // Add the skill to the label if appropriate
-    if (skillCheck.parameters.skill != "none") {
+    if (skillCheck.parameters.skill) {
       localizedLabel =
         localizedLabel +
         " (" +
@@ -367,15 +367,15 @@ export class TitanActorSheet extends ActorSheet {
 
     // Get the localized label
     let localizedLabel = game.i18n.localize(
-      CONFIG.TITAN.resistance.option[resistanceCheck.checkOptions.resistance]
+      CONFIG.TITAN.resistance.option[resistanceCheck.parameters.resistance]
         .label
     );
 
     // Evaluate the check
-    await resistanceCheck.check.evaluateCheck();
+    await resistanceCheck.evaluateCheck();
 
     // Post the check to chat
-    await resistanceCheck.check.toChatMessage({
+    await resistanceCheck.sendToChat({
       user: game.user.id,
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       label: localizedLabel,
