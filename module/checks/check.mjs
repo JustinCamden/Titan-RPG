@@ -30,7 +30,6 @@ export default class TitanCheck {
     // Initialize Parameters
     this.parameters = {
       actorId: inData.actorId,
-      attribute: inData.attribute ?? "body",
       difficulty: inData.difficulty
         ? TitanUtility.clamp(inData.difficulty, 2, 6)
         : 4,
@@ -69,17 +68,13 @@ export default class TitanCheck {
 
   _calculateActorData(checkData) {
     // Use the check data to calculate the check data
-    const actorData = {
-      attributeDice: checkData.attribute[this.parameters.attribute].value,
-    };
-
-    return actorData;
+    return {};
   }
 
   _calculateFinalData(actorData) {
     // Calculate the final total dice and expertise
     const finalData = {
-      totalDice: actorData.attributeDice + this.parameters.diceMod,
+      totalDice: this.parameters.diceMod,
       totalExpertise: this.parameters.doubleExpertise
         ? this.parameters.expertiseMod * 2
         : this.parameters.expertiseMod,

@@ -1,8 +1,9 @@
+import TitanUtility from "../../helpers/utility.mjs";
+import TitanCheck from "../../checks/check.mjs";
+import TitanAttributeCheck from "../../checks/attribute-check.mjs";
+import TitanSkillCheck from "../../checks/skill-check.mjs";
 import TitanResistanceCheck from "../../checks/resistance-check.mjs";
 import TitanAttackCheck from "../../checks/attack-check.mjs";
-import TitanSkillCheck from "../../checks/skill-check.mjs";
-import TitanCheck from "../../checks/check.mjs";
-import TitanUtility from "../../helpers/utility.mjs";
 
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
@@ -427,7 +428,7 @@ export class TitanActor extends Actor {
       // If so, do an attribute check
       delete checkOptions.skill;
       delete checkOptions.trainingMod;
-      const attributeCheck = new TitanCheck(checkOptions);
+      const attributeCheck = new TitanAttributeCheck(checkOptions);
       return attributeCheck;
     }
 
@@ -452,13 +453,12 @@ export class TitanActor extends Actor {
     // Get a check from the actor
     let checkOptions = {
       resistance: inData?.resistance ? inData.resistance : "reflexes",
-      difficulty:
-        inData?.difficulty > 1 && inData?.difficulty < 7
-          ? inData.difficulty
-          : 4,
-      complexity: inData?.complexity > -1 ? inData.complexity : 0,
-      diceMod: inData?.diceMod ? inData.diceMod : 0,
-      expertiseMod: inData?.expertiseMod > 0 ? inData.expertiseMod : 0,
+      difficulty: inData?.difficulty
+        ? TitanUtility.clamp(inData.difficulty, 2, 6)
+        : 4,
+      complexity: inData?.complexity ? Math.max(inData.complexity, 0) : 0,
+      diceMod: inData?.diceMod ?? 0,
+      expertiseMod: inData?.expertiseMod ?? 0,
     };
 
     // Get options?

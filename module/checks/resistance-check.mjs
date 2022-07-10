@@ -31,10 +31,7 @@ export default class TitanResistanceCheck extends TitanCheck {
     const finalData = super._calculateFinalData(actorData);
 
     // Add the training dice to the total dice
-    finalData.totalDice =
-      this.parameters.diceMod +
-      actorData.attributeDice +
-      actorData.resistanceDice;
+    finalData.totalDice = this.parameters.diceMod + actorData.resistanceDice;
 
     return finalData;
   }

@@ -1,6 +1,6 @@
-import TitanCheck from "./check.mjs";
+import TitanAttributeCheck from "./attribute-check.mjs";
 
-export default class TitanSkillCheck extends TitanCheck {
+export default class TitanSkillCheck extends TitanAttributeCheck {
   // Constructor
   constructor(inData) {
     super(inData);
