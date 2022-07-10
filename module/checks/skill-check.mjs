@@ -97,6 +97,18 @@ export default class TitanSkillCheck extends TitanAttributeCheck {
       dialogData
     );
 
+    // Proccesses the results of a skill check dialog
+    function _processSkillCheckOptions(form) {
+      return {
+        attribute: form.attribute.value,
+        skill: form.skill.value,
+        difficulty: parseInt(form.difficulty.value),
+        complexity: parseInt(form.complexity.value),
+        diceMod: parseInt(form.diceMod.value),
+        expertiseMod: parseInt(form.expertiseMod.value),
+      };
+    }
+
     // Create the dialog
     const checkOptions = await new Promise((resolve) => {
       const data = {
@@ -106,11 +118,7 @@ export default class TitanSkillCheck extends TitanAttributeCheck {
           roll: {
             label: game.i18n.localize(CONFIG.TITAN.roll.label),
             callback: (html) =>
-              resolve(
-                TitanSkillCheck._processSkillCheckOptions(
-                  html[0].querySelector("form")
-                )
-              ),
+              resolve(_processSkillCheckOptions(html[0].querySelector("form"))),
           },
           cancel: {
             label: game.i18n.localize(CONFIG.TITAN.cancel.label),
@@ -138,17 +146,5 @@ export default class TitanSkillCheck extends TitanAttributeCheck {
     }
 
     return checkOptions;
-  }
-
-  // Proccesses the results of a skill check dialog
-  static _processSkillCheckOptions(form) {
-    return {
-      attribute: form.attribute.value,
-      skill: form.skill.value,
-      difficulty: parseInt(form.difficulty.value),
-      complexity: parseInt(form.complexity.value),
-      diceMod: parseInt(form.diceMod.value),
-      expertiseMod: parseInt(form.expertiseMod.value),
-    };
   }
 }

@@ -66,6 +66,17 @@ export default class TitanResistanceCheck extends TitanCheck {
       dialogData
     );
 
+    // Process check dialog results
+    function _processResistanceCheckOptions(form) {
+      return {
+        resistance: form.resistance.value,
+        difficulty: parseInt(form.difficulty.value),
+        complexity: parseInt(form.complexity.value),
+        diceMod: parseInt(form.diceMod.value),
+        expertiseMod: parseInt(form.expertiseMod.value),
+      };
+    }
+
     // Create the dialog
     const checkOptions = await new Promise((resolve) => {
       const data = {
@@ -76,9 +87,7 @@ export default class TitanResistanceCheck extends TitanCheck {
             label: game.i18n.localize(CONFIG.TITAN.roll.label),
             callback: (html) =>
               resolve(
-                TitanResistanceCheck._processResistanceCheckOptions(
-                  html[0].querySelector("form")
-                )
+                _processResistanceCheckOptions(html[0].querySelector("form"))
               ),
           },
           cancel: {
@@ -107,16 +116,5 @@ export default class TitanResistanceCheck extends TitanCheck {
     }
 
     return checkOptions;
-  }
-
-  // Process check dialog results
-  static _processResistanceCheckOptions(form) {
-    return {
-      resistance: form.resistance.value,
-      difficulty: parseInt(form.difficulty.value),
-      complexity: parseInt(form.complexity.value),
-      diceMod: parseInt(form.diceMod.value),
-      expertiseMod: parseInt(form.expertiseMod.value),
-    };
   }
 }
