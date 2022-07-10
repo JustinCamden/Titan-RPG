@@ -332,10 +332,10 @@ export class TitanActor extends Actor {
       diceMod: inData?.diceMod ?? 0,
       trainingMod: inData?.trainingMod ?? 0,
       expertiseMod: inData?.expertiseMod ?? 0,
-      doubleExpertise: inData.doubleExpertise ?? false,
-      maximizeSuccesses: inData.maximizeSuccesses ?? false,
-      extraSuccessOnCritical: inData.extraSuccessOnCritical ?? false,
-      extraFailureOnCritical: inData.extraFailureOnCritical ?? false,
+      doubleExpertise: inData?.doubleExpertise ?? false,
+      maximizeSuccesses: inData?.maximizeSuccesses ?? false,
+      extraSuccessOnCritical: inData?.extraSuccessOnCritical ?? false,
+      extraFailureOnCritical: inData?.extraFailureOnCritical ?? false,
     };
 
     // Check if the attribute set to default
@@ -347,8 +347,7 @@ export class TitanActor extends Actor {
 
     // Get the options from a dialog if appropriate
     if (inData?.getOptions) {
-      // Initialize dialog data
-      checkOptions = TitanSkillCheck.createOptionsDialog(checkOptions);
+      checkOptions = await TitanSkillCheck.getOptionsFromDialog(checkOptions);
 
       // Return if cancelled
       if (checkOptions.cancelled) {
@@ -376,80 +375,29 @@ export class TitanActor extends Actor {
   async getResistanceCheck(inData) {
     // Get a check from the actor
     let checkOptions = {
-      resistance: inData?.resistance ? inData.resistance : "reflexes",
+      resistance: inData?.resistance ?? "reflexes",
       difficulty: inData?.difficulty
         ? TitanUtility.clamp(inData.difficulty, 2, 6)
         : 4,
       complexity: inData?.complexity ? Math.max(inData.complexity, 0) : 0,
       diceMod: inData?.diceMod ?? 0,
       expertiseMod: inData?.expertiseMod ?? 0,
+      doubleExpertise: inData?.doubleExpertise ?? false,
+      maximizeSuccesses: inData?.maximizeSuccesses ?? false,
+      extraSuccessOnCritical: inData?.extraSuccessOnCritical ?? false,
+      extraFailureOnCritical: inData?.extraFailureOnCritical ?? false,
     };
 
     // Get options?
     if (inData?.getOptions) {
-      // Initialize dialog data
-      let dialogData = {
-        resistance: checkOptions.resistance,
-        difficulty: checkOptions.difficulty,
-        complexity: checkOptions.complexity,
-        diceMod: checkOptions.diceMod,
-        expertiseMod: checkOptions.expertiseMod,
-        resistanceOptions: {},
-      };
-
-      // Add each resistance as an option to the data
-      for (let [k, v] of Object.entries(this.system.resistance)) {
-        dialogData.resistanceOptions[k] =
-          "TITAN.resistance.option." + k.toString() + ".label";
-      }
-
-      // Create the html template
-      const html = await renderTemplate(
-        "systems/titan/templates/checks/check-resistance-dialog.hbs",
-        dialogData
+      checkOptions = await TitanResistanceCheck.getOptionsFromDialog(
+        checkOptions
       );
 
-      // Create the dialog
-      checkOptions = await new Promise((resolve) => {
-        const data = {
-          title: game.i18n.localize(CONFIG.TITAN.check.label),
-          content: html,
-          buttons: {
-            roll: {
-              label: game.i18n.localize(CONFIG.TITAN.roll.label),
-              callback: (html) =>
-                resolve(
-                  this._processResistanceCheckOptions(
-                    html[0].querySelector("form")
-                  )
-                ),
-            },
-            cancel: {
-              label: game.i18n.localize(CONFIG.TITAN.cancel.label),
-              callback: (html) => resolve({ cancelled: true }),
-            },
-          },
-          default: "roll",
-          close: () => resolve({ cancelled: true }),
-        };
-
-        new Dialog(data, null).render(true);
-      });
-
-      // Return if we cancelled the check
+      // Return if cancelled
       if (checkOptions.cancelled) {
-        return checkOptions;
+        return;
       }
-
-      // Validate difficulty
-      checkOptions.difficulty = TitanUtility.clamp(
-        checkOptions.difficulty,
-        2,
-        6
-      );
-
-      // Validate complexity
-      checkOptions.complexity = Math.max(checkOptions.complexity, 0);
     }
 
     // Perform the roll
@@ -458,17 +406,6 @@ export class TitanActor extends Actor {
 
     // Return the data
     return resistanceCheck;
-  }
-
-  // Process check dialog results
-  _processResistanceCheckOptions(form) {
-    return {
-      resistance: form.resistance.value,
-      difficulty: parseInt(form.difficulty.value),
-      complexity: parseInt(form.complexity.value),
-      diceMod: parseInt(form.diceMod.value),
-      expertiseMod: parseInt(form.expertiseMod.value),
-    };
   }
 
   async getAttackCheck(inData) {

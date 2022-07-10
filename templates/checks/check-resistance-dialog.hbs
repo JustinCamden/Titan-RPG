@@ -4,9 +4,9 @@
     <select name="resistance">
       {{! Attribute options }}
       {{#select resistance}}
-        {{#each resistanceOptions as |option key|}}
-          <option value="{{key}}">{{localize option}}</option>
-        {{/each}}
+      {{#each resistanceOptions as |option key|}}
+      <option value="{{key}}">{{option}}</option>
+      {{/each}}
       {{/select}}
     </select>
 
@@ -14,11 +14,11 @@
     {{localize "TITAN.check.difficulty.label"}}
     <select name="difficulty">
       {{#select difficulty}}
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
       {{/select}}
     </select>
 
@@ -26,22 +26,22 @@
     {{localize "TITAN.check.complexity.label"}}
     <select name="complexity">
       {{#select complexity}}
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
       {{/select}}
     </select>
 
@@ -51,11 +51,6 @@
 
     {{! Expertise Mod}}
     {{localize "TITAN.check.expertiseMod.label"}}
-    <input
-      type="number"
-      name="expertiseMod"
-      value={{expertiseMod}}
-      data-dtype="Number"
-    />
+    <input type="number" name="expertiseMod" value={{expertiseMod}} data-dtype="Number" />
   </div>
 </form>

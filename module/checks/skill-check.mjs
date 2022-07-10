@@ -57,40 +57,39 @@ export default class TitanSkillCheck extends TitanAttributeCheck {
   }
 
   // Creates a dialog for getting options for this skill check
-  static async createOptionsDialog(initialOptions) {
+  static async getOptionsFromDialog(initialOptions) {
     // Initialize dialog data
     const dialogData = {
-      attribute: initialOptions.attribute ?? "body",
-      skill: initialOptions.skill ?? "athletics",
-      difficulty: initialOptions.difficulty
+      attribute: initialOptions?.attribute ?? "body",
+      skill: initialOptions?.skill ?? "athletics",
+      difficulty: initialOptions?.difficulty
         ? TitanUtility.clamp(initialOptions.difficulty, 2, 6)
         : 4,
-      complexity: initialOptions.complexity
+      complexity: initialOptions?.complexity
         ? Math.max(checkOptions.complexity, 0)
         : 0,
-      diceMod: initialOptions.diceMod ?? 0,
-      expertiseMod: initialOptions.expertiseMod ?? 0,
-      doubleExpertise: initialOptions.doubleExpertise ?? false,
-      maximizeSuccesses: initialOptions.maximizeSuccesses ?? false,
-      extraSuccessOnCritical: initialOptions.extraSuccessOnCritical ?? false,
-      extraFailureOnCritical: initialOptions.extraFailureOnCritical ?? false,
+      diceMod: initialOptions?.diceMod ?? 0,
+      trainingMod: initialOptions?.trainingMod ?? 0,
+      expertiseMod: initialOptions?.expertiseMod ?? 0,
+      doubleExpertise: initialOptions?.doubleExpertise ?? false,
+      maximizeSuccesses: initialOptions?.maximizeSuccesses ?? false,
+      extraSuccessOnCritical: initialOptions?.extraSuccessOnCritical ?? false,
+      extraFailureOnCritical: initialOptions?.extraFailureOnCritical ?? false,
       attributeOptions: {},
       skillOptions: {},
     };
 
     // Add each attribute as an option to the data
-    for (let [k, v] of Object.entries(this.system.attribute)) {
-      dialogData.attributeOptions[k] =
-        "TITAN.attribute.option." + k.toString() + ".label";
+    for (let [k, v] of Object.entries(CONFIG.TITAN.attribute.option)) {
+      dialogData.attributeOptions[k] = game.i18n.localize(v.label);
     }
 
     // Add each skill as an option to the data
-    for (let [k, v] of Object.entries(this.system.skill)) {
-      dialogData.skillOptions[k] =
-        "TITAN.skill.option." + k.toString() + ".label";
+    for (let [k, v] of Object.entries(CONFIG.TITAN.skill.option)) {
+      dialogData.skillOptions[k] = game.i18n.localize(v.label);
     }
     // Add none as a skill option
-    dialogData.skillOptions.none = "TITAN.none.label";
+    dialogData.skillOptions.none = game.i18n.localize(CONFIG.TITAN.none.label);
 
     // Create the html template
     const html = await renderTemplate(
@@ -125,16 +124,18 @@ export default class TitanSkillCheck extends TitanAttributeCheck {
       new Dialog(data, null).render(true);
     });
 
-    // Return if we cancelled the check
-    if (checkOptions.cancelled) {
-      return checkOptions;
+    // Validate the results if appropriate
+    if (!checkOptions.cancelled) {
+      // Validate difficulty
+      checkOptions.difficulty = TitanUtility.clamp(
+        checkOptions.difficulty,
+        2,
+        6
+      );
+
+      // Validate complexity
+      checkOptions.complexity = Math.max(checkOptions.complexity, 0);
     }
-
-    // Validate difficulty
-    checkOptions.difficulty = TitanUtility.clamp(checkOptions.difficulty, 2, 6);
-
-    // Validate complexity
-    checkOptions.complexity = Math.max(checkOptions.complexity, 0);
 
     return checkOptions;
   }

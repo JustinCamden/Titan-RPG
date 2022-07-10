@@ -5,7 +5,7 @@
       {{! Attribute options }}
       {{#select attribute}}
       {{#each attributeOptions as |option key|}}
-      <option value="{{key}}">{{localize option}}</option>
+      <option value="{{key}}">{{option}}</option>
       {{/each}}
       {{/select}}
     </select>
@@ -14,7 +14,7 @@
     <select name="skill">
       {{#select skill}}
       {{#each skillOptions as |option key|}}
-      <option value="{{key}}">{{localize option}}</option>
+      <option value="{{key}}">{{option}}</option>
       {{/each}}
       {{/select}}
     </select>

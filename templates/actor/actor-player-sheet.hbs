@@ -45,10 +45,11 @@
 
       {{!-- Derived Stats --}}
       <div class="derived grid grid-8col">
+        {{! Resistances }}
         {{#each system.resistance as |resistance key|}}
         <div class="resistance flex-group-center border">
           <label for="system.resistance.{{key}}.value" class="stat-label rollable resistance-check"
-            data-resistance={{key}}>
+            data-resistance={{key}} data-get-options="default">
             {{localize (concat "TITAN.resistance.option." key ".label")}}
           </label>
           <div class="stat-content flexrow flex-group-center flex-between">
