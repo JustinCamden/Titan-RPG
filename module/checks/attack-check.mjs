@@ -8,6 +8,7 @@ export default class TitanAttackCheck extends TitanSkillCheck {
       return this;
     }
     // Check if the ID is valid
+    console.log(inData.actorId);
     if (!inData?.actorId) {
       console.error(
         "TITAN | Check failed during construction. No provided Actor ID."
@@ -28,6 +29,8 @@ export default class TitanAttackCheck extends TitanSkillCheck {
 
     // Get the weapon
     const checkWeapon = checkActor.items.get(inData.weaponId);
+    //console.log(checkActor.items);
+    //console.log(inData.weaponId);
     if (!checkWeapon) {
       console.log(
         "TITAN | Check failed during construction. Invalid Weapon ID." + inData
@@ -134,8 +137,7 @@ export default class TitanAttackCheck extends TitanSkillCheck {
       this.parameters.attackerMelee = actorCheckData.rating.melee.value;
     }
     if (!this.parameters.attackerAccuracy) {
-      this.parameters.attackerAccuracy =
-        actorCheckData.rating.accuracy.value;
+      this.parameters.attackerAccuracy = actorCheckData.rating.accuracy.value;
     }
 
     // Get the target check data if appropriate
@@ -152,8 +154,7 @@ export default class TitanAttackCheck extends TitanSkillCheck {
       // If the target is valid
       if (targetCheckData != false) {
         // Calculate the defense
-        this.parameters.targetDefense =
-          targetCheckData.rating.defense.value;
+        this.parameters.targetDefense = targetCheckData.rating.defense.value;
 
         // Calculate the attacker rating
         const attackerRating =

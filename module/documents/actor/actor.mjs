@@ -73,15 +73,16 @@ export class TitanActor extends Actor {
 
     // Calculate derived stats
     // Initiative = (Mind + Training in Awareness) / 2 rounded up (+ Mod)
-    systemData.initiative.baseValue =
+    systemData.rating.initiative.baseValue =
       systemData.attribute.mind.baseValue +
       systemData.attribute.mind.staticMod +
       systemData.skill.dexterity.training.baseValue +
       systemData.skill.dexterity.training.staticMod +
       systemData.skill.perception.training.baseValue +
       systemData.skill.perception.training.staticMod;
-    systemData.initiative.value =
-      systemData.initiative.baseValue + systemData.initiative.staticMod;
+    systemData.rating.initiative.value =
+      systemData.rating.initiative.baseValue +
+      systemData.rating.initiative.staticMod;
 
     // Awareness = (Mind + Training in Awareness) / 2 rounded up (+ Mod)
     systemData.rating.awareness.baseValue = Math.ceil(
@@ -104,8 +105,7 @@ export class TitanActor extends Actor {
         2
     );
     systemData.rating.defense.value =
-      systemData.rating.defense.baseValue +
-      systemData.rating.defense.staticMod;
+      systemData.rating.defense.baseValue + systemData.rating.defense.staticMod;
 
     // Accuracy = (Mind + Training in Ranged Weapons) / 2 rounded up (+ Mod)
     systemData.rating.accuracy.baseValue = Math.ceil(
@@ -128,8 +128,7 @@ export class TitanActor extends Actor {
         2
     );
     systemData.rating.melee.value =
-      systemData.rating.melee.baseValue +
-      systemData.rating.melee.staticMod;
+      systemData.rating.melee.baseValue + systemData.rating.melee.staticMod;
 
     // Reflexes = (Mind + (Body/2))
     systemData.resistance.reflexes.baseValue =
@@ -386,6 +385,7 @@ export class TitanActor extends Actor {
     // Initialize check options
     let checkOptions = inData;
     checkOptions.actorId = this.id;
+    console.log(this);
     const userTargets = Array.from(game.user.targets);
     if (userTargets[0]) {
       checkOptions.targetId = userTargets[0].document.actorId;

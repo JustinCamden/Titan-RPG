@@ -27,16 +27,18 @@
       {{concat parameters.difficulty ":" parameters.complexity}}
     </h3>
 
-    {{!.rating ratings }}
-    {{#if parameters.targetDefense}}
+    {{! Attack Ratings }}
     <h3 class="check-stats">
-      {{localize (concat "TITAN.rating.option." parameters.attribute ".label")}}
-      {{#if parameters.skill}}
-      {{concat "(" (localize (concat "TITAN.skill.option." parameters.skill ".label")) ")"}}
+      {{#if parameters.targetDefense}}
+      {{#if (equals parameters.type "melee")}}
+      {{localize "TITAN.rating.option.melee.label"}}
+      {{else}}
+      {{localize "TITAN.rating.option.accuracy.label"}}
       {{/if}}
-      {{concat parameters.difficulty ":" parameters.complexity}}
+      {{localize "TITAN.versus.label"}}
+      {{localize "TITAN.rating.option.defense.label"}}
+      {{/if}}
     </h3>
-    {{/if}}
   </div>
 
   {{! Dice Container }}
