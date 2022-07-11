@@ -1247,8 +1247,8 @@ details summary > * {
   width: 50%;
 }
 
-.titan .weapon-sheet .attack-sheet-vertical .attack-field .extra-wide {
-  width: 100%;
+.titan .weapon-sheet .attack-sheet-vertical .attack-field .attack-value.extra-wide {
+  width: 120%;
 }
 
 .titan .weapon-sheet .attack-sheet-vertical .attack-traits-container {
