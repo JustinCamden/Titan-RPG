@@ -300,5 +300,8 @@ export const TITAN = {
         },
       },
     },
+    unarmed: {
+      label: "TITAN.weapon.unarmed.label",
+    },
   },
 };

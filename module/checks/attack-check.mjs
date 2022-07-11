@@ -2,59 +2,36 @@ import TitanUtility from "../helpers/utility.mjs";
 import TitanSkillCheck from "./skill-check.mjs";
 
 export default class TitanAttackCheck extends TitanSkillCheck {
-  constructor(inData) {
-    super(inData);
-    if (!this.isValid) {
-      return this;
-    }
-    // Check if the ID is valid
-    console.log(inData.actorId);
-    if (!inData?.actorId) {
-      console.error(
-        "TITAN | Check failed during construction. No provided Actor ID."
-      );
-      this.isValid = false;
-      return this;
+  _ensureValidConstruction(inData) {
+    if (!super._ensureValidConstruction(inData)) {
+      return false;
     }
 
-    // Check if the actor is valid
-    const checkActor = game.actors.get(inData.actorId);
-    if (!checkActor) {
-      console.error(
-        "TITAN | Check failed during construction. Invalid Actor ID."
-      );
-      this.isValid = false;
-      return this;
-    }
-
-    // Get the weapon
-    const checkWeapon = checkActor.items.get(inData.weaponId);
-    //console.log(checkActor.items);
-    //console.log(inData.weaponId);
-    if (!checkWeapon) {
+    // Check if the weapon is valid
+    const weaponCheckData = inData.weaponCheckData;
+    if (!weaponCheckData) {
       console.log(
-        "TITAN | Check failed during construction. Invalid Weapon ID." + inData
+        "TITAN | Attack Check failed during construction. Invalid Data." +
+          inData
       );
-      this.isValid = false;
-      return this;
+      return false;
     }
 
-    // Get the attack
-    const checkAttack = checkWeapon.system.attack[inData.attackIdx];
+    // Check if the attack is valid
+    const checkAttack = weaponCheckData[inData.attackIdx];
     if (!checkAttack) {
       console.log(
-        "TITAN | Check failed during construction. Invalid Attack IDX." + inData
+        "TITAN | Attack Check failed during construction. Invalid Attack IDX." +
+          inData
       );
-      this.isValid = false;
-      return this;
+      return false;
     }
 
-    // Initialize parameters
-    this.parameters = {
-      actorId: inData.actorId,
-      targetId: inData.targetId ?? false,
-      weaponId: inData.weaponId,
-      attackIdx: inData.attackIdx,
+    return true;
+  }
+
+  _initializeParameters(inData) {
+    const parameters = {
       attribute: inData.attribute ?? false,
       skill: inData.skill ?? false,
       type: inData.type ?? false,
@@ -70,40 +47,17 @@ export default class TitanAttackCheck extends TitanSkillCheck {
       maximizeSuccesses: inData.maximizeSuccesses ?? false,
       extraSuccessOnCritical: inData.extraSuccessOnCritical ?? false,
       extraFailureOnCritical: inData.extraFailureOnCritical ?? false,
+      weaponName: inData.weaponName ?? CONFIG.TITAN.weapon.unarmed.label,
     };
 
-    return this;
+    return parameters;
   }
 
-  _calculateCheckData(actorCheckData) {
+  _calculateCheckData(inData) {
     // Get the weapon reference
-    const checkActor = game.actors.get(this.parameters.actorId);
-    if (!checkActor) {
-      console.error(
-        "TITAN | Attack Check failed during calculatCheckData(). Invalid Actor ID."
-      );
-      this.isValid = false;
-      return this;
-    }
-
-    const checkWeapon = checkActor.items.get(this.parameters.weaponId);
-    if (!checkWeapon) {
-      console.error(
-        "TITAN | Attack Check failed during calculatCheckData(). Invalid Weapon ID."
-      );
-      this.isValid = false;
-      return;
-    }
-
-    // Get the attack reference
-    const checkAttack = checkWeapon.system.attack[this.parameters.attackIdx];
-    if (!checkAttack) {
-      console.error(
-        "TITAN | Attack Check failed during calculateCheckData(). Invalid Weapon ID."
-      );
-      this.isValid = false;
-      return;
-    }
+    const actorCheckData = inData.actorCheckData;
+    const weaponCheckData = inData.weaponCheckData;
+    const checkAttack = weaponCheckData[inData.attackIdx];
 
     // Get the skill
     if (!this.parameters.skill) {
@@ -120,7 +74,9 @@ export default class TitanAttackCheck extends TitanSkillCheck {
 
     // Cache the attack info
     checkData.attack = checkAttack;
-    checkData.weaponName = checkWeapon.name;
+
+    // Cache the weapon info
+    checkData.weaponName = weaponCheckData.name;
 
     // Get the skill training and expertise value
     const skill = actorCheckData.skill[this.parameters.skill];

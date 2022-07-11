@@ -2,23 +2,34 @@ import TitanCheck from "./check.mjs";
 import TitanUtility from "../helpers/utility.mjs";
 
 export default class TitanResistanceCheck extends TitanCheck {
-  // Constructor
-  constructor(inData) {
-    super(inData);
-
-    // Ensure this check is valid
-    if (!this.isValid) {
-      return this;
+  _ensureValidConstruction(inData) {
+    if (!super._ensureValidConstruction(inData)) {
+      return false;
     }
 
-    /// Initialize skill parameters
-    this.parameters.resistance = inData.resistance ?? "reflexes";
+    // Check if actor check data is valid
+    if (!inData?.actorCheckData) {
+      console.error(
+        "TITAN | Resistance Check failed during construction. No provided Actor Check Data."
+      );
+      return false;
+    }
 
-    return this;
+    return true;
   }
 
-  _calculateCheckData(actorCheckData) {
-    const checkData = super._calculateCheckData(actorCheckData);
+  _initializeParameters(inData) {
+    const parameters = super._initializeParameters(inData);
+
+    // Initialize resistance parameters
+    parameters.resistance = inData.resistance ?? "reflexes";
+
+    return parameters;
+  }
+
+  _calculateCheckData(inData) {
+    const checkData = super._calculateCheckData(inData);
+    const actorCheckData = inData.actorCheckData;
 
     // Get the resistance value
     checkData.resistanceDice =

@@ -191,4 +191,9 @@ export class TitanItem extends Item {
 
     return retVal;
   }
+
+  getCheckData() {
+    const systemData = this.system;
+    return systemData;
+  }
 }

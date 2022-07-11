@@ -1,27 +1,39 @@
 import TitanCheck from "./check.mjs";
 
 export default class TitanAttributeCheck extends TitanCheck {
-  // Constructor
-  constructor(inData) {
-    super(inData);
-
-    // Ensure this check is valid
-    if (!this.isValid) {
-      return this;
+  _ensureValidConstruction(inData) {
+    if (!super._ensureValidConstruction(inData)) {
+      return false;
     }
 
-    /// Initialize attribute parameters
-    this.parameters.attribute = inData.attribute ?? "body";
+    // Check if actor check data is valid
+    if (!inData?.actorCheckData) {
+      console.error(
+        "TITAN | Attribute Check failed during construction. No provided Actor Check Data."
+      );
+      return false;
+    }
 
-    return this;
+    return true;
   }
 
-  _calculateCheckData(actorCheckData) {
-    const checkData = super._calculateCheckData(actorCheckData);
+  _initializeParameters(inData) {
+    const parameters = super._initializeParameters(inData);
+
+    // Initialize attribute parameters
+    parameters.attribute = inData.attribute ?? "body";
+
+    return parameters;
+  }
+
+  _calculateCheckData(inData) {
+    const checkData = super._calculateCheckData(inData);
+    const actorCheckData = inData.actorCheckData;
+
+    // Get the attribute dice
     checkData.attributeDice =
       actorCheckData.attribute[this.parameters.attribute].value;
 
-    // Get the skill training and expertise values
     return checkData;
   }
 

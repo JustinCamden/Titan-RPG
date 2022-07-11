@@ -3,33 +3,35 @@ import TitanUtility from "../helpers/utility.mjs";
 export default class TitanCheck {
   // Constructor
   constructor(inData) {
-    // Check if the ID is valid
-    if (!inData?.actorId) {
-      console.error(
-        "TITAN | Check failed during construction. No provided Actor ID."
-      );
-      this.isValid = false;
-      return this;
-    }
-
-    // Check if the actor is valid
-    const checkActor = game.actors.get(inData.actorId);
-    if (!checkActor) {
-      console.error(
-        "TITAN | Check failed during construction. Invalid Actor ID."
-      );
-      this.isValid = false;
+    // Check if the provided data is valid
+    this.isValid = this._ensureValidConstruction(inData);
+    if (!this.isValid) {
       return this;
     }
 
     // Initialize state variables
-    this.isValid = true;
-    this.isPrepared = false;
     this.isEvaluated = false;
 
-    // Initialize Parameters
-    this.parameters = {
-      actorId: inData.actorId,
+    // Initialize the parameters
+    this.parameters = this._initializeParameters(inData);
+
+    // Calculate the check data
+    this.checkData = this._calculateCheckData(inData);
+
+    // Calculate the final data
+    this.finalData = this._calculateFinalData(this.checkData);
+
+    return this;
+  }
+
+  // Ensure the provided input is valid
+  _ensureValidConstruction(inData) {
+    return true;
+  }
+
+  // Initialize Parameters
+  _initializeParameters(inData) {
+    const parameters = {
       difficulty: inData.difficulty
         ? TitanUtility.clamp(inData.difficulty, 2, 6)
         : 4,
@@ -42,37 +44,16 @@ export default class TitanCheck {
       extraFailureOnCritical: inData.extraFailureOnCritical ?? false,
     };
 
-    return this;
+    return parameters;
   }
 
-  // Prepare the check with data from the actor
-  prepareCheck() {
-    const checkActor = game.actors.get(this.parameters.actorId);
-    if (!checkActor) {
-      console.error(
-        "TITAN | Check failed during prepareCheck(). Invalid Actor ID."
-      );
-      this.isValid = false;
-      return false;
-    }
-
-    // Get the check data from the actor
-    const actorCheckData = checkActor.getCheckData();
-    this.checkData = this._calculateCheckData(actorCheckData);
-    this.finalData = this._calculateFinalData(this.checkData);
-
-    this.isPrepared = true;
-
-    return true;
-  }
-
-  _calculateCheckData(actorCheckData) {
-    // Use the check data to calculate the check data
+  // Use the check data to calculate the check data
+  _calculateCheckData(inData) {
     return {};
   }
 
+  // Calculate the final total dice and expertise
   _calculateFinalData(checkData) {
-    // Calculate the final total dice and expertise
     const finalData = {
       totalDice: this.parameters.diceMod,
       totalExpertise: this.parameters.doubleExpertise
@@ -85,13 +66,6 @@ export default class TitanCheck {
 
   // Evaluates the check result
   async evaluateCheck(sendToChat) {
-    // Ensure the check is prepared
-    if (!this.isPrepared) {
-      if (!this.prepareCheck()) {
-        return false;
-      }
-    }
-
     // Get the roll for the check
     this.roll = new Roll(`${this.finalData.totalDice}d6`);
     await this.roll.evaluate({ async: true });

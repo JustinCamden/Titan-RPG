@@ -340,8 +340,9 @@ export class TitanActor extends Actor {
       }
     }
 
-    // Add this actor ID to the check options
-    checkOptions.actorId = this.id;
+    // Get the actor check data
+    const actorCheckData = this.getCheckData();
+    checkOptions.actorCheckData = actorCheckData;
 
     // Check if the skill is none
     if (checkOptions.skill == "none") {
@@ -373,8 +374,11 @@ export class TitanActor extends Actor {
       }
     }
 
+    // Get the actor check data
+    const actorCheckData = this.getCheckData();
+    checkOptions.actorCheckData = actorCheckData;
+
     // Perform the roll
-    checkOptions.actorId = this.id;
     const resistanceCheck = new TitanResistanceCheck(checkOptions);
 
     // Return the data
@@ -382,10 +386,20 @@ export class TitanActor extends Actor {
   }
 
   async getAttackCheck(inData) {
+    // Get the weapon check data.
+    const checkWeapon = this.items.get(inData?.weaponId);
+    if (!checkWeapon) {
+      console.error(
+        "TITAN | Attack check failed. Invalid weapon ID provided to actor"
+      );
+
+      return false;
+    }
+
+    const checkData = this.getCheckData();
+
     // Initialize check options
     let checkOptions = inData;
-    checkOptions.actorId = this.id;
-    console.log(this);
     const userTargets = Array.from(game.user.targets);
     if (userTargets[0]) {
       checkOptions.targetId = userTargets[0].document.actorId;
