@@ -77,9 +77,6 @@ export default class TitanAttackCheck extends TitanSkillCheck {
     // Cache the attack info
     this.parameters.attack = checkAttack;
 
-    // Cache the weapon info
-    this.parameters.weaponName = weaponCheckData.name;
-
     // Get the skill training and expertise value
     const skill = actorCheckData.skill[this.parameters.skill];
     this.parameters.skillTrainingDice = skill.training.value;

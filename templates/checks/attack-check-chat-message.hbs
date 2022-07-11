@@ -8,13 +8,13 @@
       {{label}}
     </h2>
     <h3 class="check-stats">
-      {{concat checkData.weaponName " (" checkData.attack.name ")"}}
+      {{concat parameters.weaponName " (" parameters.attack.name ")"}}
     </h3>
     {{else}}
 
     {{! Use the attack name as the label if there is no label }}
     <h2 class="check-label">
-      {{concat parameters.weaponName " (" checkData.attack.name ")"}}
+      {{concat parameters.weaponName " (" parameters.attack.name ")"}}
     </h2>
     {{/if}}
 
