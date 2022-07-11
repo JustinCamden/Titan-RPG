@@ -239,7 +239,7 @@
             }
           }
         },
-        "attackStats": {
+        "rating": {
           "awareness": {
             "staticMod": 0
           },
@@ -251,10 +251,10 @@
           },
           "accuracy": {
             "staticMod": 0
+          },
+          "initiative": {
+            "staticMod": 0
           }
-        },
-        "initiative": {
-          "staticMod": 0
         },
         "resources": {
           "stamina": {

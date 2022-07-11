@@ -16,25 +16,24 @@ export const TITAN = {
     },
   },
 
-  attackStats: {
+  rating: {
     option: {
       awareness: {
-        label: "TITAN.attackStats.option.awareness.label",
+        label: "TITAN.rating.option.awareness.label",
       },
       defense: {
-        label: "TITAN.attackStats.option.defense.label",
+        label: "TITAN.rating.option.defense.label",
       },
       melee: {
-        label: "TITAN.attackStats.option.melee.label",
+        label: "TITAN.rating.option.melee.label",
       },
       accuracy: {
-        label: "TITAN.attackStats.option.accuracy.label",
+        label: "TITAN.rating.option.accuracy.label",
+      },
+      initiative: {
+        label: "TITAN.rating.option.initiative.label",
       },
     },
-  },
-
-  initiative: {
-    label: "TITAN.attackStats.option.initiative.label",
   },
 
   skill: {

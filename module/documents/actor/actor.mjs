@@ -84,52 +84,52 @@ export class TitanActor extends Actor {
       systemData.initiative.baseValue + systemData.initiative.staticMod;
 
     // Awareness = (Mind + Training in Awareness) / 2 rounded up (+ Mod)
-    systemData.attackStats.awareness.baseValue = Math.ceil(
+    systemData.rating.awareness.baseValue = Math.ceil(
       (systemData.attribute.mind.baseValue +
         systemData.attribute.mind.staticMod +
         systemData.skill.perception.training.baseValue +
         systemData.skill.perception.training.staticMod) /
         2
     );
-    systemData.attackStats.awareness.value =
-      systemData.attackStats.awareness.baseValue +
-      systemData.attackStats.awareness.staticMod;
+    systemData.rating.awareness.value =
+      systemData.rating.awareness.baseValue +
+      systemData.rating.awareness.staticMod;
 
     // Defense = (Body + Training in Dexterity) / 2 rounded up (+ Mod)
-    systemData.attackStats.defense.baseValue = Math.ceil(
+    systemData.rating.defense.baseValue = Math.ceil(
       (systemData.attribute.body.baseValue +
         systemData.attribute.body.staticMod +
         systemData.skill.dexterity.training.baseValue +
         systemData.skill.dexterity.training.staticMod) /
         2
     );
-    systemData.attackStats.defense.value =
-      systemData.attackStats.defense.baseValue +
-      systemData.attackStats.defense.staticMod;
+    systemData.rating.defense.value =
+      systemData.rating.defense.baseValue +
+      systemData.rating.defense.staticMod;
 
     // Accuracy = (Mind + Training in Ranged Weapons) / 2 rounded up (+ Mod)
-    systemData.attackStats.accuracy.baseValue = Math.ceil(
+    systemData.rating.accuracy.baseValue = Math.ceil(
       (systemData.attribute.mind.baseValue +
         systemData.attribute.mind.staticMod +
         systemData.skill.rangedWeapons.training.baseValue +
         systemData.skill.rangedWeapons.training.staticMod) /
         2
     );
-    systemData.attackStats.accuracy.value =
-      systemData.attackStats.accuracy.baseValue +
-      systemData.attackStats.accuracy.staticMod;
+    systemData.rating.accuracy.value =
+      systemData.rating.accuracy.baseValue +
+      systemData.rating.accuracy.staticMod;
 
     // Melee = (Body + Training in Melee Weapons) / 2 rounded up (+ Mod)
-    systemData.attackStats.melee.baseValue = Math.ceil(
+    systemData.rating.melee.baseValue = Math.ceil(
       (systemData.attribute.body.baseValue +
         systemData.attribute.body.staticMod +
         systemData.skill.meleeWeapons.training.baseValue +
         systemData.skill.meleeWeapons.training.staticMod) /
         2
     );
-    systemData.attackStats.melee.value =
-      systemData.attackStats.melee.baseValue +
-      systemData.attackStats.melee.staticMod;
+    systemData.rating.melee.value =
+      systemData.rating.melee.baseValue +
+      systemData.rating.melee.staticMod;
 
     // Reflexes = (Mind + (Body/2))
     systemData.resistance.reflexes.baseValue =
@@ -293,7 +293,7 @@ export class TitanActor extends Actor {
 
   async getInitiativeRoll(inData) {
     // Calculate the initiative value
-    const initiative = this.system.attackStats.initiative.value;
+    const initiative = this.system.rating.initiative.value;
 
     // Get the initiative formula
     let initiativeFormula = "";

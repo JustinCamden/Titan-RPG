@@ -131,11 +131,11 @@ export default class TitanAttackCheck extends TitanSkillCheck {
 
     // Calculate attacker ratings
     if (!this.parameters.attackerMelee) {
-      this.parameters.attackerMelee = actorCheckData.attackStats.melee.value;
+      this.parameters.attackerMelee = actorCheckData.rating.melee.value;
     }
     if (!this.parameters.attackerAccuracy) {
       this.parameters.attackerAccuracy =
-        actorCheckData.attackStats.accuracy.value;
+        actorCheckData.rating.accuracy.value;
     }
 
     // Get the target check data if appropriate
@@ -153,7 +153,7 @@ export default class TitanAttackCheck extends TitanSkillCheck {
       if (targetCheckData != false) {
         // Calculate the defense
         this.parameters.targetDefense =
-          targetCheckData.attackStats.defense.value;
+          targetCheckData.rating.defense.value;
 
         // Calculate the attacker rating
         const attackerRating =
