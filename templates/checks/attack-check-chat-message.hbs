@@ -14,7 +14,7 @@
 
     {{! Use the attack name as the label if there is no label }}
     <h2 class="check-label">
-      {{concat checkData.weaponName " (" checkData.attack.name ")"}}
+      {{concat parameters.weaponName " (" checkData.attack.name ")"}}
     </h2>
     {{/if}}
 
@@ -32,11 +32,13 @@
       {{#if parameters.targetDefense}}
       {{#if (equals parameters.type "melee")}}
       {{localize "TITAN.rating.option.melee.label"}}
+      {{parameters.attackerMelee}}
       {{else}}
       {{localize "TITAN.rating.option.accuracy.label"}}
       {{/if}}
       {{localize "TITAN.versus.label"}}
       {{localize "TITAN.rating.option.defense.label"}}
+      {{parameters.targetDefense}}
       {{/if}}
     </h3>
   </div>

@@ -18,11 +18,10 @@ export default class TitanAttackCheck extends TitanSkillCheck {
     }
 
     // Check if the attack is valid
-    const checkAttack = weaponCheckData[inData.attackIdx];
+    const checkAttack = weaponCheckData.attack[inData.attackIdx];
     if (!checkAttack) {
       console.log(
-        "TITAN | Attack Check failed during construction. Invalid Attack IDX." +
-          inData
+        "TITAN | Attack Check failed during construction. Attack IDX." + inData
       );
       return false;
     }
@@ -47,7 +46,9 @@ export default class TitanAttackCheck extends TitanSkillCheck {
       maximizeSuccesses: inData.maximizeSuccesses ?? false,
       extraSuccessOnCritical: inData.extraSuccessOnCritical ?? false,
       extraFailureOnCritical: inData.extraFailureOnCritical ?? false,
-      weaponName: inData.weaponName ?? CONFIG.TITAN.weapon.unarmed.label,
+      weaponName:
+        inData.weaponName ??
+        game.i18n.localize(CONFIG.TITAN.weapon.unarmed.label),
     };
 
     return parameters;
@@ -57,7 +58,8 @@ export default class TitanAttackCheck extends TitanSkillCheck {
     // Get the weapon reference
     const actorCheckData = inData.actorCheckData;
     const weaponCheckData = inData.weaponCheckData;
-    const checkAttack = weaponCheckData[inData.attackIdx];
+    const targetCheckData = inData.targetCheckData;
+    const checkAttack = weaponCheckData.attack[inData.attackIdx];
 
     // Get the skill
     if (!this.parameters.skill) {
@@ -70,7 +72,7 @@ export default class TitanAttackCheck extends TitanSkillCheck {
     }
 
     // Get the actor data
-    const checkData = super._calculateCheckData(actorCheckData);
+    const checkData = super._calculateCheckData(inData);
 
     // Cache the attack info
     checkData.attack = checkAttack;
@@ -88,30 +90,21 @@ export default class TitanAttackCheck extends TitanSkillCheck {
       this.parameters.type = checkAttack.type;
     }
 
-    // Calculate attacker ratings
+    // Calculate ratings
     if (!this.parameters.attackerMelee) {
       this.parameters.attackerMelee = actorCheckData.rating.melee.value;
     }
     if (!this.parameters.attackerAccuracy) {
       this.parameters.attackerAccuracy = actorCheckData.rating.accuracy.value;
     }
-
-    // Get the target check data if appropriate
-    let targetCheckData = false;
-    if (this.parameters.targetId) {
-      const target = game.actors.get(this.parameters.targetId);
-      if (target) {
-        targetCheckData = target.getCheckData();
-      }
+    if (!this.parameters.targetDefense && targetCheckData) {
+      this.parameters.targetDefense = targetCheckData.rating.defense.value;
     }
 
     // Calculate the difficulty if difficulty was not provided
     if (!this.parameters.difficulty) {
       // If the target is valid
-      if (targetCheckData != false) {
-        // Calculate the defense
-        this.parameters.targetDefense = targetCheckData.rating.defense.value;
-
+      if (this.parameters.targetDefense != false) {
         // Calculate the attacker rating
         const attackerRating =
           this.parameters.type == "melee"

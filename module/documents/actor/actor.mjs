@@ -396,16 +396,8 @@ export class TitanActor extends Actor {
       return false;
     }
 
-    const checkData = this.getCheckData();
-
     // Initialize check options
     let checkOptions = inData;
-    const userTargets = Array.from(game.user.targets);
-    if (userTargets[0]) {
-      checkOptions.targetId = userTargets[0].document.actorId;
-    } else {
-      checkOptions.targetId = false;
-    }
 
     // Get the options from a dialog if appropriate
     if (inData.getOptions) {
@@ -415,6 +407,22 @@ export class TitanActor extends Actor {
       if (checkOptions.cancelled) {
         return;
       }
+    }
+
+    // Add the actor check data to the check options
+    const actorCheckData = this.getCheckData();
+    checkOptions.actorCheckData = actorCheckData;
+
+    // Add the weapon data to the check options
+    const weaponCheckData = checkWeapon.getCheckData();
+    checkOptions.weaponCheckData = weaponCheckData;
+    checkOptions.weaponName = checkWeapon.name;
+
+    // Get the target check data
+    const userTargets = Array.from(game.user.targets);
+    if (userTargets[0]) {
+      const targetCheckData = userTargets[0].document.actor.getCheckData();
+      checkOptions.targetCheckData = targetCheckData;
     }
 
     // Perform the attack
