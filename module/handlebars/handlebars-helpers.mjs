@@ -16,5 +16,6 @@ export const registerHandlebarsHelpers = async function () {
     // Check partials
     "systems/titan/templates/checks/components/check-dice-container.hbs",
     "systems/titan/templates/checks/components/check-results-banner.hbs",
+    "systems/titan/templates/checks/components/check-attribute-skill.hbs",
   ]);
 };

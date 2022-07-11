@@ -42,6 +42,7 @@ export default class TitanAttackCheck extends TitanSkillCheck {
       diceMod: inData.diceMod ?? 0,
       trainingMod: inData.trainingMod ?? 0,
       expertiseMod: inData.expertiseMod ?? 0,
+      damageMod: inData.damageMod ?? 0,
       doubleExpertise: inData.doubleExpertise ?? false,
       maximizeSuccesses: inData.maximizeSuccesses ?? false,
       extraSuccessOnCritical: inData.extraSuccessOnCritical ?? false,
@@ -148,6 +149,21 @@ export default class TitanAttackCheck extends TitanSkillCheck {
     this.parameters.totalExpertise = totalExpertise;
 
     return;
+  }
+
+  _calculateResults() {
+    const results = super._calculateResults();
+    // Add the damage to the results
+    if (results.succeeded) {
+      results.damage = this.parameters.attack.damage;
+
+      // Add extra damage if appropriate
+      if (results.extraSuccesses && this.parameters.attack.plusSuccessDamage) {
+        results.damage += results.extraSuccesses;
+      }
+    }
+
+    return results;
   }
 
   // Creates a dialog for getting options for this skill check

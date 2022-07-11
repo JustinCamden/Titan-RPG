@@ -11,12 +11,21 @@
   </div>
 
   {{! Extra successes }}
+  {{#if results.extraSuccesses}}
   <div class="extra-successes">
-    {{#if results.extraSuccesses}}
     {{localize "TITAN.check.extraSuccesses.label"}}:
     {{results.extraSuccesses}}
-    {{/if}}
   </div>
+  {{/if}}
+
+  {{! Damage }}
+  {{#if results.damage}}
+  <div class="damage">
+    {{localize "TITAN.damage.label"}}:
+    {{results.damage}}
+  </div>
+  {{/if}}
+
 
   {{! Failure Banner }}
   {{else if results.failed}}

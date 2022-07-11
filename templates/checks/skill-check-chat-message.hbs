@@ -10,21 +10,13 @@
 
     {{! Stats rolled }}
     <h3 class="check-stats">
-      {{localize (concat "TITAN.attribute.option." parameters.attribute ".label")}}
-      {{#if parameters.skill}}
-      {{concat "(" (localize (concat "TITAN.skill.option." parameters.skill ".label")) ")"}}
-      {{/if}}
-      {{concat parameters.difficulty ":" parameters.complexity}}
+      {{> "systems/titan/templates/checks/components/check-attribute-skill.hbs"}}
     </h3>
     {{else}}
 
     {{! Use the stats as the label if there is no label }}
     <h2 class="check-label">
-      {{localize (concat "TITAN.attribute.option." parameters.attribute ".label")}}
-      {{#if parameters.skill}}
-      {{concat "(" (localize (concat "TITAN.skill.option." parameters.skill ".label")) ")"}}
-      {{/if}}
-      {{concat parameters.difficulty ":" parameters.complexity}}
+      {{> "systems/titan/templates/checks/components/check-attribute-skill.hbs"}}
     </h2>
     {{/if}}
   </div>
