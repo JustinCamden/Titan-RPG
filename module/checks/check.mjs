@@ -16,10 +16,10 @@ export default class TitanCheck {
     this.parameters = this._initializeParameters(inData);
 
     // Calculate the check data
-    this.checkData = this._calculateCheckData(inData);
+    this._calculateDerivedData(inData);
 
     // Calculate the final data
-    this.finalData = this._calculateFinalData(this.checkData);
+    this._calculateTotalDiceAndExpertise();
 
     return this;
   }
@@ -48,26 +48,24 @@ export default class TitanCheck {
   }
 
   // Use the check data to calculate the check data
-  _calculateCheckData(inData) {
-    return {};
+  _calculateDerivedData(inData) {
+    return;
   }
 
   // Calculate the final total dice and expertise
-  _calculateFinalData(checkData) {
-    const finalData = {
-      totalDice: this.parameters.diceMod,
-      totalExpertise: this.parameters.doubleExpertise
-        ? this.parameters.expertiseMod * 2
-        : this.parameters.expertiseMod,
-    };
+  _calculateTotalDiceAndExpertise() {
+    this.parameters.totalDice = this.parameters.diceMod;
+    this.parameters.totalExpertise = this.parameters.doubleExpertise
+      ? this.parameters.expertiseMod * 2
+      : this.parameters.expertiseMod;
 
-    return finalData;
+    return;
   }
 
   // Evaluates the check result
   async evaluateCheck(sendToChat) {
     // Get the roll for the check
-    this.roll = new Roll(`${this.finalData.totalDice}d6`);
+    this.roll = new Roll(`${this.parameters.totalDice}d6`);
     await this.roll.evaluate({ async: true });
 
     // Calculate the results of the check
@@ -84,7 +82,7 @@ export default class TitanCheck {
       criticalFailures: 0,
       criticalSuccesses: 0,
       successes: 0,
-      expertiseRemaining: this.finalData.totalExpertise,
+      expertiseRemaining: this.parameters.totalExpertise,
     };
 
     // Sort the dice from the check from largest to smallist
@@ -240,8 +238,8 @@ export default class TitanCheck {
     const messageData = {
       label: inData.label ? inData.label : false,
       parameters: this.parameters,
-      checkData: this.checkData,
-      finalData: this.finalData,
+      checkData: this.parameters,
+      finalData: this.parameters,
       results: this.results,
     };
 

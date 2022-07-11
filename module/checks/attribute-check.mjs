@@ -26,32 +26,30 @@ export default class TitanAttributeCheck extends TitanCheck {
     return parameters;
   }
 
-  _calculateCheckData(inData) {
-    const checkData = super._calculateCheckData(inData);
+  _calculateDerivedData(inData) {
+    super._calculateDerivedData(inData);
     const actorCheckData = inData.actorCheckData;
 
     // Get the attribute dice
-    checkData.attributeDice =
+    this.parameters.attributeDice =
       actorCheckData.attribute[this.parameters.attribute].value;
 
-    return checkData;
+    return;
   }
 
-  _calculateFinalData(checkData) {
-    // Calculate the final total dice and expertise
-    const finalData = super._calculateFinalData(checkData);
-
+  _calculateTotalDiceAndExpertise() {
     // Calculate the total training dice
     // Add the training dice to the total dice
-    finalData.totalDice = this.parameters.diceMod + checkData.attributeDice;
+    this.parameters.totalDice =
+      this.parameters.diceMod + this.parameters.attributeDice;
 
     // Calculcate the total expertise
     const totalExpertise = this.parameters.expertiseMod;
     if (this.parameters.doubleExpertise) {
       totalExpertise *= 2;
     }
-    finalData.totalExpertise = totalExpertise;
+    this.parameters.totalExpertise = totalExpertise;
 
-    return finalData;
+    return;
   }
 }

@@ -54,7 +54,7 @@ export default class TitanAttackCheck extends TitanSkillCheck {
     return parameters;
   }
 
-  _calculateCheckData(inData) {
+  _calculateDerivedData(inData) {
     // Get the weapon reference
     const actorCheckData = inData.actorCheckData;
     const weaponCheckData = inData.weaponCheckData;
@@ -72,18 +72,18 @@ export default class TitanAttackCheck extends TitanSkillCheck {
     }
 
     // Get the actor data
-    const checkData = super._calculateCheckData(inData);
+    super._calculateDerivedData(inData);
 
     // Cache the attack info
-    checkData.attack = checkAttack;
+    this.parameters.attack = checkAttack;
 
     // Cache the weapon info
-    checkData.weaponName = weaponCheckData.name;
+    this.parameters.weaponName = weaponCheckData.name;
 
     // Get the skill training and expertise value
     const skill = actorCheckData.skill[this.parameters.skill];
-    checkData.skillTrainingDice = skill.training.value;
-    checkData.skillExpertise = skill.expertise.value;
+    this.parameters.skillTrainingDice = skill.training.value;
+    this.parameters.skillExpertise = skill.expertise.value;
 
     // Get the attack type
     if (!this.parameters.type) {
@@ -122,33 +122,35 @@ export default class TitanAttackCheck extends TitanSkillCheck {
       }
     }
 
-    return checkData;
+    return;
   }
 
-  _calculateFinalData(checkData) {
+  _calculateTotalDiceAndExpertise(checkData) {
     // Calculate the final total dice and expertise
-    const finalData = super._calculateFinalData(checkData);
+    super._calculateTotalDiceAndExpertise(checkData);
 
     // Calculate the total training dice
     const totalTrainingDice =
-      checkData.skillTrainingDice + this.parameters.trainingMod;
+      this.parameters.skillTrainingDice + this.parameters.trainingMod;
     if (this.parameters.doubleTraining) {
       totalTrainingDice *= 2;
     }
 
     // Add the training dice to the total dice
-    finalData.totalDice =
-      this.parameters.diceMod + checkData.attributeDice + totalTrainingDice;
+    this.parameters.totalDice =
+      this.parameters.diceMod +
+      this.parameters.attributeDice +
+      totalTrainingDice;
 
     // Calculcate the total expertise
     const totalExpertise =
-      checkData.skillExpertise + this.parameters.expertiseMod;
+      this.parameters.skillExpertise + this.parameters.expertiseMod;
     if (this.parameters.doubleExpertise) {
       totalExpertise *= 2;
     }
-    finalData.totalExpertise = totalExpertise;
+    this.parameters.totalExpertise = totalExpertise;
 
-    return finalData;
+    return;
   }
 
   // Creates a dialog for getting options for this skill check
