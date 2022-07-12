@@ -10,9 +10,10 @@
   margin-bottom: .5rem;
   font-weight: bold;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content:center;
   align-items: center;
+  width: 100%;
 
   .action-category-name {
     padding: 0px;

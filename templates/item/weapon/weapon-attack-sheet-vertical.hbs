@@ -4,15 +4,8 @@
   <div class="attack-header">
 
     {{! Name }}
-    <div class="attack-name">
-
-      {{! Label }}
-      <label class="attack-name-label">{{localize "TITAN.name.label"}}: </label>
-
-      {{! Input }}
-      <input class="attack-name-input edit-attack-name" type="text" value="{{attack.name}}" data-idx={{key}}
-        data-dtype="text" />
-    </div>
+    <input class="attack-name edit-attack-name" type="text" value="{{attack.name}}" data-idx={{key}}
+      data-dtype="text" />
 
     {{! Controls }}
     <div class="attack-controls">

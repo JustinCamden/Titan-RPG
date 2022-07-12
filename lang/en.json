@@ -79,6 +79,8 @@
 
   "TITAN.attack.label": "Attack",
   "TITAN.attacks.label": "Attacks",
+  "TITAN.attack.normal.label": "Normal Attack",
+  "TITAN.attack.multi.label": "Multi Attack",
   "TITAN.attack.type.option.melee.label": "Melee",
   "TITAN.attack.type.option.ranged.label": "Ranged",
   "TITAN.attack.description.label": "Attack Description",
@@ -87,6 +89,7 @@
   "TITAN.attack.trait.option.close.label": "Close",
   "TITAN.attack.trait.option.crushing.label": "Crushing",
   "TITAN.attack.trait.option.defensive.label": "Defensive",
+  "TITAN.attack.trait.option.dualAttack.label": "Dual-Attack",
   "TITAN.attack.trait.option.ineffective.label": "Ineffective",
   "TITAN.attack.trait.option.loud.label": "Loud",
   "TITAN.attack.trait.option.magical.label": "Magical",

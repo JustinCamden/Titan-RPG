@@ -54,8 +54,6 @@
       .weapon-rarity {
         margin-right: 0.5rem;
       }
-      .weapon-value {
-      }
     }
   }
 
@@ -121,14 +119,11 @@
         justify-content:flex-start;
         align-items: center;
         text-align: start;
-        width: 60%;
-
-        .attack-name-label {
-          font-weight: bold;
-        }
+        width: 100%;
   
         .attack-name-input {
           margin: .25rem;
+          margin-left: 0.5rem;
         }
       }
 

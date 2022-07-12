@@ -50,6 +50,7 @@ export default class TitanAttackCheck extends TitanSkillCheck {
       weaponName:
         inData.weaponName ??
         game.i18n.localize(CONFIG.TITAN.weapon.unarmed.label),
+      multiAttack: inData.multiAttack ?? false,
     };
 
     return parameters;
@@ -147,6 +148,14 @@ export default class TitanAttackCheck extends TitanSkillCheck {
       totalExpertise *= 2;
     }
     this.parameters.totalExpertise = totalExpertise;
+
+    // Calculate the dice and expertise if this is a multi-attack
+    if (this.parameters.multiAttack) {
+      this.parameters.totalDice = Math.floor(this.parameters.totalDice / 2);
+      this.parameters.totalExpertise = Math.floor(
+        this.parameters.totalExpertise / 2
+      );
+    }
 
     return;
   }
