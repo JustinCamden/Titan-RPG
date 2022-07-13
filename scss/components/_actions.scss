@@ -11,7 +11,7 @@
   font-weight: bold;
   display: flex;
   flex-direction: column;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   width: 100%;
 
@@ -41,7 +41,11 @@
     border: solid;
     border-radius: 10px;
     margin-bottom: .5rem;
-    &:last-child {margin-bottom: 1rem;  }
+
+    &:last-child {
+      margin-bottom: 1rem;
+    }
+
     /* .action-name {
       color: $c-dark;
       .action-image {
@@ -58,6 +62,7 @@
       flex-direction: row;
       justify-content: space-between;
       width: 100%;
+      margin-bottom: 0.5rem;
 
       .action-label {
         display: flex;
@@ -76,42 +81,62 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+
         .fas {
           margin-left: 0.25rem;
         }
       }
-    }
 
-    .weapon-actions {
-      margin-top: 0.25rem;
+      .action-details {
+        word-wrap: break-word;
 
-      .weapon-attacks {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-  
-        .weapon-attack {
-          padding: .25rem;
-          border: solid;
-          border-radius: 10px;
-          margin-right: 0.5rem;
+        .action-footer {
+          font-weight: bold;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          text-align: center;
         }
       }
     }
 
-    .action-details {
-      word-wrap: break-word;
+    .action-settings {
+      margin: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-end;
+    }
 
-      .action-footer {
-        font-weight: bold;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        text-align: center;
+    .action-checkbox {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .weapon-options {
+    .weapon-attacks {
+      margin: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex;
+      flex-wrap: wrap;
+
+      .weapon-attack {
+        padding: .25rem;
+        border: solid;
+        border-radius: 10px;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
       }
     }
+
+    margin-bottom: 0;
   }
 }

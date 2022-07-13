@@ -24,8 +24,8 @@
     </h3>
 
     {{! Attack Ratings }}
+    {{#if parameters.targetDefense}}
     <h3 class="check-stats">
-      {{#if parameters.targetDefense}}
       {{#if (equals parameters.type "melee")}}
       {{localize "TITAN.rating.option.melee.label"}}
       {{parameters.attackerMelee}}
@@ -36,8 +36,16 @@
       {{localize "TITAN.versus.label"}}
       {{localize "TITAN.rating.option.defense.label"}}
       {{parameters.targetDefense}}
-      {{/if}}
     </h3>
+    {{/if}}
+
+    {{! Multi-Attack }}
+    {{#if parameters.multiAttack}}
+    <h3 class="check-stats">
+      {{localize "TITAN.attack.multi.label"}}
+    </h3>
+    {{/if}}
+
   </div>
 
   {{! Dice Container }}

@@ -5,29 +5,36 @@
     </div>
 
     {{! Attacks }}
-    <ol class="action-list">
+    <ol class="item-list action-list">
         {{! For each weapon }}
         {{#each weapon as |weapon key|}}
-        <li class="action weapon expandable-parent" data-weapon-id={{weapon._id}} data-expandable-id={{concat 'action'
-            weapon._id}}>
+        <li class="item action weapon expandable-parent" data-item-id={{weapon._id}} data-weapon-id={{weapon._id}}
+            data-expandable-id={{concat 'action' weapon._id}}>
             {{! Expandable Header }}
             <div class="action-header">
 
                 {{! Label }}
-                <a class="action-label expand">
+                <a class="action-label">
                     <img class="action-image" src="{{weapon.img}}" />
                     <span class="action-name">{{weapon.name}}</span>
                 </a>
 
-                {{! Controls}}
+                {{! Controls }}
                 <div class="action-controls">
-                    <a class="fas fa-edit action-edit"></a>
-                    <a class="fas fa-trash action-delete"></a>
+
+                    {{! Expand }}
+                    <a class="fas fa-angles-down expand"></a>
+
+                    {{! Edit }}
+                    <a class="fas fa-edit item-edit"></a>
+
+                    {{! Delete }}
+                    <a class="fas fa-trash item-delete"></a>
                 </div>
             </div>
 
-            {{! Weapon Actions }}
-            <div class="weapon-actions">
+            <div class="grid grid-2col weapon-options">
+                {{! Weapon Attacks }}
                 <div class="weapon-attacks">
                     {{#each weapon.system.attack as |attack idx|}}
                     <a class="weapon-attack attack-check" data-attack-idx={{idx}}>
@@ -35,7 +42,16 @@
                     </a>
                     {{/each}}
                 </div>
+
+                {{! Settings}}
+                <div class="action-settings">
+                    <div class="action-checkbox">
+                        {{localize "TITAN.attack.multi.label"}}?
+                        <input class="toggle-multi-attack" type="checkbox" {{checked weapon.system.multiAttack}} />
+                    </div>
+                </div>
             </div>
+
 
             {{! Expandable Content }}
             <div class="action-details expandable-content {{#unless (lookup ../isExpanded (concat 'action' weapon._id))}}

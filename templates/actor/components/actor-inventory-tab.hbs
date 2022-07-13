@@ -1,5 +1,5 @@
 {{! Item Tab }}
-<div class="grid grid-3col actor-inventory-tab">
+<div class="grid grid-3col actor-inventory-tab inventory">
   {{! Weapons }}
   <div>
     {{! Weapons Header }}
@@ -17,14 +17,21 @@
         <div class="item-header">
 
           {{! Label }}
-          <a class="item-label expand">
+          <a class="item-label">
             <img class="item-image" src="{{weapon.img}}" />
             <span class="item-name">{{weapon.name}}</span>
           </a>
 
           {{! Controls}}
           <div class="item-controls">
+
+            {{! Expand }}
+            <a class="fas fa-angles-down expand"></a>
+
+            {{! Edit }}
             <a class="fas fa-edit item-edit"></a>
+
+            {{! Delete }}
             <a class="fas fa-trash item-delete"></a>
           </div>
         </div>

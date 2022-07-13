@@ -209,7 +209,7 @@ export const TITAN = {
           label: "TITAN.attack.trait.option.crushing.label",
         },
         dualAttack: {
-          label: "TITAN.attack.trait.option.crushing.label",
+          label: "TITAN.attack.trait.option.dualAttack.label",
         },
         defensive: {
           label: "TITAN.attack.trait.option.defensive.label",

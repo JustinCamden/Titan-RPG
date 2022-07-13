@@ -50,7 +50,7 @@ export default class TitanAttackCheck extends TitanSkillCheck {
       weaponName:
         inData.weaponName ??
         game.i18n.localize(CONFIG.TITAN.weapon.unarmed.label),
-      multiAttack: inData.multiAttack ?? false,
+      multiAttack: inData.multiAttack ?? null,
     };
 
     return parameters;
@@ -121,6 +121,22 @@ export default class TitanAttackCheck extends TitanSkillCheck {
       }
     }
 
+    // Calculate whether this is a multi-attack
+    if (this.parameters.multiAttack == null) {
+      this.parameters.multiAttack = weaponCheckData.multiAttack;
+    }
+
+    // Calculate whether this is a dual attack
+    if (this.parameters.multiAttack) {
+      const traits = checkAttack.traits;
+      for (let idx = 0; idx < traits.length; idx++) {
+        if (traits[idx].name == "dualAttack") {
+          this.parameters.dualAttack = true;
+          break;
+        }
+      }
+    }
+
     return;
   }
 
@@ -149,9 +165,15 @@ export default class TitanAttackCheck extends TitanSkillCheck {
     }
     this.parameters.totalExpertise = totalExpertise;
 
-    // Calculate the dice and expertise if this is a multi-attack
+    // Adjust the dice and expertise if this is a multi-attack
     if (this.parameters.multiAttack) {
-      this.parameters.totalDice = Math.floor(this.parameters.totalDice / 2);
+      // Round the total dice up if this is a dual attack
+      // Otherwise, round down
+      this.parameters.totalDice = this.parameters.dualAttack
+        ? Math.ceil(this.parameters.totalDice / 2)
+        : Math.floor(this.parameters.totalDice / 2);
+
+      // Round the expertise down
       this.parameters.totalExpertise = Math.floor(
         this.parameters.totalExpertise / 2
       );

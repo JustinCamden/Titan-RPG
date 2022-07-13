@@ -356,7 +356,8 @@
         "skill": "meleeWeapons",
         "damage": 1,
         "plusSuccessDamage": true,
-        "traits": []
+        "traits": [],
+        "multiAttack": false
       }],
       "attackDescription": "",
       "grip": "oneHanded",

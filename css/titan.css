@@ -453,7 +453,7 @@ details summary > * {
   /*  Actions Lists                              */
   /* ----------------------------------------- */
   /* ----------------------------------------- */
-  /*  Items Lists                              */
+  /*  Inventory Items                          */
   /* ----------------------------------------- */
   /* ----------------------------------------- */
   /*  Items Lists                              */
@@ -543,6 +543,7 @@ details summary > * {
   -ms-flex-pack: justify;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 0.5rem;
 }
 
 .titan .action-list .action .action-header .action-label {
@@ -586,38 +587,11 @@ details summary > * {
   margin-left: 0.25rem;
 }
 
-.titan .action-list .action .weapon-actions {
-  margin-top: 0.25rem;
-}
-
-.titan .action-list .action .weapon-actions .weapon-attacks {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-.titan .action-list .action .weapon-actions .weapon-attacks .weapon-attack {
-  padding: .25rem;
-  border: solid;
-  border-radius: 10px;
-  margin-right: 0.5rem;
-}
-
-.titan .action-list .action .action-details {
+.titan .action-list .action .action-header .action-details {
   word-wrap: break-word;
 }
 
-.titan .action-list .action .action-details .action-footer {
+.titan .action-list .action .action-header .action-details .action-footer {
   font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -633,6 +607,72 @@ details summary > * {
   -ms-flex-align: center;
   align-items: center;
   text-align: center;
+}
+
+.titan .action-list .action .action-settings {
+  margin: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
+.titan .action-list .action .action-checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.titan .action-list .weapon-options {
+  margin-bottom: 0;
+}
+
+.titan .action-list .weapon-options .weapon-attacks {
+  margin: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: flex;
+  -ms-flex-align: flex;
+  align-items: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.titan .action-list .weapon-options .weapon-attacks .weapon-attack {
+  padding: .25rem;
+  border: solid;
+  border-radius: 10px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .titan.check .dice-container {
@@ -820,7 +860,7 @@ details summary > * {
   font-weight: bold;
 }
 
-.titan .item-list-header {
+.titan .inventory .item-list-header {
   word-wrap: normal;
   padding: .5rem;
   border: solid;
@@ -842,14 +882,14 @@ details summary > * {
   align-items: center;
 }
 
-.titan .item-list-header .item-category-name {
+.titan .inventory .item-list-header .item-category-name {
   padding: 0px;
   border-bottom: 0;
   font-weight: 300;
   font-size: 1.25rem;
 }
 
-.titan .item-list {
+.titan .inventory .item-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -858,7 +898,7 @@ details summary > * {
   color: #444;
 }
 
-.titan .item-list .item {
+.titan .inventory .item-list .item {
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
   break-inside: avoid;
@@ -871,23 +911,13 @@ details summary > * {
   border: solid;
   border-radius: 10px;
   margin-bottom: .5rem;
-  /* .item-name {
-      color: $c-dark;
-      .item-image {
-        flex: 0 0 30px;
-        height: 30px;
-        background-size: 30px;
-        border: none;
-        margin-right: 5px;
-      }
-    } */
 }
 
-.titan .item-list .item:last-child {
+.titan .inventory .item-list .item:last-child {
   margin-bottom: 1rem;
 }
 
-.titan .item-list .item .item-header {
+.titan .inventory .item-list .item .item-header {
   font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -901,7 +931,7 @@ details summary > * {
   justify-content: space-between;
 }
 
-.titan .item-list .item .item-header .item-label {
+.titan .inventory .item-list .item .item-header .item-label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -917,12 +947,12 @@ details summary > * {
   align-items: center;
 }
 
-.titan .item-list .item .item-header .item-label .item-image {
+.titan .inventory .item-list .item .item-header .item-label .item-image {
   height: 2rem;
   border: none;
 }
 
-.titan .item-list .item .item-header .item-controls {
+.titan .inventory .item-list .item .item-header .item-controls {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -938,15 +968,15 @@ details summary > * {
   align-items: center;
 }
 
-.titan .item-list .item .item-header .item-controls .fas {
+.titan .inventory .item-list .item .item-header .item-controls .fas {
   margin-left: 0.25rem;
 }
 
-.titan .item-list .item .item-details {
+.titan .inventory .item-list .item .item-details {
   word-wrap: break-word;
 }
 
-.titan .item-list .item .item-details .item-footer {
+.titan .inventory .item-list .item .item-details .item-footer {
   margin-top: 0.25rem;
   font-weight: bold;
   display: -webkit-box;

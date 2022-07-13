@@ -202,6 +202,11 @@ export class TitanActorSheet extends ActorSheet {
 
     // Weapon Attack
     html.find(".attack-check").click(this._onAttackCheck.bind(this));
+
+    // Weapon multi attack
+    html
+      .find(".toggle-multi-attack")
+      .change(this._onToggleMultiAttack.bind(this));
   }
 
   /**
@@ -504,6 +509,22 @@ export class TitanActorSheet extends ActorSheet {
     // Delete the entries from the expanded array
     delete this.isExpanded["inventory" + itemId];
     delete this.isExpanded["actions" + itemId];
+
+    return;
+  }
+
+  async _onToggleMultiAttack(event) {
+    // Get the weapon ID
+    const weaponId = event.currentTarget.closest(".weapon").dataset.weaponId;
+
+    // Enable multi attack
+    const weapon = this.actor.items.get(weaponId);
+    const enabled = event.target.checked;
+    await weapon.update({
+      system: {
+        multiAttack: enabled,
+      },
+    });
 
     return;
   }
