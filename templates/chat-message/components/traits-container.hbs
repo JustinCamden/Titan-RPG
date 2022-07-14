@@ -1,0 +1,8 @@
+{{! Traits }}
+<div class="traits-container">
+    {{#each traits as |trait key|}}
+    <div class="trait">
+        {{localize (concat ../path trait.name ".label")}}
+    </div>
+    {{/each}}
+</div>

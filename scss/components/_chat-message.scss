@@ -1,0 +1,26 @@
+&.titan-chat-message {
+    .traits-container {
+        display: flex;
+        flex-direction: row;
+        flex-direction: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-bottom: 0.5rem;
+
+        .trait {
+            margin-bottom: 0.5rem;
+            margin-right: 0.5rem;
+            border: solid;
+            border-radius: 10px;
+            padding: 0.25rem;
+        }
+    }
+
+    .description {
+        margin-top: 0.5rem;
+        border: solid;
+        border-radius: 10px;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}

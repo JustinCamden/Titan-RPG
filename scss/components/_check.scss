@@ -4,7 +4,7 @@
         padding: 0;
         list-style: none;
         font-size: 2rem;
-        display:flex;
+        display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
@@ -12,31 +12,38 @@
         text-align: center;
         padding: 0.25rem;
         width: 100%;
-    
-        .die{
+
+        .die {
             margin-left: 0.5rem;
             margin-bottom: 0.25rem;
+
             &:first-child {
                 margin-left: 0;
             }
+
             &.critical-success {
                 background-color: lightskyblue;
             }
+
             &.success {
-                background-color:lightgreen;
+                background-color: lightgreen;
             }
+
             &.failure {
-                background-color:gold;
+                background-color: gold;
             }
+
             &.critical-failure {
-                background-color:lightsalmon;
+                background-color: lightsalmon;
             }
+
             width: 3rem;
             border: solid;
             border-radius: 10px;
             border-color: black;
+
             &.expertise-applied {
-                border-color:blue;
+                border-color: blue;
                 width: 5.5rem;
             }
         }
@@ -57,14 +64,14 @@
 
         .succeeded {
             font-size: 1.5rem;
-            color:darkblue;
+            color: darkblue;
         }
 
         .extra-successes {
             color: black;
             font-size: 1.25rem;
         }
-        
+
         .failed {
             color: darkred;
             font-size: 1.5rem;

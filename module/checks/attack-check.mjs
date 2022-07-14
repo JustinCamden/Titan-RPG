@@ -63,6 +63,11 @@ export default class TitanAttackCheck extends TitanSkillCheck {
     const targetCheckData = inData.targetCheckData;
     const checkAttack = weaponCheckData.attack[inData.attackIdx];
 
+    // Get the attack description
+    if (weaponCheckData.attackDescription) {
+      this.parameters.attackDescription = weaponCheckData.attackDescription;
+    }
+
     // Get the skill
     if (!this.parameters.skill) {
       this.parameters.skill = checkAttack.skill;

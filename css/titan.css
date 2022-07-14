@@ -1315,3 +1315,37 @@ details summary > * {
   font-weight: normal;
   margin: 0.25rem;
 }
+
+.titan.titan-chat-message .traits-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  flex-direction: wrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.titan.titan-chat-message .traits-container .trait {
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  border: solid;
+  border-radius: 10px;
+  padding: 0.25rem;
+}
+
+.titan.titan-chat-message .description {
+  margin-top: 0.5rem;
+  border: solid;
+  border-radius: 10px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
