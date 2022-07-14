@@ -13,6 +13,8 @@ export const preloadHandlebarsTemplates = async function () {
     "systems/titan/templates/item/weapon/components/weapon-description-tab.hbs",
     "systems/titan/templates/item/weapon/components/weapon-attacks-tab.hbs",
     "systems/titan/templates/item/weapon/components/weapon-attack-sheet-vertical.hbs",
+    "systems/titan/templates/item/components/item-rarity.hbs",
+    "systems/titan/templates/item/components/item-value.hbs",
 
     // Chat message partials
     "systems/titan/templates/chat-message/components/traits-container.hbs",

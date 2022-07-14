@@ -196,4 +196,51 @@ export class TitanItem extends Item {
     const systemData = this.system;
     return systemData;
   }
+
+  async sendToChat(inData) {
+    // Setup the data to display
+    // Create the html
+    const messageData = {
+      system: this.system,
+      name: this.name,
+    };
+    const chatContent = await renderTemplate(
+      this._getChatTemplate(),
+      messageData
+    );
+
+    // Create and post the message
+    const messageClass = getDocumentClass("ChatMessage");
+    this.chatMessage = messageClass.create(
+      messageClass.applyRollMode(
+        {
+          user: inData.user ? inData.user : game.user.id,
+          speaker: inData.speaker,
+          content: chatContent,
+          type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+          sound: CONFIG.sounds.notification,
+        },
+        inData.rollMode
+          ? inData.rollMode
+          : game.settings.get("core", "rollMode")
+      )
+    );
+
+    return this.chatMessage;
+  }
+
+  // Gets the chat template for the item
+  _getChatTemplate() {
+    switch (this.type) {
+      // Weapon
+      case "weapon": {
+        return "systems/titan/templates/item/weapon/weapon-chat-message.hbs";
+      }
+
+      // Default
+      default: {
+        return;
+      }
+    }
+  }
 }

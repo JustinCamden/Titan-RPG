@@ -387,7 +387,7 @@ export class TitanActor extends Actor {
 
   async getAttackCheck(inData) {
     // Get the weapon check data.
-    const checkWeapon = this.items.get(inData?.weaponId);
+    const checkWeapon = this.items.get(inData?.itemId);
     if (!checkWeapon) {
       console.error(
         "TITAN | Attack check failed. Invalid weapon ID provided to actor"

@@ -1,0 +1,70 @@
+<div class="titan item weapon titan-chat-message">
+
+  {{! Name }}
+  <h2 class="name">
+    {{name}}
+  </h2>
+
+  {{! Attacks }}
+  {{#each system.attack as |attack|}}
+  <div class="attack-sheet">
+
+    {{! Name}}
+    <h3 class="name">
+      {{attack.name}}
+    </h3>
+
+    {{! Stats}}
+    <div class="stats">
+
+      {{! Type }}
+      <div class="stat">
+        {{localize (concat "TITAN.attack.type.option." attack.type ".label")}}
+      </div>
+
+      {{! Range }}
+      <div class="stat">
+        {{localize (concat "TITAN.range.option." attack.range ".label")}}
+      </div>
+
+      {{! Attribute }}
+      <div class="stat">
+        {{localize (concat "TITAN.attribute.option." attack.attribute ".label")}}
+      </div>
+
+      {{! Skill }}
+      <div class="stat">
+        {{localize (concat "TITAN.skill.option." attack.skill ".label")}}
+      </div>
+
+      {{! Damage }}
+      {{#if attack.plusSuccessDamage}}
+      <div class="stat">
+        {{concat attack.damage "+S " (localize "TITAN.damage.label")}}
+      </div>
+      {{else}}
+      <div class="stat">
+        {{concat attack.damage " " (localize "TITAN.damage.label")}}
+      </div>
+      {{/if}}
+
+      {{! Traits }}
+      {{#each attack.traits as |trait|}}
+      <div class="stat">
+        {{localize (concat "TITAN.attack.trait.option." trait.name ".label")}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+  {{/each}}
+
+  {{! Rarity and Value}}
+  <div class="stats">
+    {{> "systems/titan/templates/item/components/item-rarity.hbs"}}
+    {{> "systems/titan/templates/item/components/item-value.hbs"}}
+  </div>
+
+  {{! Descriptions }}
+  {{> "systems/titan/templates/chat-message/components/description.hbs" description=system.description}}
+  {{> "systems/titan/templates/chat-message/components/description.hbs" description=system.attackDescription}}
+</div>

@@ -238,8 +238,6 @@ export default class TitanCheck {
     const messageData = {
       label: inData.label ? inData.label : false,
       parameters: this.parameters,
-      checkData: this.parameters,
-      finalData: this.parameters,
       results: this.results,
     };
 

@@ -207,6 +207,9 @@ export class TitanActorSheet extends ActorSheet {
     html
       .find(".toggle-multi-attack")
       .change(this._onToggleMultiAttack.bind(this));
+
+    // Weapon multi attack
+    html.find(".send-item-to-chat").click(this._onSendItemToChat.bind(this));
   }
 
   /**
@@ -367,7 +370,7 @@ export class TitanActorSheet extends ActorSheet {
 
   async _onAttackCheck(event) {
     // Get the weapon id
-    const weaponId = event.currentTarget.closest(".weapon").dataset.weaponId;
+    const itemId = event.currentTarget.closest(".weapon").dataset.itemId;
 
     // Get the attack idx
     const dataset = event.currentTarget.dataset;
@@ -379,7 +382,7 @@ export class TitanActorSheet extends ActorSheet {
       (dataset.getOptions == "default" && event.shiftKey);
 
     return await this.getAttackCheck({
-      weaponId: weaponId,
+      itemId: itemId,
       attackIdx: attackIdx,
       getOptions: getOptions,
     });
@@ -515,15 +518,30 @@ export class TitanActorSheet extends ActorSheet {
 
   async _onToggleMultiAttack(event) {
     // Get the weapon ID
-    const weaponId = event.currentTarget.closest(".weapon").dataset.weaponId;
+    const itemId = event.currentTarget.closest(".weapon").dataset.itemId;
 
     // Enable multi attack
-    const weapon = this.actor.items.get(weaponId);
+    const weapon = this.actor.items.get(itemId);
     const enabled = event.target.checked;
     await weapon.update({
       system: {
         multiAttack: enabled,
       },
+    });
+
+    return;
+  }
+
+  async _onSendItemToChat(event) {
+    // Get the item
+    const itemId = event.currentTarget.closest(".item").dataset.itemId;
+    const item = this.actor.items.get(itemId);
+
+    // Post the item to chat
+    await item.sendToChat({
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      rollMode: game.settings.get("core", "rollMode"),
     });
 
     return;

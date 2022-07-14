@@ -8,13 +8,13 @@
     <ol class="item-list action-list">
         {{! For each weapon }}
         {{#each weapon as |weapon key|}}
-        <li class="item action weapon expandable-parent" data-item-id={{weapon._id}} data-weapon-id={{weapon._id}}
+        <li class="item action weapon expandable-parent" data-item-id={{weapon._id}}
             data-expandable-id={{concat 'action' weapon._id}}>
             {{! Expandable Header }}
             <div class="action-header">
 
                 {{! Label }}
-                <a class="action-label">
+                <a class="action-label send-item-to-chat">
                     <img class="action-image" src="{{weapon.img}}" />
                     <span class="action-name">{{weapon.name}}</span>
                 </a>
