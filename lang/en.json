@@ -121,10 +121,11 @@
   "TITAN.inventory.label": "Inventory",
   "TITAN.damage.label": "Damage",
   "TITAN.name.label": "Name",
-  "TITAN.plusSuccessDamage.label": "+S Damage",
+  "TITAN.plusSuccessDamage.label": "+ES Damage",
   "TITAN.traits.label": "Traits",
   "TITAN.trait.edit.label": "Edit Traits",
   "TITAN.versus.label": "vs.",
+  "TITAN.sendToChat.label": "Send to Chat",
 
 
   "SETTINGS.showCheckOptions": {

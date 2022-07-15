@@ -101,4 +101,18 @@ export class TitanItemSheet extends ItemSheet {
       this.isExpanded[id.toString()] = false;
     }
   }
+
+  _getHeaderButtons() {
+    let buttons = super._getHeaderButtons();
+    buttons = [
+      {
+        label: game.i18n.localize("TITAN.sendToChat.label"),
+        class: "item-post",
+        icon: "fas fa-comment",
+        onclick: (ev) => this.item.sendToChat(),
+      },
+    ].concat(buttons);
+
+    return buttons;
+  }
 }

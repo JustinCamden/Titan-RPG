@@ -203,6 +203,7 @@ export class TitanItem extends Item {
     const messageData = {
       system: this.system,
       name: this.name,
+      img: this.img,
     };
     const chatContent = await renderTemplate(
       this._getChatTemplate(),
@@ -214,13 +215,13 @@ export class TitanItem extends Item {
     this.chatMessage = messageClass.create(
       messageClass.applyRollMode(
         {
-          user: inData.user ? inData.user : game.user.id,
-          speaker: inData.speaker,
+          user: inData?.user ? inData.user : game.user.id,
+          speaker: inData?.speaker,
           content: chatContent,
           type: CONST.CHAT_MESSAGE_TYPES.OTHER,
           sound: CONFIG.sounds.notification,
         },
-        inData.rollMode
+        inData?.rollMode
           ? inData.rollMode
           : game.settings.get("core", "rollMode")
       )

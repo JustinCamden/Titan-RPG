@@ -25,12 +25,27 @@
     }
 
     &.item {
+
+
+        .header {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-end;
+
+            .image {
+                width: 20%;
+                border: none;
+            }
+        }
+
         .stats {
             display: flex;
             justify-content: space-between;
             border: solid;
             border-radius: 10px;
             padding: 0.5rem;
+            margin-top: 0.5rem;
         }
 
         .attack-sheet {
@@ -39,6 +54,7 @@
             display: flex;
             flex-direction: column;
             padding: 0.5rem;
+            margin-top: 0.5rem;
 
             .stats {
                 border: none;

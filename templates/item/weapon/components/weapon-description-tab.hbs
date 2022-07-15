@@ -1,8 +1,8 @@
 <div class="weapon-description-tab">
   {{! Sidebar }}
   <div class="attack-details">
-    <div class="border">
-      <label class="stat-label">{{localize "TITAN.attacks.label"}}</label>
+    <div class="attacks-header">
+      <h2 class="attacks-name">{{localize "TITAN.attacks.label"}}</h2>
     </div>
 
     {{! Scrolling }}
@@ -24,7 +24,7 @@
         }}
         {{/each}}
         {{! Adding a new attack }}
-        <div class="flex-group-center padding-right10 grid-span-4 border">
+        <div class="add-attack-button">
           <a class="fas fa-plus-circle add-attack"></a>
         </div>
       </div>

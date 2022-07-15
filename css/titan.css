@@ -1032,6 +1032,7 @@ details summary > * {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  width: 100%;
 }
 
 .titan .weapon-sheet .weapon-header .weapon-label {
@@ -1048,14 +1049,16 @@ details summary > * {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 50%;
+  width: 70%;
 }
 
 .titan .weapon-sheet .weapon-header .weapon-label .weapon-name {
   height: 3rem;
   padding: 0px;
-  margin: 5px 0;
+  margin-right: 0.5rem;
+  margin-bottom: 0;
   border-bottom: 0;
+  width: 100%;
 }
 
 .titan .weapon-sheet .weapon-header .weapon-label .weapon-name input {
@@ -1070,6 +1073,7 @@ details summary > * {
 }
 
 .titan .weapon-sheet .weapon-header .weapon-header-fields {
+  width: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1080,15 +1084,16 @@ details summary > * {
   -webkit-box-pack: end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  width: 40%;
-}
-
-.titan .weapon-sheet .weapon-header .weapon-header-fields .weapon-grip {
-  margin-right: 0.5rem;
 }
 
 .titan .weapon-sheet .weapon-header .weapon-header-fields .weapon-rarity {
   margin-right: 0.5rem;
+  width: 100%;
+}
+
+.titan .weapon-sheet .weapon-header .weapon-header-fields .weapon-value {
+  margin-right: 0.5rem;
+  width: 100%;
 }
 
 .titan .weapon-sheet .weapon-description-tab {
@@ -1107,6 +1112,30 @@ details summary > * {
   max-height: 100%;
   width: 30%;
   margin-right: 0.5rem;
+}
+
+.titan .weapon-sheet .weapon-description-tab .attack-details .attacks-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  border: solid;
+  border-radius: 10px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.titan .weapon-sheet .weapon-description-tab .attack-details .attacks-header .attacks-name {
+  padding: 0px;
+  border-bottom: 0;
+  font-weight: 300;
+  font-size: 1.25rem;
+  margin: 0;
 }
 
 .titan .weapon-sheet .weapon-description-tab .weapon-editors {
@@ -1161,6 +1190,7 @@ details summary > * {
   -ms-flex-align: center;
   align-items: center;
   margin: 0;
+  margin-top: 0.5rem;
 }
 
 .titan .weapon-sheet .attack-sheet-vertical .attack-header {
@@ -1316,6 +1346,23 @@ details summary > * {
   margin: 0.25rem;
 }
 
+.titan .weapon-sheet .add-attack-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  border: solid;
+  border-radius: 10px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+}
+
 .titan.titan-chat-message .traits-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1350,6 +1397,27 @@ details summary > * {
   padding-right: 0.5rem;
 }
 
+.titan.titan-chat-message.item .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
+.titan.titan-chat-message.item .header .image {
+  width: 20%;
+  border: none;
+}
+
 .titan.titan-chat-message.item .stats {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1360,6 +1428,7 @@ details summary > * {
   border: solid;
   border-radius: 10px;
   padding: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .titan.titan-chat-message.item .attack-sheet {
@@ -1373,6 +1442,7 @@ details summary > * {
   -ms-flex-direction: column;
   flex-direction: column;
   padding: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .titan.titan-chat-message.item .attack-sheet .stats {

@@ -14,21 +14,24 @@
     font-weight: bold;
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
 
     .weapon-label {
       display: flex;
       justify-content: flex-start;
       flex-direction: row;
       align-items: center;
-      width: 50%;
+      width: 70%;
 
       .weapon-name {
         height: 3rem;
         padding: 0px;
-        margin: 5px 0;
+        margin-right: 0.5rem;
+        margin-bottom: 0;
         border-bottom: 0;
+        width: 100%;
 
         input {
           width: 100%;
@@ -36,7 +39,7 @@
           margin: 0;
         }
       }
-      
+
       .weapon-image {
         height: 5rem;
         border: none;
@@ -44,15 +47,19 @@
     }
 
     .weapon-header-fields {
+      width: 30%;
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
-      width: 40%;
-      .weapon-grip {
-        margin-right: 0.5rem;
-      }
+
       .weapon-rarity {
         margin-right: 0.5rem;
+        width: 100%;
+      }
+
+      .weapon-value {
+        margin-right: 0.5rem;
+        width: 100%;
       }
     }
   }
@@ -67,6 +74,24 @@
       max-height: 100%;
       width: 30%;
       margin-right: 0.5rem;
+
+      .attacks-header {
+        display: flex;
+        width: 100%;
+        border: solid;
+        border-radius: 10px;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+
+        .attacks-name {
+          padding: 0px;
+          border-bottom: 0;
+          font-weight: 300;
+          font-size: 1.25rem;
+          margin: 0;
+        }
+      }
     }
 
     .weapon-editors {
@@ -80,19 +105,20 @@
 
       .weapon-description {
         height: 50%;
-        
+
         .editor {
-          height:80%;
+          height: 80%;
         }
       }
+
       .attack-description {
         height: 50%;
 
         .editor {
-          height:80%;
+          height: 80%;
         }
       }
-    }  
+    }
   }
 
 
@@ -105,22 +131,23 @@
     flex-direction: column;
     align-items: center;
     margin: 0;
+    margin-top: 0.5rem;
 
     .attack-header {
       display: flex;
       flex-direction: row;
-      justify-content:space-between;
+      justify-content: space-between;
       align-items: center;
       margin-bottom: .25rem;
 
       .attack-name {
         display: flex;
         flex-direction: row;
-        justify-content:flex-start;
+        justify-content: flex-start;
         align-items: center;
         text-align: start;
         width: 100%;
-  
+
         .attack-name-input {
           margin: .25rem;
           margin-left: 0.5rem;
@@ -130,7 +157,7 @@
       .attack-controls {
         display: flex;
         flex-direction: row;
-        justify-content:flex-end;
+        justify-content: flex-end;
         align-items: center;
 
         .fas {
@@ -138,12 +165,12 @@
         }
       }
     }
-  
+
     .attack-field {
       display: flex;
       font-weight: bold;
       flex-direction: row;
-      justify-content:space-between;
+      justify-content: space-between;
       align-items: center;
       margin: 0;
       width: 100%;
@@ -153,19 +180,21 @@
         margin-left: 0.25rem;
         display: flex;
         flex-direction: row;
-        justify-content:flex-start;
+        justify-content: flex-start;
         text-align: start;
         width: 50%;
       }
+
       .attack-value {
         margin-right: 0.25rem;
         display: flex;
         flex-direction: row;
-        justify-content:flex-end;
+        justify-content: flex-end;
         text-align: end;
         width: 50%;
+
         &.extra-wide {
-          width:120%
+          width: 120%
         }
       }
     }
@@ -182,14 +211,24 @@
         padding: .5rem;
         border: solid;
         border-radius: 10px;
-        display:flex;
+        display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        justify-content:flex-end;
+        justify-content: flex-end;
         font-weight: normal;
         margin: 0.25rem;
       }
     }
   }
-}
 
+  .add-attack-button {
+    display: flex;
+    width: 100%;
+    border: solid;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+  }
+}

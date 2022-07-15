@@ -1,9 +1,12 @@
 <div class="titan item weapon titan-chat-message">
 
   {{! Name }}
-  <h2 class="name">
-    {{name}}
-  </h2>
+  <div class="header">
+    <img class="image" src="{{img}}" />
+    <h2 class="name">
+      {{name}}
+    </h2>
+  </div>
 
   {{! Attacks }}
   {{#each system.attack as |attack|}}
@@ -40,7 +43,7 @@
       {{! Damage }}
       {{#if attack.plusSuccessDamage}}
       <div class="stat">
-        {{concat attack.damage "+S " (localize "TITAN.damage.label")}}
+        {{concat attack.damage "+ES " (localize "TITAN.damage.label")}}
       </div>
       {{else}}
       <div class="stat">

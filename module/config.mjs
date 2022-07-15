@@ -307,4 +307,8 @@ export const TITAN = {
       label: "TITAN.weapon.unarmed.label",
     },
   },
+
+  sendToChat: {
+    label: "TITAN.sendToChat.label",
+  },
 };
