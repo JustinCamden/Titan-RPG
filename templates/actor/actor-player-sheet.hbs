@@ -104,42 +104,42 @@
         </div>
       </div>
 
-      {{!-- Resources --}}
+      {{!-- resource.--}}
       <div class="resources grid grid-3col">
 
         {{!-- Stamina --}}
         <div class="resource flex-group-center border">
-          <label for="system.resources.stamina.value" class="stat-label">{{localize
+          <label for="system.resource.stamina.value" class="stat-label">{{localize
             "TITAN.resource.option.stamina.label"}}</label>
           <div class="stat-content flexrow flex-group-center flex-between">
-            <input class="resource-edit" data-resource="stamina" type="text" name="system.resources.stamina.value"
-              value="{{system.resources.stamina.value}}" data-dtype="Number" />
+            <input class="resource-edit" data-resource="stamina" type="text" name="system.resource.stamina.value"
+              value="{{system.resource.stamina.value}}" data-dtype="Number" />
             <span> / </span>
-            <span>{{numberFormat system.resources.stamina.maxValue decimals=0}}</span>
+            <span>{{numberFormat system.resource.stamina.maxValue decimals=0}}</span>
           </div>
         </div>
 
         {{!-- Resolve --}}
         <div class="resource flex-group-center border">
-          <label for="system.resources.resolve.value" class="stat-label">{{localize
+          <label for="system.resource.resolve.value" class="stat-label">{{localize
             "TITAN.resource.option.resolve.label"}}</label>
           <div class="stat-content flexrow flex-group-center flex-between">
-            <input class="resource-edit" data-resource="resolve" type="text" name="system.resources.resolve.value"
-              value="{{system.resources.resolve.value}}" data-dtype="Number" />
+            <input class="resource-edit" data-resource="resolve" type="text" name="system.resource.resolve.value"
+              value="{{system.resource.resolve.value}}" data-dtype="Number" />
             <span> / </span>
-            <span>{{numberFormat system.resources.resolve.maxValue decimals=0}}</span>
+            <span>{{numberFormat system.resource.resolve.maxValue decimals=0}}</span>
           </div>
         </div>
 
         {{!-- Wounds --}}
         <div class="resource flex-group-center border">
-          <label for="system.resources.wounds.value" class="stat-label">{{localize
+          <label for="system.resource.wounds.value" class="stat-label">{{localize
             "TITAN.resource.option.wounds.label"}}</label>
           <div class="stat-content flexrow flex-group-center flex-between">
-            <input class="resource-edit" data-resource="wounds" type="text" name="system.resources.wounds.value"
-              value="{{system.resources.wounds.value}}" data-dtype="Number" />
+            <input class="resource-edit" data-resource="wounds" type="text" name="system.resource.wounds.value"
+              value="{{system.resource.wounds.value}}" data-dtype="Number" />
             <span> / </span>
-            <span>{{numberFormat system.resources.wounds.maxValue decimals=0}}</span>
+            <span>{{numberFormat system.resource.wounds.maxValue decimals=0}}</span>
           </div>
         </div>
       </div>

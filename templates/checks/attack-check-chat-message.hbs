@@ -61,4 +61,8 @@
 
   {{! Check Description}}
   {{> "systems/titan/templates/chat-message/components/description.hbs" description=parameters.attackDescription}}
+
+  {{#if results.succeeded}}
+  <button class="apply-damage" data-visibility="gm" data-damage={{results.damage}}>Apply Damage</button>
+  {{/if}}
 </div>

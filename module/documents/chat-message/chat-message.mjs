@@ -1,11 +1,11 @@
 export class TitanChatMessage extends ChatMessage {
   async getHTML() {
     // Get the HTML
-    const $html = await super.getHTML();
+    const html = await super.getHTML();
 
     // Get the visibility elements
     const visibilityElements = Array.from(
-      $html[0].querySelectorAll("[data-visibility]")
+      html[0].querySelectorAll("[data-visibility]")
     );
 
     // Calculate whether this user is the GM
@@ -44,6 +44,40 @@ export class TitanChatMessage extends ChatMessage {
       }
     }
 
-    return $html;
+    this.activateListeners(html);
+
+    return html;
+  }
+
+  async _onCreate(data, options, userId) {
+    const chatMessage = await super._onCreate(data, options, userId);
+    CONFIG.chat;
+    return chatMessage;
+  }
+
+  activateListeners(html) {
+    html.find(".apply-damage").click(this._onApplyDamage.bind(this));
+
+    return;
+  }
+
+  async _onApplyDamage(event) {
+    // Get the damage amount
+    const damage = parseInt(event.target.dataset.damage);
+
+    // Get the user targets
+    const userTargets = Array.from(game.user.targets);
+
+    // For each target
+    for (let idx = 0; idx < userTargets.length; idx++) {
+      // If the target is valid
+      const target = userTargets[idx]?.actor;
+      if (target) {
+        // Apply damage to the target
+        await target.applyDamage(damage);
+      }
+    }
+
+    return;
   }
 }

@@ -158,9 +158,9 @@ export class TitanActor extends Actor {
     let maxStaminaBase =
       totalBaseAttributeValue *
       CONFIG.TITAN.resource.option.stamina.maxBaseMulti;
-    systemData.resources.stamina.maxBase = maxStaminaBase;
-    systemData.resources.stamina.maxValue =
-      maxStaminaBase + systemData.resources.stamina.staticMod;
+    systemData.resource.stamina.maxBase = maxStaminaBase;
+    systemData.resource.stamina.maxValue =
+      maxStaminaBase + systemData.resource.stamina.staticMod;
 
     // Calculate max resolve
     let maxResolveBase = Math.ceil(
@@ -168,9 +168,9 @@ export class TitanActor extends Actor {
         CONFIG.TITAN.resource.option.resolve.maxBaseMulti) /
         2
     );
-    systemData.resources.resolve.maxBase = maxResolveBase;
-    systemData.resources.resolve.maxValue =
-      maxResolveBase + systemData.resources.resolve.staticMod;
+    systemData.resource.resolve.maxBase = maxResolveBase;
+    systemData.resource.resolve.maxValue =
+      maxResolveBase + systemData.resource.resolve.staticMod;
 
     // Calculate max wounds
     let maxWoundsBase = Math.ceil(
@@ -178,9 +178,9 @@ export class TitanActor extends Actor {
         CONFIG.TITAN.resource.option.wounds.maxBaseMulti) /
         2
     );
-    systemData.resources.wounds.maxBase = maxWoundsBase;
-    systemData.resources.wounds.maxValue =
-      maxWoundsBase + systemData.resources.wounds.staticMod;
+    systemData.resource.wounds.maxBase = maxWoundsBase;
+    systemData.resource.wounds.maxValue =
+      maxWoundsBase + systemData.resource.wounds.staticMod;
 
     // Calculate skill mods
     for (let [k, v] of Object.entries(systemData.skill)) {
@@ -433,5 +433,47 @@ export class TitanActor extends Actor {
   getCheckData() {
     const checkData = this.system;
     return checkData;
+  }
+
+  // Apply damage to the actor
+  async applyDamage(damage) {
+    // Calculate the new stamina
+    const newStamina = this.system.resource.stamina.value - damage;
+
+    // Prepare the update data
+    const updateData = {
+      system: {
+        resource: {
+          stamina: {
+            value: Math.max(newStamina, 0),
+          },
+          wounds: {
+            value: this.system.resource.wounds.value,
+          },
+        },
+      },
+    };
+
+    // If the stamina was dropped below 0
+    if (newStamina < 0) {
+      // Calculate wounds
+      const oldWounds = this.system.resource.wounds.value;
+
+      if (newStamina < -1) {
+        if (newStamina < -3) {
+          // 3 Wounds
+          updateData.system.resource.wounds.value += 3;
+        } else {
+          // 2 Wounds
+          updateData.system.resource.wounds.value += 2;
+        }
+      } else {
+        // 1 Wound
+        updateData.system.resource.wounds.value += 1;
+      }
+    }
+
+    // Update the amount of stamin
+    await this.update(updateData);
   }
 }

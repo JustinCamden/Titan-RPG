@@ -401,7 +401,7 @@ export class TitanActorSheet extends ActorSheet {
     await attackCheck.evaluateCheck();
 
     // Post the check to chat
-    await attackCheck.sendToChat({
+    const html = await attackCheck.sendToChat({
       user: game.user.id,
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       rollMode: game.settings.get("core", "rollMode"),
@@ -428,8 +428,7 @@ export class TitanActorSheet extends ActorSheet {
 
   async _onResourceEdit(event) {
     // Ensure the resource is within a valid range
-    const resource =
-      this.object.system.resources[event.target.dataset.resource];
+    const resource = this.object.system.resource[event.target.dataset.resource];
     const newValue = event.target.value;
 
     if (newValue > resource.maxValue) {

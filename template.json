@@ -256,7 +256,7 @@
             "staticMod": 0
           }
         },
-        "resources": {
+        "resource": {
           "stamina": {
             "value": 3,
             "staticMod": 0
