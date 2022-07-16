@@ -10,21 +10,19 @@ export const preloadHandlebarsTemplates = async function () {
     "systems/titan/templates/actor/components/actor-actions-attacks.hbs",
 
     // Item partials
-    "systems/titan/templates/item/weapon/components/weapon-description-tab.hbs",
-    "systems/titan/templates/item/weapon/components/weapon-attacks-tab.hbs",
-    "systems/titan/templates/item/weapon/components/weapon-attack-sheet-vertical.hbs",
-    "systems/titan/templates/item/components/item-rarity.hbs",
-    "systems/titan/templates/item/components/item-value.hbs",
-    "systems/titan/templates/item/components/item-header.hbs",
+    "systems/titan/templates/item/components/item-value-rarity-sheet-header.hbs",
+    "systems/titan/templates/item/weapon/components/weapon-sheet-description-tab.hbs",
+    "systems/titan/templates/item/weapon/components/weapon-sheet-attacks-tab.hbs",
+    "systems/titan/templates/item/weapon/components/weapon-sheet-attack-sheet-vertical.hbs",
 
-    // Chat message partials
-    "systems/titan/templates/chat-message/components/traits-container.hbs",
-    "systems/titan/templates/chat-message/components/description.hbs",
-    "systems/titan/templates/chat-message/components/damage-buttons.hbs",
+    // Generic Chat message partials
+    "systems/titan/templates/chat-message/components/chat-message-traits-container.hbs",
+    "systems/titan/templates/chat-message/components/chat-message-description.hbs",
 
     // Check partials
-    "systems/titan/templates/checks/components/check-attribute-skill.hbs",
-    "systems/titan/templates/checks/components/check-dice-container.hbs",
-    "systems/titan/templates/checks/components/check-results-banner.hbs",
+    "systems/titan/templates/checks/components/check-chat-message-attribute-skill.hbs",
+    "systems/titan/templates/checks/components/check-chat-message-dice-container.hbs",
+    "systems/titan/templates/checks/components/check-chat-message-results-banner.hbs",
+    "systems/titan/templates/checks/components/check-chat-message-damage-buttons.hbs",
   ]);
 };

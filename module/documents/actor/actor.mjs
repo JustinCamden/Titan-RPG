@@ -193,7 +193,7 @@ export class TitanActor extends Actor {
 
     // Calculate bonuses and stats
     systemData.mod.armor.value = systemData.mod.armor.staticMod;
-    systemData.mod.damageBonus.value = systemData.mod.armor.staticMod;
+    systemData.mod.damage.value = systemData.mod.armor.staticMod;
 
     return;
   }

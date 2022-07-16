@@ -1,4 +1,4 @@
-<div class="titan item weapon titan-chat-message">
+<div class="titan titan-chat-message item-chat-message weapon-chat-message">
 
   {{! Name }}
   <div class="header">
@@ -63,11 +63,17 @@
 
   {{! Rarity and Value}}
   <div class="stats">
-    {{> "systems/titan/templates/item/components/item-rarity.hbs"}}
-    {{> "systems/titan/templates/item/components/item-value.hbs"}}
+    <span class="item-rarity">
+      {{localize (concat "TITAN.item.rarity.option." system.rarity ".label")}}
+    </span>
+    {{#if system.value}}
+    <span class="item-value">
+      {{concat (localize "TITAN.item.value.label" ": " system.value)}}
+    </span>
+    {{/if}}
   </div>
 
   {{! Descriptions }}
-  {{> "systems/titan/templates/chat-message/components/description.hbs" description=system.description}}
-  {{> "systems/titan/templates/chat-message/components/description.hbs" description=system.attackDescription}}
+  {{> "systems/titan/templates/chat-message/components/chat-message-description.hbs" description=system.description}}
+  {{> "systems/titan/templates/chat-message/components/chat-message-description.hbs" description=system.attackDescription}}
 </div>

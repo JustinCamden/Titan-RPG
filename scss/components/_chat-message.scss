@@ -23,73 +23,31 @@
         padding-left: 0.5rem;
         padding-right: 0.5rem;
     }
+}
 
-    &.item {
-
-
-        .header {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-items: flex-end;
-
-            .image {
-                width: 20%;
-                border: none;
-            }
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-between;
-            border: solid;
-            border-radius: 10px;
-            padding: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .attack-sheet {
-            border: solid;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            padding: 0.5rem;
-            margin-top: 0.5rem;
-
-            .stats {
-                border: none;
-                padding: 0;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: flex-start;
-
-                .stat {
-                    border: solid;
-                    border-radius: 10px;
-                    padding: 0.25rem;
-                    margin: 0.25rem;
-                }
-            }
-        }
-    }
-
-    &.damage-report {
-        font-style: bold;
-    }
-
-    .damage-buttons {
-        width: 100%;
-        margin-top: 0.5rem;
+&.item-chat-message {
+    .header {
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-end;
 
-        .damage-button {
-            width: 100%;
-
-            &:not(:last-child) {
-                margin-right: 0.5rem;
-            }
+        .image {
+            width: 20%;
+            border: none;
         }
     }
+
+    .stats {
+        display: flex;
+        justify-content: space-between;
+        border: solid;
+        border-radius: 10px;
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+    }
+}
+
+&.chat-message-damage-report {
+    font-style: bold;
 }

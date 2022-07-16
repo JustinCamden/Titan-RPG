@@ -1,4 +1,4 @@
-<div class="weapon-description-tab">
+<div class="weapon-sheet-description-tab">
   {{! Sidebar }}
   <div class="attack-details">
     <div class="attacks-header">
@@ -11,7 +11,7 @@
       <div class="attacks">
         {{! For each attack }}
         {{#each system.attack as |attack key|}}
-        {{> "systems/titan/templates/item/weapon/components/weapon-attack-sheet-vertical.hbs"
+        {{> "systems/titan/templates/item/weapon/components/weapon-sheet-attack-sheet-vertical.hbs"
         attack=attack
         key=key
         attackTypeOptions=../attackTypeOptions

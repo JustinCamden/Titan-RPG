@@ -10,7 +10,7 @@
     height: 85%;
   }
 
-  .weapon-description-tab {
+  .weapon-sheet-description-tab {
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -68,7 +68,7 @@
   }
 
 
-  .attack-sheet-vertical {
+  .weapon-sheet-attack-sheet-vertical {
     padding: .5rem;
     border: solid;
     border-radius: 10px;
@@ -176,5 +176,31 @@
     align-items: center;
     margin-top: 0.5rem;
     padding: 0.5rem;
+  }
+}
+
+&.weapon-chat-message {
+  .attack-sheet {
+    border: solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+
+    .stats {
+      border: none;
+      padding: 0;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+
+      .stat {
+        border: solid;
+        border-radius: 10px;
+        padding: 0.25rem;
+        margin: 0.25rem;
+      }
+    }
   }
 }

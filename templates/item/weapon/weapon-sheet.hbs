@@ -1,6 +1,6 @@
 <form class="{{cssClass}} weapon-sheet" autocomplete="off">
   {{! Header}}
-  {{> "systems/titan/templates/item/components/item-value-rarity-header.hbs"}}
+  {{> "systems/titan/templates/item/components/item-value-rarity-sheet-header.hbs"}}
 
   <div class="sheet-body weapon-content">
     {{! Sheet Tab Navigation }}
@@ -11,12 +11,12 @@
 
     {{! Description Tab }}
     <div class="tab" data-group="primary" data-tab="description">
-      {{> "systems/titan/templates/item/weapon/components/weapon-description-tab.hbs"}}
+      {{> "systems/titan/templates/item/weapon/components/weapon-sheet-description-tab.hbs"}}
     </div>
 
     {{! Attacks Tab }}
     <div class="tab" data-group="primary" data-tab="attacks">
-      {{> "systems/titan/templates/item/weapon/components/weapon-attacks-tab.hbs"}}
+      {{> "systems/titan/templates/item/weapon/components/weapon-sheet-attacks-tab.hbs"}}
     </div>
   </div>
 </form>

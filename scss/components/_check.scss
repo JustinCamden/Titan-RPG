@@ -1,5 +1,5 @@
-&.check {
-    .dice-container {
+&.check-chat-message {
+    .check-chat-message-dice-container {
         margin: 0;
         padding: 0;
         list-style: none;
@@ -49,7 +49,7 @@
         }
     }
 
-    .results-banner {
+    .check-chat-message-results-banner {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -75,6 +75,22 @@
         .failed {
             color: darkred;
             font-size: 1.5rem;
+        }
+    }
+
+    .check-chat-message-damage-buttons {
+        width: 100%;
+        margin-top: 0.5rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .damage-button {
+            width: 100%;
+
+            &:not(:last-child) {
+                margin-right: 0.5rem;
+            }
         }
     }
 }

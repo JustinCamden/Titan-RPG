@@ -1,0 +1,8 @@
+{{! Attribute + Skill of a check}}
+<div class="check-chat-message-attribute-skill">
+    {{localize (concat "TITAN.attribute.option." parameters.attribute ".label")}}
+    {{#if parameters.skill}}
+    {{concat "(" (localize (concat "TITAN.skill.option." parameters.skill ".label")) ")"}}
+    {{/if}}
+    {{concat parameters.difficulty ":" parameters.complexity}}
+</div>

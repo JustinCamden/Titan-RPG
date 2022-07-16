@@ -109,7 +109,7 @@ export class TitanItem extends Item {
 
       // Create the html template
       const html = await renderTemplate(
-        "systems/titan/templates/item/item-trait-dialog.hbs",
+        "systems/titan/templates/item/item-dialog-trait-select.hbs",
         dialogData
       );
 

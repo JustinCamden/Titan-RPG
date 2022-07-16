@@ -1,4 +1,4 @@
-<div class="titan check attack-check titan-chat-message">
+<div class="titan titan-chat-message check-chat-message attack-check-chat-message">
 
   {{! Check title }}
   <div class="check-title">
@@ -20,7 +20,7 @@
 
     {{! Stats rolled }}
     <h3 class="check-stats">
-      {{> "systems/titan/templates/checks/components/check-attribute-skill.hbs"}}
+      {{> "systems/titan/templates/checks/components/check-chat-message-attribute-skill.hbs"}}
     </h3>
 
     {{! Attack Ratings }}
@@ -49,21 +49,22 @@
   </div>
 
   {{! Traits }}
-  {{> "systems/titan/templates/chat-message/components/traits-container.hbs"
+  {{> "systems/titan/templates/chat-message/components/chat-message-traits-container.hbs"
   traits=parameters.attack.traits
   path="TITAN.attack.trait.option."}}
 
   {{! Dice Container }}
-  {{> "systems/titan/templates/checks/components/check-dice-container.hbs"}}
+  {{> "systems/titan/templates/checks/components/check-chat-message-dice-container.hbs"}}
 
   {{! Results Banner }}
-  {{> "systems/titan/templates/checks/components/check-results-banner.hbs"}}
+  {{> "systems/titan/templates/checks/components/check-chat-message-results-banner.hbs"}}
 
   {{! Check Description}}
-  {{> "systems/titan/templates/chat-message/components/description.hbs" description=parameters.attackDescription}}
+  {{> "systems/titan/templates/chat-message/components/chat-message-description.hbs"
+  description=parameters.attackDescription}}
 
   {{! Damage Buttons }}
   {{#if results.succeeded}}
-  {{> "systems/titan/templates/chat-message/components/damage-buttons.hbs"}}
+  {{> "systems/titan/templates/checks/components/check-chat-message-damage-buttons.hbs"}}
   {{/if}}
 </div>

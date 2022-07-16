@@ -675,7 +675,7 @@ details summary > * {
   margin-bottom: 0.5rem;
 }
 
-.titan.check .dice-container {
+.titan.check-chat-message .check-chat-message-dice-container {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -700,7 +700,7 @@ details summary > * {
   width: 100%;
 }
 
-.titan.check .dice-container .die {
+.titan.check-chat-message .check-chat-message-dice-container .die {
   margin-left: 0.5rem;
   margin-bottom: 0.25rem;
   width: 3rem;
@@ -709,32 +709,32 @@ details summary > * {
   border-color: black;
 }
 
-.titan.check .dice-container .die:first-child {
+.titan.check-chat-message .check-chat-message-dice-container .die:first-child {
   margin-left: 0;
 }
 
-.titan.check .dice-container .die.critical-success {
+.titan.check-chat-message .check-chat-message-dice-container .die.critical-success {
   background-color: lightskyblue;
 }
 
-.titan.check .dice-container .die.success {
+.titan.check-chat-message .check-chat-message-dice-container .die.success {
   background-color: lightgreen;
 }
 
-.titan.check .dice-container .die.failure {
+.titan.check-chat-message .check-chat-message-dice-container .die.failure {
   background-color: gold;
 }
 
-.titan.check .dice-container .die.critical-failure {
+.titan.check-chat-message .check-chat-message-dice-container .die.critical-failure {
   background-color: lightsalmon;
 }
 
-.titan.check .dice-container .die.expertise-applied {
+.titan.check-chat-message .check-chat-message-dice-container .die.expertise-applied {
   border-color: blue;
   width: 5.5rem;
 }
 
-.titan.check .results-banner {
+.titan.check-chat-message .check-chat-message-results-banner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -757,19 +757,41 @@ details summary > * {
   padding: 0.5rem;
 }
 
-.titan.check .results-banner .succeeded {
+.titan.check-chat-message .check-chat-message-results-banner .succeeded {
   font-size: 1.5rem;
   color: darkblue;
 }
 
-.titan.check .results-banner .extra-successes {
+.titan.check-chat-message .check-chat-message-results-banner .extra-successes {
   color: black;
   font-size: 1.25rem;
 }
 
-.titan.check .results-banner .failed {
+.titan.check-chat-message .check-chat-message-results-banner .failed {
   color: darkred;
   font-size: 1.5rem;
+}
+
+.titan.check-chat-message .check-chat-message-damage-buttons {
+  width: 100%;
+  margin-top: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.titan.check-chat-message .check-chat-message-damage-buttons .damage-button {
+  width: 100%;
+}
+
+.titan.check-chat-message .check-chat-message-damage-buttons .damage-button:not(:last-child) {
+  margin-right: 0.5rem;
 }
 
 .titan .item-form {
@@ -1094,7 +1116,7 @@ details summary > * {
   height: 85%;
 }
 
-.titan .weapon-sheet .weapon-description-tab {
+.titan .weapon-sheet .weapon-sheet-description-tab {
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1106,13 +1128,13 @@ details summary > * {
   width: 100%;
 }
 
-.titan .weapon-sheet .weapon-description-tab .attack-details {
+.titan .weapon-sheet .weapon-sheet-description-tab .attack-details {
   max-height: 100%;
   width: 30%;
   margin-right: 0.5rem;
 }
 
-.titan .weapon-sheet .weapon-description-tab .attack-details .attacks-header {
+.titan .weapon-sheet .weapon-sheet-description-tab .attack-details .attacks-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1128,7 +1150,7 @@ details summary > * {
   padding: 0.5rem;
 }
 
-.titan .weapon-sheet .weapon-description-tab .attack-details .attacks-header .attacks-name {
+.titan .weapon-sheet .weapon-sheet-description-tab .attack-details .attacks-header .attacks-name {
   padding: 0px;
   border-bottom: 0;
   font-weight: 300;
@@ -1136,7 +1158,7 @@ details summary > * {
   margin: 0;
 }
 
-.titan .weapon-sheet .weapon-description-tab .weapon-editors {
+.titan .weapon-sheet .weapon-sheet-description-tab .weapon-editors {
   max-height: 100%;
   height: 100%;
   width: 70%;
@@ -1154,23 +1176,23 @@ details summary > * {
   align-self: center;
 }
 
-.titan .weapon-sheet .weapon-description-tab .weapon-editors .weapon-description {
+.titan .weapon-sheet .weapon-sheet-description-tab .weapon-editors .weapon-description {
   height: 50%;
 }
 
-.titan .weapon-sheet .weapon-description-tab .weapon-editors .weapon-description .editor {
+.titan .weapon-sheet .weapon-sheet-description-tab .weapon-editors .weapon-description .editor {
   height: 80%;
 }
 
-.titan .weapon-sheet .weapon-description-tab .weapon-editors .attack-description {
+.titan .weapon-sheet .weapon-sheet-description-tab .weapon-editors .attack-description {
   height: 50%;
 }
 
-.titan .weapon-sheet .weapon-description-tab .weapon-editors .attack-description .editor {
+.titan .weapon-sheet .weapon-sheet-description-tab .weapon-editors .attack-description .editor {
   height: 80%;
 }
 
-.titan .weapon-sheet .attack-sheet-vertical {
+.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical {
   padding: .5rem;
   border: solid;
   border-radius: 10px;
@@ -1191,7 +1213,7 @@ details summary > * {
   margin-top: 0.5rem;
 }
 
-.titan .weapon-sheet .attack-sheet-vertical .attack-header {
+.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1208,7 +1230,7 @@ details summary > * {
   margin-bottom: .25rem;
 }
 
-.titan .weapon-sheet .attack-sheet-vertical .attack-header .attack-name {
+.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-header .attack-name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1226,12 +1248,12 @@ details summary > * {
   width: 100%;
 }
 
-.titan .weapon-sheet .attack-sheet-vertical .attack-header .attack-name .attack-name-input {
+.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-header .attack-name .attack-name-input {
   margin: .25rem;
   margin-left: 0.5rem;
 }
 
-.titan .weapon-sheet .attack-sheet-vertical .attack-header .attack-controls {
+.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-header .attack-controls {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1247,11 +1269,11 @@ details summary > * {
   align-items: center;
 }
 
-.titan .weapon-sheet .attack-sheet-vertical .attack-header .attack-controls .fas {
+.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-header .attack-controls .fas {
   margin-left: 0.5rem;
 }
 
-.titan .weapon-sheet .attack-sheet-vertical .attack-field {
+.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-field {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1271,7 +1293,7 @@ details summary > * {
   margin-bottom: .5rem;
 }
 
-.titan .weapon-sheet .attack-sheet-vertical .attack-field .attack-label {
+.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-field .attack-label {
   margin-left: 0.25rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1287,7 +1309,7 @@ details summary > * {
   width: 50%;
 }
 
-.titan .weapon-sheet .attack-sheet-vertical .attack-field .attack-value {
+.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-field .attack-value {
   margin-right: 0.25rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1303,11 +1325,11 @@ details summary > * {
   width: 50%;
 }
 
-.titan .weapon-sheet .attack-sheet-vertical .attack-field .attack-value.extra-wide {
+.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-field .attack-value.extra-wide {
   width: 120%;
 }
 
-.titan .weapon-sheet .attack-sheet-vertical .attack-traits-container {
+.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-traits-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1324,7 +1346,7 @@ details summary > * {
   margin-right: 0.25rem;
 }
 
-.titan .weapon-sheet .attack-sheet-vertical .attack-traits-container .attack-trait {
+.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-traits-container .attack-trait {
   padding: .5rem;
   border: solid;
   border-radius: 10px;
@@ -1361,6 +1383,41 @@ details summary > * {
   padding: 0.5rem;
 }
 
+.titan.weapon-chat-message .attack-sheet {
+  border: solid;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.titan.weapon-chat-message .attack-sheet .stats {
+  border: none;
+  padding: 0;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.titan.weapon-chat-message .attack-sheet .stats .stat {
+  border: solid;
+  border-radius: 10px;
+  padding: 0.25rem;
+  margin: 0.25rem;
+}
+
 .titan.titan-chat-message .traits-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1395,7 +1452,7 @@ details summary > * {
   padding-right: 0.5rem;
 }
 
-.titan.titan-chat-message.item .header {
+.titan.item-chat-message .header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1411,12 +1468,12 @@ details summary > * {
   align-items: flex-end;
 }
 
-.titan.titan-chat-message.item .header .image {
+.titan.item-chat-message .header .image {
   width: 20%;
   border: none;
 }
 
-.titan.titan-chat-message.item .stats {
+.titan.item-chat-message .stats {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1429,63 +1486,6 @@ details summary > * {
   margin-top: 0.5rem;
 }
 
-.titan.titan-chat-message.item .attack-sheet {
-  border: solid;
-  border-radius: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  padding: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.titan.titan-chat-message.item .attack-sheet .stats {
-  border: none;
-  padding: 0;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-}
-
-.titan.titan-chat-message.item .attack-sheet .stats .stat {
-  border: solid;
-  border-radius: 10px;
-  padding: 0.25rem;
-  margin: 0.25rem;
-}
-
-.titan.titan-chat-message.damage-report {
+.titan.chat-message-damage-report {
   font-style: bold;
-}
-
-.titan.titan-chat-message .damage-buttons {
-  width: 100%;
-  margin-top: 0.5rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-.titan.titan-chat-message .damage-buttons .damage-button {
-  width: 100%;
-}
-
-.titan.titan-chat-message .damage-buttons .damage-button:not(:last-child) {
-  margin-right: 0.5rem;
 }

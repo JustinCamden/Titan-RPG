@@ -284,7 +284,7 @@
           "armor": {
             "staticMod": 0
           },
-          "damageBonus": {
+          "damage": {
             "staticMod": 0
           }
         }

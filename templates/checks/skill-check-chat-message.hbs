@@ -1,4 +1,4 @@
-<div class="titan check skill-check titan-chat-message">
+<div class="titan titan-chat-message check-chat-message skill-check-chat-message">
 
   {{! Check title }}
   <div class="check-title">
@@ -10,20 +10,20 @@
 
     {{! Stats rolled }}
     <h3 class="check-stats">
-      {{> "systems/titan/templates/checks/components/check-attribute-skill.hbs"}}
+      {{> "systems/titan/templates/checks/components/check-chat-message-attribute-skill.hbs"}}
     </h3>
     {{else}}
 
     {{! Use the stats as the label if there is no label }}
     <h2 class="check-label">
-      {{> "systems/titan/templates/checks/components/check-attribute-skill.hbs"}}
+      {{> "systems/titan/templates/checks/components/check-chat-message-attribute-skill.hbs"}}
     </h2>
     {{/if}}
   </div>
 
   {{! Dice Container }}
-  {{> "systems/titan/templates/checks/components/check-dice-container.hbs" }}
+  {{> "systems/titan/templates/checks/components/check-chat-message-dice-container.hbs" }}
 
   {{! Results Banner }}
-  {{> "systems/titan/templates/checks/components/check-results-banner.hbs" }}
+  {{> "systems/titan/templates/checks/components/check-chat-message-results-banner.hbs" }}
 </div>

@@ -1,10 +1,10 @@
-<div class="weapon-attacks-tab full-height">
+<div class="weapon-sheet-attacks-tab full-height">
   {{! Weapon attacks }}
   <div class="attacks grid grid-3col">
 
     {{! For each attack }}
     {{#each system.attack as |attack key|}}
-    {{> "systems/titan/templates/item/weapon/components/weapon-attack-sheet-vertical.hbs"
+    {{> "systems/titan/templates/item/weapon/components/weapon-sheet-attack-sheet-vertical.hbs"
     attack=attack
     key=key
     attackTypeOptions=../attackTypeOptions
