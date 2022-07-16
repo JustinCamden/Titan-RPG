@@ -10,60 +10,6 @@
     height: 85%;
   }
 
-  .weapon-header {
-    font-weight: bold;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-
-    .weapon-label {
-      display: flex;
-      justify-content: flex-start;
-      flex-direction: row;
-      align-items: center;
-      width: 70%;
-
-      .weapon-name {
-        height: 3rem;
-        padding: 0px;
-        margin-right: 0.5rem;
-        margin-bottom: 0;
-        border-bottom: 0;
-        width: 100%;
-
-        input {
-          width: 100%;
-          height: 100%;
-          margin: 0;
-        }
-      }
-
-      .weapon-image {
-        height: 5rem;
-        border: none;
-      }
-    }
-
-    .weapon-header-fields {
-      width: 30%;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-
-      .weapon-rarity {
-        margin-right: 0.5rem;
-        width: 100%;
-      }
-
-      .weapon-value {
-        margin-right: 0.5rem;
-        width: 100%;
-      }
-    }
-  }
-
   .weapon-description-tab {
     height: 100%;
     display: flex;

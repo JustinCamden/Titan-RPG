@@ -1008,16 +1008,7 @@ details summary > * {
   border: none;
 }
 
-.titan .weapon-sheet {
-  word-wrap: normal;
-  max-height: 85%;
-}
-
-.titan .weapon-sheet .tab {
-  height: 85%;
-}
-
-.titan .weapon-sheet .weapon-header {
+.titan .item-header {
   font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1035,7 +1026,7 @@ details summary > * {
   width: 100%;
 }
 
-.titan .weapon-sheet .weapon-header .weapon-label {
+.titan .item-header .item-label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1049,10 +1040,10 @@ details summary > * {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 70%;
+  width: 65%;
 }
 
-.titan .weapon-sheet .weapon-header .weapon-label .weapon-name {
+.titan .item-header .item-label .item-name {
   height: 3rem;
   padding: 0px;
   margin-right: 0.5rem;
@@ -1061,39 +1052,46 @@ details summary > * {
   width: 100%;
 }
 
-.titan .weapon-sheet .weapon-header .weapon-label .weapon-name input {
+.titan .item-header .item-label .item-name input {
   width: 100%;
   height: 100%;
   margin: 0;
 }
 
-.titan .weapon-sheet .weapon-header .weapon-label .weapon-image {
+.titan .item-header .item-label .item-image {
   height: 5rem;
   border: none;
 }
 
-.titan .weapon-sheet .weapon-header .weapon-header-fields {
+.titan .item-header .item-fields {
   width: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
   -webkit-box-pack: end;
   -ms-flex-pack: end;
   justify-content: flex-end;
 }
 
-.titan .weapon-sheet .weapon-header .weapon-header-fields .weapon-rarity {
-  margin-right: 0.5rem;
+.titan .item-header .item-fields .item-rarity {
   width: 100%;
 }
 
-.titan .weapon-sheet .weapon-header .weapon-header-fields .weapon-value {
-  margin-right: 0.5rem;
+.titan .item-header .item-fields .item-value {
   width: 100%;
+}
+
+.titan .weapon-sheet {
+  word-wrap: normal;
+  max-height: 85%;
+}
+
+.titan .weapon-sheet .tab {
+  height: 85%;
 }
 
 .titan .weapon-sheet .weapon-description-tab {
