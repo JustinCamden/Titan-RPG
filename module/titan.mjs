@@ -10,6 +10,7 @@ import { TitanWeaponSheet } from "./documents/item/weapon-sheet.mjs";
 import { preloadHandlebarsTemplates } from "./handlebars/handlebars-templates.mjs";
 import { registerHandlebarsHelpers } from "./handlebars/handlebars-helpers.mjs";
 import { TITAN } from "./config.mjs";
+import { TitanArmorSheet } from "./documents/item/armor-sheet.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -47,6 +48,10 @@ Hooks.once("init", async function () {
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("titan", TitanWeaponSheet, {
     types: ["weapon"],
+    makeDefault: true,
+  });
+  Items.registerSheet("titan", TitanArmorSheet, {
+    types: ["armor"],
     makeDefault: true,
   });
 
