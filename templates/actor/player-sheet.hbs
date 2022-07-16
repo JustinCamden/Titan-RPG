@@ -1,4 +1,4 @@
-<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
+<form class="{{cssClass}} actor-sheet player-sheet flexcol" autocomplete="off">
 
   {{!-- Sheet Header --}}
   <header class="sheet-header">
@@ -159,17 +159,17 @@
 
     {{!-- Skills Tab --}}
     <div class="tab" data-group="primary" data-tab="skills-tab">
-      {{> "systems/titan/templates/actor/components/actor-skills-tab.hbs"}}
+      {{> "systems/titan/templates/actor/components/actor-sheet-skills-tab.hbs"}}
     </div>
 
     {{!-- Actions Tab --}}
     <div class="tab" data-group="primary" data-tab="actions-tab">
-      {{> "systems/titan/templates/actor/components/actor-actions-tab.hbs"}}
+      {{> "systems/titan/templates/actor/components/actor-sheet-actions-tab.hbs"}}
     </div>
 
     {{!-- Inventory Tab --}}
     <div class="tab" data-group="primary" data-tab="inventory-tab">
-      {{> "systems/titan/templates/actor/components/actor-inventory-tab.hbs"}}
+      {{> "systems/titan/templates/actor/components/actor-sheet-inventory-tab.hbs"}}
     </div>
   </section>
 </form>

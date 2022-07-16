@@ -178,29 +178,3 @@
     padding: 0.5rem;
   }
 }
-
-&.weapon-chat-message {
-  .attack-sheet {
-    border: solid;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-
-    .stats {
-      border: none;
-      padding: 0;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-
-      .stat {
-        border: solid;
-        border-radius: 10px;
-        padding: 0.25rem;
-        margin: 0.25rem;
-      }
-    }
-  }
-}

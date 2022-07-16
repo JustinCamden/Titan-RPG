@@ -17,14 +17,11 @@
 
 /* Styles limited to titan sheets */
 .titan {
-  @import 'components/actions';
-  @import 'components/check';
   @import 'components/forms';
-  @import 'components/stats';
-  @import 'components/inventory';
-  @import 'components/effects';
-  @import 'components/skills';
-  @import 'components/item';
-  @import 'components/weapon';
-  @import 'components/chat-message';
+  @import 'components/actor/actor-sheet';
+  @import 'components/chat-message/chat-message';
+  @import 'components/chat-message/check-chat-message';
+  @import 'components/item/item-sheet';
+  @import 'components/item/weapon-sheet';
+  @import 'components/item/weapon-chat-message';
 }

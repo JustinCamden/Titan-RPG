@@ -13,7 +13,6 @@ export class TitanActorSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["titan", "sheet", "actor"],
-      template: "systems/titan/templates/actor/actor-sheet.hbs",
       width: 880,
       height: 700,
       tabs: [
@@ -31,11 +30,6 @@ export class TitanActorSheet extends ActorSheet {
    */
   // Expended state
   isExpanded = {};
-
-  /** @override */
-  get template() {
-    return `systems/titan/templates/actor/actor-${this.actor.type}-sheet.hbs`;
-  }
 
   /* -------------------------------------------- */
 

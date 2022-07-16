@@ -4,10 +4,10 @@
 export const preloadHandlebarsTemplates = async function () {
   return loadTemplates([
     // Actor partials.
-    "systems/titan/templates/actor/components/actor-actions-tab.hbs",
-    "systems/titan/templates/actor/components/actor-inventory-tab.hbs",
-    "systems/titan/templates/actor/components/actor-skills-tab.hbs",
-    "systems/titan/templates/actor/components/actor-actions-attacks.hbs",
+    "systems/titan/templates/actor/components/actor-sheet-actions-tab.hbs",
+    "systems/titan/templates/actor/components/actor-sheet-inventory-tab.hbs",
+    "systems/titan/templates/actor/components/actor-sheet-skills-tab.hbs",
+    "systems/titan/templates/actor/components/actor-sheet-actions-attacks.hbs",
 
     // Item partials
     "systems/titan/templates/item/components/item-value-rarity-sheet-header.hbs",

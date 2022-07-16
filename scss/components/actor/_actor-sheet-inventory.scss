@@ -1,0 +1,90 @@
+.actor-sheet-inventory-tab {
+    .item-list-header {
+        word-wrap: normal;
+        padding: .5rem;
+        border: solid;
+        border-radius: 10px;
+        margin-bottom: .5rem;
+        font-weight: bold;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .item-category-name {
+            padding: 0px;
+            border-bottom: 0;
+            font-weight: 300;
+            font-size: 1.25rem;
+        }
+    }
+
+    .item-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        color: $c-tan;
+
+        // Individual Item
+        .item {
+            break-inside: avoid;
+            align-items: center;
+            page-break-inside: avoid;
+            word-wrap: normal;
+            padding: .5rem;
+            border: solid;
+            border-radius: 10px;
+            margin-bottom: .5rem;
+
+            &:last-child {
+                margin-bottom: 1rem;
+            }
+
+            .item-header {
+                font-weight: bold;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .item-label {
+                    display: flex;
+                    justify-content: flex-start;
+                    flex-direction: row;
+                    align-items: center;
+
+                    .item-image {
+                        height: 2rem;
+                        border: none;
+                    }
+                }
+
+                .item-controls {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .fas {
+                        margin-left: 0.25rem;
+                    }
+                }
+            }
+
+            .item-details {
+                word-wrap: break-word;
+
+                .item-footer {
+                    margin-top: 0.25rem;
+                    font-weight: bold;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

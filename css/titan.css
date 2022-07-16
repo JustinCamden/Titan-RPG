@@ -450,20 +450,94 @@ details summary > * {
 /* Styles limited to titan sheets */
 .titan {
   /* ----------------------------------------- */
-  /*  Actions Lists                              */
-  /* ----------------------------------------- */
-  /* ----------------------------------------- */
-  /*  Inventory Items                          */
-  /* ----------------------------------------- */
-  /* ----------------------------------------- */
-  /*  Items Lists                              */
+  /*  Weapons                             */
   /* ----------------------------------------- */
   /* ----------------------------------------- */
   /*  Weapons                             */
   /* ----------------------------------------- */
 }
 
-.titan .action-list-header {
+.titan .sheet-tabs {
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+}
+
+.titan .sheet-body {
+  height: 100%;
+}
+
+.titan .tox .tox-editor-container {
+  background: #fff;
+}
+
+.titan .tox .tox-edit-area {
+  padding: 0 8px;
+}
+
+.titan .actor-sheet .sheet-header {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 auto;
+  flex: 0 auto;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.titan .actor-sheet .sheet-header .profile {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 160px;
+  flex: 0 0 160px;
+  height: 160px;
+  margin-right: 10px;
+}
+
+.titan .actor-sheet .sheet-header .profile .profile-img {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 160px;
+  flex: 0 0 160px;
+  height: 160px;
+}
+
+.titan .actor-sheet .sheet-header .header-fields {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.titan .actor-sheet .sheet-header h1.charname {
+  height: 50px;
+  padding: 0px;
+  margin: 5px 0;
+  border-bottom: 0;
+}
+
+.titan .actor-sheet .sheet-header h1.charname input {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.titan .actor-sheet .action-list-header {
   word-wrap: normal;
   padding: .5rem;
   border: solid;
@@ -486,14 +560,14 @@ details summary > * {
   width: 100%;
 }
 
-.titan .action-list-header .action-category-name {
+.titan .actor-sheet .action-list-header .action-category-name {
   padding: 0px;
   border-bottom: 0;
   font-weight: 300;
   font-size: 1.25rem;
 }
 
-.titan .action-list {
+.titan .actor-sheet .action-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -501,7 +575,7 @@ details summary > * {
   scrollbar-width: thin;
 }
 
-.titan .action-list .action {
+.titan .actor-sheet .action-list .action {
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
   break-inside: avoid;
@@ -526,11 +600,11 @@ details summary > * {
     } */
 }
 
-.titan .action-list .action:last-child {
+.titan .actor-sheet .action-list .action:last-child {
   margin-bottom: 1rem;
 }
 
-.titan .action-list .action .action-header {
+.titan .actor-sheet .action-list .action .action-header {
   font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -546,7 +620,7 @@ details summary > * {
   margin-bottom: 0.5rem;
 }
 
-.titan .action-list .action .action-header .action-label {
+.titan .actor-sheet .action-list .action .action-header .action-label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -562,12 +636,12 @@ details summary > * {
   align-items: center;
 }
 
-.titan .action-list .action .action-header .action-label .action-image {
+.titan .actor-sheet .action-list .action .action-header .action-label .action-image {
   height: 2rem;
   border: none;
 }
 
-.titan .action-list .action .action-header .action-controls {
+.titan .actor-sheet .action-list .action .action-header .action-controls {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -583,15 +657,15 @@ details summary > * {
   align-items: center;
 }
 
-.titan .action-list .action .action-header .action-controls .fas {
+.titan .actor-sheet .action-list .action .action-header .action-controls .fas {
   margin-left: 0.25rem;
 }
 
-.titan .action-list .action .action-header .action-details {
+.titan .actor-sheet .action-list .action .action-header .action-details {
   word-wrap: break-word;
 }
 
-.titan .action-list .action .action-header .action-details .action-footer {
+.titan .actor-sheet .action-list .action .action-header .action-details .action-footer {
   font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -609,7 +683,7 @@ details summary > * {
   text-align: center;
 }
 
-.titan .action-list .action .action-settings {
+.titan .actor-sheet .action-list .action .action-settings {
   margin: 0;
   width: 100%;
   display: -webkit-box;
@@ -627,7 +701,7 @@ details summary > * {
   align-items: flex-end;
 }
 
-.titan .action-list .action .action-checkbox {
+.titan .actor-sheet .action-list .action .action-checkbox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -643,11 +717,11 @@ details summary > * {
   align-items: center;
 }
 
-.titan .action-list .weapon-options {
+.titan .actor-sheet .action-list .weapon-options {
   margin-bottom: 0;
 }
 
-.titan .action-list .weapon-options .weapon-attacks {
+.titan .actor-sheet .action-list .weapon-options .weapon-attacks {
   margin: 0;
   width: 100%;
   display: -webkit-box;
@@ -667,12 +741,219 @@ details summary > * {
   flex-wrap: wrap;
 }
 
-.titan .action-list .weapon-options .weapon-attacks .weapon-attack {
+.titan .actor-sheet .action-list .weapon-options .weapon-attacks .weapon-attack {
   padding: .25rem;
   border: solid;
   border-radius: 10px;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+.titan .actor-sheet .actor-sheet-inventory-tab .item-list-header {
+  word-wrap: normal;
+  padding: .5rem;
+  border: solid;
+  border-radius: 10px;
+  margin-bottom: .5rem;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.titan .actor-sheet .actor-sheet-inventory-tab .item-list-header .item-category-name {
+  padding: 0px;
+  border-bottom: 0;
+  font-weight: 300;
+  font-size: 1.25rem;
+}
+
+.titan .actor-sheet .actor-sheet-inventory-tab .item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  color: #444;
+}
+
+.titan .actor-sheet .actor-sheet-inventory-tab .item-list .item {
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  break-inside: avoid;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  page-break-inside: avoid;
+  word-wrap: normal;
+  padding: .5rem;
+  border: solid;
+  border-radius: 10px;
+  margin-bottom: .5rem;
+}
+
+.titan .actor-sheet .actor-sheet-inventory-tab .item-list .item:last-child {
+  margin-bottom: 1rem;
+}
+
+.titan .actor-sheet .actor-sheet-inventory-tab .item-list .item .item-header {
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.titan .actor-sheet .actor-sheet-inventory-tab .item-list .item .item-header .item-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.titan .actor-sheet .actor-sheet-inventory-tab .item-list .item .item-header .item-label .item-image {
+  height: 2rem;
+  border: none;
+}
+
+.titan .actor-sheet .actor-sheet-inventory-tab .item-list .item .item-header .item-controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.titan .actor-sheet .actor-sheet-inventory-tab .item-list .item .item-header .item-controls .fas {
+  margin-left: 0.25rem;
+}
+
+.titan .actor-sheet .actor-sheet-inventory-tab .item-list .item .item-details {
+  word-wrap: break-word;
+}
+
+.titan .actor-sheet .actor-sheet-inventory-tab .item-list .item .item-details .item-footer {
+  margin-top: 0.25rem;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+.titan.titan-chat-message .traits-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  flex-direction: wrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.titan.titan-chat-message .traits-container .trait {
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  border: solid;
+  border-radius: 10px;
+  padding: 0.25rem;
+}
+
+.titan.titan-chat-message .description {
+  margin-top: 0.5rem;
+  border: solid;
+  border-radius: 10px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.titan.item-chat-message .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
+.titan.item-chat-message .header .image {
+  width: 20%;
+  border: none;
+}
+
+.titan.item-chat-message .stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  border: solid;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.titan.chat-message-damage-report {
+  font-style: bold;
 }
 
 .titan.check-chat-message .check-chat-message-dice-container {
@@ -794,243 +1075,7 @@ details summary > * {
   margin-right: 0.5rem;
 }
 
-.titan .item-form {
-  font-family: "Roboto", sans-serif;
-}
-
-.titan .sheet-header {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 auto;
-  flex: 0 auto;
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  margin-bottom: 10px;
-}
-
-.titan .sheet-header .profile {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 160px;
-  flex: 0 0 160px;
-  height: 160px;
-  margin-right: 10px;
-}
-
-.titan .sheet-header .profile .profile-img {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 160px;
-  flex: 0 0 160px;
-  height: 160px;
-}
-
-.titan .sheet-header .header-fields {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  height: 100%;
-}
-
-.titan .sheet-header h1.charname {
-  height: 50px;
-  padding: 0px;
-  margin: 5px 0;
-  border-bottom: 0;
-}
-
-.titan .sheet-header h1.charname input {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-}
-
-.titan .sheet-tabs {
-  -webkit-box-flex: 0;
-  -ms-flex: 0;
-  flex: 0;
-}
-
-.titan .sheet-body {
-  height: 100%;
-}
-
-.titan .tox .tox-editor-container {
-  background: #fff;
-}
-
-.titan .tox .tox-edit-area {
-  padding: 0 8px;
-}
-
-.titan .stat-label {
-  font-weight: bold;
-}
-
-.titan .inventory .item-list-header {
-  word-wrap: normal;
-  padding: .5rem;
-  border: solid;
-  border-radius: 10px;
-  margin-bottom: .5rem;
-  font-weight: bold;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.titan .inventory .item-list-header .item-category-name {
-  padding: 0px;
-  border-bottom: 0;
-  font-weight: 300;
-  font-size: 1.25rem;
-}
-
-.titan .inventory .item-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  color: #444;
-}
-
-.titan .inventory .item-list .item {
-  -webkit-column-break-inside: avoid;
-  -moz-column-break-inside: avoid;
-  break-inside: avoid;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  page-break-inside: avoid;
-  word-wrap: normal;
-  padding: .5rem;
-  border: solid;
-  border-radius: 10px;
-  margin-bottom: .5rem;
-}
-
-.titan .inventory .item-list .item:last-child {
-  margin-bottom: 1rem;
-}
-
-.titan .inventory .item-list .item .item-header {
-  font-weight: bold;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
-.titan .inventory .item-list .item .item-header .item-label {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.titan .inventory .item-list .item .item-header .item-label .item-image {
-  height: 2rem;
-  border: none;
-}
-
-.titan .inventory .item-list .item .item-header .item-controls {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.titan .inventory .item-list .item .item-header .item-controls .fas {
-  margin-left: 0.25rem;
-}
-
-.titan .inventory .item-list .item .item-details {
-  word-wrap: break-word;
-}
-
-.titan .inventory .item-list .item .item-details .item-footer {
-  margin-top: 0.25rem;
-  font-weight: bold;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
-}
-
-.titan .effects .item .effect-source,
-.titan .effects .item .effect-duration,
-.titan .effects .item .effect-controls {
-  text-align: center;
-  border-left: 1px solid #c9c7b8;
-  border-right: 1px solid #c9c7b8;
-  font-size: 12px;
-}
-
-.titan .effects .item .effect-controls {
-  border: none;
-}
-
-.titan .item-header {
+.titan .item-sheet .item-header {
   font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1048,7 +1093,7 @@ details summary > * {
   width: 100%;
 }
 
-.titan .item-header .item-label {
+.titan .item-sheet .item-header .item-label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1065,7 +1110,7 @@ details summary > * {
   width: 65%;
 }
 
-.titan .item-header .item-label .item-name {
+.titan .item-sheet .item-header .item-label .item-name {
   height: 3rem;
   padding: 0px;
   margin-right: 0.5rem;
@@ -1074,18 +1119,18 @@ details summary > * {
   width: 100%;
 }
 
-.titan .item-header .item-label .item-name input {
+.titan .item-sheet .item-header .item-label .item-name input {
   width: 100%;
   height: 100%;
   margin: 0;
 }
 
-.titan .item-header .item-label .item-image {
+.titan .item-sheet .item-header .item-label .item-image {
   height: 5rem;
   border: none;
 }
 
-.titan .item-header .item-fields {
+.titan .item-sheet .item-header .item-fields {
   width: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1099,11 +1144,11 @@ details summary > * {
   justify-content: flex-end;
 }
 
-.titan .item-header .item-fields .item-rarity {
+.titan .item-sheet .item-header .item-fields .item-rarity {
   width: 100%;
 }
 
-.titan .item-header .item-fields .item-value {
+.titan .item-sheet .item-header .item-fields .item-value {
   width: 100%;
 }
 
@@ -1416,76 +1461,4 @@ details summary > * {
   border-radius: 10px;
   padding: 0.25rem;
   margin: 0.25rem;
-}
-
-.titan.titan-chat-message .traits-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  flex-direction: wrap;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  margin-bottom: 0.5rem;
-}
-
-.titan.titan-chat-message .traits-container .trait {
-  margin-bottom: 0.5rem;
-  margin-right: 0.5rem;
-  border: solid;
-  border-radius: 10px;
-  padding: 0.25rem;
-}
-
-.titan.titan-chat-message .description {
-  margin-top: 0.5rem;
-  border: solid;
-  border-radius: 10px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
-.titan.item-chat-message .header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
-}
-
-.titan.item-chat-message .header .image {
-  width: 20%;
-  border: none;
-}
-
-.titan.item-chat-message .stats {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  border: solid;
-  border-radius: 10px;
-  padding: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.titan.chat-message-damage-report {
-  font-style: bold;
 }
