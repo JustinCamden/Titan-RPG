@@ -1465,3 +1465,29 @@ details summary > * {
   padding: 0.25rem;
   margin: 0.25rem;
 }
+
+.titan.titan-chat-message.damage-report {
+  font-style: bold;
+}
+
+.titan.titan-chat-message .damage-buttons {
+  width: 100%;
+  margin-top: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.titan.titan-chat-message .damage-buttons .damage-button {
+  width: 100%;
+}
+
+.titan.titan-chat-message .damage-buttons .damage-button:not(:last-child) {
+  margin-right: 0.5rem;
+}

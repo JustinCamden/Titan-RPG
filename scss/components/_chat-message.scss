@@ -72,4 +72,24 @@
             }
         }
     }
+
+    &.damage-report {
+        font-style: bold;
+    }
+
+    .damage-buttons {
+        width: 100%;
+        margin-top: 0.5rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .damage-button {
+            width: 100%;
+
+            &:not(:last-child) {
+                margin-right: 0.5rem;
+            }
+        }
+    }
 }

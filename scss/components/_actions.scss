@@ -119,6 +119,8 @@
   }
 
   .weapon-options {
+    margin-bottom: 0;
+
     .weapon-attacks {
       margin: 0;
       width: 100%;
@@ -136,7 +138,5 @@
         margin-bottom: 0.5rem;
       }
     }
-
-    margin-bottom: 0;
   }
 }

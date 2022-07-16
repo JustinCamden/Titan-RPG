@@ -19,6 +19,7 @@ export const preloadHandlebarsTemplates = async function () {
     // Chat message partials
     "systems/titan/templates/chat-message/components/traits-container.hbs",
     "systems/titan/templates/chat-message/components/description.hbs",
+    "systems/titan/templates/chat-message/components/damage-buttons.hbs",
 
     // Check partials
     "systems/titan/templates/checks/components/check-attribute-skill.hbs",

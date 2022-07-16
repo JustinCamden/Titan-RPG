@@ -191,7 +191,8 @@ export default class TitanAttackCheck extends TitanSkillCheck {
     const results = super._calculateResults();
     // Add the damage to the results
     if (results.succeeded) {
-      results.damage = this.parameters.attack.damage;
+      results.damage =
+        this.parameters.attack.damage + this.parameters.damageMod;
 
       // Add extra damage if appropriate
       if (results.extraSuccesses && this.parameters.attack.plusSuccessDamage) {

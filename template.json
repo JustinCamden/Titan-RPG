@@ -278,9 +278,15 @@
           }
         },
         "equipped": {
-          "rightHand": null,
-          "leftHand:": null,
           "armor": null
+        },
+        "mod": {
+          "armor": {
+            "staticMod": 0
+          },
+          "damageBonus": {
+            "staticMod": 0
+          }
         }
       },
       "base": {

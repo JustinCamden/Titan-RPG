@@ -4,6 +4,7 @@ import TitanAttributeCheck from "../../checks/attribute-check.mjs";
 import TitanSkillCheck from "../../checks/skill-check.mjs";
 import TitanResistanceCheck from "../../checks/resistance-check.mjs";
 import TitanAttackCheck from "../../checks/attack-check.mjs";
+import { TitanChatMessage } from "../chat-message/chat-message.mjs";
 
 /**
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
@@ -189,6 +190,12 @@ export class TitanActor extends Actor {
       systemData.skill[k].expertise.value =
         v.expertise.baseValue + v.expertise.staticMod;
     }
+
+    // Calculate bonuses and stats
+    systemData.mod.armor.value = systemData.mod.armor.staticMod;
+    systemData.mod.damageBonus.value = systemData.mod.armor.staticMod;
+
+    return;
   }
 
   /**
@@ -398,6 +405,7 @@ export class TitanActor extends Actor {
 
     // Initialize check options
     let checkOptions = inData;
+    checkOptions.damageMod = inData.damageMod ?? this.system.mod.damage.value;
 
     // Get the options from a dialog if appropriate
     if (inData.getOptions) {
@@ -436,9 +444,9 @@ export class TitanActor extends Actor {
   }
 
   // Apply damage to the actor
-  async applyDamage(damage) {
+  async applyDamage(damageData) {
     // Calculate the new stamina
-    const newStamina = this.system.resource.stamina.value - damage;
+    const newStamina = this.system.resource.stamina.value - damageData.damage;
 
     // Prepare the update data
     const updateData = {
@@ -475,5 +483,31 @@ export class TitanActor extends Actor {
 
     // Update the amount of stamin
     await this.update(updateData);
+
+    // Create the damage report message
+    const messageData = {
+      damage: damageData.damage,
+      ignoreArmor: damageData.ignoreArmor ?? null,
+      stamina: this.system.resource.stamina,
+      wounds: this.system.resource.wounds,
+    };
+    const messageContent = await renderTemplate(
+      "/systems/titan/templates/chat-message/damage-report-chat-message.hbs",
+      messageData
+    );
+
+    // Send the damage report to chat
+    const messageClass = getDocumentClass("ChatMessage");
+    await messageClass.create({
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor: this }),
+      content: messageContent,
+      type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+      whisper: game.users.filter((user) =>
+        this.testUserPermission(user, "OWNER")
+      ),
+    });
+
+    return;
   }
 }

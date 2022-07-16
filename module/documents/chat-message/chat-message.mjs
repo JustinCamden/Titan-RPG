@@ -56,17 +56,24 @@ export class TitanChatMessage extends ChatMessage {
   }
 
   activateListeners(html) {
+    // Damage buttons
     html.find(".apply-damage").click(this._onApplyDamage.bind(this));
 
     return;
   }
 
   async _onApplyDamage(event) {
-    // Get the damage amount
-    const damage = parseInt(event.target.dataset.damage);
+    // Parse the damage data
+    const damageData = {
+      damage: parseInt(event.target.dataset.damage),
+      ignoreArmor: event.target.dataset.ignoreArmor,
+    };
 
-    // Get the user targets
-    const userTargets = Array.from(game.user.targets);
+    // Get the targets
+    let userTargets = Array.from(game.user.targets);
+    if (userTargets.length < 1) {
+      userTargets = Array.from(canvas.tokens.controlled);
+    }
 
     // For each target
     for (let idx = 0; idx < userTargets.length; idx++) {
@@ -74,7 +81,7 @@ export class TitanChatMessage extends ChatMessage {
       const target = userTargets[idx]?.actor;
       if (target) {
         // Apply damage to the target
-        await target.applyDamage(damage);
+        await target.applyDamage(damageData);
       }
     }
 
