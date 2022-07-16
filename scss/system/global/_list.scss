@@ -1,0 +1,25 @@
+.list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.li.list-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    align-items: top;
+    word-wrap: normal;
+}
+
+
+li.list-item.vertical-list:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+li.list-item.horizontal-list {
+    margin-bottom: 1rem;
+    margin-right: 0.25rem;
+    margin-left: 0.25rem;
+}

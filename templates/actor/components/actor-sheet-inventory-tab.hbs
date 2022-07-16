@@ -8,7 +8,7 @@
       <div class="item-category-name">{{localize "TITAN.weapons.label"}}</div>
       <a class="fas fa-circle-plus item-create" data-type="weapon"></a>
     </div>
-    <ol class="item-list list list-1col">
+    <ol class="item-list list column-1">
       {{! For each weapon }}
       {{#each weapon as |weapon key|}}
       <li class="item expandable-parent" data-item-id={{weapon._id}} data-expandable-id={{concat 'inventory'

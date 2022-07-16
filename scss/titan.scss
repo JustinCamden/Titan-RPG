@@ -10,18 +10,20 @@
 /* Global styles */
 @import 'global/window';
 @import 'global/grid';
-@import 'global/flex';
-@import 'global/container';
-@import 'global/expandable';
 @import 'global/fonts';
 
 /* Styles limited to titan sheets */
 .titan {
-  @import 'components/forms';
-  @import 'components/actor/actor-sheet';
-  @import 'components/chat-message/chat-message';
-  @import 'components/chat-message/check-chat-message';
-  @import 'components/item/item-sheet';
-  @import 'components/item/weapon-sheet';
-  @import 'components/item/weapon-chat-message';
+  @import 'system/global/form';
+  @import 'system/global/list';
+  @import 'system/global/expandable';
+  @import 'system/global/utility-classes';
+  @import 'system/global/utility-mixins';
+  @import 'system/actor/actor-sheet';
+  @import 'system/item/item-sheet';
+  @import 'system/item/item-sheet';
+  @import 'system/chat-message/chat-message';
+  @import 'system/chat-message/check-chat-message';
+  @import 'system/item/weapon-sheet';
+  @import 'system/item/weapon-chat-message';
 }
