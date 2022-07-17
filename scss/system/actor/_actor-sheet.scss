@@ -26,6 +26,10 @@
         }
     }
 
+    .sheet-tabs {
+        flex: 0;
+    }
+
     .sheet-header {
         flex: 0;
         @include flex-row;

@@ -14,12 +14,6 @@
   /* ----------------------------------------- */
 }
 
-.titan .sheet-tabs {
-  -webkit-box-flex: 0;
-  -ms-flex: 0;
-  flex: 0;
-}
-
 .titan .tox .tox-editor-container {
   background: #fff;
 }
@@ -91,6 +85,12 @@
   -ms-flex-pack: center;
   justify-content: center;
   height: 100%;
+}
+
+.titan .actor-sheet .sheet-tabs {
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
 }
 
 .titan .actor-sheet .sheet-header {
@@ -635,6 +635,12 @@
   width: 100%;
 }
 
+.titan .item-sheet .sheet-tabs {
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+}
+
 .titan.titan-chat-message .traits-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -823,10 +829,6 @@
 
 .titan.check-chat-message .check-chat-message-damage-buttons .damage-button:not(:last-child) {
   margin-right: 0.5rem;
-}
-
-.titan .weapon-sheet {
-  word-wrap: normal;
 }
 
 .titan .weapon-sheet .weapon-content {
