@@ -131,6 +131,11 @@
   "TITAN.damage.taken.label": "Damage Taken",
   "TITAN.damage.apply.label": "Apply Damage",
   "TITAN.damage.apply.ignoreArmor.label": "Apply Damage (Ignore Armor)",
+  "TITAN.light.label": "Light",
+  "TITAN.medium.label": "Medium",
+  "TITAN.heavy.label": "Heavy",
+
+  "TITAN.armor.label": "Armor",
 
 
   "SETTINGS.showCheckOptions": {

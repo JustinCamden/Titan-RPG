@@ -14,22 +14,61 @@
     text-align: center;
 }
 
+@mixin flex-group-top($alignment : center) {
+    justify-content: flex-start;
+    align-items: $alignment;
+    text-align: center;
+}
+
 @mixin flex-group-left($alignment : center) {
     justify-content: flex-start;
     align-items: $alignment;
     text-align: left;
 }
 
-@mixin flex-group-righ($alignment : center) {
+@mixin flex-group-right($alignment : center) {
     justify-content: flex-end;
     align-items: $alignment;
     text-align: right;
+}
+
+@mixin flex-space-between($alignment : center) {
+    justify-content: space-between;
+    align-items: $alignment;
+    text-align: center;
 }
 
 @mixin border($padding : 0.5rem) {
     border: solid;
     border-radius: 0.5rem;
     padding: $padding;
+}
+
+@mixin border-right($padding: 0.5rem) {
+    border-right: solid;
+    padding: $padding;
+}
+
+@mixin border-left($padding: 0.5rem) {
+    border-left: solid;
+    padding: $padding;
+}
+
+@mixin border-top($padding: 0.5rem) {
+    border-top: solid;
+    padding: $padding;
+}
+
+@mixin border-bottom($padding: 0.5rem) {
+    border-bottom: solid;
+    padding: $padding;
+}
+
+@mixin border-vertical($padding: 0.5rem) {
+    border-top: solid;
+    border-bottom: solid;
+    padding-top: $padding;
+    padding-bottom: $padding;
 }
 
 @mixin list {

@@ -1,4 +1,69 @@
 .item-sheet {
+
+    .sheet-header {
+        height: 15%;
+    }
+
+    .sheet-tabs {
+        flex: 0;
+        height: 5%;
+        padding-top: 0.25rem;
+    }
+
+    .tab {
+        width: 100%;
+        height: 100%;
+        padding-top: 0.25rem;
+    }
+
+    .sheet-body {
+        @include flex-row;
+
+        &.no-nav {
+            height: 85%;
+        }
+
+        &:not(.no-nav) {
+            height: 80%;
+        }
+
+
+        .item-sidebar {
+            @include border-right;
+            @include flex-column;
+            @include flex-group-top;
+            width: 30%;
+            height: 100%;
+            margin-right: 0.5rem;
+        }
+
+        .item-main {
+            @include flex-column;
+            width: 70%;
+            height: 100%;
+
+            .editor {
+                flex: 1;
+            }
+        }
+    }
+
+    .stat-field {
+        @include flex-row;
+        @include flex-space-between;
+
+        .stat-label {
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .stat-input {
+            width: 100%;
+        }
+    }
+
+
+
     .item-header {
         font-weight: bold;
         display: flex;
@@ -49,9 +114,5 @@
                 width: 100%;
             }
         }
-    }
-
-    .sheet-tabs {
-        flex: 0;
     }
 }

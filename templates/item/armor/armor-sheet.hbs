@@ -1,8 +1,39 @@
 <form class="{{cssClass}} item-sheet armor-sheet" autocomplete="off">
-  {{! Header}}
+  {{! Header }}
   {{> "systems/titan/templates/item/components/item-value-rarity-sheet-header.hbs"}}
 
-  <div class="sheet-body armor-content">
+  {{! Sheet Content }}
+  <div class="sheet-body no-nav">
 
+    {{! Sidebar }}
+    <div class="item-sidebar">
+
+      {{! Armor }}
+      <div class="stat-field">
+
+        {{! Label }}
+        <div class="stat-label">
+          {{localize "TITAN.armor.label"}}
+        </div>
+
+        {{! Input }}
+        <input class="stat-input" type="number" name="system.armor" value="{{system.armor}}" data-dtype="Number" />
+      </div>
+    </div>
+
+    {{! Description }}
+    <div class="item-main">
+      <h2>{{localize "TITAN.description.label"}}</h2>
+      <div class="editor">
+        {{editor
+        system.description
+        target="system.description"
+        rollData=rollData
+        button=true
+        owner=owner
+        editable=editable
+        }}
+      </div>
+    </div>
   </div>
 </form>
