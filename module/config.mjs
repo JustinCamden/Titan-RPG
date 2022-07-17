@@ -308,6 +308,23 @@ export const TITAN = {
     },
   },
 
+  armor: {
+    label: "TITAN.armor.label",
+    trait: {
+      option: {
+        light: {
+          label: "TITAN.armor.trait.light.label",
+        },
+        light: {
+          label: "TITAN.armor.trait.heavy.label",
+        },
+        magical: {
+          label: "TITAN.armor.trait.magical.label",
+        },
+      },
+    },
+  },
+
   sendToChat: {
     label: "TITAN.sendToChat.label",
   },

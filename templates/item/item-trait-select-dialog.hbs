@@ -1,0 +1,27 @@
+<form class="titan item-trait-select-dialog">
+    <div class="form-group">
+        {{! Trait Options List}}
+        <ol class="trait-list">
+
+            {{! Trait Option }}
+            {{#each traitOptions as |option key|}}
+            <li class="trait">
+                {{! Trait Label }}
+                <label class="trait-label">{{localize option.label}}</label>
+
+                {{! Trait input }}
+                {{! Numer value }}
+                {{#if option.numberValue includeZero=true}}
+                <div class="trait-input">
+                    <input type="text" name="{{key}}.numberValue" value="{{option.numberValue}}" data-dtype="Number" />
+                </div>
+                {{else}}
+                {{! Bool value }}
+                <input class="trait-input" type="checkbox" name="{{key}}.isTraitActive" {{checked
+                    option.isTraitActive}} />
+                {{/if}}
+            </li>
+            {{/each}}
+        </ol>
+    </div>
+</form>

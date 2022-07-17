@@ -136,7 +136,9 @@
   "TITAN.heavy.label": "Heavy",
 
   "TITAN.armor.label": "Armor",
-
+  "TITAN.armor.trait.option.light.label": "Light",
+  "TITAN.armor.trait.option.heavy.label": "Heavy",
+  "TITAN.armor.trait.option.magical.label": "Magical",
 
   "SETTINGS.showCheckOptions": {
     "name": "Ask for Check Options by default.",

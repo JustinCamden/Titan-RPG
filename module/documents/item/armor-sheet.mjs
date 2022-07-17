@@ -6,4 +6,16 @@ export class TitanArmorSheet extends TitanItemSheet {
   get template() {
     return `systems/titan/templates/item/armor/armor-sheet.hbs`;
   }
+
+  activateListeners(html) {
+    super.activateListeners(html);
+
+    // Edit armor traits
+    html.find(".edit-armor-traits").click(this._onEditArmorTraits.bind(this));
+  }
+
+  // Edit armor traits
+  _onEditArmorTraits(event) {
+    event.preventDefault();
+  }
 }

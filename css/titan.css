@@ -559,7 +559,78 @@
 }
 
 .titan .item-sheet .sheet-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   height: 15%;
+  width: 100%;
+}
+
+.titan .item-sheet .sheet-header .item-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 65%;
+}
+
+.titan .item-sheet .sheet-header .item-label .item-name {
+  height: 3rem;
+  padding: 0;
+  margin-right: 0.5rem;
+  margin-bottom: 0;
+  border-bottom: 0;
+  width: 100%;
+}
+
+.titan .item-sheet .sheet-header .item-label .item-name input {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.titan .item-sheet .sheet-header .item-label .item-image {
+  height: 5rem;
+  border: none;
+}
+
+.titan .item-sheet .sheet-header .item-fields {
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.titan .item-sheet .sheet-header .item-fields .item-rarity {
+  width: 100%;
+}
+
+.titan .item-sheet .sheet-header .item-fields .item-value {
+  width: 100%;
 }
 
 .titan .item-sheet .sheet-tabs {
@@ -573,7 +644,6 @@
 .titan .item-sheet .tab {
   width: 100%;
   height: 100%;
-  padding-top: 0.25rem;
 }
 
 .titan .item-sheet .sheet-body {
@@ -584,6 +654,7 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
+  padding-top: 0.25rem;
 }
 
 .titan .item-sheet .sheet-body.no-nav {
@@ -611,7 +682,7 @@
   -ms-flex-align: center;
   align-items: center;
   text-align: center;
-  width: 30%;
+  width: 21rem;
   height: 100%;
   margin-right: 0.5rem;
 }
@@ -624,7 +695,7 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 70%;
+  width: 100%;
   height: 100%;
 }
 
@@ -634,7 +705,7 @@
   flex: 1;
 }
 
-.titan .item-sheet .stat-field {
+.titan .item-sheet .stat-field-horizontal {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -651,17 +722,34 @@
   text-align: center;
 }
 
-.titan .item-sheet .stat-field .stat-label {
+.titan .item-sheet .stat-label {
   font-weight: bold;
   width: 100%;
 }
 
-.titan .item-sheet .stat-field .stat-input {
+.titan .item-sheet .stat-input {
   width: 100%;
 }
 
-.titan .item-sheet .item-header {
-  font-weight: bold;
+.titan .item-sheet .trait-container {
+  border: solid;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.titan.item-trait-select-dialog .trait-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+}
+
+.titan.item-trait-select-dialog .trait-list .trait {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -672,69 +760,16 @@
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+}
+
+.titan.item-trait-select-dialog .trait-list .trait .trait-label {
   width: 100%;
 }
 
-.titan .item-sheet .item-header .item-label {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 65%;
-}
-
-.titan .item-sheet .item-header .item-label .item-name {
-  height: 3rem;
-  padding: 0;
-  margin-right: 0.5rem;
-  margin-bottom: 0;
-  border-bottom: 0;
+.titan.item-trait-select-dialog .trait-list .trait .trait-input {
   width: 100%;
-}
-
-.titan .item-sheet .item-header .item-label .item-name input {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-}
-
-.titan .item-sheet .item-header .item-label .item-image {
-  height: 5rem;
-  border: none;
-}
-
-.titan .item-sheet .item-header .item-fields {
-  width: 30%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-}
-
-.titan .item-sheet .item-header .item-fields .item-rarity {
-  width: 100%;
-}
-
-.titan .item-sheet .item-header .item-fields .item-value {
-  width: 100%;
+  text-align: right;
+  margin-right: 0;
 }
 
 .titan.titan-chat-message .traits-container {
@@ -1166,7 +1201,6 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-right: 0.25rem;
   margin-right: 0.25rem;
 }
 

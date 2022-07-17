@@ -10,7 +10,7 @@ export const preloadHandlebarsTemplates = async function () {
     "systems/titan/templates/actor/components/actor-sheet-actions-attacks.hbs",
 
     // Item partials
-    "systems/titan/templates/item/components/item-value-rarity-sheet-header.hbs",
+    "systems/titan/templates/item/components/item-sheet-value-rarity-header.hbs",
     "systems/titan/templates/item/weapon/components/weapon-sheet-description-tab.hbs",
     "systems/titan/templates/item/weapon/components/weapon-sheet-attacks-tab.hbs",
     "systems/titan/templates/item/weapon/components/weapon-sheet-attack-sheet-vertical.hbs",

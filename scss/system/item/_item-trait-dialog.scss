@@ -1,0 +1,22 @@
+&.item-trait-select-dialog {
+    .trait-list {
+        @include list;
+        column-count: 3;
+
+        .trait {
+            width: 100%;
+            @include flex-row;
+            justify-content: space-between;
+
+            .trait-label {
+                width: 100%;
+            }
+
+            .trait-input {
+                width: 100%;
+                text-align: right;
+                margin-right: 0;
+            }
+        }
+    }
+}

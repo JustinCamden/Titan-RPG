@@ -1,5 +1,5 @@
 {{! Header}}
-<div class="sheet-header item-header item-value-rarity-sheet-header">
+<div class="sheet-header item-sheet-value-rarity-header.hbs">
 
     {{! Label }}
     <div class="item-label">
@@ -15,20 +15,16 @@
 
         {{! Value}}
         <div class="item-value">
-            <label>{{localize
-                "TITAN.item.value.label"
-                }}</label>
+            <label class="stat-label">{{localize "TITAN.item.value.label"}}</label>
             <input type="number" name="system.value" value="{{system.value}}" data-dtype="Number" />
         </div>
 
         {{! Rarity }}
         <div class="item-rarity">
-            <label>{{localize "TITAN.item.rarity.label"}}</label>
-            <div>
-                <select name="system.rarity">
-                    {{selectOptions rarityOptions selected=system.rarity localize=true}}
-                </select>
-            </div>
+            <label class="stat-label">{{localize "TITAN.item.rarity.label"}}</label>
+            <select name="system.rarity">
+                {{selectOptions rarityOptions selected=system.rarity localize=true}}
+            </select>
         </div>
     </div>
 </div>
