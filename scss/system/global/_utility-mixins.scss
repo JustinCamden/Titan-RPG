@@ -26,10 +26,16 @@
     text-align: right;
 }
 
-@mixin border {
+@mixin border-normal {
     border: solid;
-    border-radius: 10px;
+    border-radius: 0.5rem;
     padding: 0.5rem;
+}
+
+@mixin border-small {
+    border: solid;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
 }
 
 @mixin list {

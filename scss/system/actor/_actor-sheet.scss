@@ -3,7 +3,7 @@
         @include flex-column;
         align-items: center;
         @include flex-group-center;
-        @include border;
+        @include border-normal;
         width: 100%;
 
         .stat-label {

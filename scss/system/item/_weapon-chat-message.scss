@@ -4,11 +4,9 @@
 
 &.weapon-chat-message {
   .attack-sheet {
-    border: solid;
-    border-radius: 10px;
+    @include border-normal;
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
     margin-top: 0.5rem;
 
     .stats {
@@ -19,9 +17,7 @@
       justify-content: flex-start;
 
       .stat {
-        border: solid;
-        border-radius: 10px;
-        padding: 0.25rem;
+        @include border-normal;
         margin: 0.25rem;
       }
     }

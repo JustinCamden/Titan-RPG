@@ -3,10 +3,8 @@
     @include grid-3-column;
 
     .item-list-header {
+        @include border-normal;
         word-wrap: normal;
-        padding: .5rem;
-        border: solid;
-        border-radius: 10px;
         margin-bottom: .5rem;
         font-weight: bold;
         display: flex;
@@ -32,13 +30,11 @@
 
         // Individual Item
         .item {
+            @include border-normal;
             break-inside: avoid;
             align-items: center;
             page-break-inside: avoid;
             word-wrap: normal;
-            padding: .5rem;
-            border: solid;
-            border-radius: 10px;
             margin-bottom: .5rem;
 
             &:last-child {
