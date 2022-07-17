@@ -69,8 +69,7 @@
 
   .weapon-sheet-attacks-tab {
     .attacks {
-      @include grid;
-      @include grid-3-column;
+      @include grid(3);
     }
   }
 

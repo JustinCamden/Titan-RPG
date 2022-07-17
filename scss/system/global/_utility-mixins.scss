@@ -26,16 +26,10 @@
     text-align: right;
 }
 
-@mixin border-normal {
+@mixin border($padding : 0.5rem) {
     border: solid;
     border-radius: 0.5rem;
-    padding: 0.5rem;
-}
-
-@mixin border-small {
-    border: solid;
-    border-radius: 0.5rem;
-    padding: 0.25rem;
+    padding: $padding;
 }
 
 @mixin list {
@@ -52,4 +46,21 @@
     &:not(:first-child) {
         margin-top: 0.5rem;
     }
+}
+
+@mixin grid($column-count) {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    padding: 0;
+    grid-column: span $column-count / span $column-count;
+    grid-template-columns: repeat($column-count, minmax(0, 1fr));
+}
+
+@mixin grid-start($column-count) {
+    grid-column-start: $column-count
+}
+
+@mixin grid-span($column-count) {
+    grid-column-end: span $column-count;
 }

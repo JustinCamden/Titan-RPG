@@ -1,9 +1,8 @@
 .actor-sheet-actions-tab {
-    @include grid;
-    @include grid-3-column;
+    @include grid(3);
 
     .action-list-header {
-        @include border-normal;
+        @include border;
         word-wrap: normal;
         margin-bottom: .5rem;
         font-weight: bold;
@@ -30,7 +29,7 @@
 
         // Individual action
         .action {
-            @include border-normal;
+            @include border;
             break-inside: avoid;
             align-items: center;
             page-break-inside: avoid;
@@ -104,8 +103,7 @@
         }
 
         .weapon-options {
-            @include grid;
-            @include grid-2-column;
+            @include grid(2);
             margin-bottom: 0;
 
             .weapon-attacks {
@@ -117,7 +115,7 @@
                 flex-wrap: wrap;
 
                 .weapon-attack {
-                    @include border-small;
+                    @include border(0.25rem);
                     margin-right: 0.5rem;
                     margin-bottom: 0.5rem;
                 }

@@ -10,13 +10,13 @@
         .trait {
             margin-bottom: 0.5rem;
             margin-right: 0.5rem;
-            @include border-small;
+            @include border(0.25rem);
         }
     }
 
     .description {
         margin-top: 0.5rem;
-        @include border-normal;
+        @include border;
     }
 }
 
@@ -34,7 +34,7 @@
     }
 
     .stats {
-        @include border-normal;
+        @include border;
         display: flex;
         justify-content: space-between;
         margin-top: 0.5rem;

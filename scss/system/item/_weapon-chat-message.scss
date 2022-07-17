@@ -4,7 +4,7 @@
 
 &.weapon-chat-message {
   .attack-sheet {
-    @include border-normal;
+    @include border;
     display: flex;
     flex-direction: column;
     margin-top: 0.5rem;
@@ -17,7 +17,7 @@
       justify-content: flex-start;
 
       .stat {
-        @include border-normal;
+        @include border;
         margin: 0.25rem;
       }
     }
