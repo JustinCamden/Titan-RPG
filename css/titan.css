@@ -122,10 +122,8 @@
 }
 
 .titan .actor-sheet .sheet-header .profile .profile-img {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 160px;
-  flex: 0 0 160px;
-  height: 160px;
+  height: 10rem;
+  width: 10rem;
 }
 
 .titan .actor-sheet .sheet-header .header-fields .header-row {
