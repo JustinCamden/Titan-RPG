@@ -2,20 +2,20 @@
   {{! Header}}
   {{> "systems/titan/templates/item/components/item-value-rarity-sheet-header.hbs"}}
 
-  <div class="sheet-body weapon-content">
-    {{! Sheet Tab Navigation }}
-    <nav class="sheet-tabs tabs" data-group="primary">
-      <a class="item" data-tab="description">{{localize "TITAN.description.label"}}</a>
-      <a class="item" data-tab="attacks">{{localize "TITAN.attacks.label"}}</a>
-    </nav>
+  {{! Sheet Tab Navigation }}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="description-tab">{{localize "TITAN.description.label"}}</a>
+    <a class="item" data-tab="attacks-tab">{{localize "TITAN.attacks.label"}}</a>
+  </nav>
 
+  <div class="sheet-body weapon-content">
     {{! Description Tab }}
-    <div class="tab" data-group="primary" data-tab="description">
+    <div class="tab" data-group="primary" data-tab="description-tab">
       {{> "systems/titan/templates/item/weapon/components/weapon-sheet-description-tab.hbs"}}
     </div>
 
     {{! Attacks Tab }}
-    <div class="tab" data-group="primary" data-tab="attacks">
+    <div class="tab" data-group="primary" data-tab="attacks-tab">
       {{> "systems/titan/templates/item/weapon/components/weapon-sheet-attacks-tab.hbs"}}
     </div>
   </div>

@@ -20,10 +20,6 @@
   flex: 0;
 }
 
-.titan .sheet-body {
-  height: 100%;
-}
-
 .titan .tox .tox-editor-container {
   background: #fff;
 }
@@ -831,15 +827,17 @@
 
 .titan .weapon-sheet {
   word-wrap: normal;
-  max-height: 85%;
 }
 
-.titan .weapon-sheet .tab {
-  height: 85%;
+.titan .weapon-sheet .weapon-content {
+  height: 79%;
 }
 
-.titan .weapon-sheet .weapon-sheet-description-tab {
+.titan .weapon-sheet .weapon-content .tab {
   height: 100%;
+}
+
+.titan .weapon-sheet .weapon-content .weapon-sheet-description-tab {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -847,43 +845,11 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  width: 100%;
-}
-
-.titan .weapon-sheet .weapon-sheet-description-tab .attack-details {
-  max-height: 100%;
-  width: 30%;
-  margin-right: 0.5rem;
-}
-
-.titan .weapon-sheet .weapon-sheet-description-tab .attack-details .attacks-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  border: solid;
-  border-radius: 10px;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 0.5rem;
-}
-
-.titan .weapon-sheet .weapon-sheet-description-tab .attack-details .attacks-header .attacks-name {
-  padding: 0px;
-  border-bottom: 0;
-  font-weight: 300;
-  font-size: 1.25rem;
-  margin: 0;
-}
-
-.titan .weapon-sheet .weapon-sheet-description-tab .weapon-editors {
-  max-height: 100%;
   height: 100%;
-  width: 70%;
+  width: 100%;
+}
+
+.titan .weapon-sheet .weapon-content .weapon-sheet-description-tab .attacks-sidebar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -894,27 +860,67 @@
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  -ms-flex-item-align: center;
-  align-self: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: left;
+  margin-right: 0.5rem;
+  max-height: 28rem;
 }
 
-.titan .weapon-sheet .weapon-sheet-description-tab .weapon-editors .weapon-description {
-  height: 50%;
+.titan .weapon-sheet .weapon-content .weapon-sheet-description-tab .attacks-sidebar .attacks-header {
+  width: 100%;
+  border: solid;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
 }
 
-.titan .weapon-sheet .weapon-sheet-description-tab .weapon-editors .weapon-description .editor {
-  height: 80%;
+.titan .weapon-sheet .weapon-content .weapon-sheet-description-tab .attacks-sidebar .attacks-header .attacks-label {
+  padding: 0px;
+  border-bottom: 0;
+  font-weight: 300;
+  font-size: 1.25rem;
+  margin: 0;
 }
 
-.titan .weapon-sheet .weapon-sheet-description-tab .weapon-editors .attack-description {
-  height: 50%;
+.titan .weapon-sheet .weapon-content .weapon-sheet-description-tab .weapon-editors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  text-align: left;
+  height: 100%;
+  width: 70%;
 }
 
-.titan .weapon-sheet .weapon-sheet-description-tab .weapon-editors .attack-description .editor {
-  height: 80%;
+.titan .weapon-sheet .weapon-content .weapon-sheet-description-tab .weapon-editors .weapon-description {
+  height: 100%;
+  width: 100%;
 }
 
-.titan .weapon-sheet .weapon-sheet-attacks-tab .attacks {
+.titan .weapon-sheet .weapon-content .weapon-sheet-description-tab .weapon-editors .weapon-description .editor {
+  height: 85%;
+}
+
+.titan .weapon-sheet .weapon-content .weapon-sheet-description-tab .weapon-editors .attack-description {
+  height: 100%;
+  width: 100%;
+}
+
+.titan .weapon-sheet .weapon-content .weapon-sheet-description-tab .weapon-editors .attack-description .editor {
+  height: 85%;
+}
+
+.titan .weapon-sheet .weapon-content .weapon-sheet-attacks-tab .attacks {
   display: grid;
   gap: 0.5rem;
   margin: 0.5rem 0;
@@ -923,7 +929,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical {
+.titan .weapon-sheet .weapon-content .weapon-sheet-attack-sheet-vertical {
   padding: .5rem;
   border: solid;
   border-radius: 10px;
@@ -944,7 +950,7 @@
   margin-top: 0.5rem;
 }
 
-.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-header {
+.titan .weapon-sheet .weapon-content .weapon-sheet-attack-sheet-vertical .attack-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -961,7 +967,7 @@
   margin-bottom: .25rem;
 }
 
-.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-header .attack-name {
+.titan .weapon-sheet .weapon-content .weapon-sheet-attack-sheet-vertical .attack-header .attack-name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -977,14 +983,15 @@
   align-items: center;
   text-align: start;
   width: 100%;
+  font-size: 1.1rem;
 }
 
-.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-header .attack-name .attack-name-input {
+.titan .weapon-sheet .weapon-content .weapon-sheet-attack-sheet-vertical .attack-header .attack-name .attack-name-input {
   margin: .25rem;
   margin-left: 0.5rem;
 }
 
-.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-header .attack-controls {
+.titan .weapon-sheet .weapon-content .weapon-sheet-attack-sheet-vertical .attack-header .attack-controls {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1000,11 +1007,11 @@
   align-items: center;
 }
 
-.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-header .attack-controls .fas {
+.titan .weapon-sheet .weapon-content .weapon-sheet-attack-sheet-vertical .attack-header .attack-controls .fas {
   margin-left: 0.5rem;
 }
 
-.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-field {
+.titan .weapon-sheet .weapon-content .weapon-sheet-attack-sheet-vertical .attack-field {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1024,7 +1031,7 @@
   margin-bottom: .5rem;
 }
 
-.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-field .attack-label {
+.titan .weapon-sheet .weapon-content .weapon-sheet-attack-sheet-vertical .attack-field .attack-label {
   margin-left: 0.25rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1040,7 +1047,7 @@
   width: 50%;
 }
 
-.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-field .attack-value {
+.titan .weapon-sheet .weapon-content .weapon-sheet-attack-sheet-vertical .attack-field .attack-value {
   margin-right: 0.25rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1056,11 +1063,11 @@
   width: 50%;
 }
 
-.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-field .attack-value.extra-wide {
+.titan .weapon-sheet .weapon-content .weapon-sheet-attack-sheet-vertical .attack-field .attack-value.extra-wide {
   width: 120%;
 }
 
-.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-traits-container {
+.titan .weapon-sheet .weapon-content .weapon-sheet-attack-sheet-vertical .attack-traits-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1077,7 +1084,7 @@
   margin-right: 0.25rem;
 }
 
-.titan .weapon-sheet .weapon-sheet-attack-sheet-vertical .attack-traits-container .attack-trait {
+.titan .weapon-sheet .weapon-content .weapon-sheet-attack-sheet-vertical .attack-traits-container .attack-trait {
   padding: .5rem;
   border: solid;
   border-radius: 10px;
@@ -1097,7 +1104,7 @@
   margin: 0.25rem;
 }
 
-.titan .weapon-sheet .add-attack-button {
+.titan .weapon-sheet .weapon-content .add-attack-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

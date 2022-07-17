@@ -4,183 +4,181 @@
 
 .weapon-sheet {
   word-wrap: normal;
-  max-height: 85%;
 
-  .tab {
-    height: 85%;
-  }
+  .weapon-content {
+    height: 79%;
 
-  .weapon-sheet-description-tab {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-
-    .attack-details {
-      max-height: 100%;
-      width: 30%;
-      margin-right: 0.5rem;
-
-      .attacks-header {
-        display: flex;
-        width: 100%;
-        border: solid;
-        border-radius: 10px;
-        justify-content: center;
-        align-items: center;
-        padding: 0.5rem;
-
-        .attacks-name {
-          padding: 0px;
-          border-bottom: 0;
-          font-weight: 300;
-          font-size: 1.25rem;
-          margin: 0;
-        }
-      }
-    }
-
-    .weapon-editors {
-      max-height: 100%;
+    .tab {
       height: 100%;
-      width: 70%;
+    }
+
+    .weapon-sheet-description-tab {
+      @include flex-row;
+      height: 100%;
+      width: 100%;
+
+      .attacks-sidebar {
+        @include flex-column;
+        @include flex-group-left;
+        margin-right: 0.5rem;
+        max-height: 28rem;
+
+        .attacks-header {
+          width: 100%;
+          @include border;
+
+          .attacks-label {
+            padding: 0px;
+            border-bottom: 0;
+            font-weight: 300;
+            font-size: 1.25rem;
+            margin: 0;
+          }
+        }
+      }
+
+      .weapon-editors {
+        @include flex-column;
+        @include flex-group-left(flex-start);
+        height: 100%;
+        width: 70%;
+
+        .weapon-description {
+          height: 100%;
+          width: 100%;
+
+          .editor {
+            height: 85%;
+          }
+        }
+
+        .attack-description {
+          height: 100%;
+          width: 100%;
+
+          .editor {
+            height: 85%;
+          }
+        }
+      }
+    }
+
+    .weapon-sheet-attacks-tab {
+      .attacks {
+        @include grid(3);
+      }
+    }
+
+
+    .weapon-sheet-attack-sheet-vertical {
+      padding: .5rem;
+      border: solid;
+      border-radius: 10px;
       display: flex;
-      flex-direction: column;
       justify-content: flex-start;
-      align-self: center;
-
-      .weapon-description {
-        height: 50%;
-
-        .editor {
-          height: 80%;
-        }
-      }
-
-      .attack-description {
-        height: 50%;
-
-        .editor {
-          height: 80%;
-        }
-      }
-    }
-  }
-
-  .weapon-sheet-attacks-tab {
-    .attacks {
-      @include grid(3);
-    }
-  }
-
-
-  .weapon-sheet-attack-sheet-vertical {
-    padding: .5rem;
-    border: solid;
-    border-radius: 10px;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    margin-top: 0.5rem;
-
-    .attack-header {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: .25rem;
-
-      .attack-name {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        text-align: start;
-        width: 100%;
-
-        .attack-name-input {
-          margin: .25rem;
-          margin-left: 0.5rem;
-        }
-      }
-
-      .attack-controls {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: center;
-
-        .fas {
-          margin-left: 0.5rem;
-        }
-      }
-    }
-
-    .attack-field {
-      display: flex;
-      font-weight: bold;
-      flex-direction: row;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
       margin: 0;
-      width: 100%;
-      margin-bottom: .5rem;
+      margin-top: 0.5rem;
 
-      .attack-label {
-        margin-left: 0.25rem;
+      .attack-header {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
-        text-align: start;
-        width: 50%;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: .25rem;
+
+        .attack-name {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          text-align: start;
+          width: 100%;
+          font-size: 1.1rem;
+
+          .attack-name-input {
+            margin: .25rem;
+            margin-left: 0.5rem;
+          }
+        }
+
+        .attack-controls {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: center;
+
+          .fas {
+            margin-left: 0.5rem;
+          }
+        }
       }
 
-      .attack-value {
-        margin-right: 0.25rem;
+      .attack-field {
+        display: flex;
+        font-weight: bold;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+        width: 100%;
+        margin-bottom: .5rem;
+
+        .attack-label {
+          margin-left: 0.25rem;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          text-align: start;
+          width: 50%;
+        }
+
+        .attack-value {
+          margin-right: 0.25rem;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          text-align: end;
+          width: 50%;
+
+          &.extra-wide {
+            width: 120%
+          }
+        }
+      }
+
+      .attack-traits-container {
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
-        text-align: end;
-        width: 50%;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-right: 0.25rem;
+        margin-right: 0.25rem;
 
-        &.extra-wide {
-          width: 120%
+        .attack-trait {
+          padding: .5rem;
+          border: solid;
+          border-radius: 10px;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: flex-end;
+          font-weight: normal;
+          margin: 0.25rem;
         }
       }
     }
 
-    .attack-traits-container {
+    .add-attack-button {
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      width: 100%;
+      border: solid;
+      border-radius: 10px;
       justify-content: center;
-      margin-right: 0.25rem;
-      margin-right: 0.25rem;
-
-      .attack-trait {
-        padding: .5rem;
-        border: solid;
-        border-radius: 10px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: flex-end;
-        font-weight: normal;
-        margin: 0.25rem;
-      }
+      align-items: center;
+      margin-top: 0.5rem;
+      padding: 0.5rem;
     }
-  }
-
-  .add-attack-button {
-    display: flex;
-    width: 100%;
-    border: solid;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0.5rem;
-    padding: 0.5rem;
   }
 }

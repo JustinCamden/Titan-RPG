@@ -1,32 +1,29 @@
 <div class="weapon-sheet-description-tab">
   {{! Sidebar }}
-  <div class="attack-details">
+  <div class="attacks-sidebar">
     <div class="attacks-header">
-      <h2 class="attacks-name">{{localize "TITAN.attacks.label"}}</h2>
+      <h2 class="attacks-label">{{localize "TITAN.attacks.label"}}</h2>
     </div>
 
     {{! Scrolling }}
-    <div class="max-height-25 scrolling weapon-details-content">
-      {{! Weapon attacks }}
-      <div class="attacks">
-        {{! For each attack }}
-        {{#each system.attack as |attack key|}}
-        {{> "systems/titan/templates/item/weapon/components/weapon-sheet-attack-sheet-vertical.hbs"
-        attack=attack
-        key=key
-        attackTypeOptions=../attackTypeOptions
-        rangedRangeOptions=../rangedRangeOptions
-        meleeRangeOptions=../meleeRangeOptions
-        attributeOptions=../attributeOptions
-        skillOptions=../skillOptions
-        tab="description"
-        isExpanded=../isExpanded
-        }}
-        {{/each}}
-        {{! Adding a new attack }}
-        <div class="add-attack-button">
-          <a class="fas fa-plus-circle add-attack"></a>
-        </div>
+    <div class="scrolling attacks-list">
+      {{! For each attack }}
+      {{#each system.attack as |attack key|}}
+      {{> "systems/titan/templates/item/weapon/components/weapon-sheet-attack-sheet-vertical.hbs"
+      attack=attack
+      key=key
+      attackTypeOptions=../attackTypeOptions
+      rangedRangeOptions=../rangedRangeOptions
+      meleeRangeOptions=../meleeRangeOptions
+      attributeOptions=../attributeOptions
+      skillOptions=../skillOptions
+      tab="description"
+      isExpanded=../isExpanded
+      }}
+      {{/each}}
+      {{! Adding a new attack }}
+      <div class="add-attack-button">
+        <a class="fas fa-plus-circle add-attack"></a>
       </div>
     </div>
   </div>
