@@ -9,18 +9,16 @@
 
 /* Global styles */
 @import 'global/window';
-@import 'global/grid';
-@import 'global/fonts';
 
 /* Styles limited to titan sheets */
 .titan {
   @import 'system/global/form';
+  @import 'system/global/grid-mixins';
   @import 'system/global/list';
   @import 'system/global/expandable';
   @import 'system/global/utility-classes';
   @import 'system/global/utility-mixins';
   @import 'system/actor/actor-sheet';
-  @import 'system/item/item-sheet';
   @import 'system/item/item-sheet';
   @import 'system/chat-message/chat-message';
   @import 'system/chat-message/check-chat-message';

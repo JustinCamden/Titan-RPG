@@ -3,6 +3,7 @@ import {
   prepareActiveEffectCategories,
 } from "../../helpers/effects.mjs";
 import { TitanActor } from "./actor.mjs";
+import TitanUtility from "../../helpers/utility.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -179,8 +180,15 @@ export class TitanActorSheet extends ActorSheet {
     // Editing resources
     html.find(".resource-edit").change(this._onResourceEdit.bind(this));
 
-    // Editing skill
-    html.find(".skill-edit").change(this._onSkillEdit.bind(this));
+    // Editing skill expertise
+    html
+      .find(".skill-expertise-edit")
+      .change(this._onSkillExpertiseEdit.bind(this));
+
+    // Editing skill training
+    html
+      .find(".skill-training-edit")
+      .change(this._onSkillTrainingEdit.bind(this));
 
     // Expandable toggles
     html.find(".expand").click(this._onExpandElement.bind(this));
@@ -434,27 +442,26 @@ export class TitanActorSheet extends ActorSheet {
     return;
   }
 
-  async _onSkillEdit(event) {
+  async _onSkillTrainingEdit(event) {
     // Ensure the skill is within a valid range
-    const newValue = event.target.value;
 
     // Cap the training values within range
-    if (event.target.dataset.skillType == "training") {
-      const maxSkillTraining = CONFIG.TITAN.skill.training.max;
-      if (newValue > maxSkillTraining) {
-        event.target.value = maxSkillTraining;
-      } else if (newValue < 0) {
-        event.target.value = 0;
-      }
-    } else {
-      const maxSkillExpertise = CONFIG.TITAN.skill.expertise.max;
-      if (newValue > maxSkillExpertise) {
-        event.target.value = maxSkillExpertise;
-      } else if (newValue < 0) {
-        event.target.value = 0;
-      }
-    }
+    event.target.value = TitanUtility.Clamp(
+      event.target.value,
+      0,
+      CONFIG.TITAN.skill.training.max
+    );
 
+    return;
+  }
+
+  async _onSkillExpertiseEdit(event) {
+    // Cap the expertise values within range
+    event.target.value = TitanUtility.Clamp(
+      event.target.value,
+      0,
+      CONFIG.TITAN.skill.expertise.max
+    );
     return;
   }
 

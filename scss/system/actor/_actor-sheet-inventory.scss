@@ -1,4 +1,7 @@
 .actor-sheet-inventory-tab {
+    @include grid;
+    @include grid-3-column;
+
     .item-list-header {
         word-wrap: normal;
         padding: .5rem;

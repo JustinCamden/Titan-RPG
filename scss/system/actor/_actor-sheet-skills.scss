@@ -1,1 +1,20 @@
-.actor-sheet-skills-tab {}
+.actor-sheet-skills-tab {
+
+    .attributes {
+        @include flex-row;
+
+        :not(:first-child) {
+            margin-left: 0.5rem;
+        }
+    }
+
+    .skill-list {
+        @include list;
+        column-count: 4;
+        margin-top: 0.5rem;
+
+        .stat-field {
+            @include list-item-vertical;
+        }
+    }
+}

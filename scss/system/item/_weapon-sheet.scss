@@ -67,6 +67,13 @@
     }
   }
 
+  .weapon-sheet-attacks-tab {
+    .attacks {
+      @include grid;
+      @include grid-3-column;
+    }
+  }
+
 
   .weapon-sheet-attack-sheet-vertical {
     padding: .5rem;

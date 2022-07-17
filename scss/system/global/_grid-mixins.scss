@@ -1,0 +1,149 @@
+@mixin grid {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  padding: 0;
+}
+
+@mixin grid-2-column {
+  grid-column: span 2 / span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@mixin grid-3-column {
+  grid-column: span 3 / span 3;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@mixin grid-4-column {
+  grid-column: span 4 / span 4;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@mixin grid-5-column {
+  grid-column: span 5 / span 5;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+@mixin grid-6-column {
+  grid-column: span 6 / span 6;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+@mixin grid-7-column {
+  grid-column: span 7 / span 7;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+@mixin grid-8-column {
+  grid-column: span 8 / span 8;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+@mixin grid-9-column {
+  grid-column: span 9 / span 9;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+
+@mixin grid-10-column {
+  grid-column: span 10 / span 10;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+
+@mixin grid-11-column {
+  grid-column: span 11 / span 11;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+}
+
+@mixin grid-12-column {
+  grid-column: span 12 / span 12;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+@mixin grid-start-2 {
+  grid-column-start: 2
+}
+
+@mixin grid-start-3 {
+  grid-column-start: 3
+}
+
+@mixin grid-start-4 {
+  grid-column-start: 4
+}
+
+@mixin grid-start-5 {
+  grid-column-start: 5
+}
+
+@mixin grid-start-6 {
+  grid-column-start: 6
+}
+
+@mixin grid-start-7 {
+  grid-column-start: 7
+}
+
+@mixin grid-start-8 {
+  grid-column-start: 8
+}
+
+@mixin grid-start-9 {
+  grid-column-start: 9
+}
+
+@mixin grid-start-10 {
+  grid-column-start: 10
+}
+
+@mixin grid-start-11 {
+  grid-column-start: 11
+}
+
+@mixin grid-start-12 {
+  grid-column-start: 12
+}
+
+@mixin grid-span-2 {
+  grid-column-end: span 2
+}
+
+@mixin grid-span-3 {
+  grid-column-end: span 3
+}
+
+@mixin grid-span-4 {
+  grid-column-end: span 4
+}
+
+@mixin grid-span-5 {
+  grid-column-end: span 5
+}
+
+@mixin grid-span-6 {
+  grid-column-end: span 6
+}
+
+@mixin grid-span-7 {
+  grid-column-end: span 7
+}
+
+@mixin grid-span-8 {
+  grid-column-end: span 8
+}
+
+@mixin grid-span-9 {
+  grid-column-end: span 9
+}
+
+@mixin grid-span-10 {
+  grid-column-end: span 10
+}
+
+@mixin grid-span-11 {
+  grid-column-end: span 11
+}
+
+@mixin grid-span-12 {
+  grid-column-end: span 12
+}

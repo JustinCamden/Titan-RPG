@@ -1,17 +1,35 @@
 .actor-sheet {
+    .stat-field {
+        @include flex-column;
+        align-items: center;
+        @include flex-group-center;
+        @include border;
+        width: 100%;
 
-    .stat-label {
-        font-weight: bold;
+        .stat-label {
+            font-weight: bold;
+        }
+
+        .stat-sub-fields {
+            @include flex-row;
+
+            .stat-sub-field {
+                @include flex-column;
+                align-items: center;
+                width: 100%;
+
+                &.separator {
+                    justify-content: center;
+                    height: 100%;
+                }
+            }
+        }
     }
 
     .sheet-header {
-        flex: 0 auto;
-        overflow: hidden;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        margin-bottom: 10px;
+        flex: 0;
+        @include flex-row;
+        align-items: center;
 
         .profile {
             flex: 0 0 160px;
@@ -25,45 +43,35 @@
         }
 
         .header-fields {
-            height: 100%;
+            .header-row {
+                @include flex-row;
+                height: 100%;
+                width: 100%;
 
-            .header-field {
-                @include flex-column;
-                align-items: center;
-                @include flex-group-center;
-                @include border;
+                &:not(:first-child) {
+                    margin-top: 0.5rem;
+                }
 
-                .header-sub-fields {
-                    @include flex-row;
+                :not(:first-child) {
+                    margin-left: 0.5rem;
+                }
 
-                    .header-sub-field {
-                        @include flex-column;
-                        align-items: center;
-                        width: 100%;
+                .actor-name {
+                    border-bottom: 0;
+                    margin: 0;
+                    @include flex-column;
+                    @include flex-group-center;
 
-                        &.separator {
-                            justify-content: center;
-                            height: 100%;
-                        }
+                    .name-input {
+                        height: 3rem;
+                        margin: 0;
                     }
                 }
-            }
-        }
-
-        h1.charname {
-            height: 50px;
-            padding: 0px;
-            margin: 5px 0;
-            border-bottom: 0;
-
-            input {
-                width: 100%;
-                height: 100%;
-                margin: 0;
             }
         }
     }
 
     @import 'actor-sheet-actions';
     @import 'actor-sheet-inventory';
+    @import 'actor-sheet-skills';
 }

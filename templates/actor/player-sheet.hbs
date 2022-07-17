@@ -1,194 +1,232 @@
 <form class="{{cssClass}} actor-sheet player-sheet flexcol" autocomplete="off">
 
-    {{!-- Sheet Header --}}
-    <header class="sheet-header">
+    {{! Sheet Header }}
+    <div class="sheet-header">
 
-        {{!-- Profile --}}
+        {{! Profile }}
         <div class="profile">
 
-            {{!-- Image --}}
-            <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="160"
-                width="160" />
+            {{! Image }}
+            <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
         </div>
 
-        {{!-- Header Fields --}}
+        {{! Header Fields }}
         <div class="header-fields">
-            <div class="grid grid-3col">
-                <div class="flex-group-left">
-                    <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name" />
+
+            {{! Special stats }}
+            <div class="header-row">
+                <div class="stat-field">
+                    <h1 class="actor-name">
+                        <input class="name-input" name="name" type="text" value="{{actor.name}}" placeholder="Name" />
                     </h1>
                 </div>
 
-                {{!-- Inspiration --}}
-                <div class="inspiration">
+                {{! Inspiration }}
+                <div class="stat-field">
                     <label for="system.inspiration" class="stat-label">
                         {{localize "TITAN.inspiration.label"}}
                     </label>
-                    <div class="stat-content flexrow flex-group-center flex-between">
-                        <input type="number" name="system.inspiration" value="{{system.inspiration}}"
-                            data-dtype="Number" />
-                    </div>
+                    <input type="number" name="system.inspiration" value="{{system.inspiration}}" data-dtype="Number" />
                 </div>
 
-                {{!-- Exp --}}
-                <div class="header-field exp">
+                {{! Exp }}
+                <div class="stat-field">
                     <label for="system.exp" class="stat-label">{{localize "TITAN.exp.label"}}</label>
-                    <div class="header-sub-fields">
+                    <div class="stat-sub-fields">
 
                         {{! EXP Available}}
-                        <div class="header-sub-field">
-                            <label for="system.exp.available" class="stat-label">{{localize
-                                "TITAN.available.label"}}</label>
-                            <div>
-                                {{numberFormat system.exp.available decimals=0}}
-                            </div>
+                        <div class="stat-sub-field">
+                            <label for="system.exp.available" class="stat-label">
+                                {{localize "TITAN.available.label"}}
+                            </label>
+                            <div>{{numberFormat system.exp.available decimals=0}}</div>
                         </div>
 
                         {{! Separator}}
-                        <div class="header-sub-field separator">
+                        <div class="stat-sub-field separator">
                             <div>
                                 /
                             </div>
                         </div>
 
                         {{! EXP earned }}
-                        <div class="header-sub-field">
-                            <label for="system.exp.earned" class="stat-label">{{localize "TITAN.earned.label"}}</label>
-                            <input type="text" name="system.exp.earned" value="{{system.exp.earned}}"
+                        <div class="stat-sub-field">
+                            <label for="system.exp.earned" class="stat-label">
+                                {{localize "TITAN.earned.label"}}
+                            </label>
+                            <input type="number" name="system.exp.earned" value="{{system.exp.earned}}"
                                 data-dtype="Number" />
                         </div>
                     </div>
                 </div>
             </div>
 
-            {{!-- Derived Stats --}}
-            <div class="derived grid grid-8col">
+            {{! Derived Stats }}
+            <div class="header-row">
                 {{! Resistances }}
                 {{#each system.resistance as |resistance key|}}
-                <div class="resistance flex-group-center border">
-                    <label for="system.resistance.{{key}}.value" class="stat-label rollable resistance-check"
-                        data-resistance={{key}} data-get-options="default">
+                <div class="stat-field">
+                    <a class="stat-label resistance-check" data-resistance={{key}} data-get-options="default">
                         {{localize (concat "TITAN.resistance.option." key ".label")}}
-                    </label>
-                    <div class="stat-content flexrow flex-group-center flex-between">
-                        <span>{{numberFormat resistance.value decimals=0}}</span>
-                    </div>
+                    </a>
+                    <div>{{numberFormat resistance.value decimals=0}}</div>
                 </div>
                 {{/each}}
 
-                {{!-- Initiative --}}
-                <div class="derived flex-group-center border">
-                    <label for="system.rating.initiative.value" class="stat-label rollable initiative-roll">{{localize
-                        "TITAN.rating.option.initiative.label"}}</label>
-                    <div class="stat-content flexrow flex-group-center flex-between">
-                        <span>{{numberFormat system.rating.initiative.value decimals=0}}</span>
-                    </div>
+                {{! Ratings }}
+                {{! Initiative }}
+                <div class="stat-field">
+                    <a class="stat-label initiative-roll">
+                        {{localize "TITAN.rating.option.initiative.label"}}
+                    </a>
+                    <div>{{numberFormat system.rating.initiative.value decimals=0}}</div>
                 </div>
 
-                {{!-- Awareness --}}
-                <div class="derived flex-group-center border">
-                    <label for="system.rating.awareness.value" class="stat-label">{{localize
-                        "TITAN.rating.option.awareness.label"}}</label>
-                    <div class="stat-content flexrow flex-group-center flex-between">
-                        <span>{{numberFormat system.rating.awareness.value decimals=0}}</span>
-                    </div>
+                {{! Awareness }}
+                <div class="stat-field">
+                    <label for="system.rating.awareness.value" class="stat-label">
+                        {{localize "TITAN.rating.option.awareness.label"}}
+                    </label>
+                    <div>{{numberFormat system.rating.awareness.value decimals=0}}</div>
                 </div>
 
-                {{!-- Defense --}}
-                <div class="derived flex-group-center border">
-                    <label for="system.rating.defense.value" class="stat-label">{{localize
-                        "TITAN.rating.option.defense.label"}}</label>
-                    <div class="stat-content flexrow flex-group-center flex-between">
-                        <span>{{numberFormat system.rating.defense.value decimals=0}}</span>
-                    </div>
+                {{! Defense }}
+                <div class="stat-field">
+                    <label for="system.rating.defense.value" class="stat-label">
+                        {{localize "TITAN.rating.option.defense.label"}}
+                    </label>
+                    <div>{{numberFormat system.rating.defense.value decimals=0}}</div>
                 </div>
 
-                {{!-- Melee --}}
-                <div class="derived flex-group-center border">
-                    <label for="system.rating.melee.value" class="stat-label">{{localize
-                        "TITAN.rating.option.melee.label"}}</label>
-                    <div class="stat-content flexrow flex-group-center flex-between">
-                        <span>{{numberFormat system.rating.melee.value decimals=0}}</span>
-                    </div>
+                {{! Melee }}
+                <div class="stat-field">
+                    <label for="system.rating.melee.value" class="stat-label">
+                        {{localize "TITAN.rating.option.melee.label"}}
+                    </label>
+                    <div>{{numberFormat system.rating.melee.value decimals=0}}</div>
                 </div>
 
-                {{!-- Accuracy --}}
-                <div class="derived flex-group-center border">
-                    <label for="system.rating.accuracy.value" class="stat-label">{{localize
-                        "TITAN.rating.option.accuracy.label"}}</label>
-                    <div class="stat-content flexrow flex-group-center flex-between">
-                        <span>{{numberFormat system.rating.accuracy.value decimals=0}}</span>
-                    </div>
+                {{! Accuracy }}
+                <div class="stat-field">
+                    <label for="system.rating.accuracy.value" class="stat-label">
+                        {{localize "TITAN.rating.option.accuracy.label"}}
+                    </label>
+                    <div>{{numberFormat system.rating.accuracy.value decimals=0}}</div>
                 </div>
             </div>
 
-            {{!-- resource.--}}
-            <div class="resources grid grid-3col">
+            {{! Resources }}
+            <div class="header-row">
 
-                {{!-- Stamina --}}
-                <div class="resource flex-group-center border">
-                    <label for="system.resource.stamina.value" class="stat-label">{{localize
-                        "TITAN.resource.option.stamina.label"}}</label>
-                    <div class="stat-content flexrow flex-group-center flex-between">
-                        <input class="resource-edit" data-resource="stamina" type="text"
-                            name="system.resource.stamina.value" value="{{system.resource.stamina.value}}"
-                            data-dtype="Number" />
-                        <span> / </span>
-                        <span>{{numberFormat system.resource.stamina.maxValue decimals=0}}</span>
+                {{! Stamina }}
+                <div class="stat-field">
+                    <label for="system.resource.stamina" class="stat-label">
+                        {{localize "TITAN.resource.option.stamina.label"}}
+                    </label>
+
+                    {{! Sub-fields}}
+                    <div class="stat-sub-fields">
+
+                        {{! Current }}
+                        <div class="stat-sub-field">
+                            <input class="resource-edit" data-resource="stamina" type="number"
+                                name="system.resource.stamina.value" value="{{system.resource.stamina.value}}"
+                                data-dtype="Number" />
+                        </div>
+
+                        {{! Separator }}
+                        <div class="stat-sub-field separator">
+                            /
+                        </div>
+
+                        {{! Total }}
+                        <div class="stat-sub-field">
+                            {{numberFormat system.resource.stamina.maxValue decimals=0}}
+                        </div>
                     </div>
                 </div>
 
-                {{!-- Resolve --}}
-                <div class="resource flex-group-center border">
-                    <label for="system.resource.resolve.value" class="stat-label">{{localize
-                        "TITAN.resource.option.resolve.label"}}</label>
-                    <div class="stat-content flexrow flex-group-center flex-between">
-                        <input class="resource-edit" data-resource="resolve" type="text"
-                            name="system.resource.resolve.value" value="{{system.resource.resolve.value}}"
-                            data-dtype="Number" />
-                        <span> / </span>
-                        <span>{{numberFormat system.resource.resolve.maxValue decimals=0}}</span>
+                {{! Wounds }}
+                <div class="stat-field">
+                    <label for="system.resource.wounds" class="stat-label">
+                        {{localize "TITAN.resource.option.wounds.label"}}
+                    </label>
+
+                    {{! Sub-fields}}
+                    <div class="stat-sub-fields">
+
+                        {{! Current }}
+                        <div class="stat-sub-field">
+                            <input class="resource-edit" data-resource="wounds" type="number"
+                                name="system.resource.wounds.value" value="{{system.resource.wounds.value}}"
+                                data-dtype="Number" />
+                        </div>
+
+                        {{! Separator }}
+                        <div class="stat-sub-field separator">
+                            /
+                        </div>
+
+                        {{! Total }}
+                        <div class="stat-sub-field">
+                            {{numberFormat system.resource.wounds.maxValue decimals=0}}
+                        </div>
                     </div>
                 </div>
 
-                {{!-- Wounds --}}
-                <div class="resource flex-group-center border">
-                    <label for="system.resource.wounds.value" class="stat-label">{{localize
-                        "TITAN.resource.option.wounds.label"}}</label>
-                    <div class="stat-content flexrow flex-group-center flex-between">
-                        <input class="resource-edit" data-resource="wounds" type="text"
-                            name="system.resource.wounds.value" value="{{system.resource.wounds.value}}"
-                            data-dtype="Number" />
-                        <span> / </span>
-                        <span>{{numberFormat system.resource.wounds.maxValue decimals=0}}</span>
+                {{! Resolve }}
+                <div class="stat-field">
+                    <label for="system.resource.resolve" class="stat-label">
+                        {{localize "TITAN.resource.option.resolve.label"}}
+                    </label>
+
+                    {{! Sub-fields}}
+                    <div class="stat-sub-fields">
+
+                        {{! Current }}
+                        <div class="stat-sub-field">
+                            <input class="resource-edit" data-resource="resolve" type="number"
+                                name="system.resource.resolve.value" value="{{system.resource.resolve.value}}"
+                                data-dtype="Number" />
+                        </div>
+
+                        {{! Separator }}
+                        <div class="stat-sub-field separator">
+                            /
+                        </div>
+
+                        {{! Total }}
+                        <div class="stat-sub-field">
+                            {{numberFormat system.resource.resolve.maxValue decimals=0}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
 
-    {{!-- Sheet Tab Navigation --}}
+    {{! Sheet Tab Navigation }}
     <nav class="sheet-tabs tabs" data-group="primary">
-        {{!-- Default tab is specified in actor-sheet.mjs --}}
+        {{! Default tab is specified in actor-sheet.mjs }}
         <a class="item" data-tab="skills-tab">{{localize "TITAN.skills.label"}}</a>
         <a class="item" data-tab="actions-tab">{{localize "TITAN.actions.label"}}</a>
         <a class="item" data-tab="inventory-tab">{{localize "TITAN.inventory.label"}}</a>
     </nav>
 
-    {{!-- Sheet Body --}}
+    {{! Sheet Body }}
     <section class="sheet-body">
 
-        {{!-- Skills Tab --}}
+        {{! Skills Tab }}
         <div class="tab" data-group="primary" data-tab="skills-tab">
             {{> "systems/titan/templates/actor/components/actor-sheet-skills-tab.hbs"}}
         </div>
 
-        {{!-- Actions Tab --}}
+        {{! Actions Tab }}
         <div class="tab" data-group="primary" data-tab="actions-tab">
             {{> "systems/titan/templates/actor/components/actor-sheet-actions-tab.hbs"}}
         </div>
 
-        {{!-- Inventory Tab --}}
+        {{! Inventory Tab }}
         <div class="tab" data-group="primary" data-tab="inventory-tab">
             {{> "systems/titan/templates/actor/components/actor-sheet-inventory-tab.hbs"}}
         </div>

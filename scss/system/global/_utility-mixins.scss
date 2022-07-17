@@ -1,7 +1,3 @@
-.scrolling {
-    overflow-y: scroll;
-}
-
 @mixin flex-row {
     display: flex;
     flex-direction: row;
@@ -34,4 +30,20 @@
     border: solid;
     border-radius: 10px;
     padding: 0.5rem;
+}
+
+@mixin list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+@mixin list-item-vertical {
+    break-inside: avoid;
+
+    &:not(:first-child) {
+        margin-top: 0.5rem;
+    }
 }

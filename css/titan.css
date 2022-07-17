@@ -4,200 +4,6 @@
   font-family: "Roboto", sans-serif;
 }
 
-.rollable:hover, .rollable:focus {
-  color: #000;
-  text-shadow: 0 0 10px red;
-  cursor: pointer;
-}
-
-.grid,
-.grid-2col {
-  display: grid;
-  grid-column: span 2 / span 2;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin: 10px 0;
-  padding: 0;
-}
-
-.grid-3col {
-  grid-column: span 3 / span 3;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.grid-4col {
-  grid-column: span 4 / span 4;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.grid-5col {
-  grid-column: span 5 / span 5;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-
-.grid-6col {
-  grid-column: span 6 / span 6;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-}
-
-.grid-7col {
-  grid-column: span 7 / span 7;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-}
-
-.grid-8col {
-  grid-column: span 8 / span 8;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-}
-
-.grid-9col {
-  grid-column: span 9 / span 9;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
-}
-
-.grid-10col {
-  grid-column: span 10 / span 10;
-  grid-template-columns: repeat(10, minmax(0, 1fr));
-}
-
-.grid-11col {
-  grid-column: span 11 / span 11;
-  grid-template-columns: repeat(11, minmax(0, 1fr));
-}
-
-.grid-12col {
-  grid-column: span 12 / span 12;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-}
-
-.grid-13col {
-  grid-column: span 13 / span 13;
-  grid-template-columns: repeat(13, minmax(0, 1fr));
-}
-
-.grid-14col {
-  grid-column: span 14 / span 14;
-  grid-template-columns: repeat(14, minmax(0, 1fr));
-}
-
-.grid-15col {
-  grid-column: span 15 / span 15;
-  grid-template-columns: repeat(15, minmax(0, 1fr));
-}
-
-.grid-16col {
-  grid-column: span 16 / span 16;
-  grid-template-columns: repeat(16, minmax(0, 1fr));
-}
-
-.grid-start-2 {
-  grid-column-start: 2;
-}
-
-.grid-start-3 {
-  grid-column-start: 3;
-}
-
-.grid-start-4 {
-  grid-column-start: 4;
-}
-
-.grid-start-5 {
-  grid-column-start: 5;
-}
-
-.grid-start-6 {
-  grid-column-start: 6;
-}
-
-.grid-start-7 {
-  grid-column-start: 7;
-}
-
-.grid-start-8 {
-  grid-column-start: 8;
-}
-
-.grid-start-9 {
-  grid-column-start: 9;
-}
-
-.grid-start-10 {
-  grid-column-start: 10;
-}
-
-.grid-start-11 {
-  grid-column-start: 11;
-}
-
-.grid-start-12 {
-  grid-column-start: 12;
-}
-
-.grid-span-2 {
-  grid-column-end: span 2;
-}
-
-.grid-span-3 {
-  grid-column-end: span 3;
-}
-
-.grid-span-4 {
-  grid-column-end: span 4;
-}
-
-.grid-span-5 {
-  grid-column-end: span 5;
-}
-
-.grid-span-6 {
-  grid-column-end: span 6;
-}
-
-.grid-span-7 {
-  grid-column-end: span 7;
-}
-
-.grid-span-8 {
-  grid-column-end: span 8;
-}
-
-.grid-span-9 {
-  grid-column-end: span 9;
-}
-
-.grid-span-10 {
-  grid-column-end: span 10;
-}
-
-.grid-span-11 {
-  grid-column-end: span 11;
-}
-
-.grid-span-12 {
-  grid-column-end: span 12;
-}
-
-.grid-span-13 {
-  grid-column-end: span 13;
-}
-
-.grid-span-14 {
-  grid-column-end: span 14;
-}
-
-.grid-span-15 {
-  grid-column-end: span 15;
-}
-
-.grid-span-16 {
-  grid-column-end: span 16;
-}
-
-.bold {
-  font-weight: bold;
-}
-
 /* Styles limited to titan sheets */
 .titan {
   /* ----------------------------------------- */
@@ -226,35 +32,6 @@
   padding: 0 8px;
 }
 
-.titan .list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  overflow-y: auto;
-  scrollbar-width: thin;
-}
-
-.titan .li.list-item {
-  -webkit-column-break-inside: avoid;
-  -moz-column-break-inside: avoid;
-  break-inside: avoid;
-  page-break-inside: avoid;
-  -webkit-box-align: top;
-  -ms-flex-align: top;
-  align-items: top;
-  word-wrap: normal;
-}
-
-.titan li.list-item.vertical-list:not(:last-child) {
-  margin-bottom: 1rem;
-}
-
-.titan li.list-item.horizontal-list {
-  margin-bottom: 1rem;
-  margin-right: 0.25rem;
-  margin-left: 0.25rem;
-}
-
 .titan .expandable-parent .collapsed {
   display: none;
 }
@@ -263,54 +40,7 @@
   overflow-y: scroll;
 }
 
-.titan .scrolling {
-  overflow-y: scroll;
-}
-
-.titan .actor-sheet .stat-label {
-  font-weight: bold;
-}
-
-.titan .actor-sheet .sheet-header {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 auto;
-  flex: 0 auto;
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  margin-bottom: 10px;
-}
-
-.titan .actor-sheet .sheet-header .profile {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 160px;
-  flex: 0 0 160px;
-  height: 160px;
-  margin-right: 10px;
-}
-
-.titan .actor-sheet .sheet-header .profile .profile-img {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 160px;
-  flex: 0 0 160px;
-  height: 160px;
-}
-
-.titan .actor-sheet .sheet-header .header-fields {
-  height: 100%;
-}
-
-.titan .actor-sheet .sheet-header .header-fields .header-field {
+.titan .actor-sheet .stat-field {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -329,9 +59,14 @@
   border: solid;
   border-radius: 10px;
   padding: 0.5rem;
+  width: 100%;
 }
 
-.titan .actor-sheet .sheet-header .header-fields .header-field .header-sub-fields {
+.titan .actor-sheet .stat-field .stat-label {
+  font-weight: bold;
+}
+
+.titan .actor-sheet .stat-field .stat-sub-fields {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -341,7 +76,7 @@
   flex-direction: row;
 }
 
-.titan .actor-sheet .sheet-header .header-fields .header-field .header-sub-fields .header-sub-field {
+.titan .actor-sheet .stat-field .stat-sub-fields .stat-sub-field {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -355,27 +90,98 @@
   width: 100%;
 }
 
-.titan .actor-sheet .sheet-header .header-fields .header-field .header-sub-fields .header-sub-field.separator {
+.titan .actor-sheet .stat-field .stat-sub-fields .stat-sub-field.separator {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
   height: 100%;
 }
 
-.titan .actor-sheet .sheet-header h1.charname {
-  height: 50px;
-  padding: 0px;
-  margin: 5px 0;
-  border-bottom: 0;
+.titan .actor-sheet .sheet-header {
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.titan .actor-sheet .sheet-header h1.charname input {
-  width: 100%;
+.titan .actor-sheet .sheet-header .profile {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 160px;
+  flex: 0 0 160px;
+  height: 160px;
+  margin-right: 10px;
+}
+
+.titan .actor-sheet .sheet-header .profile .profile-img {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 160px;
+  flex: 0 0 160px;
+  height: 160px;
+}
+
+.titan .actor-sheet .sheet-header .header-fields .header-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
   height: 100%;
+  width: 100%;
+}
+
+.titan .actor-sheet .sheet-header .header-fields .header-row:not(:first-child) {
+  margin-top: 0.5rem;
+}
+
+.titan .actor-sheet .sheet-header .header-fields .header-row :not(:first-child) {
+  margin-left: 0.5rem;
+}
+
+.titan .actor-sheet .sheet-header .header-fields .header-row .actor-name {
+  border-bottom: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+.titan .actor-sheet .sheet-header .header-fields .header-row .actor-name .name-input {
+  height: 3rem;
   margin: 0;
 }
 
-.titan .actor-sheet .action-list-header {
+.titan .actor-sheet .actor-sheet-actions-tab {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  padding: 0;
+  grid-column: span 3 / span 3;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.titan .actor-sheet .actor-sheet-actions-tab .action-list-header {
   word-wrap: normal;
   padding: .5rem;
   border: solid;
@@ -398,14 +204,14 @@
   width: 100%;
 }
 
-.titan .actor-sheet .action-list-header .action-category-name {
+.titan .actor-sheet .actor-sheet-actions-tab .action-list-header .action-category-name {
   padding: 0px;
   border-bottom: 0;
   font-weight: 300;
   font-size: 1.25rem;
 }
 
-.titan .actor-sheet .action-list {
+.titan .actor-sheet .actor-sheet-actions-tab .action-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -413,7 +219,7 @@
   scrollbar-width: thin;
 }
 
-.titan .actor-sheet .action-list .action {
+.titan .actor-sheet .actor-sheet-actions-tab .action-list .action {
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
   break-inside: avoid;
@@ -426,23 +232,13 @@
   border: solid;
   border-radius: 10px;
   margin-bottom: .5rem;
-  /* .action-name {
-      color: $c-dark;
-      .action-image {
-        flex: 0 0 30px;
-        height: 30px;
-        background-size: 30px;
-        border: none;
-        margin-right: 5px;
-      }
-    } */
 }
 
-.titan .actor-sheet .action-list .action:last-child {
+.titan .actor-sheet .actor-sheet-actions-tab .action-list .action:last-child {
   margin-bottom: 1rem;
 }
 
-.titan .actor-sheet .action-list .action .action-header {
+.titan .actor-sheet .actor-sheet-actions-tab .action-list .action .action-header {
   font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -458,7 +254,7 @@
   margin-bottom: 0.5rem;
 }
 
-.titan .actor-sheet .action-list .action .action-header .action-label {
+.titan .actor-sheet .actor-sheet-actions-tab .action-list .action .action-header .action-label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -474,12 +270,12 @@
   align-items: center;
 }
 
-.titan .actor-sheet .action-list .action .action-header .action-label .action-image {
+.titan .actor-sheet .actor-sheet-actions-tab .action-list .action .action-header .action-label .action-image {
   height: 2rem;
   border: none;
 }
 
-.titan .actor-sheet .action-list .action .action-header .action-controls {
+.titan .actor-sheet .actor-sheet-actions-tab .action-list .action .action-header .action-controls {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -495,15 +291,15 @@
   align-items: center;
 }
 
-.titan .actor-sheet .action-list .action .action-header .action-controls .fas {
+.titan .actor-sheet .actor-sheet-actions-tab .action-list .action .action-header .action-controls .fas {
   margin-left: 0.25rem;
 }
 
-.titan .actor-sheet .action-list .action .action-header .action-details {
+.titan .actor-sheet .actor-sheet-actions-tab .action-list .action .action-header .action-details {
   word-wrap: break-word;
 }
 
-.titan .actor-sheet .action-list .action .action-header .action-details .action-footer {
+.titan .actor-sheet .actor-sheet-actions-tab .action-list .action .action-header .action-details .action-footer {
   font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -521,7 +317,7 @@
   text-align: center;
 }
 
-.titan .actor-sheet .action-list .action .action-settings {
+.titan .actor-sheet .actor-sheet-actions-tab .action-list .action .action-settings {
   margin: 0;
   width: 100%;
   display: -webkit-box;
@@ -539,7 +335,7 @@
   align-items: flex-end;
 }
 
-.titan .actor-sheet .action-list .action .action-checkbox {
+.titan .actor-sheet .actor-sheet-actions-tab .action-list .action .action-checkbox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -555,12 +351,17 @@
   align-items: center;
 }
 
-.titan .actor-sheet .action-list .weapon-options {
+.titan .actor-sheet .actor-sheet-actions-tab .action-list .weapon-options {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  padding: 0;
+  grid-column: span 2 / span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-bottom: 0;
 }
 
-.titan .actor-sheet .action-list .weapon-options .weapon-attacks {
-  margin: 0;
+.titan .actor-sheet .actor-sheet-actions-tab .action-list .weapon-options .weapon-attacks {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -579,12 +380,21 @@
   flex-wrap: wrap;
 }
 
-.titan .actor-sheet .action-list .weapon-options .weapon-attacks .weapon-attack {
+.titan .actor-sheet .actor-sheet-actions-tab .action-list .weapon-options .weapon-attacks .weapon-attack {
   padding: .25rem;
   border: solid;
   border-radius: 10px;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+.titan .actor-sheet .actor-sheet-inventory-tab {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  padding: 0;
+  grid-column: span 3 / span 3;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .titan .actor-sheet .actor-sheet-inventory-tab .item-list-header {
@@ -722,8 +532,7 @@
   text-align: center;
 }
 
-.titan .item-sheet .item-header {
-  font-weight: bold;
+.titan .actor-sheet .actor-sheet-skills-tab .attributes {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -731,72 +540,32 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 100%;
 }
 
-.titan .item-sheet .item-header .item-label {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 65%;
+.titan .actor-sheet .actor-sheet-skills-tab .attributes :not(:first-child) {
+  margin-left: 0.5rem;
 }
 
-.titan .item-sheet .item-header .item-label .item-name {
-  height: 3rem;
-  padding: 0px;
-  margin-right: 0.5rem;
-  margin-bottom: 0;
-  border-bottom: 0;
-  width: 100%;
-}
-
-.titan .item-sheet .item-header .item-label .item-name input {
-  width: 100%;
-  height: 100%;
+.titan .actor-sheet .actor-sheet-skills-tab .skill-list {
   margin: 0;
+  padding: 0;
+  list-style-type: none;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  -webkit-column-count: 4;
+  -moz-column-count: 4;
+  column-count: 4;
+  margin-top: 0.5rem;
 }
 
-.titan .item-sheet .item-header .item-label .item-image {
-  height: 5rem;
-  border: none;
+.titan .actor-sheet .actor-sheet-skills-tab .skill-list .stat-field {
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  break-inside: avoid;
 }
 
-.titan .item-sheet .item-header .item-fields {
-  width: 30%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-}
-
-.titan .item-sheet .item-header .item-fields .item-rarity {
-  width: 100%;
-}
-
-.titan .item-sheet .item-header .item-fields .item-value {
-  width: 100%;
+.titan .actor-sheet .actor-sheet-skills-tab .skill-list .stat-field:not(:first-child) {
+  margin-top: 0.5rem;
 }
 
 .titan .item-sheet .item-header {
@@ -836,7 +605,7 @@
 
 .titan .item-sheet .item-header .item-label .item-name {
   height: 3rem;
-  padding: 0px;
+  padding: 0;
   margin-right: 0.5rem;
   margin-bottom: 0;
   border-bottom: 0;
@@ -1150,6 +919,15 @@
 
 .titan .weapon-sheet .weapon-sheet-description-tab .weapon-editors .attack-description .editor {
   height: 80%;
+}
+
+.titan .weapon-sheet .weapon-sheet-attacks-tab .attacks {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  padding: 0;
+  grid-column: span 3 / span 3;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .titan .weapon-sheet .weapon-sheet-attack-sheet-vertical {
