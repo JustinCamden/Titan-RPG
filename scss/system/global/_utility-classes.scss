@@ -1,3 +1,9 @@
 .scrolling {
     overflow-y: scroll;
 }
+
+.expandable-parent {
+    .collapsed {
+        display: none;
+    }
+}

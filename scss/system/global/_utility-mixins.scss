@@ -8,21 +8,21 @@
     flex-direction: column;
 }
 
-@mixin flex-group-center {
+@mixin flex-group-center($alignment : center) {
     justify-content: center;
-    align-items: center;
+    align-items: $alignment;
     text-align: center;
 }
 
-@mixin flex-group-left {
+@mixin flex-group-left($alignment : center) {
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: $alignment;
     text-align: left;
 }
 
-@mixin flex-group-right {
+@mixin flex-group-righ($alignment : center) {
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: $alignment;
     text-align: right;
 }
 

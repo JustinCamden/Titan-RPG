@@ -32,12 +32,12 @@
   padding: 0 8px;
 }
 
-.titan .expandable-parent .collapsed {
-  display: none;
-}
-
 .titan .scrolling {
   overflow-y: scroll;
+}
+
+.titan .expandable-parent .collapsed {
+  display: none;
 }
 
 .titan .actor-sheet .stat-field {
