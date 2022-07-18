@@ -58,7 +58,7 @@
 
   {{! Armor }}
   <div>
-    {{! armor Header }}
+    {{! Armor Header }}
     <div class="item-list-header">
       <div></div>
       <div class="item-category-name">{{localize "TITAN.armor.label"}}</div>
@@ -83,16 +83,16 @@
             {{! Equip }}
             {{! Un Equip Armor }}
             {{#if (equals ../this.system.equipped.armor armor._id)}}
-            <a class="labeled-control remove-armor">
+            <a class="labeled-control un-equip-armor">
               <div class="item-controls-label">
-                Un-equip
+                {{localize "TITAN.unEquip.label"}}
               </div>
               <div class="fas fa-toggle-on"></div>
             </a>
             {{else}}
             <a class="labeled-control equip-armor">
               <div class="item-controls-label">
-                Equip
+                {{localize "TITAN.equip.label"}}
               </div>
               <div class="fas fa-toggle-off"></div>
             </a>

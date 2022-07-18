@@ -135,6 +135,10 @@
   "TITAN.light.label": "Light",
   "TITAN.medium.label": "Medium",
   "TITAN.heavy.label": "Heavy",
+  "TITAN.equip.label": "Equip",
+  "TITAN.unEquip.label": "Un-Equip",
+  "TITAN.ignoreArmor.label": "Ignore Armor",
+  "TITAN.baseDamage.label": "Base Damage",
 
   "TITAN.armor.label": "Armor",
   "TITAN.armor.trait.option.light.label": "Light",

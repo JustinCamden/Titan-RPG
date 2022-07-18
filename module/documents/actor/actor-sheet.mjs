@@ -217,7 +217,7 @@ export class TitanActorSheet extends ActorSheet {
     html.find(".equip-armor").click(this._onEquipArmor.bind(this));
 
     // Un-equip armor
-    html.find(".remove-armor").click(this._onRemoveArmor.bind(this));
+    html.find(".un-equip-armor").click(this._onUnEquipArmor.bind(this));
 
     return;
   }
@@ -514,8 +514,7 @@ export class TitanActorSheet extends ActorSheet {
     const itemId = event.currentTarget.closest(".item").dataset.itemId;
 
     // Delete the item
-    const item = this.actor.items.get(itemId);
-    item.delete();
+    this.actor.deleteItem(itemId);
 
     // Delete the entries from the expanded array
     delete this.isExpanded["inventory" + itemId];
@@ -564,8 +563,8 @@ export class TitanActorSheet extends ActorSheet {
     return;
   }
 
-  _onRemoveArmor(event) {
-    this.actor.removeArmor();
+  _onUnEquipArmor(event) {
+    this.actor.unEquipArmor();
 
     return;
   }

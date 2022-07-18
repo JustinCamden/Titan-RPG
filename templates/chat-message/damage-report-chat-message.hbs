@@ -1,11 +1,23 @@
 <div class="titan titan-chat-message titan-damage-report-chat-message">
+  {{#if ignoreArmor}}
+  <p>
+    {{localize "TITAN.ignoreArmor.label"}}
+  </p>
+  {{else}}
+  <p>
+    {{localize "TITAN.baseDamage.label"}}: {{baseDamage}}
+  </p>
+  <p>
+    {{localize "TITAN.armor.label"}}: {{armor}}
+  </p>
+  {{/if}}
   <p>
     {{localize "TITAN.damage.taken.label"}}: {{damage}}
   </p>
   <p>
-    {{localize "TITAN.resource.option.stamina.remaining.label"}}: {{stamina.value}} / {{stamina.maxValue}}</p>
+    {{localize "TITAN.resource.option.stamina.label"}}: {{stamina.value}} / {{stamina.maxValue}}</p>
   </p>
   <p>
-    {{localize "TITAN.resource.option.wounds.taken.label"}}: {{wounds.value}} / {{wounds.maxValue}}
+    {{localize "TITAN.resource.option.wounds.label"}}: {{wounds.value}} / {{wounds.maxValue}}
   </p>
 </div>

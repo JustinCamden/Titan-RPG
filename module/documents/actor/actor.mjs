@@ -191,11 +191,20 @@ export class TitanActor extends Actor {
         v.expertise.baseValue + v.expertise.staticMod;
     }
 
-    // Calculate bonuses and stats
-    systemData.mod.armor.value = systemData.mod.armor.staticMod;
-    systemData.mod.damage.value = systemData.mod.armor.staticMod;
-
     // Calculate the armor
+    systemData.mod.armor.value = systemData.mod.armor.staticMod;
+
+    // Add armor from the equipped armor if appropriate
+    const armorId = this.system.equipped.armor;
+    if (armorId) {
+      const armor = this.items.get(armorId);
+      if (armor) {
+        systemData.mod.armor.value += armor.system.armor;
+      }
+    }
+
+    //
+    systemData.mod.damage.value = systemData.mod.armor.staticMod;
 
     return;
   }
@@ -448,11 +457,12 @@ export class TitanActor extends Actor {
   // Apply damage to the actor
   async applyDamage(damageData) {
     // Calculate the damage amount
-    let damageAmount = damageData.damage;
+    const baseDamage = damageData.damage;
+    let damage = baseDamage;
     if (!damageData.ignoreArmor) {
-      damageAmount -= this.system.mod.armor.value;
+      damage = Math.max(damage - this.system.mod.armor.value, 0);
     }
-    const newStamina = damageAmount;
+    const newStamina = this.system.resource.stamina.value - damage;
 
     // Prepare the update data
     const updateData = {
@@ -492,7 +502,8 @@ export class TitanActor extends Actor {
 
     // Create the damage report message
     const messageData = {
-      damage: damageData.damage,
+      baseDamage: baseDamage,
+      damage: damage,
       ignoreArmor: damageData.ignoreArmor ?? null,
       armor: this.system.mod.armor.value,
       stamina: this.system.resource.stamina,
@@ -539,7 +550,7 @@ export class TitanActor extends Actor {
     return;
   }
 
-  removeArmor() {
+  unEquipArmor() {
     // Remove the armor
     let equippedArmor = this.system.equipped.armor;
     equippedArmor = null;
@@ -550,6 +561,25 @@ export class TitanActor extends Actor {
         },
       },
     });
+
+    return;
+  }
+
+  deleteItem(itemId) {
+    // Ensure the item is valid
+    const item = this.items.get(itemId);
+    if (!item) {
+      return false;
+    }
+
+    // Remove the armor if appropriate
+    const armorId = this.system.equipped.armor;
+    if (armorId == itemId) {
+      this.unEquipArmor();
+    }
+
+    // Delete the item
+    item.delete();
 
     return;
   }
