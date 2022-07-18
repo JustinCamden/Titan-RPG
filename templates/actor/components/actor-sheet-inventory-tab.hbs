@@ -55,4 +55,59 @@
       {{/each}}
     </ol>
   </div>
+
+  {{! armor }}
+  <div>
+    {{! armor Header }}
+    <div class="item-list-header">
+      <div></div>
+      <div class="item-category-name">{{localize "TITAN.armor.label"}}</div>
+      <a class="fas fa-circle-plus item-create" data-type="armor"></a>
+    </div>
+    <ol class="item-list list column-1">
+      {{! For each armor }}
+      {{#each armor as |armor key|}}
+      <li class="item expandable-parent" data-item-id={{armor._id}} data-expandable-id={{concat 'inventory' armor._id}}>
+        {{! Expandable Header }}
+        <div class="item-header">
+
+          {{! Label }}
+          <a class="item-label send-item-to-chat">
+            <img class="item-image" src="{{armor.img}}" />
+            <span class="item-name">{{armor.name}}</span>
+          </a>
+
+          {{! Controls}}
+          <div class="item-controls">
+
+            {{! Expand }}
+            <a class="fas fa-angles-down expand"></a>
+
+            {{! Edit }}
+            <a class="fas fa-edit item-edit"></a>
+
+            {{! Delete }}
+            <a class="fas fa-trash item-delete"></a>
+          </div>
+        </div>
+
+        {{! Expandable Content }}
+        <div class="item-details expandable-content {{#unless (lookup ../isExpanded (concat 'inventory' armor._id))}}
+          collapsed{{/unless}}">
+          {{! Description }}
+          {{{armor.system.description}}}
+          {{{armor.system.attackDescription}}}
+
+          {{! Footer }}
+          <div class="item-footer">
+            <span class="item-rarity">{{localize (concat "TITAN.item.rarity.option."
+              armor.system.rarity
+              ".label")}}</span>
+            <span class="item-value">{{localize "TITAN.item.value.label"}}: {{localize armor.system.value}}</span>
+          </div>
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+  </div>
 </div>

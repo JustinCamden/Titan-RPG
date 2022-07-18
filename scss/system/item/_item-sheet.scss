@@ -124,7 +124,7 @@
         @include flex-group-center;
 
         .trait {
-            @include border(0.25rem);
+            @include border;
             margin: 0.25rem;
         }
     }
