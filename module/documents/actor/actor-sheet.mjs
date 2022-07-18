@@ -546,40 +546,4 @@ export class TitanActorSheet extends ActorSheet {
 
     return;
   }
-
-  /**
-   * This is a temp override until foundry fixes its bug
-   */
-  _onSortItem(event, itemData) {
-    // Get the drag source and drop target
-    const items = this.actor.items;
-    const source = items.get(itemData._id);
-    const dropTarget = event.target.closest("[data-item-id]");
-    const target = items.get(dropTarget.dataset.itemId);
-
-    // Don't sort on yourself
-    if (source.id === target.id) return;
-
-    // Identify sibling items based on adjacent HTML elements
-    const siblings = [];
-    for (let el of dropTarget.parentElement.children) {
-      const siblingId = el.dataset.itemId;
-      if (siblingId && siblingId !== source.id)
-        siblings.push(items.get(el.dataset.itemId));
-    }
-
-    // Perform the sort
-    const sortUpdates = SortingHelpers.performIntegerSort(source, {
-      target,
-      siblings,
-    });
-    const updateData = sortUpdates.map((u) => {
-      const update = u.update;
-      update._id = u.target._id;
-      return update;
-    });
-
-    // Perform the update
-    return this.actor.updateEmbeddedDocuments("Item", updateData);
-  }
 }

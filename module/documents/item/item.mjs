@@ -186,11 +186,19 @@ export class TitanItem extends Item {
       // Weapon
       case "weapon": {
         return "systems/titan/templates/item/weapon/weapon-chat-message.hbs";
+        break;
+      }
+
+      // Armor
+      case "armor": {
+        return "systems/titan/templates/item/armor/armor-chat-message.hbs";
+        break;
       }
 
       // Default
       default: {
         return;
+        break;
       }
     }
   }

@@ -1,9 +1,9 @@
 <div class="titan titan-chat-message item-chat-message weapon-chat-message">
 
   {{! Name }}
-  <div class="header">
-    <img class="image" src="{{img}}" />
-    <h2 class="name">
+  <div class="item-header">
+    <img class="item-image" src="{{img}}" />
+    <h2 class="item-name">
       {{name}}
     </h2>
   </div>
@@ -13,47 +13,46 @@
   <div class="attack-sheet">
 
     {{! Name}}
-    <h3 class="name">
+    <h3 class="attack-name">
       {{attack.name}}
     </h3>
 
     {{! Stats}}
-    <div class="stats">
+    <div class="attack-stats">
 
       {{! Type }}
-      <div class="stat">
+      <div class="item-stat">
         {{localize (concat "TITAN.attack.type.option." attack.type ".label")}}
       </div>
 
       {{! Range }}
-      <div class="stat">
+      <div class="item-stat">
         {{localize (concat "TITAN.range.option." attack.range ".label")}}
       </div>
 
       {{! Attribute }}
-      <div class="stat">
-        {{localize (concat "TITAN.attribute.option." attack.attribute ".label")}}
-      </div>
+      <div class="item-stat">
+        {{localize (concat "TITAN.attribute.option." attack.attribute ".label" )}} </div>
 
       {{! Skill }}
-      <div class="stat">
+      <div class="item-stat">
         {{localize (concat "TITAN.skill.option." attack.skill ".label")}}
       </div>
 
       {{! Damage }}
       {{#if attack.plusSuccessDamage}}
-      <div class="stat">
+      <div class="item-stat">
         {{concat attack.damage "+ES " (localize "TITAN.damage.label")}}
       </div>
       {{else}}
-      <div class="stat">
+      <div class="item-stat">
         {{concat attack.damage " " (localize "TITAN.damage.label")}}
       </div>
       {{/if}}
 
       {{! Traits }}
       {{#each attack.traits as |trait|}}
-      <div class="stat">
+      <div class="item-stat">
         {{localize (concat "TITAN.attack.trait.option." trait.name ".label")}}
       </div>
       {{/each}}
@@ -61,19 +60,23 @@
   </div>
   {{/each}}
 
-  {{! Rarity and Value}}
-  <div class="stats">
-    <span class="item-rarity">
-      {{localize (concat "TITAN.item.rarity.option." system.rarity ".label")}}
-    </span>
-    {{#if system.value}}
-    <span class="item-value">
-      {{concat (localize "TITAN.item.value.label" ": " system.value)}}
-    </span>
-    {{/if}}
-  </div>
-
   {{! Descriptions }}
   {{> "systems/titan/templates/chat-message/components/chat-message-description.hbs" description=system.description}}
-  {{> "systems/titan/templates/chat-message/components/chat-message-description.hbs" description=system.attackDescription}}
+  {{> "systems/titan/templates/chat-message/components/chat-message-description.hbs"
+  description=system.attackDescription}}
+
+  {{! Rarity and Value}}
+  <div class="item-footer">
+    {{! Value }}
+    {{#if system.value}}
+    <span class="item-stat">
+      {{concat (localize "TITAN.item.value.label") ": " system.value}}
+    </span>
+    {{/if}}
+
+    {{! Rarity }}
+    <span class="item-stat">
+      {{localize (concat "TITAN.item.rarity.option." system.rarity ".label")}}
+    </span>
+  </div>
 </div>

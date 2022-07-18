@@ -1,0 +1,44 @@
+<div class="titan titan-chat-message item-chat-message armor-chat-message">
+
+  {{! Name }}
+  <div class="item-header">
+    <img class="item-image" src="{{img}}" />
+    <h2 class="item-name">
+      {{name}}
+    </h2>
+  </div>
+
+  {{! Item stats }}
+  <div class="item-stats">
+
+    {{! Armor Rating }}
+    <div class="item-stat">
+      {{concat (localize "TITAN.armor.label") " " system.armor}}
+    </div>
+
+    {{! Trait }}
+    {{#each system.traits as |trait key|}}
+    <div class="item-stat">
+      {{localize (concat "TITAN.armor.trait.option." trait.name ".label")}}
+    </div>
+    {{/each}}
+  </div>
+
+  {{! Descriptions }}
+  {{> "systems/titan/templates/chat-message/components/chat-message-description.hbs" description=system.description}}
+
+  {{! Rarity and Value}}
+  <div class="item-footer">
+    {{! Value }}
+    {{#if system.value}}
+    <span class="item-stat">
+      {{concat (localize "TITAN.item.value.label") ": " system.value}}
+    </span>
+    {{/if}}
+
+    {{! Rarity }}
+    <span class="item-stat">
+      {{localize (concat "TITAN.item.rarity.option." system.rarity ".label")}}
+    </span>
+  </div>
+</div>

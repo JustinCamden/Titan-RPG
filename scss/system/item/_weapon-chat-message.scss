@@ -9,17 +9,9 @@
     flex-direction: column;
     margin-top: 0.5rem;
 
-    .stats {
-      border: none;
-      padding: 0;
-      flex-direction: row;
+    .attack-stats {
+      @include flex-row;
       flex-wrap: wrap;
-      justify-content: flex-start;
-
-      .stat {
-        @include border;
-        margin: 0.25rem;
-      }
     }
   }
 }

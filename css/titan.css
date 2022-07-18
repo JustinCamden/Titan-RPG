@@ -811,6 +811,67 @@
   margin-right: 0;
 }
 
+.titan.item-chat-message .item-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
+.titan.item-chat-message .item-header .item-image {
+  width: 20%;
+  border: none;
+}
+
+.titan.item-chat-message .item-stats {
+  border: solid;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.titan.item-chat-message .item-stat {
+  border: solid;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  margin: 0.25rem;
+}
+
+.titan.item-chat-message .item-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
 .titan.titan-chat-message .traits-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -842,40 +903,6 @@
   border: solid;
   border-radius: 0.5rem;
   padding: 0.5rem;
-}
-
-.titan.item-chat-message .header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
-}
-
-.titan.item-chat-message .header .image {
-  width: 20%;
-  border: none;
-}
-
-.titan.item-chat-message .stats {
-  border: solid;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-top: 0.5rem;
 }
 
 .titan.chat-message-damage-report {
@@ -1294,23 +1321,14 @@
   margin-top: 0.5rem;
 }
 
-.titan.weapon-chat-message .attack-sheet .stats {
-  border: none;
-  padding: 0;
+.titan.weapon-chat-message .attack-sheet .attack-stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-}
-
-.titan.weapon-chat-message .attack-sheet .stats .stat {
-  border: solid;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  margin: 0.25rem;
 }

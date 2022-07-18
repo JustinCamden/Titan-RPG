@@ -1,0 +1,30 @@
+&.item-chat-message {
+  .item-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    .item-image {
+      width: 20%;
+      border: none;
+    }
+  }
+
+  .item-stats {
+    @include border;
+    @include flex-row;
+    flex-wrap: wrap;
+  }
+
+  .item-stat {
+    @include border(0.25rem);
+    margin: 0.25rem;
+  }
+
+  .item-footer {
+    @include flex-row;
+    @include flex-group-right;
+    margin-top: 0.5rem;
+  }
+}
