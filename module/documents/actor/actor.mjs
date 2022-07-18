@@ -438,7 +438,10 @@ export class TitanActor extends Actor {
     checkOptions.weaponName = checkWeapon.name;
 
     // Get the target check data
-    const userTargets = Array.from(game.user.targets);
+    let userTargets = Array.from(game.user.targets);
+    if (userTargets.length < 1 && game.user.isGM) {
+      userTargets = Array.from(canvas.tokens.controlled);
+    }
     if (userTargets[0]) {
       const targetCheckData = userTargets[0].document.actor.getCheckData();
       checkOptions.targetCheckData = targetCheckData;
