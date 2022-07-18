@@ -7,59 +7,63 @@
 
         {{! Sidebar }}
         <div class="item-sidebar">
+
+            {{! Header }}
             <div class="item-sidebar-header">
                 <h2 class="item-sidebar-label">{{localize "TITAN.armor.label"}}</h2>
             </div>
 
+            {{! Content }}
+            <div class="item-sidebar-content">
+                {{! Armor }}
+                <div class="stat-field-horizontal">
 
-            {{! Armor }}
-            <div class="stat-field-horizontal">
+                    {{! Label }}
+                    <div class="stat-label">
+                        {{localize "TITAN.armor.label"}}
+                    </div>
 
-                {{! Label }}
-                <div class="stat-label">
-                    {{localize "TITAN.armor.label"}}
+                    {{! Input }}
+                    <input class="stat-input" type="number" name="system.armor" value="{{system.armor}}"
+                        data-dtype="Number" />
                 </div>
 
-                {{! Input }}
-                <input class="stat-input" type="number" name="system.armor" value="{{system.armor}}"
-                    data-dtype="Number" />
-            </div>
+                {{! Traits }}
+                <div class="stat-field-horizontal">
 
-            {{! Traits }}
-            <div class="stat-field-horizontal">
+                    {{! Label }}
+                    <div class="stat-label">
+                        {{localize "TITAN.traits.label"}}
+                    </div>
 
-                {{! Label }}
-                <div class="stat-label">
-                    {{localize "TITAN.traits.label"}}
+                    {{! Controls }}
+                    <div class="stat-controls">
+                        <a class="fas fa-edit edit-armor-traits"></a>
+                    </div>
                 </div>
 
-                {{! Controls }}
-                <div class="stat-controls">
-                    <a class="fas fa-edit edit-armor-traits"></a>
+                {{! Traits Container }}
+                {{#if system.traits.length}}
+                <div class="traits-container">
+
+                    {{! Each trait}}
+                    {{#each system.traits as |trait key|}}
+                    <label class="trait">
+
+                        {{! Numbered Trait }}
+                        {{#if trait.numberValue}}
+                        {{localize (concat "TITAN.armor.trait.option." trait.name ".label")}}
+                        {{concat "(" trait.numberValue ")"}}
+
+                        {{!Normal trait}}
+                        {{else}}
+                        {{localize (concat "TITAN.armor.trait.option." trait.name ".label")}}
+                        {{/if}}
+                    </label>
+                    {{/each}}
                 </div>
+                {{/if}}
             </div>
-
-            {{! Traits Container }}
-            {{#if system.traits.length}}
-            <div class="traits-container">
-
-                {{! Each trait}}
-                {{#each system.traits as |trait key|}}
-                <label class="trait">
-
-                    {{! Numbered Trait }}
-                    {{#if trait.numberValue}}
-                    {{localize (concat "TITAN.armor.trait.option." trait.name ".label")}}
-                    {{concat "(" trait.numberValue ")"}}
-
-                    {{!Normal trait}}
-                    {{else}}
-                    {{localize (concat "TITAN.armor.trait.option." trait.name ".label")}}
-                    {{/if}}
-                </label>
-                {{/each}}
-            </div>
-            {{/if}}
         </div>
 
         {{! Description }}

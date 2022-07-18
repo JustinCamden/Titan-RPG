@@ -1,88 +1,98 @@
 .actor-sheet-inventory-tab {
-    @include grid(3);
+  @include grid(3);
 
-    .item-list-header {
-        @include border;
-        word-wrap: normal;
-        margin-bottom: .5rem;
+  .item-list-header {
+    @include border;
+    word-wrap: normal;
+    margin-bottom: .5rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .item-category-name {
+      padding: 0px;
+      border-bottom: 0;
+      font-weight: 300;
+      font-size: 1.25rem;
+    }
+  }
+
+  .item-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    color: $c-tan;
+
+    // Individual Item
+    .item {
+      @include border;
+      break-inside: avoid;
+      align-items: center;
+      page-break-inside: avoid;
+      word-wrap: normal;
+      margin-bottom: .5rem;
+
+      &:last-child {
+        margin-bottom: 1rem;
+      }
+
+      .item-header {
         font-weight: bold;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
+        height: 2rem;
 
-        .item-category-name {
-            padding: 0px;
-            border-bottom: 0;
-            font-weight: 300;
-            font-size: 1.25rem;
+        .item-label {
+          height: 100%;
+          display: flex;
+          justify-content: flex-start;
+          flex-direction: row;
+          align-items: center;
+
+          .item-image {
+            height: 100%;
+            border: none;
+          }
         }
-    }
 
-    .item-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        overflow-y: auto;
-        scrollbar-width: thin;
-        color: $c-tan;
+        .item-controls {
+          @include flex-row;
+          @include flex-group-center;
+          height: 100%;
 
-        // Individual Item
-        .item {
-            @include border;
-            break-inside: avoid;
-            align-items: center;
-            page-break-inside: avoid;
-            word-wrap: normal;
-            margin-bottom: .5rem;
+          .fas {
+            @include flex-row;
+            @include flex-group-center;
+            height: 100%;
+            margin-left: 0.25rem;
+          }
 
-            &:last-child {
-                margin-bottom: 1rem;
-            }
-
-            .item-header {
-                font-weight: bold;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-
-                .item-label {
-                    display: flex;
-                    justify-content: flex-start;
-                    flex-direction: row;
-                    align-items: center;
-
-                    .item-image {
-                        height: 2rem;
-                        border: none;
-                    }
-                }
-
-                .item-controls {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    align-items: center;
-
-                    .fas {
-                        margin-left: 0.25rem;
-                    }
-                }
-            }
-
-            .item-details {
-                word-wrap: break-word;
-
-                .item-footer {
-                    margin-top: 0.25rem;
-                    font-weight: bold;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    align-items: center;
-                    text-align: center;
-                }
-            }
+          .labeled-control {
+            @include flex-row;
+            @include flex-group-center;
+            height: 100%;
+          }
         }
+      }
+
+      .item-details {
+        word-wrap: break-word;
+
+        .item-footer {
+          margin-top: 0.25rem;
+          font-weight: bold;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          text-align: center;
+        }
+      }
     }
+  }
 }

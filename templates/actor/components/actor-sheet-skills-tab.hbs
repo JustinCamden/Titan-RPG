@@ -1,66 +1,66 @@
 {{! Skills Tab}}
 <div class="actor-sheet-skills-tab">
-    {{! Attributes }}
-    <div class="attributes">
+  {{! Attributes }}
+  <div class="attributes">
 
-        {{! For each attribute }}
-        {{#each system.attribute as |attribute key|}}
+    {{! For each attribute }}
+    {{#each system.attribute as |attribute key|}}
 
-        {{! Attribute }}
-        <div class="stat-field">
+    {{! Attribute }}
+    <div class="stat-field">
 
-            {{! Rollable label }}
-            <a class="stat-label skill-check" data-attribute={{key}} data-skill="none" data-get-options="default">
-                {{localize (concat "TITAN.attribute.option." key ".label")}}
-            </a>
+      {{! Rollable label }}
+      <a class="stat-label skill-check" data-attribute={{key}} data-skill="none" data-get-options="default">
+        {{localize (concat "TITAN.attribute.option." key ".label")}}
+      </a>
 
-            {{! Value Box }}
-            <input class="attribute-edit" type="text" name="system.attribute.{{key}}.baseValue"
-                value="{{attribute.baseValue}}" data-dtype="Number" />
-        </div>
-        {{/each}}
+      {{! Value Box }}
+      <input class="attribute-edit" type="text" name="system.attribute.{{key}}.baseValue"
+        value="{{attribute.baseValue}}" data-dtype="Number" />
     </div>
+    {{/each}}
+  </div>
 
-    {{! Skills List }}
-    <ol class="skill-list">
-        {{! For each skill}}
-        {{#each system.skill as |skill key|}}
+  {{! Skills List }}
+  <ol class="skill-list">
+    {{! For each skill}}
+    {{#each system.skill as |skill key|}}
 
-        {{! Rollable label}}
-        <li class="stat-field">
-            <a class="stat-label skill-check" data-attribute="default" data-skill={{key}}
-                data-get-options="default">{{localize (concat "TITAN.skill.option." key
-                ".label")}}</a>
+    {{! Rollable label}}
+    <li class="stat-field">
+      <a class="stat-label skill-check" data-attribute="default" data-skill={{key}}
+        data-get-options="default">{{localize (concat "TITAN.skill.option." key
+        ".label")}}</a>
 
-            {{! Sub fields }}
-            <div class="stat-sub-fields">
-                {{! Training }}
-                <div class="stat-sub-field">
+      {{! Sub fields }}
+      <div class="stat-sub-fields">
+        {{! Training }}
+        <div class="stat-sub-field">
 
-                    {{! Label }}
-                    <label for="system.skill.{{key}}.training.value" class="stat-label">
-                        {{localize "TITAN.training.label"}}
-                    </label>
+          {{! Label }}
+          <label for="system.skill.{{key}}.training.value" class="stat-label">
+            {{localize "TITAN.training.label"}}
+          </label>
 
-                    {{! Input }}
-                    <input class="skill-training-edit" type="number" name="system.skill.{{key}}.training.baseValue"
-                        value="{{skill.training.baseValue}}" data-skill={{key}} data-dtype="Number" />
-                </div>
+          {{! Input }}
+          <input class="skill-training-edit" type="number" name="system.skill.{{key}}.training.baseValue"
+            value="{{skill.training.baseValue}}" data-skill={{key}} data-dtype="Number" />
+        </div>
 
-                {{! Expertise }}
-                <div class="stat-sub-field">
+        {{! Expertise }}
+        <div class="stat-sub-field">
 
-                    {{! Label }}
-                    <label for="system.skill.{{key}}.expertise.value" class="stat-label">
-                        {{localize "TITAN.expertise.label"}}
-                    </label>
+          {{! Label }}
+          <label for="system.skill.{{key}}.expertise.value" class="stat-label">
+            {{localize "TITAN.expertise.label"}}
+          </label>
 
-                    {{! Input }}
-                    <input class="skill-expertise-edit" type="number" name="system.skill.{{key}}.expertise.baseValue"
-                        value="{{skill.expertise.baseValue}}" data-skill={{key}} data-dtype="Number" />
-                </div>
-            </div>
-        </li>
-        {{/each}}
-    </ol>
+          {{! Input }}
+          <input class="skill-expertise-edit" type="number" name="system.skill.{{key}}.expertise.baseValue"
+            value="{{skill.expertise.baseValue}}" data-skill={{key}} data-dtype="Number" />
+        </div>
+      </div>
+    </li>
+    {{/each}}
+  </ol>
 </div>

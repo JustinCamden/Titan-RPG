@@ -195,6 +195,8 @@ export class TitanActor extends Actor {
     systemData.mod.armor.value = systemData.mod.armor.staticMod;
     systemData.mod.damage.value = systemData.mod.armor.staticMod;
 
+    // Calculate the armor
+
     return;
   }
 
@@ -445,8 +447,12 @@ export class TitanActor extends Actor {
 
   // Apply damage to the actor
   async applyDamage(damageData) {
-    // Calculate the new stamina
-    const newStamina = this.system.resource.stamina.value - damageData.damage;
+    // Calculate the damage amount
+    let damageAmount = damageData.damage;
+    if (!damageData.ignoreArmor) {
+      damageAmount -= this.system.mod.armor.value;
+    }
+    const newStamina = damageAmount;
 
     // Prepare the update data
     const updateData = {
@@ -488,6 +494,7 @@ export class TitanActor extends Actor {
     const messageData = {
       damage: damageData.damage,
       ignoreArmor: damageData.ignoreArmor ?? null,
+      armor: this.system.mod.armor.value,
       stamina: this.system.resource.stamina,
       wounds: this.system.resource.wounds,
     };
@@ -506,6 +513,42 @@ export class TitanActor extends Actor {
       whisper: game.users.filter((user) =>
         this.testUserPermission(user, "OWNER")
       ),
+    });
+
+    return;
+  }
+
+  equipArmor(armorId) {
+    // Ensure the armor is valid
+    const armor = this.items.get(armorId);
+    if (!armor && armor.type == "armor") {
+      console.error("TITAN | Error equipping Armor. Invalid Armor ID.");
+    }
+
+    // Update the armor
+    let equippedArmor = this.system.equipped.armor;
+    equippedArmor = armorId;
+    this.update({
+      system: {
+        equipped: {
+          armor: equippedArmor,
+        },
+      },
+    });
+
+    return;
+  }
+
+  removeArmor() {
+    // Remove the armor
+    let equippedArmor = this.system.equipped.armor;
+    equippedArmor = null;
+    this.update({
+      system: {
+        equipped: {
+          armor: equippedArmor,
+        },
+      },
     });
 
     return;

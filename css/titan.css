@@ -242,6 +242,7 @@
   justify-content: space-between;
   width: 100%;
   margin-bottom: 0.5rem;
+  height: 2rem;
 }
 
 .titan .actor-sheet .actor-sheet-actions-tab .action-list .action .action-header .action-label {
@@ -258,10 +259,11 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  height: 100%;
 }
 
 .titan .actor-sheet .actor-sheet-actions-tab .action-list .action .action-header .action-label .action-image {
-  height: 2rem;
+  height: 100%;
   border: none;
 }
 
@@ -279,6 +281,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  height: 100%;
 }
 
 .titan .actor-sheet .actor-sheet-actions-tab .action-list .action .action-header .action-controls .fas {
@@ -456,9 +459,11 @@
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  height: 2rem;
 }
 
 .titan .actor-sheet .actor-sheet-inventory-tab .item-list .item .item-header .item-label {
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -475,7 +480,7 @@
 }
 
 .titan .actor-sheet .actor-sheet-inventory-tab .item-list .item .item-header .item-label .item-image {
-  height: 2rem;
+  height: 100%;
   border: none;
 }
 
@@ -487,16 +492,51 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  text-align: center;
+  height: 100%;
 }
 
 .titan .actor-sheet .actor-sheet-inventory-tab .item-list .item .item-header .item-controls .fas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
   margin-left: 0.25rem;
+}
+
+.titan .actor-sheet .actor-sheet-inventory-tab .item-list .item .item-header .item-controls .labeled-control {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
 }
 
 .titan .actor-sheet .actor-sheet-inventory-tab .item-list .item .item-details {
@@ -702,6 +742,10 @@
   font-weight: 300;
   font-size: 1.25rem;
   margin: 0;
+}
+
+.titan .item-sheet .sheet-body .item-sidebar .item-sidebar-content {
+  padding: 0.5rem;
 }
 
 .titan .item-sheet .sheet-body .item-main {

@@ -212,6 +212,14 @@ export class TitanActorSheet extends ActorSheet {
 
     // Weapon multi attack
     html.find(".send-item-to-chat").click(this._onSendItemToChat.bind(this));
+
+    // Equip armor
+    html.find(".equip-armor").click(this._onEquipArmor.bind(this));
+
+    // Un-equip armor
+    html.find(".remove-armor").click(this._onRemoveArmor.bind(this));
+
+    return;
   }
 
   /**
@@ -543,6 +551,21 @@ export class TitanActorSheet extends ActorSheet {
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       rollMode: game.settings.get("core", "rollMode"),
     });
+
+    return;
+  }
+
+  _onEquipArmor(event) {
+    const armorId = event.currentTarget.closest(".item").dataset.itemId;
+    if (armorId) {
+      this.actor.equipArmor(armorId);
+    }
+
+    return;
+  }
+
+  _onRemoveArmor(event) {
+    this.actor.removeArmor();
 
     return;
   }
