@@ -97,6 +97,11 @@
     .stat-field-horizontal {
         @include flex-row;
         @include flex-space-between;
+        width: 100%;
+
+        &:not(:first-child) {
+            margin-top: 0.5rem;
+        }
     }
 
     .stat-label {
@@ -108,7 +113,19 @@
         width: 100%;
     }
 
-    .trait-container {
-        @include border;
+    .stat-controls {
+        width: 100%;
+    }
+
+    .traits-container {
+        width: 100%;
+        margin-top: 0.5rem;
+        @include flex-row;
+        @include flex-group-center;
+
+        .trait {
+            @include border(0.25rem);
+            margin: 0.25rem;
+        }
     }
 }

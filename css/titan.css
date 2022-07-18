@@ -720,6 +720,11 @@
   -ms-flex-align: center;
   align-items: center;
   text-align: center;
+  width: 100%;
+}
+
+.titan .item-sheet .stat-field-horizontal:not(:first-child) {
+  margin-top: 0.5rem;
 }
 
 .titan .item-sheet .stat-label {
@@ -731,10 +736,34 @@
   width: 100%;
 }
 
-.titan .item-sheet .trait-container {
+.titan .item-sheet .stat-controls {
+  width: 100%;
+}
+
+.titan .item-sheet .traits-container {
+  width: 100%;
+  margin-top: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+.titan .item-sheet .traits-container .trait {
   border: solid;
   border-radius: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.25rem;
+  margin: 0.25rem;
 }
 
 .titan.item-trait-select-dialog .trait-list {
@@ -749,7 +778,9 @@
 }
 
 .titan.item-trait-select-dialog .trait-list .trait {
-  width: 100%;
+  border: solid;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -757,9 +788,17 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  break-inside: avoid;
+  width: 100%;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+}
+
+.titan.item-trait-select-dialog .trait-list .trait:not(:first-child) {
+  margin-top: 0.5rem;
 }
 
 .titan.item-trait-select-dialog .trait-list .trait .trait-label {

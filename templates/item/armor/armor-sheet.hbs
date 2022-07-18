@@ -1,39 +1,76 @@
 <form class="{{cssClass}} item-sheet armor-sheet" autocomplete="off">
-  {{! Header }}
-  {{> "systems/titan/templates/item/components/item-sheet-value-rarity-header.hbs"}}
+    {{! Header }}
+    {{> "systems/titan/templates/item/components/item-sheet-value-rarity-header.hbs"}}
 
-  {{! Sheet Content }}
-  <div class="sheet-body no-nav">
+    {{! Sheet Content }}
+    <div class="sheet-body no-nav">
 
-    {{! Sidebar }}
-    <div class="item-sidebar">
+        {{! Sidebar }}
+        <div class="item-sidebar">
 
-      {{! Armor }}
-      <div class="stat-field-horizontal">
+            {{! Armor }}
+            <div class="stat-field-horizontal">
 
-        {{! Label }}
-        <div class="stat-label">
-          {{localize "TITAN.armor.label"}}
+                {{! Label }}
+                <div class="stat-label">
+                    {{localize "TITAN.armor.label"}}
+                </div>
+
+                {{! Input }}
+                <input class="stat-input" type="number" name="system.armor" value="{{system.armor}}"
+                    data-dtype="Number" />
+            </div>
+
+            {{! Traits }}
+            <div class="stat-field-horizontal">
+
+                {{! Label }}
+                <div class="stat-label">
+                    {{localize "TITAN.traits.label"}}
+                </div>
+
+                {{! Controls }}
+                <div class="stat-controls">
+                    <a class="fas fa-edit edit-armor-traits"></a>
+                </div>
+            </div>
+
+            {{! Traits Container }}
+            {{#if system.traits.length}}
+            <div class="traits-container">
+
+                {{! Each trait}}
+                {{#each system.traits as |trait key|}}
+                <label class="trait">
+
+                    {{! Numbered Trait }}
+                    {{#if trait.numberValue}}
+                    {{localize (concat "TITAN.armor.trait.option." trait.name ".label")}}
+                    {{concat "(" trait.numberValue ")"}}
+
+                    {{!Normal trait}}
+                    {{else}}
+                    {{localize (concat "TITAN.armor.trait.option." trait.name ".label")}}
+                    {{/if}}
+                </label>
+                {{/each}}
+            </div>
+            {{/if}}
         </div>
 
-        {{! Input }}
-        <input class="stat-input" type="number" name="system.armor" value="{{system.armor}}" data-dtype="Number" />
-      </div>
+        {{! Description }}
+        <div class="item-main">
+            <h2>{{localize "TITAN.description.label"}}</h2>
+            <div class="editor">
+                {{editor
+                system.description
+                target="system.description"
+                rollData=rollData
+                button=true
+                owner=owner
+                editable=editable
+                }}
+            </div>
+        </div>
     </div>
-
-    {{! Description }}
-    <div class="item-main">
-      <h2>{{localize "TITAN.description.label"}}</h2>
-      <div class="editor">
-        {{editor
-        system.description
-        target="system.description"
-        rollData=rollData
-        button=true
-        owner=owner
-        editable=editable
-        }}
-      </div>
-    </div>
-  </div>
 </form>

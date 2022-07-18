@@ -313,13 +313,13 @@ export const TITAN = {
     trait: {
       option: {
         light: {
-          label: "TITAN.armor.trait.light.label",
+          label: "TITAN.armor.trait.option.light.label",
         },
-        light: {
-          label: "TITAN.armor.trait.heavy.label",
+        heavy: {
+          label: "TITAN.armor.trait.option.heavy.label",
         },
         magical: {
-          label: "TITAN.armor.trait.magical.label",
+          label: "TITAN.armor.trait.option.magical.label",
         },
       },
     },

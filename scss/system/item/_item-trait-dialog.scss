@@ -4,8 +4,10 @@
         column-count: 3;
 
         .trait {
-            width: 100%;
+            @include border;
             @include flex-row;
+            @include list-item-vertical;
+            width: 100%;
             justify-content: space-between;
 
             .trait-label {
