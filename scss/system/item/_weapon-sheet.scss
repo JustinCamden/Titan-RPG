@@ -12,23 +12,6 @@
 
     .item-sidebar {
 
-      &.attacks-sidebar {
-        padding: 0;
-      }
-
-      .attacks-header {
-        @include border-vertical;
-        width: 100%;
-
-        .attacks-label {
-          padding: 0px;
-          border-bottom: 0;
-          font-weight: 300;
-          font-size: 1.25rem;
-          margin: 0;
-        }
-      }
-
       .attacks-list {
         max-height: 25.25rem;
       }

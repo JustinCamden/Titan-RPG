@@ -81,6 +81,20 @@
             width: 21rem;
             height: 100%;
             margin-right: 0.5rem;
+            padding: 0;
+
+            .item-sidebar-header {
+                @include border-vertical;
+                width: 100%;
+
+                .item-sidebar-label {
+                    padding: 0px;
+                    border-bottom: 0;
+                    font-weight: 300;
+                    font-size: 1.25rem;
+                    margin: 0;
+                }
+            }
         }
 
         .item-main {

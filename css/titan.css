@@ -685,6 +685,23 @@
   width: 21rem;
   height: 100%;
   margin-right: 0.5rem;
+  padding: 0;
+}
+
+.titan .item-sheet .sheet-body .item-sidebar .item-sidebar-header {
+  border-top: solid;
+  border-bottom: solid;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
+
+.titan .item-sheet .sheet-body .item-sidebar .item-sidebar-header .item-sidebar-label {
+  padding: 0px;
+  border-bottom: 0;
+  font-weight: 300;
+  font-size: 1.25rem;
+  margin: 0;
 }
 
 .titan .item-sheet .sheet-body .item-main {
@@ -1045,26 +1062,6 @@
   -ms-flex-align: center;
   align-items: center;
   text-align: center;
-}
-
-.titan .weapon-sheet .weapon-sheet-description-tab .item-sidebar.attacks-sidebar {
-  padding: 0;
-}
-
-.titan .weapon-sheet .weapon-sheet-description-tab .item-sidebar .attacks-header {
-  border-top: solid;
-  border-bottom: solid;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  width: 100%;
-}
-
-.titan .weapon-sheet .weapon-sheet-description-tab .item-sidebar .attacks-header .attacks-label {
-  padding: 0px;
-  border-bottom: 0;
-  font-weight: 300;
-  font-size: 1.25rem;
-  margin: 0;
 }
 
 .titan .weapon-sheet .weapon-sheet-description-tab .item-sidebar .attacks-list {
