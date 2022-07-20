@@ -364,7 +364,7 @@
     },
     "spell": {
       "templates": ["base", "duration"],
-      "lore": "common",
+      "tradition": "Common",
       "range": "medium",
       "target": {
         "type": "single",

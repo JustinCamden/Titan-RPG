@@ -11,12 +11,12 @@ export const preloadHandlebarsTemplates = async function () {
 
     // Item partials
     "systems/titan/templates/item/components/item-sheet-value-rarity-header.hbs",
-    "systems/titan/templates/item/components/item-sheet-discipline-rarity-header.hbs",
     "systems/titan/templates/item/weapon/components/weapon-sheet-description-tab.hbs",
     "systems/titan/templates/item/weapon/components/weapon-sheet-attacks-tab.hbs",
     "systems/titan/templates/item/weapon/components/weapon-sheet-attack-sheet-vertical.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-description-tab.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-details-tab.hbs",
+    "systems/titan/templates/item/spell/components/spell-sheet-tradition-rarity-header.hbs",
 
     // Generic Chat message partials
     "systems/titan/templates/chat-message/components/chat-message-traits-container.hbs",
