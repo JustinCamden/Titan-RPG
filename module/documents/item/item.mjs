@@ -1,4 +1,5 @@
 import { TitanArmor } from "./armor.mjs";
+import { TitanSpell } from "./spell.mjs";
 import { TitanWeapon } from "./weapon.mjs";
 
 /**
@@ -21,6 +22,11 @@ export class TitanItem extends Item {
       case "armor": {
         this.armor = new TitanArmor(this);
         break;
+      }
+
+      // Spell
+      case "spell": {
+        this.spell = new TitanSpell(this);
       }
 
       default: {
@@ -192,6 +198,12 @@ export class TitanItem extends Item {
       // Armor
       case "armor": {
         return "systems/titan/templates/item/armor/armor-chat-message.hbs";
+        break;
+      }
+
+      // Spell
+      case "spell": {
+        return "systems/titan/templates/item/spell/spell-chat-message.hbs";
         break;
       }
 

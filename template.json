@@ -312,10 +312,7 @@
     "types": ["item", "equipment", "armor", "weapon", "spell", "miracle", "talent"],
     "templates": {
       "base": {
-        "basicChecks": [],
         "description": "",
-        "damage": [],
-        "healing": [],
         "rarity": "common",
         "rulesElements": [],
         "traits": [],
@@ -335,10 +332,6 @@
       },
       "resolveCost": {
         "resolveCost": 0
-      },
-      "duration": {
-        "durationFormula": "S",
-        "durationPeriod": "Round"
       }
     },
     "gear": {
@@ -370,8 +363,37 @@
       "weaponTraits": []
     },
     "spell": {
-      "templates": ["base"],
-      "lore": "",
+      "templates": ["base", "duration"],
+      "lore": "common",
+      "range": "medium",
+      "target": {
+        "type": "single",
+        "initial": 1,
+        "successCost": 1,
+        "overcast": true
+      },
+      "damage": {
+        "initial": 1,
+        "successCost": 1,
+        "overcast": true
+      },
+      "healing": {
+        "initial": 0,
+        "successCost": 1,
+        "overcast": true
+      },
+      "duration": {
+        "period": "instant",
+        "initial": 0,
+        "successCost": 1,
+        "overcast": true
+      },
+      "castingCheck": {
+        "difficulty": 4,
+        "complexity": 1,
+        "calculated": true
+      },
+      "customOvercast": [],
       "resistanceChecks": []
     },
     "miracle": {

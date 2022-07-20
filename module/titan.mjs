@@ -12,6 +12,7 @@ import { registerHandlebarsHelpers } from "./handlebars/handlebars-helpers.mjs";
 import { TITAN } from "./config.mjs";
 import { TitanArmorSheet } from "./documents/item/armor-sheet.mjs";
 import { TitanPlayerSheet } from "./documents/actor/player-sheet.mjs";
+import { TitanSpellSheet } from "./documents/item/spell-sheet.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -56,6 +57,10 @@ Hooks.once("init", async function () {
   });
   Items.registerSheet("titan", TitanArmorSheet, {
     types: ["armor"],
+    makeDefault: true,
+  });
+  Items.registerSheet("titan", TitanSpellSheet, {
+    types: ["spell"],
     makeDefault: true,
   });
 
