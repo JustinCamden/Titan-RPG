@@ -1,0 +1,30 @@
+{{! Header}}
+<div class="sheet-header item-sheet-discipline-rarity-header.hbs">
+
+  {{! Label }}
+  <div class="item-label">
+    {{! Image }}
+    <img class="item-image" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+
+    {{! Name}}
+    <h1 class="item-name"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
+  </div>
+
+  {{! Fields }}
+  <div class="item-fields">
+
+    {{! Disicipline }}
+    <div class="item-discipline">
+      <label class="stat-label">{{localize "TITAN.item.discipline.label"}}</label>
+      <input type="text" name="system.discipline" value="{{system.discipline}}" data-dtype="Text" />
+    </div>
+
+    {{! Rarity }}
+    <div class="item-rarity">
+      <label class="stat-label">{{localize "TITAN.item.rarity.label"}}</label>
+      <select name="system.rarity">
+        {{selectOptions rarityOptions selected=system.rarity localize=true}}
+      </select>
+    </div>
+  </div>
+</div>

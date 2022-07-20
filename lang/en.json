@@ -63,6 +63,8 @@
   "TITAN.item.rarity.option.rare.label": "Rare",
   "TITAN.item.rarity.option.special.label": "Special",
   "TITAN.item.value.label": "Value",
+  "TITAN.item.discipline.label": "Discipline",
+
 
   "TITAN.range.label": "Range",
   "TITAN.range.option.close.label": "Close",

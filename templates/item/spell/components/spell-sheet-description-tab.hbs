@@ -1,0 +1,77 @@
+<div class="spell-sheet-description-tab">
+
+  {{! Sidebar }}
+  <div class="item-sidebar">
+
+    {{! Header }}
+    <div class="item-sidebar-header">
+      <h2 class="item-sidebar-label">{{localize "TITAN.spell.label"}}</h2>
+    </div>
+
+    {{! Content }}
+    <div class="item-sidebar-content">
+      {{! spell }}
+      <div class="stat-field-horizontal">
+
+        {{! Label }}
+        <div class="stat-label">
+          {{localize "TITAN.spell.label"}}
+        </div>
+
+        {{! Input }}
+        <input class="stat-input" type="number" name="system.spell" value="{{system.spell}}" data-dtype="Number" />
+      </div>
+
+      {{! Traits }}
+      <div class="stat-field-horizontal">
+
+        {{! Label }}
+        <div class="stat-label">
+          {{localize "TITAN.traits.label"}}
+        </div>
+
+        {{! Controls }}
+        <div class="stat-controls">
+          <a class="fas fa-edit edit-spell-traits"></a>
+        </div>
+      </div>
+
+      {{! Traits Container }}
+      {{#if system.traits.length}}
+      <div class="traits-container">
+
+        {{! Each trait}}
+        {{#each system.traits as |trait key|}}
+        <label class="trait">
+
+          {{! Numbered Trait }}
+          {{#if trait.numberValue}}
+          {{localize (concat "TITAN.spell.trait.option." trait.name ".label")}}
+          {{concat "(" trait.numberValue ")"}}
+
+          {{!Normal trait}}
+          {{else}}
+          {{localize (concat "TITAN.spell.trait.option." trait.name ".label")}}
+          {{/if}}
+        </label>
+        {{/each}}
+      </div>
+      {{/if}}
+    </div>
+  </div>
+
+  {{! Description }}
+  <div class="item-main">
+    <h2>{{localize "TITAN.description.label"}}</h2>
+    <div class="editor">
+      {{editor
+      system.description
+      target="system.description"
+      rollData=rollData
+      button=true
+      owner=owner
+      editable=editable
+      }}
+    </div>
+  </div>
+</div>

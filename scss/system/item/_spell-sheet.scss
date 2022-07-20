@@ -1,0 +1,19 @@
+/* ----------------------------------------- */
+/*  Spells                             */
+/* ----------------------------------------- */
+
+.spell-sheet {
+
+  .spell-sheet-description-tab {
+    width: 100%;
+    height: 100%;
+    @include flex-row;
+    @include flex-group-center;
+
+    .item-main {
+      height: 99%;
+      text-align: left;
+
+    }
+  }
+}
