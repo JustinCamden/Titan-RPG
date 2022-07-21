@@ -12,6 +12,26 @@ export const registerHandlebarsHelpers = async function () {
     return !a;
   });
 
+  // Greater helper
+  Handlebars.registerHelper("greater", (a, b) => {
+    return a > b;
+  });
+
+  // Greater equals helper
+  Handlebars.registerHelper("greaterEquals", (a, b) => {
+    return a >= b;
+  });
+
+  // Lesser helper
+  Handlebars.registerHelper("lesser", (a, b) => {
+    return a < b;
+  });
+
+  // Lesser equals helper
+  Handlebars.registerHelper("lesserEquals", (a, b) => {
+    return a <= b;
+  });
+
   // Die class helper
   Handlebars.registerHelper("dieClasses", (die) => {
     let retVal = "die";
