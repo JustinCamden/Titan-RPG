@@ -11,16 +11,24 @@ export class TitanSpellSheet extends TitanItemSheet {
     // Retrieve base data structure.
     const context = super.getData();
 
-    // Range
+    // Range Options
     context.rangeOptions = {};
     for (let [k, v] of Object.entries(CONFIG.TITAN.range.option)) {
       context.rangeOptions[k] = v.label;
     }
 
-    // Target
+    // Target Options
     context.targetOptions = {};
     for (let [k, v] of Object.entries(CONFIG.TITAN.target.option)) {
       context.targetOptions[k] = v.label;
+    }
+
+    // Resistance Options
+    context.resistanceCheckOptions = {
+      none: CONFIG.TITAN.none.label,
+    };
+    for (let [k, v] of Object.entries(CONFIG.TITAN.resistance.option)) {
+      context.resistanceCheckOptions[k] = v.label;
     }
 
     return context;
@@ -32,7 +40,7 @@ export class TitanSpellSheet extends TitanItemSheet {
     // Edit target type
     html.find(".edit-target-type").change(this._onEditTargetType.bind(this));
 
-    // Calculate target success cost
+    // Edit Calculate target success cost
     html
       .find(".edit-target-calculate-success-cost")
       .change(this._onEditTargetCalculateSuccessCost.bind(this));
@@ -42,82 +50,138 @@ export class TitanSpellSheet extends TitanItemSheet {
       .find(".edit-damage-ignore-armor")
       .change(this._onEditDamageIgnoreArmor.bind(this));
 
-    // Calculate damage success cost
+    // Edit damage resistance check
+    html
+      .find(".edit-damage-resistance-check")
+      .change(this._onEditDamageResistanceCheck.bind(this));
+
+    // Edit calculate damage success cost
     html
       .find(".edit-damage-calculate-success-cost")
       .change(this._onEditDamageCalculateSuccessCost.bind(this));
+
+    // Edit calculate healing success cost
+    html
+      .find(".edit-healing-calculate-success-cost")
+      .change(this._onEditHealingCalculateSuccessCost.bind(this));
 
     return;
   }
 
   async _onEditTargetType(event) {
-    // If overcast enabled and calculate success cost
-    const targetData = this.item.system.target;
-    if (targetData.overcast.calculateSuccessCost) {
-      // Calculate the overcast cost
-      targetData.overcast.successCost = event.target.value == "zone" ? 3 : 1;
+    event.preventDefault();
 
-      // Update the spell
-      return await this.item.update({
-        system: {
-          target: targetData,
-        },
-      });
-    }
+    // Update data
+    const targetData = this.item.system.target;
+    targetData.type = event.target.value;
+    targetData.overcast.successCost =
+      this.item.spell.calculateTargetOvercastSuccessCost(targetData);
+
+    // Update the item
+    this.item.update({
+      system: {
+        target: targetData,
+      },
+    });
 
     return;
   }
 
   async _onEditTargetCalculateSuccessCost(event) {
-    // If overcast enabled and calculate success cost
-    const targetData = this.item.system.target;
-    if (event.target.checked) {
-      // Calculate the overcast cost
-      targetData.overcast.successCost = targetData.type == "zone" ? 3 : 1;
+    event.preventDefault();
 
-      // Update the spell
-      return await this.item.update({
-        system: {
-          target: targetData,
-        },
-      });
-    }
+    // Update data
+    const targetData = this.item.system.target;
+    targetData.overcast.calculateSuccessCost = event.target.checked
+      ? true
+      : false;
+    targetData.overcast.successCost =
+      this.item.spell.calculateTargetOvercastSuccessCost(targetData);
+
+    // Update the item
+    this.item.update({
+      system: {
+        target: targetData,
+      },
+    });
 
     return;
   }
 
   async _onEditDamageIgnoreArmor(event) {
-    // If overcast enabled and calculate success cost
-    const damageData = this.item.system.damage;
-    if (damageData.overcast.calculateSuccessCost) {
-      // Calculate the overcast cost
-      damageData.overcast.successCost = event.target.checked ? 2 : 1;
+    event.preventDefault();
 
-      // Update the spell
-      return await this.item.update({
-        system: {
-          damage: damageData,
-        },
-      });
-    }
+    // Update the data
+    const damageData = this.item.system.damage;
+    damageData.ignoreArmor = event.target.checked ? true : false;
+    damageData.overcast.successCost =
+      this.item.spell.calculateDamageOvercastSuccessCost(damageData);
+
+    // Update the item
+    this.item.update({
+      system: {
+        damage: damageData,
+      },
+    });
+
+    return;
+  }
+
+  async _onEditDamageResistanceCheck(event) {
+    event.preventDefault();
+
+    // Update the data
+    const damageData = this.item.system.damage;
+    damageData.resistanceCheck = event.target.value;
+    damageData.overcast.successCost =
+      this.item.spell.calculateDamageOvercastSuccessCost(damageData);
+
+    // Update the item
+    this.item.update({
+      system: {
+        damage: damageData,
+      },
+    });
 
     return;
   }
 
   async _onEditDamageCalculateSuccessCost(event) {
-    // If overcast enabled and calculate success cost
-    const damageData = this.item.system.damage;
-    if (event.target.checked && damageData.overcast.enable) {
-      // Calculate the overcast cost
-      damageData.overcast.successCost = damageData.ignoreArmor ? 2 : 1;
+    event.preventDefault();
 
-      // Update the spell
-      return await this.item.update({
-        system: {
-          damage: damageData,
-        },
-      });
-    }
+    // Update the data
+    const damageData = this.item.system.damage;
+    damageData.overcast.calculateSuccessCost = event.target.checked
+      ? true
+      : false;
+    damageData.overcast.successCost =
+      this.item.spell.calculateDamageOvercastSuccessCost(damageData);
+
+    // Update the item
+    this.item.update({
+      system: {
+        damage: damageData,
+      },
+    });
+
+    return;
+  }
+
+  async _onEditHealingCalculateSuccessCost(event) {
+    // If overcast enabled and calculate success cost
+    const healingData = this.item.system.healing;
+    healingData.overcast.calculateSuccessCost = event.target.checked
+      ? true
+      : false;
+    healingData.overcast.successCost =
+      this.item.spell.calculateHealingOvercastSuccessCost(healingData);
+
+    // Update the item
+    this.item.update({
+      system: {
+        healing: healingData,
+      },
+    });
 
     return;
   }

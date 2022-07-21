@@ -38,6 +38,7 @@
   "TITAN.skill.option.survival.label": "Survival",
   "TITAN.skill.option.theology.label": "Theology",
 
+  "TITAN.resistanceCheck.label": "Resistance Check",
   "TITAN.resistance.label": "Resistance",
   "TITAN.resistance.option.reflexes.label": "Reflexes",
   "TITAN.resistance.option.resilience.label": "Resilience",
@@ -154,6 +155,8 @@
   "TITAN.custom.label": "Custom",
   "TITAN.initialValue.label": "Initial Value",
   "TITAN.number.label": "Number",
+  "TITAN.healing.label": "Healing",
+  "TITAN.amount.label": "Amount",
 
   "TITAN.armor.label": "Armor",
   "TITAN.armor.trait.option.light.label": "Light",

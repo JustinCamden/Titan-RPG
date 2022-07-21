@@ -122,7 +122,7 @@
 
       {{! Label }}
       <div class="stat-label">
-        {{localize "TITAN.damage.label"}}
+        {{localize "TITAN.amount.label"}}
       </div>
 
       {{! Input }}
@@ -143,6 +143,19 @@
       {{! Checkbox }}
       <input name="system.damage.ignoreArmor" class="stat-input edit-damage-ignore-armor" type="checkbox" {{checked
         system.damage.ignoreArmor}} />
+    </div>
+
+    {{! Resistance Check }}
+    <div class="stat-field-vertical">
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.resistanceCheck.label"}}
+      </div>
+
+      {{! Select }}
+      <select name="system.damage.resistanceCheck" class="stat-input edit-damage-resistance-check">
+        {{selectOptions resistanceCheckOptions selected=system.damage.resistanceCheck localize=true}}
+      </select>
     </div>
 
     {{! Overcast }}
@@ -184,6 +197,74 @@
       {{! Overcast Success Cost Input }}
       <input name="system.damage.overcast.successCost" class="stat-input" type="number"
         value="{{system.damage.overcast.successCost}}" data-dtype="Number" />
+      {{/if}}
+    </div>
+    {{/if}}
+    {{/if}}
+
+  </div>
+
+  {{! Healing }}
+  <div class="stat-category">
+
+    {{! Category label }}
+    <h3 class="stat-category-label">{{localize "TITAN.healing.label"}}</h3>
+
+    {{! Initial Value }}
+    <div class="stat-field-vertical">
+
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.amount.label"}}
+      </div>
+
+      {{! Input }}
+      <input name="system.healing.initialValue" class="stat-input" type="number" value="{{system.healing.initialValue}}"
+        data-dtype="Number" />
+    </div>
+
+    {{! If healing }}
+    {{#if (greater system.healing.initialValue 0)}}
+
+    {{! Overcast }}
+    <div class="stat-field-vertical">
+      {{! Overcast Label }}
+      <div class="stat-label">
+        {{concat (localize "TITAN.spell.overcast.label")"?"}}
+      </div>
+
+      {{! Overcast Checkbox }}
+      <input name="system.healing.overcast.enable" class="stat-input" type="checkbox" {{checked
+        system.healing.overcast.enable}} />
+    </div>
+
+    {{! Overcast Success Cost }}
+    {{#if system.healing.overcast.enable}}
+    <div class="stat-field-vertical">
+
+      {{! Calculate Success Cost }}
+      <div class="stat-label">
+        {{concat (localize "TITAN.spell.overcast.calculateSuccessCost.label") "?"}}
+      </div>
+
+      {{! Calculate Success Cost Checkbox }}
+      <input name="system.healing.overcast.calculateSuccessCost" class="stat-input edit-healing-calculate-success-cost"
+        type="checkbox" {{checked system.healing.overcast.calculateSuccessCost}} />
+
+      {{! Overcast Success Cost Label }}
+      <div class="stat-label">
+        {{localize "TITAN.spell.overcast.successCost.label"}}
+      </div>
+
+      {{#if system.healing.overcast.calculateSuccessCost}}
+      {{! Overcast Success Cost }}
+      <div class="stat-input">
+        {{system.healing.overcast.successCost}}
+      </div>
+      {{else}}
+      {{! Overcast Success Cost Input }}
+      <input name="system.healing.overcast.successCost" class="stat-input" type="number"
+        value="{{system.healing.overcast.successCost}}" data-dtype="Number" />
       {{/if}}
     </div>
     {{/if}}

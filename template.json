@@ -382,6 +382,7 @@
       "damage": {
         "initialValue": 1,
         "ignoreArmor": false,
+        "resistanceCheck": "none",
         "overcast": {
           "enable": true,
           "calculateSuccessCost": true,
