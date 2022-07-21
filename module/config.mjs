@@ -290,7 +290,25 @@ export const TITAN = {
         label: "TITAN.range.option.extreme.label",
       },
       custom: {
-        label: "TITAN.range.option.custom.label",
+        label: "TITAN.custom.label",
+      },
+    },
+  },
+
+  target: {
+    label: "TITAN.target.label",
+    option: {
+      self: {
+        label: "TITAN.target.option.self.label",
+      },
+      single: {
+        label: "TITAN.target.option.single.label",
+      },
+      zone: {
+        label: "TITAN.target.option.zone.label",
+      },
+      custom: {
+        label: "TITAN.custom.label",
       },
     },
   },

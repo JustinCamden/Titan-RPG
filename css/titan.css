@@ -827,15 +827,20 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
   text-align: center;
+  height: 100%;
 }
 
 .titan .item-sheet .stat-category .stat-category-label {
   font-weight: bold;
   width: 100%;
+}
+
+.titan .item-sheet .stat-category:not(:first-child) {
+  margin-left: 0.5rem;
 }
 
 .titan .item-sheet .stat-label {

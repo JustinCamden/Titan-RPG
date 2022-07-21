@@ -28,9 +28,30 @@
   </div>
 
   {{! Target }}
-  <div class="stat-field-vertical">
-    {{! Type }}
-    {{!}}
+  <div class="stat-category">
 
+    {{! Category label }}
+    <h3 class="stat-category-label">{{localize "TITAN.target.label"}}</h3>
+
+    <div class="stat-field-vertical">
+
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.type.label"}}
+      </div>
+
+      {{! Select Input }}
+      <select name="system.target.type" class="stat-input">
+        {{selectOptions targetOptions selected=system.target.type localize=true}}
+      </select>
+
+      {{! Custom }}
+      {{#if (equals system.target.type "custom")}}
+      <input class="stat-input" type="text" name="system.target.custom" value="{{system.target.custom}}"
+        placeholder="Custom" />
+      {{/if}}
+    </div>
   </div>
+
+
 </div>

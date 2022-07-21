@@ -1,171 +1,176 @@
 .item-sheet {
 
-    .sheet-header {
-        @include flex-row;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        height: 15%;
+  .sheet-header {
+    @include flex-row;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 15%;
+    width: 100%;
+
+    .item-label {
+      @include flex-row;
+      align-items: center;
+      width: 65%;
+
+      .item-name {
+        height: 3rem;
+        padding: 0;
+        margin-right: 0.5rem;
+        margin-bottom: 0;
+        border-bottom: 0;
         width: 100%;
 
-        .item-label {
-            @include flex-row;
-            align-items: center;
-            width: 65%;
-
-            .item-name {
-                height: 3rem;
-                padding: 0;
-                margin-right: 0.5rem;
-                margin-bottom: 0;
-                border-bottom: 0;
-                width: 100%;
-
-                input {
-                    width: 100%;
-                    height: 100%;
-                    margin: 0;
-                }
-            }
-
-            .item-image {
-                height: 5rem;
-                border: none;
-            }
+        input {
+          width: 100%;
+          height: 100%;
+          margin: 0;
         }
+      }
 
-        .item-fields {
-            width: 30%;
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: flex-end;
-
-            .item-rarity {
-                width: 100%;
-            }
-
-            .item-value {
-                width: 100%;
-            }
-        }
+      .item-image {
+        height: 5rem;
+        border: none;
+      }
     }
 
-    .sheet-tabs {
-        flex: 0;
-        height: 5%;
-        padding-top: 0.25rem;
-    }
+    .item-fields {
+      width: 30%;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
 
-    .tab {
+      .item-rarity {
         width: 100%;
-        height: 100%;
+      }
+
+      .item-value {
+        width: 100%;
+      }
+    }
+  }
+
+  .sheet-tabs {
+    flex: 0;
+    height: 5%;
+    padding-top: 0.25rem;
+  }
+
+  .tab {
+    width: 100%;
+    height: 100%;
+  }
+
+  .sheet-body {
+    @include flex-row;
+    padding-top: 0.25rem;
+
+    &.no-nav {
+      height: 85%;
     }
 
-    .sheet-body {
-        @include flex-row;
-        padding-top: 0.25rem;
-
-        &.no-nav {
-            height: 85%;
-        }
-
-        &:not(.no-nav) {
-            height: 80%;
-        }
-
-
-        .item-sidebar {
-            @include border-right;
-            @include flex-column;
-            @include flex-group-top;
-            width: 21rem;
-            height: 100%;
-            margin-right: 0.5rem;
-            padding: 0;
-
-            .item-sidebar-header {
-                @include border-vertical;
-                width: 100%;
-
-                .item-sidebar-label {
-                    padding: 0px;
-                    border-bottom: 0;
-                    font-weight: 300;
-                    font-size: 1.25rem;
-                    margin: 0;
-                }
-            }
-
-            .item-sidebar-content {
-                padding: 0.5rem;
-            }
-        }
-
-        .item-main {
-            @include flex-column;
-            width: 100%;
-            height: 100%;
-
-            .editor {
-                flex: 1;
-            }
-        }
+    &:not(.no-nav) {
+      height: 80%;
     }
 
-    .stat-field-horizontal {
-        @include flex-row;
-        @include flex-space-between;
+
+    .item-sidebar {
+      @include border-right;
+      @include flex-column;
+      @include flex-group-top;
+      width: 21rem;
+      height: 100%;
+      margin-right: 0.5rem;
+      padding: 0;
+
+      .item-sidebar-header {
+        @include border-vertical;
         width: 100%;
 
-        &:not(:first-child) {
-            margin-top: 0.5rem;
+        .item-sidebar-label {
+          padding: 0px;
+          border-bottom: 0;
+          font-weight: 300;
+          font-size: 1.25rem;
+          margin: 0;
         }
+      }
+
+      .item-sidebar-content {
+        padding: 0.5rem;
+      }
     }
 
-    .stat-field-vertical {
-        @include flex-column;
-        @include flex-group-center;
-        width: 100%;
+    .item-main {
+      @include flex-column;
+      width: 100%;
+      height: 100%;
 
-        .stat-input {
-            margin-top: 0.5rem
-        }
+      .editor {
+        flex: 1;
+      }
     }
+  }
 
-    .stat-category {
-        @include border;
-        @include flex-column;
-        @include flex-group-center;
+  .stat-field-horizontal {
+    @include flex-row;
+    @include flex-space-between;
+    width: 100%;
 
-        .stat-category-label {
-            font-weight: bold;
-            width: 100%;
-        }
+    &:not(:first-child) {
+      margin-top: 0.5rem;
     }
+  }
 
-
-    .stat-label {
-        font-weight: bold;
-        width: 100%;
-    }
+  .stat-field-vertical {
+    @include flex-column;
+    @include flex-group-center;
+    width: 100%;
 
     .stat-input {
-        width: 100%;
+      margin-top: 0.5rem
+    }
+  }
+
+  .stat-category {
+    @include border;
+    @include flex-column;
+    @include flex-group-center(flex-start);
+    height: 100%;
+
+    .stat-category-label {
+      font-weight: bold;
+      width: 100%;
     }
 
-    .stat-controls {
-        width: 100%;
+    &:not(:first-child) {
+      margin-left: 0.5rem;
     }
+  }
 
-    .traits-container {
-        width: 100%;
-        margin-top: 0.5rem;
-        @include flex-row;
-        @include flex-group-center;
 
-        .trait {
-            @include border;
-            margin: 0.25rem;
-        }
+  .stat-label {
+    font-weight: bold;
+    width: 100%;
+  }
+
+  .stat-input {
+    width: 100%;
+  }
+
+  .stat-controls {
+    width: 100%;
+  }
+
+  .traits-container {
+    width: 100%;
+    margin-top: 0.5rem;
+    @include flex-row;
+    @include flex-group-center;
+
+    .trait {
+      @include border;
+      margin: 0.25rem;
     }
+  }
 }

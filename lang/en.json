@@ -66,14 +66,17 @@
   "TITAN.item.discipline.label": "Discipline",
   "TITAN.spell.tradition.label": "Tradition",
 
-
   "TITAN.range.label": "Range",
   "TITAN.range.option.close.label": "Close",
   "TITAN.range.option.short.label": "Short",
   "TITAN.range.option.medium.label": "Medium",
   "TITAN.range.option.long.label": "Long",
   "TITAN.range.option.extreme.label": "Extreme",
-  "TITAN.range.option.custom.label": "Custom",
+
+  "TITAN.target.label": "Target",
+  "TITAN.target.option.self.label": "Self",
+  "TITAN.target.option.single.label": "Single",
+  "TITAN.target.option.zone.label": "Zone",
 
   "TITAN.weapons.label": "Weapons",
   "TITAN.weapon.label": "Weapon",
@@ -145,6 +148,7 @@
   "TITAN.unEquip.label": "Un-Equip",
   "TITAN.ignoreArmor.label": "Ignore Armor",
   "TITAN.baseDamage.label": "Base Damage",
+  "TITAN.custom.label": "Custom",
 
   "TITAN.armor.label": "Armor",
   "TITAN.armor.trait.option.light.label": "Light",

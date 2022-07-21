@@ -17,6 +17,12 @@ export class TitanSpellSheet extends TitanItemSheet {
       context.rangeOptions[k] = v.label;
     }
 
+    // Target
+    context.targetOptions = {};
+    for (let [k, v] of Object.entries(CONFIG.TITAN.target.option)) {
+      context.targetOptions[k] = v.label;
+    }
+
     return context;
   }
 }
