@@ -64,7 +64,6 @@
   "TITAN.item.rarity.option.special.label": "Special",
   "TITAN.item.value.label": "Value",
   "TITAN.item.discipline.label": "Discipline",
-  "TITAN.spell.tradition.label": "Tradition",
 
   "TITAN.range.label": "Range",
   "TITAN.range.option.close.label": "Close",
@@ -118,6 +117,8 @@
   "TITAN.spell.label": "Spell",
   "TITAN.spell.overcast.label": "Overcast",
   "TITAN.spell.overcast.successCost.label": "Success Cost",
+  "TITAN.spell.overcast.calculateSuccessCost.label": "Calculate Success Cost",
+  "TITAN.spell.tradition.label": "Tradition",
 
   "TITAN.actions.label": "Actions",
   "TITAN.save.label": "Save",
@@ -152,6 +153,7 @@
   "TITAN.baseDamage.label": "Base Damage",
   "TITAN.custom.label": "Custom",
   "TITAN.initialValue.label": "Initial Value",
+  "TITAN.number.label": "Number",
 
   "TITAN.armor.label": "Armor",
   "TITAN.armor.trait.option.light.label": "Light",
