@@ -809,8 +809,13 @@
   width: 100%;
 }
 
-.titan .item-sheet .stat-field-vertical .stat-input {
+.titan .item-sheet .stat-field-vertical:not(:first-child) {
   margin-top: 0.5rem;
+}
+
+.titan .item-sheet .stat-field-vertical .stat-input {
+  margin-top: 0.25rem;
+  text-align: center;
 }
 
 .titan .item-sheet .stat-category {
@@ -837,6 +842,7 @@
 .titan .item-sheet .stat-category .stat-category-label {
   font-weight: bold;
   width: 100%;
+  margin-bottom: 0;
 }
 
 .titan .item-sheet .stat-category:not(:first-child) {

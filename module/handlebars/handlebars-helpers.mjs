@@ -7,6 +7,11 @@ export const registerHandlebarsHelpers = async function () {
     return a == b;
   });
 
+  // Not helper
+  Handlebars.registerHelper("not", (a) => {
+    return !a;
+  });
+
   // Die class helper
   Handlebars.registerHelper("dieClasses", (die) => {
     let retVal = "die";

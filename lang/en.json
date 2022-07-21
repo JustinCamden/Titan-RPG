@@ -116,6 +116,8 @@
   "TITAN.attack.trait.option.twoHanded.label": "Two-Handed",
 
   "TITAN.spell.label": "Spell",
+  "TITAN.spell.overcast.label": "Overcast",
+  "TITAN.spell.overcast.successCost.label": "Success Cost",
 
   "TITAN.actions.label": "Actions",
   "TITAN.save.label": "Save",
@@ -149,6 +151,7 @@
   "TITAN.ignoreArmor.label": "Ignore Armor",
   "TITAN.baseDamage.label": "Base Damage",
   "TITAN.custom.label": "Custom",
+  "TITAN.initialValue.label": "Initial Value",
 
   "TITAN.armor.label": "Armor",
   "TITAN.armor.trait.option.light.label": "Light",

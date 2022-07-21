@@ -33,24 +33,66 @@
     {{! Category label }}
     <h3 class="stat-category-label">{{localize "TITAN.target.label"}}</h3>
 
+    {{! Type }}
     <div class="stat-field-vertical">
-
-      {{! Label }}
+      {{! Type Label }}
       <div class="stat-label">
         {{localize "TITAN.type.label"}}
       </div>
 
-      {{! Select Input }}
+      {{! Type Select }}
       <select name="system.target.type" class="stat-input">
         {{selectOptions targetOptions selected=system.target.type localize=true}}
       </select>
 
-      {{! Custom }}
+      {{! Type Custom }}
       {{#if (equals system.target.type "custom")}}
       <input class="stat-input" type="text" name="system.target.custom" value="{{system.target.custom}}"
         placeholder="Custom" />
       {{/if}}
     </div>
+
+    {{! If Target not Self }}
+    {{#if (not (equals system.target.type "self"))}}
+    <div class="stat-field-vertical">
+      {{! Initial Value Label }}
+      <div class="stat-label">
+        {{concat (localize "TITAN.initialValue.label")"?"}}
+      </div>
+
+      {{! Initial Value Input }}
+      <input name="system.target.initialValue" class="stat-input" type="number" value="{{system.target.initialValue}}"
+        data-dtype="Number" />
+    </div>
+
+    {{! Overcast }}
+    <div class="stat-field-vertical">
+      {{! Overcast Label }}
+      <div class="stat-label">
+        {{concat (localize "TITAN.spell.overcast.label")"?"}}
+      </div>
+
+      {{! Overcast Checkbox }}
+      <input name="system.target.overcast.enable" class="stat-input" type="checkbox" {{checked
+        system.target.overcast.enable}} />
+    </div>
+
+    <div class="stat-field-vertical">
+      {{! Overcast Success Cost }}
+      {{#if system.target.overcast.enable}}
+
+      {{! Overcast Success Cost Label }}
+      <div class="stat-label">
+        {{concat (localize "TITAN.spell.overcast.successCost.label")"?"}}
+      </div>
+
+      {{! Overcast Success Cost Input }}
+      <input name="system.target.overcast.successCost" class="stat-input" type="number"
+        value="{{system.target.overcast.successCost}}" data-dtype="Number" />
+      {{/if}}
+    </div>
+
+    {{/if}}
   </div>
 
 

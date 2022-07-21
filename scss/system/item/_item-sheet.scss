@@ -125,10 +125,16 @@
   .stat-field-vertical {
     @include flex-column;
     @include flex-group-center;
+
     width: 100%;
 
+    &:not(:first-child) {
+      margin-top: 0.5rem;
+    }
+
     .stat-input {
-      margin-top: 0.5rem
+      margin-top: 0.25rem;
+      text-align: center;
     }
   }
 
@@ -141,6 +147,7 @@
     .stat-category-label {
       font-weight: bold;
       width: 100%;
+      margin-bottom: 0;
     }
 
     &:not(:first-child) {

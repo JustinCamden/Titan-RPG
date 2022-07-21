@@ -372,25 +372,33 @@
       "target": {
         "type": "single",
         "custom": "Custom",
-        "initial": 1,
-        "successCost": 1,
-        "overcast": true
+        "initialValue": 1,
+        "overcast": {
+          "enable": true,
+          "successCost": 1
+        }
       },
       "damage": {
-        "initial": 1,
-        "successCost": 1,
-        "overcast": true
+        "initialValue": 1,
+        "overcast": {
+          "enable": true,
+          "successCost": 1
+        }
       },
       "healing": {
-        "initial": 0,
-        "successCost": 1,
-        "overcast": true
+        "initialValue": 0,
+        "overcast": {
+          "enable": true,
+          "successCost": 1
+        }
       },
       "duration": {
         "period": "instant",
-        "initial": 0,
-        "successCost": 1,
-        "overcast": true
+        "initialValue": 0,
+        "overcast": {
+          "enable": true,
+          "successCost": 1
+        }
       },
       "castingCheck": {
         "difficulty": 4,
