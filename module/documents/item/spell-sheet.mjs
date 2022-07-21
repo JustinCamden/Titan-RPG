@@ -22,6 +22,7 @@ export class TitanSpellSheet extends TitanItemSheet {
     for (let [k, v] of Object.entries(CONFIG.TITAN.target.option)) {
       context.targetOptions[k] = v.label;
     }
+    context.targetOptions.custom = "TITAN.custom.label";
 
     // Resistance Options
     context.resistanceCheckOptions = {
@@ -30,6 +31,13 @@ export class TitanSpellSheet extends TitanItemSheet {
     for (let [k, v] of Object.entries(CONFIG.TITAN.resistance.option)) {
       context.resistanceCheckOptions[k] = v.label;
     }
+
+    // Duration options
+    context.durationOptions = {};
+    for (let [k, v] of Object.entries(CONFIG.TITAN.duration.period.option)) {
+      context.durationOptions[k] = v.label;
+    }
+    context.durationOptions.custom = "TITAN.custom.label";
 
     return context;
   }

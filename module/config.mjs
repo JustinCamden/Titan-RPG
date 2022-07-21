@@ -271,6 +271,19 @@ export const TITAN = {
     },
   },
 
+  duration: {
+    period: {
+      option: {
+        instant: {
+          label: "TITAN.duration.period.option.instant.label",
+        },
+        round: {
+          label: "TITAN.duration.period.option.round.label",
+        },
+      },
+    },
+  },
+
   range: {
     name: "name",
     option: {
@@ -306,9 +319,6 @@ export const TITAN = {
       },
       zone: {
         label: "TITAN.target.option.zone.label",
-      },
-      custom: {
-        label: "TITAN.custom.label",
       },
     },
   },

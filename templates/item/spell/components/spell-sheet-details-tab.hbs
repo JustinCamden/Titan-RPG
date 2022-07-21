@@ -272,4 +272,25 @@
 
   </div>
 
+  {{! Duration }}
+  <div class="stat-category">
+
+    {{! Category label }}
+    <h3 class="stat-category-label">{{localize "TITAN.duration.label"}}</h3>
+
+    {{! Initial Value }}
+    <div class="stat-field-vertical">
+
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.duration.period.label"}}
+      </div>
+
+      {{! Input }}
+      <select name="system.duration.period" class="stat-input edit-duration-period">
+        {{selectOptions durationOptions selected=system.duration.period localize=true}}
+      </select>
+    </div>
+  </div>
+
 </div>
