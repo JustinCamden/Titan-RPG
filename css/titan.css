@@ -810,7 +810,7 @@
 }
 
 .titan .item-sheet .stat-field-vertical:not(:first-child) {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 .titan .item-sheet .stat-field-vertical .stat-input {
