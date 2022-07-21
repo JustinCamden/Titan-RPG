@@ -7,9 +7,6 @@ export class TitanWeaponSheet extends TitanItemSheet {
     return `systems/titan/templates/item/weapon/weapon-sheet.hbs`;
   }
 
-  /* -------------------------------------------- */
-
-  /** @override */
   getData() {
     // Retrieve base data structure.
     const context = super.getData();
@@ -53,9 +50,6 @@ export class TitanWeaponSheet extends TitanItemSheet {
     return context;
   }
 
-  /* -------------------------------------------- */
-
-  /** @override */
   activateListeners(html) {
     super.activateListeners(html);
 

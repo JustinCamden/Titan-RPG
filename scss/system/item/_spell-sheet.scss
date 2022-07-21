@@ -13,7 +13,14 @@
     .item-main {
       height: 99%;
       text-align: left;
+    }
+  }
 
+  .spell-sheet-details-tab {
+    @include flex-row;
+
+    .stat-category {
+      width: 20%;
     }
   }
 }

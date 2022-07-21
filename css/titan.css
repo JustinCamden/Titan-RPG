@@ -791,6 +791,53 @@
   margin-top: 0.5rem;
 }
 
+.titan .item-sheet .stat-field-vertical {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.titan .item-sheet .stat-field-vertical .stat-input {
+  margin-top: 0.5rem;
+}
+
+.titan .item-sheet .stat-category {
+  border: solid;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+.titan .item-sheet .stat-category .stat-category-label {
+  font-weight: bold;
+  width: 100%;
+}
+
 .titan .item-sheet .stat-label {
   font-weight: bold;
   width: 100%;
@@ -1114,6 +1161,20 @@
 .titan .spell-sheet .spell-sheet-description-tab .item-main {
   height: 99%;
   text-align: left;
+}
+
+.titan .spell-sheet .spell-sheet-details-tab {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.titan .spell-sheet .spell-sheet-details-tab .stat-category {
+  width: 20%;
 }
 
 .titan .weapon-sheet .weapon-sheet-description-tab {

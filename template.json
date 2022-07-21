@@ -365,7 +365,10 @@
     "spell": {
       "templates": ["base", "duration"],
       "tradition": "Common",
-      "range": "medium",
+      "range": {
+        "type": "medium",
+        "custom": "Custom"
+      },
       "target": {
         "type": "single",
         "initial": 1,

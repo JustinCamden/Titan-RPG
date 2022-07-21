@@ -73,6 +73,7 @@
   "TITAN.range.option.medium.label": "Medium",
   "TITAN.range.option.long.label": "Long",
   "TITAN.range.option.extreme.label": "Extreme",
+  "TITAN.range.option.custom.label": "Custom",
 
   "TITAN.weapons.label": "Weapons",
   "TITAN.weapon.label": "Weapon",

@@ -122,6 +122,28 @@
         }
     }
 
+    .stat-field-vertical {
+        @include flex-column;
+        @include flex-group-center;
+        width: 100%;
+
+        .stat-input {
+            margin-top: 0.5rem
+        }
+    }
+
+    .stat-category {
+        @include border;
+        @include flex-column;
+        @include flex-group-center;
+
+        .stat-category-label {
+            font-weight: bold;
+            width: 100%;
+        }
+    }
+
+
     .stat-label {
         font-weight: bold;
         width: 100%;
