@@ -17,10 +17,16 @@
   }
 
   .spell-sheet-aspects-tab {
-    @include flex-row;
+    @include grid(5);
 
     .stat-category {
-      width: 20%;
+      justify-content: flex-start;
+
+      .horizontal-checkbox {
+        width: 100%;
+        @include flex-row;
+        @include flex-group-center;
+      }
     }
   }
 }

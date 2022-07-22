@@ -345,4 +345,26 @@
     {{/if}}
   </div>
 
+  {{! Conditions }}
+  <div class="stat-category">
+
+    {{! Category label }}
+    <h3 class="stat-category-label">{{localize "TITAN.conditions.label"}}</h3>
+
+    {{! Period Value }}
+    <div class="stat-field-vertical">
+
+      <div class="horizontal-checkbox">
+        {{! Label }}
+        <div class="stat-label">
+          {{localize "TITAN.all.label"}}
+        </div>
+
+        {{! Checkbox }}
+        <input name="system.conditionRemovalAndImmunity.all" class="stat-input" type="checkbox" {{checked
+          system.conditionRemovalAndImmunity.all}}>
+      </div>
+    </div>
+  </div>
+
 </div>
