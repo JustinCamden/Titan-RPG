@@ -278,7 +278,7 @@
     {{! Category label }}
     <h3 class="stat-category-label">{{localize "TITAN.duration.label"}}</h3>
 
-    {{! Initial Value }}
+    {{! Period Value }}
     <div class="stat-field-vertical">
 
       {{! Label }}
@@ -290,7 +290,59 @@
       <select name="system.duration.period" class="stat-input edit-duration-period">
         {{selectOptions durationOptions selected=system.duration.period localize=true}}
       </select>
+
+      {{! Custom Input }}
+      {{#if (equals system.duration.period "custom")}}
+      <input class="stat-input" type="text" name="system.duration.custom" value="{{system.duration.custom}}"
+        placeholder="Custom" />
+      {{/if}}
     </div>
+
+    {{! Overcast }}
+    {{#if (not (equals system.duration.period "instant"))}}
+    <div class="stat-field-vertical">
+      {{! Overcast Label }}
+      <div class="stat-label">
+        {{concat (localize "TITAN.spell.overcast.label")"?"}}
+      </div>
+
+      {{! Overcast Checkbox }}
+      <input name="system.duration.overcast.enable" class="stat-input" type="checkbox" {{checked
+        system.duration.overcast.enable}} />
+    </div>
+
+    {{! Overcast Success Cost }}
+    {{#if system.duration.overcast.enable}}
+    <div class="stat-field-vertical">
+
+      {{! Calculate Success Cost }}
+      <div class="stat-label">
+        {{concat (localize "TITAN.spell.overcast.calculateSuccessCost.label") "?"}}
+      </div>
+
+      {{! Calculate Success Cost Checkbox }}
+      <input name="system.duration.overcast.calculateSuccessCost"
+        class="stat-input edit-duration-calculate-success-cost" type="checkbox" {{checked
+        system.duration.overcast.calculateSuccessCost}} />
+
+      {{! Overcast Success Cost Label }}
+      <div class="stat-label">
+        {{localize "TITAN.spell.overcast.successCost.label"}}
+      </div>
+
+      {{#if system.duration.overcast.calculateSuccessCost}}
+      {{! Overcast Success Cost }}
+      <div class="stat-input">
+        {{system.duration.overcast.successCost}}
+      </div>
+      {{else}}
+      {{! Overcast Success Cost Input }}
+      <input name="system.duration.overcast.successCost" class="stat-input" type="number"
+        value="{{system.duration.overcast.successCost}}" data-dtype="Number" />
+      {{/if}}
+    </div>
+    {{/if}}
+    {{/if}}
   </div>
 
 </div>

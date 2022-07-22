@@ -51,4 +51,15 @@ export class TitanSpell {
     // Return current
     return healingData.overcast.successCost;
   }
+
+  calculateDurationOvercastSuccessCost(durationData) {
+    // If auto calculate success cost
+    if (durationData.overcast.calculateSuccessCost) {
+      // Normal = 1
+      return 1;
+    }
+
+    // Return current
+    return durationData.overcast.successCost;
+  }
 }

@@ -73,6 +73,11 @@ export class TitanSpellSheet extends TitanItemSheet {
       .find(".edit-healing-calculate-success-cost")
       .change(this._onEditHealingCalculateSuccessCost.bind(this));
 
+    // Edit calculate healing success cost
+    html
+      .find(".edit-duration-calculate-success-cost")
+      .change(this._onEditDurationCalculateSuccessCost.bind(this));
+
     return;
   }
 
@@ -188,6 +193,25 @@ export class TitanSpellSheet extends TitanItemSheet {
     this.item.update({
       system: {
         healing: healingData,
+      },
+    });
+
+    return;
+  }
+
+  async _onEditDurationCalculateSuccessCost(event) {
+    // If overcast enabled and calculate success cost
+    const durationData = this.item.system.duration;
+    durationData.overcast.calculateSuccessCost = event.target.checked
+      ? true
+      : false;
+    durationData.overcast.successCost =
+      this.item.spell.calculateHealingOvercastSuccessCost(durationData);
+
+    // Update the item
+    this.item.update({
+      system: {
+        duration: durationData,
       },
     });
 
