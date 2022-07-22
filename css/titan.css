@@ -791,6 +791,10 @@
   margin-top: 0.5rem;
 }
 
+.titan .item-sheet .stat-field-horizontal :not(:first-child) {
+  margin-left: 0.5rem;
+}
+
 .titan .item-sheet .stat-field-vertical {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1189,8 +1193,17 @@
   justify-content: flex-start;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .horizontal-checkbox {
-  width: 100%;
+.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-category-label {
+  margin-bottom: 0.25rem;
+}
+
+.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-field-vertical {
+  margin-top: 0.25rem;
+  border-top: solid;
+  padding: 0.25rem;
+}
+
+.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-field-horizontal {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1198,12 +1211,25 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  text-align: center;
+  width: 100%;
+  margin-top: 0.25rem;
+  border-top: solid;
+  padding: 0.25rem;
+}
+
+.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-field-horizontal .stat-label {
+  width: 50%;
+}
+
+.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-field-horizontal .stat-input {
+  width: 50%;
   text-align: center;
 }
 

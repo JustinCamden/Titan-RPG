@@ -22,10 +22,31 @@
     .stat-category {
       justify-content: flex-start;
 
-      .horizontal-checkbox {
-        width: 100%;
+      .stat-category-label {
+        margin-bottom: 0.25rem;
+      }
+
+      .stat-field-vertical {
+        margin-top: 0.25rem;
+        @include border-top(0.25rem);
+      }
+
+      .stat-field-horizontal {
         @include flex-row;
-        @include flex-group-center;
+        @include flex-space-between;
+        width: 100%;
+
+        margin-top: 0.25rem;
+        @include border-top(0.25rem);
+
+        .stat-label {
+          width: 50%;
+        }
+
+        .stat-input {
+          width: 50%;
+          text-align: center;
+        }
       }
     }
   }

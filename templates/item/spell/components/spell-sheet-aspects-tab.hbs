@@ -54,7 +54,7 @@
 
     {{! If Target not Self }}
     {{#if (not (equals system.target.type "self"))}}
-    <div class="stat-field-vertical">
+    <div class="stat-field-horizontal">
       {{! Initial Value Label }}
       <div class="stat-label">
         {{localize "TITAN.number.label"}}
@@ -66,7 +66,7 @@
     </div>
 
     {{! Overcast }}
-    <div class="stat-field-vertical">
+    <div class="stat-field-horizontal">
       {{! Overcast Label }}
       <div class="stat-label">
         {{concat (localize "TITAN.spell.overcast.label")"?"}}
@@ -79,7 +79,7 @@
 
     {{! Overcast Success Cost }}
     {{#if system.target.overcast.enable}}
-    <div class="stat-field-vertical">
+    <div class="stat-field-horizontal">
 
       {{! Calculate Success Cost }}
       <div class="stat-label">
@@ -89,7 +89,9 @@
       {{! Calculate Success Cost Checkbox }}
       <input name="system.target.overcast.calculateSuccessCost" class="stat-input edit-target-calculate-success-cost"
         type="checkbox" {{checked system.target.overcast.calculateSuccessCost}} />
+    </div>
 
+    <div class="stat-field-horizontal">
       {{! Overcast Success Cost Label }}
       <div class="stat-label">
         {{localize "TITAN.spell.overcast.successCost.label"}}
@@ -107,7 +109,6 @@
       {{/if}}
     </div>
     {{/if}}
-
     {{/if}}
   </div>
 
@@ -118,7 +119,7 @@
     <h3 class="stat-category-label">{{localize "TITAN.damage.label"}}</h3>
 
     {{! Initial Value }}
-    <div class="stat-field-vertical">
+    <div class="stat-field-horizontal">
 
       {{! Label }}
       <div class="stat-label">
@@ -133,7 +134,7 @@
     {{! If Damage }}
     {{#if (greater system.damage.initialValue 0)}}
     {{! Ignore Armor }}
-    <div class="stat-field-vertical">
+    <div class="stat-field-horizontal">
 
       {{! Label }}
       <div class="stat-label">
@@ -159,7 +160,7 @@
     </div>
 
     {{! Overcast }}
-    <div class="stat-field-vertical">
+    <div class="stat-field-horizontal">
       {{! Overcast Label }}
       <div class="stat-label">
         {{concat (localize "TITAN.spell.overcast.label")"?"}}
@@ -172,7 +173,7 @@
 
     {{! Overcast Success Cost }}
     {{#if system.damage.overcast.enable}}
-    <div class="stat-field-vertical">
+    <div class="stat-field-horizontal">
 
       {{! Calculate Success Cost }}
       <div class="stat-label">
@@ -182,7 +183,9 @@
       {{! Calculate Success Cost Checkbox }}
       <input name="system.damage.overcast.calculateSuccessCost" class="stat-input edit-damage-calculate-success-cost"
         type="checkbox" {{checked system.damage.overcast.calculateSuccessCost}} />
+    </div>
 
+    <div class="stat-field-horizontal">
       {{! Overcast Success Cost Label }}
       <div class="stat-label">
         {{localize "TITAN.spell.overcast.successCost.label"}}
@@ -211,7 +214,7 @@
     <h3 class="stat-category-label">{{localize "TITAN.healing.label"}}</h3>
 
     {{! Initial Value }}
-    <div class="stat-field-vertical">
+    <div class="stat-field-horizontal">
 
       {{! Label }}
       <div class="stat-label">
@@ -227,7 +230,7 @@
     {{#if (greater system.healing.initialValue 0)}}
 
     {{! Overcast }}
-    <div class="stat-field-vertical">
+    <div class="stat-field-horizontal">
       {{! Overcast Label }}
       <div class="stat-label">
         {{concat (localize "TITAN.spell.overcast.label")"?"}}
@@ -240,7 +243,7 @@
 
     {{! Overcast Success Cost }}
     {{#if system.healing.overcast.enable}}
-    <div class="stat-field-vertical">
+    <div class="stat-field-horizontal">
 
       {{! Calculate Success Cost }}
       <div class="stat-label">
@@ -250,7 +253,9 @@
       {{! Calculate Success Cost Checkbox }}
       <input name="system.healing.overcast.calculateSuccessCost" class="stat-input edit-healing-calculate-success-cost"
         type="checkbox" {{checked system.healing.overcast.calculateSuccessCost}} />
+    </div>
 
+    <div class="stat-field-horizontal">
       {{! Overcast Success Cost Label }}
       <div class="stat-label">
         {{localize "TITAN.spell.overcast.successCost.label"}}
@@ -300,7 +305,7 @@
 
     {{! Overcast }}
     {{#if (not (equals system.duration.period "instant"))}}
-    <div class="stat-field-vertical">
+    <div class="stat-field-horizontal">
       {{! Overcast Label }}
       <div class="stat-label">
         {{concat (localize "TITAN.spell.overcast.label")"?"}}
@@ -313,7 +318,7 @@
 
     {{! Overcast Success Cost }}
     {{#if system.duration.overcast.enable}}
-    <div class="stat-field-vertical">
+    <div class="stat-field-horizontal">
 
       {{! Calculate Success Cost }}
       <div class="stat-label">
@@ -324,7 +329,9 @@
       <input name="system.duration.overcast.calculateSuccessCost"
         class="stat-input edit-duration-calculate-success-cost" type="checkbox" {{checked
         system.duration.overcast.calculateSuccessCost}} />
+    </div>
 
+    <div class="stat-field-horizontal">
       {{! Overcast Success Cost Label }}
       <div class="stat-label">
         {{localize "TITAN.spell.overcast.successCost.label"}}
@@ -352,18 +359,15 @@
     <h3 class="stat-category-label">{{localize "TITAN.conditions.label"}}</h3>
 
     {{! Period Value }}
-    <div class="stat-field-vertical">
-
-      <div class="horizontal-checkbox">
-        {{! Label }}
-        <div class="stat-label">
-          {{localize "TITAN.all.label"}}
-        </div>
-
-        {{! Checkbox }}
-        <input name="system.conditionRemovalAndImmunity.all" class="stat-input" type="checkbox" {{checked
-          system.conditionRemovalAndImmunity.all}}>
+    <div class="stat-field-horizontal">
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.all.label"}}
       </div>
+
+      {{! Checkbox }}
+      <input name="system.conditionRemovalAndImmunity.all" class="stat-input" type="checkbox" {{checked
+        system.conditionRemovalAndImmunity.all}}>
     </div>
   </div>
 
