@@ -1,65 +1,59 @@
-export class TitanSpell {
-  constructor(parent) {
-    this.parent = parent;
+import { TitanTypeComponent } from "./type-component.mjs";
+
+export class TitanSpell extends TitanTypeComponent {
+  getChatTemplate() {
+    return "systems/titan/templates/item/spell/spell-chat-message.hbs";
   }
 
-  calculateTargetOvercastSuccessCost(targetData) {
-    // If auto calculate success cost
+  prepareDerivedData() {
+    // Get the system data
+    const systemData = this.parent.system;
+
+    // Calculate overcast and aspect costs
+    // Target
+    const targetData = systemData.target;
     if (targetData.overcast.calculateSuccessCost) {
       // Zone = 3
-      if (targetData.type == "zone") {
-        return 3;
-      }
-
       // All else = 1
-      return 1;
+      targetData.overcast.successCost = targetData.type == "zone" ? 3 : 1;
     }
 
-    // Return current
-    return targetData.overcast.successCost;
-  }
-
-  calculateDamageOvercastSuccessCost(damageData) {
-    // If auto calculate success cost
+    // Damage
+    const damageData = systemData.damage;
     if (damageData.overcast.calculateSuccessCost) {
       // If ignore armor
       if (damageData.ignoreArmor) {
         // Resistance check = 1
         if (damageData.resistanceCheck != "none") {
-          return 1;
+          damageData.overcast.successCost = 1;
         }
 
         // Normal = 2
-        return 2;
+        damageData.overcast.successCost = 2;
       }
 
       // No ignore armor = 1
-      return 1;
+      damageData.overcast.successCost = 1;
     }
 
-    // Return current
-    return damageData.overcast.successCost;
-  }
-
-  calculateHealingOvercastSuccessCost(healingData) {
-    // If auto calculate success cost
+    // Healing
+    const healingData = systemData.healing;
     if (healingData.overcast.calculateSuccessCost) {
-      // Normal = 1
-      return 1;
+      healingData.overcast.successCost = 1;
     }
 
-    // Return current
-    return healingData.overcast.successCost;
-  }
-
-  calculateDurationOvercastSuccessCost(durationData) {
-    // If auto calculate success cost
+    // Duration
+    const durationData = systemData.duration;
     if (durationData.overcast.calculateSuccessCost) {
       // Normal = 1
-      return 1;
+      durationData.overcast.successCost = 1;
     }
 
-    // Return current
-    return durationData.overcast.successCost;
+    // Update the item
+    this.parent.update({
+      system: systemData,
+    });
+
+    return;
   }
 }

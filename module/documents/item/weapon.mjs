@@ -1,6 +1,8 @@
-export class TitanWeapon {
-  constructor(parent) {
-    this.parent = parent;
+import { TitanTypeComponent } from "./type-component.mjs";
+
+export class TitanWeapon extends TitanTypeComponent {
+  getChatTemplate() {
+    return "systems/titan/templates/item/spell/spell-chat-message.hbs";
   }
 
   async editAttackTraits(idx) {

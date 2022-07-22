@@ -1,6 +1,8 @@
-export class TitanArmor {
-  constructor(parent) {
-    this.parent = parent;
+import { TitanTypeComponent } from "./type-component.mjs";
+
+export class TitanArmor extends TitanTypeComponent {
+  getChatTemplate() {
+    return "systems/titan/templates/item/spell/spell-chat-message.hbs";
   }
 
   async editArmorTraits() {

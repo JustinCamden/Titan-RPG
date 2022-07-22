@@ -41,7 +41,7 @@
       </div>
 
       {{! Type Select }}
-      <select name="system.target.type" class="stat-input edit-target-type">
+      <select name="system.target.type" class="stat-input">
         {{selectOptions targetOptions selected=system.target.type localize=true}}
       </select>
 
@@ -61,8 +61,8 @@
       </div>
 
       {{! Initial Value Input }}
-      <input name="system.target.initialValue" class="stat-input edit-target" type="number"
-        value="{{system.target.initialValue}}" data-dtype="Number" />
+      <input name="system.target.initialValue" class="stat-input" type="number" value="{{system.target.initialValue}}"
+        data-dtype="Number" />
     </div>
 
     {{! Overcast }}
@@ -87,8 +87,8 @@
       </div>
 
       {{! Calculate Success Cost Checkbox }}
-      <input name="system.target.overcast.calculateSuccessCost" class="stat-input edit-target-calculate-success-cost"
-        type="checkbox" {{checked system.target.overcast.calculateSuccessCost}} />
+      <input name="system.target.overcast.calculateSuccessCost" class="stat-input" type="checkbox" {{checked
+        system.target.overcast.calculateSuccessCost}} />
     </div>
 
     <div class="stat-field-horizontal">
@@ -142,7 +142,7 @@
       </div>
 
       {{! Checkbox }}
-      <input name="system.damage.ignoreArmor" class="stat-input edit-damage-ignore-armor" type="checkbox" {{checked
+      <input name="system.damage.ignoreArmor" class="stat-input" type="checkbox" {{checked
         system.damage.ignoreArmor}} />
     </div>
 
@@ -154,7 +154,7 @@
       </div>
 
       {{! Select }}
-      <select name="system.damage.resistanceCheck" class="stat-input edit-damage-resistance-check">
+      <select name="system.damage.resistanceCheck" class="stat-input">
         {{selectOptions resistanceCheckOptions selected=system.damage.resistanceCheck localize=true}}
       </select>
     </div>
@@ -181,8 +181,8 @@
       </div>
 
       {{! Calculate Success Cost Checkbox }}
-      <input name="system.damage.overcast.calculateSuccessCost" class="stat-input edit-damage-calculate-success-cost"
-        type="checkbox" {{checked system.damage.overcast.calculateSuccessCost}} />
+      <input name="system.damage.overcast.calculateSuccessCost" class="stat-input" type="checkbox" {{checked
+        system.damage.overcast.calculateSuccessCost}} />
     </div>
 
     <div class="stat-field-horizontal">
@@ -251,8 +251,8 @@
       </div>
 
       {{! Calculate Success Cost Checkbox }}
-      <input name="system.healing.overcast.calculateSuccessCost" class="stat-input edit-healing-calculate-success-cost"
-        type="checkbox" {{checked system.healing.overcast.calculateSuccessCost}} />
+      <input name="system.healing.overcast.calculateSuccessCost" class="stat-input" type="checkbox" {{checked
+        system.healing.overcast.calculateSuccessCost}} />
     </div>
 
     <div class="stat-field-horizontal">
@@ -292,7 +292,7 @@
       </div>
 
       {{! Input }}
-      <select name="system.duration.period" class="stat-input edit-duration-period">
+      <select name="system.duration.period" class="stat-input">
         {{selectOptions durationOptions selected=system.duration.period localize=true}}
       </select>
 
@@ -326,8 +326,7 @@
       </div>
 
       {{! Calculate Success Cost Checkbox }}
-      <input name="system.duration.overcast.calculateSuccessCost"
-        class="stat-input edit-duration-calculate-success-cost" type="checkbox" {{checked
+      <input name="system.duration.overcast.calculateSuccessCost" class="stat-input" type="checkbox" {{checked
         system.duration.overcast.calculateSuccessCost}} />
     </div>
 
@@ -520,9 +519,8 @@
         </div>
 
         {{! Calculate Success Cost Checkbox }}
-        <input name="system.conditionRemovalAndImmunity.overcast.calculateSuccessCost"
-          class="stat-input edit-condition-removal-and -immunity-calculate-success-cost" type="checkbox" {{checked
-          system.conditionRemovalAndImmunity.overcast.calculateSuccessCost}} />
+        <input name="system.conditionRemovalAndImmunity.overcast.calculateSuccessCost" class="stat-input"
+          type="checkbox" {{checked system.conditionRemovalAndImmunity.overcast.calculateSuccessCost}} />
       </div>
 
       <div class="stat-field-horizontal">

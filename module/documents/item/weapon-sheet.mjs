@@ -243,13 +243,13 @@ export class TitanWeaponSheet extends TitanItemSheet {
 
   async _onEditAttackTraits(event) {
     event.preventDefault();
-    this.item.weapon.editAttackTraits(event.target.dataset.idx);
+    this.item.typeComponent.editAttackTraits(event.target.dataset.idx);
     return;
   }
 
   async _onAddAttack(event) {
     event.preventDefault();
-    this.item.weapon.addAttack();
+    this.item.typeComponent.addAttack();
     return;
   }
 
@@ -263,7 +263,7 @@ export class TitanWeaponSheet extends TitanItemSheet {
     const oldLastIdx = this.item.system.attack.length - 1;
 
     // Delete the attack
-    this.item.weapon.deleteAttack(attackIdx);
+    this.item.typeComponent.deleteAttack(attackIdx);
 
     // Adjust the expanded array
     for (let idx = attackIdx; idx < this.item.system.attack.length; idx++) {

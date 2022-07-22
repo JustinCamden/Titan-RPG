@@ -14,25 +14,33 @@ export class TitanItem extends Item {
     switch (this.type) {
       // Weapon
       case "weapon": {
-        this.weapon = new TitanWeapon(this);
+        this.typeComponent = new TitanWeapon(this);
         break;
       }
 
       // Armor
       case "armor": {
-        this.armor = new TitanArmor(this);
+        this.typeComponent = new TitanArmor(this);
         break;
       }
 
       // Spell
       case "spell": {
-        this.spell = new TitanSpell(this);
+        this.typeComponent = new TitanSpell(this);
       }
 
       default: {
         break;
       }
     }
+  }
+
+  prepareDerivedData() {
+    if (this.typeComponent) {
+      this.typeComponent.prepareDerivedData();
+    }
+
+    return;
   }
 
   async _editTraits(inData) {
@@ -188,30 +196,6 @@ export class TitanItem extends Item {
 
   // Gets the chat template for the item
   _getChatTemplate() {
-    switch (this.type) {
-      // Weapon
-      case "weapon": {
-        return "systems/titan/templates/item/weapon/weapon-chat-message.hbs";
-        break;
-      }
-
-      // Armor
-      case "armor": {
-        return "systems/titan/templates/item/armor/armor-chat-message.hbs";
-        break;
-      }
-
-      // Spell
-      case "spell": {
-        return "systems/titan/templates/item/spell/spell-chat-message.hbs";
-        break;
-      }
-
-      // Default
-      default: {
-        return;
-        break;
-      }
-    }
+    return this.typeComponent.getChatTemplate();
   }
 }

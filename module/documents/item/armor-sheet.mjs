@@ -18,7 +18,7 @@ export class TitanArmorSheet extends TitanItemSheet {
   async _onEditArmorTraits(event) {
     event.preventDefault();
 
-    this.item.armor.editArmorTraits();
+    this.item.typeComponent.editArmorTraits();
 
     return;
   }
