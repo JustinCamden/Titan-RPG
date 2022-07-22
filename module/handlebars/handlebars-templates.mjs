@@ -15,7 +15,7 @@ export const preloadHandlebarsTemplates = async function () {
     "systems/titan/templates/item/weapon/components/weapon-sheet-attacks-tab.hbs",
     "systems/titan/templates/item/weapon/components/weapon-sheet-attack-sheet-vertical.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-description-tab.hbs",
-    "systems/titan/templates/item/spell/components/spell-sheet-details-tab.hbs",
+    "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-tradition-rarity-header.hbs",
 
     // Generic Chat message partials
