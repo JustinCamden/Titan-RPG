@@ -128,6 +128,16 @@
 
   "TITAN.conditions.label": "Conditions",
   "TITAN.condition.label": "Condition",
+  "TITAN.condition.option.blinded.label": "Blinded",
+  "TITAN.condition.option.charmed.label": "Charmed",
+  "TITAN.condition.option.deafened.label": "Deafened",
+  "TITAN.condition.option.frightened.label": "Frightened",
+  "TITAN.condition.option.incapacitated.label": "Incapacitated",
+  "TITAN.condition.option.poisoned.label": "Poisoned",
+  "TITAN.condition.option.prone.label": "Prone",
+  "TITAN.condition.option.restrained.label": "Restrained",
+  "TITAN.condition.option.stunned.label": "Stunned",
+  "TITAN.condition.option.unconscious.label": "Unconscious",
 
   "TITAN.armor.label": "Armor",
   "TITAN.armor.trait.option.light.label": "Light",
@@ -171,6 +181,7 @@
   "TITAN.healing.label": "Healing",
   "TITAN.amount.label": "Amount",
   "TITAN.all.label": "All",
+  "TITAN.conditionRemovalAndImmunity.label": "Condition Removal & Immunity",
 
   "SETTINGS.showCheckOptions": {
     "name": "Ask for Check Options by default.",

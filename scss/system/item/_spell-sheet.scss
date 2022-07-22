@@ -48,6 +48,25 @@
           text-align: center;
         }
       }
+
+      .condition-extra-wide-row {
+        width: 100%;
+        @include flex-row;
+        @include flex-group-center;
+
+        .stat-field-horizontal {
+          width: 40%;
+        }
+      }
+
+      &.spell-conditions {
+        @include grid-span(2);
+
+        .condition-rows {
+          width: 100%;
+          @include grid(2);
+        }
+      }
     }
   }
 }

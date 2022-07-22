@@ -423,7 +423,7 @@
         "overcast": {
           "enable": true,
           "calculateSuccessCost": true,
-          "successCost": 1
+          "successCost": 2
         }  
       },
       "conditionAffliction": {
