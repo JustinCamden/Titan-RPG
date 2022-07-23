@@ -188,6 +188,7 @@
   "TITAN.choose.label": "Choose",
   "TITAN.increaseSkill.label": "Increase Skill",
   "TITAN.addSkill.label": "Add Skill",
+  "TITAN.decreaseSkill.label": "Decrease Skill",
 
   "SETTINGS.showCheckOptions": {
     "name": "Ask for Check Options by default.",

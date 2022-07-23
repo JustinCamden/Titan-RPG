@@ -55,6 +55,32 @@ export class TitanSpell extends TitanTypeComponent {
       removeConditionData.any.overcast.successCost = 2;
     }
 
+    // Increase Skill
+    const increaseSkillData = systemData.increaseSkill;
+    if (increaseSkillData.overcast.calculateSuccessCost) {
+      // Cont the number of skills increase
+      let skillIncreases = 0;
+      for (let [k, v] of Object.entries(increaseSkillData.skill)) {
+        if (v == true) {
+          skillIncreases += 1;
+        }
+      }
+      increaseSkillData.overcast.successCost = skillIncreases;
+    }
+
+    // Decrease Skill
+    const decreaseSkillData = systemData.decreaseSkill;
+    if (decreaseSkillData.overcast.calculateSuccessCost) {
+      // Cont the number of skills Decrease
+      let skillDecreases = 0;
+      for (let [k, v] of Object.entries(decreaseSkillData.skill)) {
+        if (v == true) {
+          skillDecreases += 1;
+        }
+      }
+      decreaseSkillData.overcast.successCost = skillDecreases;
+    }
+
     // Update the item
     this.parent.update({
       system: systemData,

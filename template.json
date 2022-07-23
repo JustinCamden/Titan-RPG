@@ -501,8 +501,37 @@
           "successCost": 1
         }
       },
+      "decreaseSkill": {
+        "choose": false,
+        "skill": {
+          "arcana": false,
+          "athletics": false,
+          "beastHandling": false,
+          "deception": false,
+          "dexterity": false,
+          "diplomacy": false,
+          "engineering": false,
+          "intimidation": false,
+          "investigation": false,
+          "lore": false,
+          "medicine": false,
+          "meleeWeapons": false,
+          "perception": false,
+          "performance": false,
+          "rangedWeapons": false,
+          "sleightOfHand": false,
+          "stealth": false,
+          "survival": false,
+          "theology": false
+        },
+        "resistanceCheck": "none",
+        "overcast": {
+          "enable": true,
+          "calculateSuccessCost": true,
+          "successCost": 1
+        }
+      },
       "increaseAttribute": [],
-      "decreaseSkill": [],
       "decreaseAttribute": [],
       "increaseMeleeAndAccuracy": {
         "initialValue": 0,

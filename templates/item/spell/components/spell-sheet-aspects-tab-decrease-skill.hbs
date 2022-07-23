@@ -1,0 +1,45 @@
+{{! skill infliction }}
+<div class="spell-sheet-aspects-tab-decrease-skill stat-category">
+
+  {{! Category label }}
+  <h3 class="stat-category-label">{{localize "TITAN.decreaseSkill.label"}}</h3>
+
+  {{! Each current active skill }}
+  {{#each system.decreaseSkill.skill as |skill key|}}
+  {{#if skill}}
+  <div class="stat-field-horizontal">
+    {{! Label }}
+    <div class="stat-label">
+      {{localize (concat "TITAN.skill.option." key ".label")}}
+    </div>
+
+    {{! Delete Button }}
+    <a class="fas fa-trash delete-decrease-skill" data-skill={{key}}></a>
+  </div>
+  {{/if}}
+  {{/each}}
+
+  {{! Add Inactive skill }}
+  {{#if decreaseSkillOptions}}
+  <div class="stat-field-vertical">
+
+    {{! Type Label }}
+    <div class="stat-label">
+      {{localize "TITAN.addSkill.label"}}
+    </div>
+
+    {{! Type Select }}
+    <select class="stat-input add-decrease-skill">
+      {{selectOptions decreaseSkillOptions selected=system.decreaseSkillOptions.none localize=true}}
+    </select>
+  </div>
+  {{/if}}
+
+  {{! Overcast }}
+  {{#if decreaseSkillOvercastAvailable}}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-overcast.hbs"
+  overcast=system.decreaseSkill.overcast
+  path="system.decreaseSkill"
+  }}
+  {{/if}}
+</div>

@@ -96,6 +96,28 @@ export class TitanSpellSheet extends TitanItemSheet {
       context.increaseSkillOvercastAvailable = true;
     }
 
+    // Skill decrease options
+    const decreaseSkillData = systemData.decreaseSkill;
+    context.decreaseSkillOvercastAvailable = false;
+    if (decreaseSkillData.choose == false) {
+      const decreaseSkillOptions = {
+        none: "TITAN.none.label",
+      };
+      for (let [k, v] of Object.entries(decreaseSkillData.skill)) {
+        if (v == false) {
+          decreaseSkillOptions[k] = CONFIG.TITAN.skill.option[k].label;
+        } else {
+          context.decreaseSkillOvercastAvailable = true;
+        }
+      }
+      if (Object.keys(decreaseSkillOptions).length > 1) {
+        decreaseSkillOptions.chosen = "TITAN.choose.label";
+        context.decreaseSkillOptions = decreaseSkillOptions;
+      }
+    } else {
+      context.decreaseSkillOvercastAvailable = true;
+    }
+
     return context;
   }
 
@@ -130,6 +152,14 @@ export class TitanSpellSheet extends TitanItemSheet {
     html
       .find(".delete-increase-skill")
       .click(this._onDeleteIncreaseSkill.bind(this));
+
+    html
+      .find(".add-decrease-skill")
+      .change(this._onAddDecreaseSkill.bind(this));
+
+    html
+      .find(".delete-decrease-skill")
+      .click(this._onDeleteDecreaseSkill.bind(this));
 
     return;
   }
@@ -243,6 +273,42 @@ export class TitanSpellSheet extends TitanItemSheet {
     this.item.update({
       system: {
         increaseSkill: increaseSkillData,
+      },
+    });
+  }
+
+  _onAddDecreaseSkill(event) {
+    event.preventDefault();
+    const decreaseSkillData = this.item.system.decreaseSkill;
+
+    const selected = event.target.value;
+    if (selected == "choose") {
+      decreaseSkillData.choose = true;
+    } else {
+      decreaseSkillData.skill[selected] = true;
+    }
+
+    this.item.update({
+      system: {
+        decreaseSkill: decreaseSkillData,
+      },
+    });
+  }
+
+  _onDeleteDecreaseSkill(event) {
+    event.preventDefault();
+    const decreaseSkillData = this.item.system.decreaseSkill;
+
+    const selected = event.target.dataset.skill;
+    if (selected == "choose") {
+      decreaseSkillData.choose = false;
+    } else {
+      decreaseSkillData.skill[selected] = false;
+    }
+
+    this.item.update({
+      system: {
+        decreaseSkill: decreaseSkillData,
       },
     });
   }
