@@ -39,8 +39,7 @@ export class TitanSpellSheet extends TitanItemSheet {
     }
     context.durationOptions.custom = "TITAN.custom.label";
 
-    // Condition removal options;
-    // If all is not checked
+    // Condition removal options
     const conditionRemovalData = this.item.system.conditionRemoval;
     if (conditionRemovalData.all == false) {
       const conditionRemovalOptions = {
@@ -61,6 +60,20 @@ export class TitanSpellSheet extends TitanItemSheet {
       }
     }
 
+    // Condition infliction options
+    const conditionInflictionData = this.item.system.conditionInfliction;
+    const conditionInflictionOptions = {
+      none: "TITAN.none.label",
+    };
+    for (let [k, v] of Object.entries(conditionInflictionData)) {
+      if (v.enabled == false) {
+        conditionInflictionOptions[k] = CONFIG.TITAN.condition.option[k].label;
+      }
+    }
+    if (Object.keys(conditionInflictionOptions).length > 1) {
+      context.conditionInflictionOptions = conditionInflictionOptions;
+    }
+
     return context;
   }
 
@@ -79,6 +92,14 @@ export class TitanSpellSheet extends TitanItemSheet {
     html
       .find(".delete-condition-removal")
       .click(this._onDeleteConditionRemoval.bind(this));
+
+    html
+      .find(".add-condition-infliction")
+      .change(this._onAddConditionInfliction.bind(this));
+
+    html
+      .find(".delete-condition-infliction")
+      .click(this._onDeleteConditionInfliction.bind(this));
 
     return;
   }
@@ -115,9 +136,7 @@ export class TitanSpellSheet extends TitanItemSheet {
   _onDeleteConditionRemoval(event) {
     event.preventDefault();
     const conditionRemovalData = this.item.system.conditionRemoval;
-
     const selected = event.target.dataset.condition;
-    console.log(selected);
     switch (selected) {
       case "all": {
         conditionRemovalData.all = false;
@@ -132,6 +151,36 @@ export class TitanSpellSheet extends TitanItemSheet {
     this.item.update({
       system: {
         conditionRemoval: conditionRemovalData,
+      },
+    });
+  }
+
+  // Adding condition removal
+  _onAddConditionInfliction(event) {
+    event.preventDefault();
+    const conditionInflictionData = this.item.system.conditionInfliction;
+
+    const selected = event.target.value;
+    conditionInflictionData[selected].enabled = true;
+
+    this.item.update({
+      system: {
+        conditionInfliction: conditionInflictionData,
+      },
+    });
+  }
+
+  // Deleting condition removal
+  _onDeleteConditionInfliction(event) {
+    event.preventDefault();
+    const conditionInflictionData = this.item.system.conditionInfliction;
+
+    const selected = event.target.dataset.condition;
+    conditionInflictionData[selected].enabled = false;
+
+    this.item.update({
+      system: {
+        conditionInfliction: conditionInflictionData,
       },
     });
   }

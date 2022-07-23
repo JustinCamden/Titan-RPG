@@ -428,17 +428,47 @@
           "successCost": 2
         }
       },
-      "conditionAffliction": {
-        "blinded": false,
-        "charmed": false,
-        "deafened": false, 
-        "frightened": false,
-        "incapacitated": false,
-        "poisoned": false,
-        "prone": false,
-        "restrained": false,
-        "stunned": false,
-        "unconscious": false
+      "conditionInfliction": {
+        "blinded": {
+          "enabled": false,
+          "resistanceCheck": "none"
+        },
+        "charmed": {
+          "enabled": false,
+          "resistanceCheck": "none"
+        },
+        "deafened": {
+          "enabled": false,
+          "resistanceCheck": "none"
+        },
+        "frightened": {
+          "enabled": false,
+          "resistanceCheck": "none"
+        },
+        "incapacitated": {
+          "enabled": false,
+          "resistanceCheck": "none"
+        },
+        "poisoned": {
+          "enabled": false,
+          "resistanceCheck": "none"
+        },
+        "prone": {
+          "enabled": false,
+          "resistanceCheck": "none"
+        },
+        "restrained": {
+          "enabled": false,
+          "resistanceCheck": "none"
+        },
+        "stunned": {
+          "enabled": false,
+          "resistanceCheck": "none"
+        },
+        "unconscious": {
+          "enabled": false,
+          "resistanceCheck": "none"
+        }
       },
       "increaseSkill": [],
       "increaseAttribute": [],

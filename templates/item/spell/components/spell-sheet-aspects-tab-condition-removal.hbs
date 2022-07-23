@@ -4,7 +4,7 @@
   {{! Category label }}
   <h3 class="stat-category-label">{{localize "TITAN.conditionRemoval.label"}}</h3>
 
-  {{! If all is false }}
+  {{! If all is true }}
   {{#if system.conditionRemoval.all}}
   <div class="stat-field-horizontal">
     {{! Label }}
@@ -16,22 +16,6 @@
     <a class="fas fa-trash delete-condition-removal" data-condition="all"></a>
   </div>
   {{else}}
-
-  {{! Add Inactive Condition }}
-  {{#if conditionRemovalOptions}}
-  <div class="stat-field-vertical">
-
-    {{! Type Label }}
-    <div class="stat-label">
-      {{localize "TITAN.addCondition.label"}}
-    </div>
-
-    {{! Type Select }}
-    <select class="stat-input add-condition-removal">
-      {{selectOptions conditionRemovalOptions selected=system.conditionRemovalOptions.none localize=true}}
-    </select>
-  </div>
-  {{/if}}
 
   {{! Each current active condition }}
   {{#each system.conditionRemoval.condition as |condition key|}}
@@ -50,43 +34,79 @@
 
   {{! Any }}
   {{#if (greater system.conditionRemoval.any 0)}}
-  <div class="stat-field-horizontal">
-    {{! Label }}
-    <div class="stat-label">
-      {{localize "TITAN.any.label"}}
+  <div class="stat-sub-category">
+    <div class="stat-field-horizontal">
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.any.label"}}
+      </div>
+
+      {{! Input }}
+      <input name="system.conditionRemoval.any" class="stat-input" type="number" value="{{system.conditionRemoval.any}}"
+        data-dtype="Number" />
     </div>
 
-    {{! Input }}
-    <input name="system.conditionRemoval.any" class="stat-input" type="number" value="{{system.conditionRemoval.any}}"
-      data-dtype="Number" />
-  </div>
+    {{! Overcast }}
+    <div class="stat-field-horizontal">
+      {{! Overcast Label }}
+      <div class="stat-label">
+        {{concat (localize "TITAN.spell.overcast.label")"?"}}
+      </div>
 
-  {{! Overcast }}
-  <div class="stat-field-horizontal">
-    {{! Overcast Label }}
-    <div class="stat-label">
-      {{concat (localize "TITAN.spell.overcast.label")"?"}}
+      {{! Overcast Checkbox }}
+      <input name="system.conditionRemoval.overcast.enable" class="stat-input" type="checkbox" {{checked
+        system.conditionRemoval.overcast.enable}} />
     </div>
 
-    {{! Overcast Checkbox }}
-    <input name="system.conditionRemoval.overcast.enable" class="stat-input" type="checkbox" {{checked
-      system.conditionRemoval.overcast.enable}} />
-  </div>
+    {{! Overcast Success Cost }}
+    {{#if system.conditionRemoval.overcast.enable}}
+    <div class="stat-field-horizontal">
 
-  {{! Overcast Success Cost }}
-  {{#if system.conditionRemoval.overcast.enable}}
-  <div class="stat-field-horizontal">
+      {{! Calculate Success Cost }}
+      <div class="stat-label">
+        {{concat (localize "TITAN.spell.overcast.calculateSuccessCost.label") "?"}}
+      </div>
 
-    {{! Calculate Success Cost }}
-    <div class="stat-label">
-      {{concat (localize "TITAN.spell.overcast.calculateSuccessCost.label") "?"}}
+      {{! Calculate Success Cost Checkbox }}
+      <input name="system.conditionRemoval.overcast.calculateSuccessCost" class="stat-input" type="checkbox" {{checked
+        system.conditionRemoval.overcast.calculateSuccessCost}} />
     </div>
 
-    {{! Calculate Success Cost Checkbox }}
-    <input name="system.conditionRemoval.overcast.calculateSuccessCost" class="stat-input" type="checkbox" {{checked
-      system.conditionRemoval.overcast.calculateSuccessCost}} />
+    <div class="stat-field-horizontal">
+      {{! Overcast Success Cost Label }}
+      <div class="stat-label">
+        {{localize "TITAN.spell.overcast.successCost.label"}}
+      </div>
+
+      {{#if system.conditionRemoval.overcast.calculateSuccessCost}}
+      {{! Overcast Success Cost }}
+      <div class="stat-input">
+        {{system.conditionRemoval.overcast.successCost}}
+      </div>
+      {{else}}
+      {{! Overcast Success Cost Input }}
+      <input name="system.conditionRemoval.overcast.successCost" class="stat-input" type="number"
+        value="{{system.conditionRemoval.overcast.successCost}}" data-dtype="Number" />
+      {{/if}}
+    </div>
   </div>
   {{/if}}
+  {{/if}}
+
+  {{! Add Inactive Condition }}
+  {{#if conditionRemovalOptions}}
+  <div class="stat-field-vertical">
+
+    {{! Type Label }}
+    <div class="stat-label">
+      {{localize "TITAN.addCondition.label"}}
+    </div>
+
+    {{! Type Select }}
+    <select class="stat-input add-condition-removal">
+      {{selectOptions conditionRemovalOptions selected=system.conditionRemovalOptions.none localize=true}}
+    </select>
+  </div>
   {{/if}}
   {{/if}}
 

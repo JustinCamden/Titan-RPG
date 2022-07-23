@@ -181,8 +181,8 @@
   "TITAN.healing.label": "Healing",
   "TITAN.amount.label": "Amount",
   "TITAN.all.label": "All",
-  "TITAN.conditionRemoval.label": "Condition Removal & Immunity",
-  "TITAN.conditionAffliction.label": "Condition Affliction",
+  "TITAN.conditionRemoval.label": "Remove Conditions",
+  "TITAN.conditionInfliction.label": "Inflict Conditions",
   "TITAN.any.label": "Any",
   "TITAN.addCondition.label": "Add Condition",
 

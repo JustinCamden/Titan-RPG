@@ -38,7 +38,11 @@
         width: 100%;
 
         margin-top: 0.25rem;
-        @include border-top(0.25rem);
+
+        &:not(:first-child) {
+          @include border-top(0.25rem);
+        }
+
 
         .stat-label {
           width: 50%;
@@ -47,6 +51,16 @@
         .stat-input {
           width: 50%;
           text-align: center;
+        }
+      }
+
+      .stat-sub-category {
+        @include flex-column;
+        justify-content: flex-start;
+        @include border(0.25rem);
+
+        .stat-field-horizontal {
+          justify-content: space-between;
         }
       }
 
