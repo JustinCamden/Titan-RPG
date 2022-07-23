@@ -1,8 +1,17 @@
-{{! skill infliction }}
+{{! Decrease skill }}
 <div class="spell-sheet-aspects-tab-decrease-skill stat-category">
 
   {{! Category label }}
   <h3 class="stat-category-label">{{localize "TITAN.decreaseSkill.label"}}</h3>
+
+  {{! Choose }}
+  {{#if (greater system.decreaseSkill.choose 0)}}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-number-input.hbs"
+  label="TITAN.choose.label"
+  path="system.decreaseSkill.choose"
+  value=system.decreaseSkill.choose
+  }}
+  {{/if}}
 
   {{! Each current active skill }}
   {{#each system.decreaseSkill.skill as |skill key|}}

@@ -186,9 +186,12 @@
   "TITAN.any.label": "Any",
   "TITAN.addCondition.label": "Add Condition",
   "TITAN.choose.label": "Choose",
-  "TITAN.increaseSkill.label": "Increase Skill",
   "TITAN.addSkill.label": "Add Skill",
+  "TITAN.increaseSkill.label": "Increase Skill",
   "TITAN.decreaseSkill.label": "Decrease Skill",
+  "TITAN.addResistance.label": "Add Resistance",
+  "TITAN.increaseResistance.label": "Increase Resistance",
+  "TITAN.decreaseResistance.label": "Decrease Resistance",
 
   "SETTINGS.showCheckOptions": {
     "name": "Ask for Check Options by default.",

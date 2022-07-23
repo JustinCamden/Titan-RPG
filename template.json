@@ -473,7 +473,7 @@
         }
       },
       "increaseSkill": {
-        "choose": false,
+        "choose": 0,
         "skill": {
           "arcana": false,
           "athletics": false,
@@ -502,7 +502,7 @@
         }
       },
       "decreaseSkill": {
-        "choose": false,
+        "choose": 0,
         "skill": {
           "arcana": false,
           "athletics": false,
@@ -531,8 +531,60 @@
           "successCost": 1
         }
       },
-      "increaseAttribute": [],
-      "decreaseAttribute": [],
+      "increaseResistance": {
+        "choose": 0,
+        "resistance": {
+          "reflexes": false,
+          "resilience": false,
+          "willpower": false
+        },
+        "overcast": {
+          "enable": true,
+          "calculateSuccessCost": true,
+          "successCost": 1
+        }
+      },
+      "decreaseResistance": {
+        "choose": 0,
+        "resistance": {
+          "reflexes": false,
+          "resilience": false,
+          "willpower": false
+        },
+        "resistanceCheck": "none",
+        "overcast": {
+          "enable": true,
+          "calculateSuccessCost": true,
+          "successCost": 1
+        }
+      },
+      "increaseAttribute": {
+        "choose": 0,
+        "attribute": {
+          "body": false,
+          "mind": false,
+          "soul": false
+        },
+        "overcast": {
+          "enable": true,
+          "calculateSuccessCost": true,
+          "successCost": 1
+        }
+      },
+      "decreaseAttribute": {
+        "choose": 0,
+        "attribute": {
+          "body": false,
+          "mind": false,
+          "soul": false
+        },
+        "resistanceCheck": "none",
+        "overcast": {
+          "enable": true,
+          "calculateSuccessCost": true,
+          "successCost": 1
+        }
+      },
       "increaseMeleeAndAccuracy": {
         "initialValue": 0,
         "overcast": {

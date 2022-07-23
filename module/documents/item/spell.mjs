@@ -59,7 +59,7 @@ export class TitanSpell extends TitanTypeComponent {
     const increaseSkillData = systemData.increaseSkill;
     if (increaseSkillData.overcast.calculateSuccessCost) {
       // Cont the number of skills increase
-      let skillIncreases = 0;
+      let skillIncreases = increaseSkillData.choose;
       for (let [k, v] of Object.entries(increaseSkillData.skill)) {
         if (v == true) {
           skillIncreases += 1;
@@ -72,13 +72,39 @@ export class TitanSpell extends TitanTypeComponent {
     const decreaseSkillData = systemData.decreaseSkill;
     if (decreaseSkillData.overcast.calculateSuccessCost) {
       // Cont the number of skills Decrease
-      let skillDecreases = 0;
+      let skillDecreases = decreaseSkillData.choose;
       for (let [k, v] of Object.entries(decreaseSkillData.skill)) {
         if (v == true) {
           skillDecreases += 1;
         }
       }
       decreaseSkillData.overcast.successCost = skillDecreases;
+    }
+
+    // Increase Resistance
+    const increaseResistanceData = systemData.increaseResistance;
+    if (increaseResistanceData.overcast.calculateSuccessCost) {
+      // Cont the number of resistances increase
+      let resistanceIncreases = increaseResistanceData.choose;
+      for (let [k, v] of Object.entries(increaseResistanceData.resistance)) {
+        if (v == true) {
+          resistanceIncreases += 1;
+        }
+      }
+      increaseResistanceData.overcast.successCost = resistanceIncreases;
+    }
+
+    // Decrease Resistance
+    const decreaseResistanceData = systemData.decreaseResistance;
+    if (decreaseResistanceData.overcast.calculateSuccessCost) {
+      // Cont the number of resistances Decrease
+      let resistanceDecreases = decreaseResistanceData.choose;
+      for (let [k, v] of Object.entries(decreaseResistanceData.resistance)) {
+        if (v == true) {
+          resistanceDecreases += 1;
+        }
+      }
+      decreaseResistanceData.overcast.successCost = resistanceDecreases;
     }
 
     // Update the item

@@ -1,0 +1,54 @@
+{{! Decrease Resistance }}
+<div class="spell-sheet-aspects-tab-decrease-resistance stat-category">
+
+  {{! Category label }}
+  <h3 class="stat-category-label">{{localize "TITAN.decreaseResistance.label"}}</h3>
+
+  {{! Choose }}
+  {{#if (greater system.decreaseResistance.choose 0)}}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-number-input.hbs"
+  label="TITAN.choose.label"
+  path="system.decreaseResistance.choose"
+  value=system.decreaseResistance.choose
+  }}
+  {{/if}}
+
+  {{! Each current active resistance }}
+  {{#each system.decreaseResistance.resistance as |resistance key|}}
+  {{#if resistance}}
+  <div class="stat-field-horizontal">
+    {{! Label }}
+    <div class="stat-label">
+      {{localize (concat "TITAN.resistance.option." key ".label")}}
+    </div>
+
+    {{! Delete Button }}
+    <a class="fas fa-trash delete-decrease-resistance" data-resistance={{key}}></a>
+  </div>
+  {{/if}}
+  {{/each}}
+
+  {{! Add Inactive resistance }}
+  {{#if decreaseResistanceOptions}}
+  <div class="stat-field-vertical">
+
+    {{! Type Label }}
+    <div class="stat-label">
+      {{localize "TITAN.addResistance.label"}}
+    </div>
+
+    {{! Type Select }}
+    <select class="stat-input add-decrease-resistance">
+      {{selectOptions decreaseResistanceOptions selected=system.decreaseResistanceOptions.none localize=true}}
+    </select>
+  </div>
+  {{/if}}
+
+  {{! Overcast }}
+  {{#if decreaseResistanceOvercastAvailable}}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-overcast.hbs"
+  overcast=system.decreaseResistance.overcast
+  path="system.decreaseResistance"
+  }}
+  {{/if}}
+</div>

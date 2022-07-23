@@ -76,46 +76,76 @@ export class TitanSpellSheet extends TitanItemSheet {
 
     // Skill increase options
     const increaseSkillData = systemData.increaseSkill;
-    context.increaseSkillOvercastAvailable = false;
-    if (increaseSkillData.choose == false) {
-      const increaseSkillOptions = {
-        none: "TITAN.none.label",
-      };
-      for (let [k, v] of Object.entries(increaseSkillData.skill)) {
-        if (v == false) {
-          increaseSkillOptions[k] = CONFIG.TITAN.skill.option[k].label;
-        } else {
-          context.increaseSkillOvercastAvailable = true;
-        }
+    context.increaseSkillOvercastAvailable = increaseSkillData.choose > 0;
+    const increaseSkillOptions = {
+      none: "TITAN.none.label",
+    };
+    for (let [k, v] of Object.entries(increaseSkillData.skill)) {
+      if (v == false) {
+        increaseSkillOptions[k] = CONFIG.TITAN.skill.option[k].label;
+      } else {
+        context.increaseSkillOvercastAvailable = true;
       }
-      if (Object.keys(increaseSkillOptions).length > 1) {
-        increaseSkillOptions.chosen = "TITAN.choose.label";
-        context.increaseSkillOptions = increaseSkillOptions;
-      }
-    } else {
-      context.increaseSkillOvercastAvailable = true;
+    }
+    if (Object.keys(increaseSkillOptions).length > 1) {
+      increaseSkillOptions.choose = "TITAN.choose.label";
+      context.increaseSkillOptions = increaseSkillOptions;
     }
 
     // Skill decrease options
     const decreaseSkillData = systemData.decreaseSkill;
-    context.decreaseSkillOvercastAvailable = false;
-    if (decreaseSkillData.choose == false) {
-      const decreaseSkillOptions = {
-        none: "TITAN.none.label",
-      };
-      for (let [k, v] of Object.entries(decreaseSkillData.skill)) {
-        if (v == false) {
-          decreaseSkillOptions[k] = CONFIG.TITAN.skill.option[k].label;
-        } else {
-          context.decreaseSkillOvercastAvailable = true;
-        }
+    context.decreaseSkillOvercastAvailable = decreaseSkillData.choose > 0;
+    const decreaseSkillOptions = {
+      none: "TITAN.none.label",
+    };
+    for (let [k, v] of Object.entries(decreaseSkillData.skill)) {
+      if (v == false) {
+        decreaseSkillOptions[k] = CONFIG.TITAN.skill.option[k].label;
+      } else {
+        context.decreaseSkillOvercastAvailable = true;
       }
-      if (Object.keys(decreaseSkillOptions).length > 1) {
-        decreaseSkillOptions.chosen = "TITAN.choose.label";
-        context.decreaseSkillOptions = decreaseSkillOptions;
+    }
+    if (Object.keys(decreaseSkillOptions).length > 1) {
+      decreaseSkillOptions.choose = "TITAN.choose.label";
+      context.decreaseSkillOptions = decreaseSkillOptions;
+    }
+
+    // Resistance increase options
+    const increaseResistanceData = systemData.increaseResistance;
+    context.increaseResistanceOvercastAvailable =
+      increaseResistanceData.choose > 0;
+    const increaseResistanceOptions = {
+      none: "TITAN.none.label",
+    };
+    for (let [k, v] of Object.entries(increaseResistanceData.resistance)) {
+      if (v == false) {
+        increaseResistanceOptions[k] = CONFIG.TITAN.resistance.option[k].label;
+      } else {
+        context.increaseResistanceOvercastAvailable = true;
       }
-    } else {
-      context.decreaseSkillOvercastAvailable = true;
+    }
+    if (Object.keys(increaseResistanceOptions).length > 1) {
+      increaseResistanceOptions.choose = "TITAN.choose.label";
+      context.increaseResistanceOptions = increaseResistanceOptions;
+    }
+
+    // Resistance decrease options
+    const decreaseResistanceData = systemData.decreaseResistance;
+    context.decreaseResistanceOvercastAvailable =
+      decreaseResistanceData.choose > 0;
+    const decreaseResistanceOptions = {
+      none: "TITAN.none.label",
+    };
+    for (let [k, v] of Object.entries(decreaseResistanceData.resistance)) {
+      if (v == false) {
+        decreaseResistanceOptions[k] = CONFIG.TITAN.resistance.option[k].label;
+      } else {
+        context.decreaseResistanceOvercastAvailable = true;
+      }
+    }
+    if (Object.keys(decreaseResistanceOptions).length > 1) {
+      decreaseResistanceOptions.choose = "TITAN.choose.label";
+      context.decreaseResistanceOptions = decreaseResistanceOptions;
     }
 
     return context;
@@ -160,6 +190,22 @@ export class TitanSpellSheet extends TitanItemSheet {
     html
       .find(".delete-decrease-skill")
       .click(this._onDeleteDecreaseSkill.bind(this));
+
+    html
+      .find(".add-increase-resistance")
+      .change(this._onAddIncreaseResistance.bind(this));
+
+    html
+      .find(".delete-increase-resistance")
+      .click(this._onDeleteIncreaseResistance.bind(this));
+
+    html
+      .find(".add-decrease-resistance")
+      .change(this._onAddDecreaseResistance.bind(this));
+
+    html
+      .find(".delete-decrease-resistance")
+      .click(this._onDeleteDecreaseResistance.bind(this));
 
     return;
   }
@@ -247,7 +293,7 @@ export class TitanSpellSheet extends TitanItemSheet {
 
     const selected = event.target.value;
     if (selected == "choose") {
-      increaseSkillData.choose = true;
+      increaseSkillData.choose = 1;
     } else {
       increaseSkillData.skill[selected] = true;
     }
@@ -265,7 +311,7 @@ export class TitanSpellSheet extends TitanItemSheet {
 
     const selected = event.target.dataset.skill;
     if (selected == "choose") {
-      increaseSkillData.choose = false;
+      increaseSkillData.choose = 0;
     } else {
       increaseSkillData.skill[selected] = false;
     }
@@ -283,7 +329,7 @@ export class TitanSpellSheet extends TitanItemSheet {
 
     const selected = event.target.value;
     if (selected == "choose") {
-      decreaseSkillData.choose = true;
+      decreaseSkillData.choose = 1;
     } else {
       decreaseSkillData.skill[selected] = true;
     }
@@ -301,7 +347,7 @@ export class TitanSpellSheet extends TitanItemSheet {
 
     const selected = event.target.dataset.skill;
     if (selected == "choose") {
-      decreaseSkillData.choose = false;
+      decreaseSkillData.choose = 0;
     } else {
       decreaseSkillData.skill[selected] = false;
     }
@@ -309,6 +355,78 @@ export class TitanSpellSheet extends TitanItemSheet {
     this.item.update({
       system: {
         decreaseSkill: decreaseSkillData,
+      },
+    });
+  }
+
+  _onAddIncreaseResistance(event) {
+    event.preventDefault();
+    const increaseResistanceData = this.item.system.increaseResistance;
+
+    const selected = event.target.value;
+    if (selected == "choose") {
+      increaseResistanceData.choose = 1;
+    } else {
+      increaseResistanceData.resistance[selected] = true;
+    }
+
+    this.item.update({
+      system: {
+        increaseResistance: increaseResistanceData,
+      },
+    });
+  }
+
+  _onDeleteIncreaseResistance(event) {
+    event.preventDefault();
+    const increaseResistanceData = this.item.system.increaseResistance;
+
+    const selected = event.target.dataset.resistance;
+    if (selected == "choose") {
+      increaseResistanceData.choose = 0;
+    } else {
+      increaseResistanceData.resistance[selected] = false;
+    }
+
+    this.item.update({
+      system: {
+        increaseResistance: increaseResistanceData,
+      },
+    });
+  }
+
+  _onAddDecreaseResistance(event) {
+    event.preventDefault();
+    const decreaseResistanceData = this.item.system.decreaseResistance;
+
+    const selected = event.target.value;
+    if (selected == "choose") {
+      decreaseResistanceData.choose = 1;
+    } else {
+      decreaseResistanceData.resistance[selected] = true;
+    }
+
+    this.item.update({
+      system: {
+        decreaseResistance: decreaseResistanceData,
+      },
+    });
+  }
+
+  _onDeleteDecreaseResistance(event) {
+    event.preventDefault();
+    const decreaseResistanceData = this.item.system.decreaseResistance;
+
+    const selected = event.target.dataset.resistance;
+    if (selected == "choose") {
+      decreaseResistanceData.choose = 0;
+    } else {
+      decreaseResistanceData.resistance[selected] = false;
+    }
+
+    this.item.update({
+      system: {
+        decreaseResistance: decreaseResistanceData,
       },
     });
   }
