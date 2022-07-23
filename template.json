@@ -424,7 +424,7 @@
           "enable": true,
           "calculateSuccessCost": true,
           "successCost": 2
-        }  
+        }
       },
       "conditionAffliction": {
         "blindeed": false,
