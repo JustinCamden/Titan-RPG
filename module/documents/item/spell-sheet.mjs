@@ -76,6 +76,7 @@ export class TitanSpellSheet extends TitanItemSheet {
 
     // Skill increase options
     const increaseSkillData = systemData.increaseSkill;
+    context.increaseSkillOvercastAvailable = false;
     if (increaseSkillData.choose == false) {
       const increaseSkillOptions = {
         none: "TITAN.none.label",
@@ -83,12 +84,16 @@ export class TitanSpellSheet extends TitanItemSheet {
       for (let [k, v] of Object.entries(increaseSkillData.skill)) {
         if (v == false) {
           increaseSkillOptions[k] = CONFIG.TITAN.skill.option[k].label;
+        } else {
+          context.increaseSkillOvercastAvailable = true;
         }
       }
       if (Object.keys(increaseSkillOptions).length > 1) {
         increaseSkillOptions.chosen = "TITAN.choose.label";
         context.increaseSkillOptions = increaseSkillOptions;
       }
+    } else {
+      context.increaseSkillOvercastAvailable = true;
     }
 
     return context;

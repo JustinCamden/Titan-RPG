@@ -34,4 +34,12 @@
     </select>
   </div>
   {{/if}}
+
+  {{! Overcast }}
+  {{#if increaseSkillOvercastAvailable}}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-overcast.hbs"
+  overcast=system.increaseSkill.overcast
+  path="system.increaseSkill"
+  }}
+  {{/if}}
 </div>
