@@ -21,17 +21,20 @@ export const TITAN = {
       awareness: {
         label: "TITAN.rating.option.awareness.label",
       },
+      accuracy: {
+        label: "TITAN.rating.option.accuracy.label",
+      },
       defense: {
         label: "TITAN.rating.option.defense.label",
       },
       melee: {
         label: "TITAN.rating.option.melee.label",
       },
-      accuracy: {
-        label: "TITAN.rating.option.accuracy.label",
-      },
       initiative: {
         label: "TITAN.rating.option.initiative.label",
+      },
+      speed: {
+        label: "TITAN.rating.option.speed.label",
       },
     },
   },

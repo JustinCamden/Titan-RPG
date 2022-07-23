@@ -184,6 +184,42 @@ export class TitanSpellSheet extends TitanItemSheet {
       context.decreaseAttributeOptions = decreaseAttributeOptions;
     }
 
+    // Rating increase options
+    const increaseRatingData = systemData.increaseRating;
+    context.increaseRating = increaseRatingData.choose > 0;
+    const increaseRatingOptions = {
+      none: "TITAN.none.label",
+    };
+    for (let [k, v] of Object.entries(increaseRatingData.rating)) {
+      if (v == false) {
+        increaseRatingOptions[k] = CONFIG.TITAN.rating.option[k].label;
+      } else {
+        context.increaseRating = true;
+      }
+    }
+    if (Object.keys(increaseRatingOptions).length > 1) {
+      increaseRatingOptions.choose = "TITAN.choose.label";
+      context.increaseRatingOptions = increaseRatingOptions;
+    }
+
+    // Rating decrease options
+    const decreaseRatingData = systemData.decreaseRating;
+    context.decreaseRating = decreaseRatingData.choose > 0;
+    const decreaseRatingOptions = {
+      none: "TITAN.none.label",
+    };
+    for (let [k, v] of Object.entries(decreaseRatingData.rating)) {
+      if (v == false) {
+        decreaseRatingOptions[k] = CONFIG.TITAN.rating.option[k].label;
+      } else {
+        context.decreaseRating = true;
+      }
+    }
+    if (Object.keys(decreaseRatingOptions).length > 1) {
+      decreaseRatingOptions.choose = "TITAN.choose.label";
+      context.decreaseRatingOptions = decreaseRatingOptions;
+    }
+
     return context;
   }
 
@@ -258,6 +294,22 @@ export class TitanSpellSheet extends TitanItemSheet {
     html
       .find(".delete-decrease-attribute")
       .click(this._onDeleteDecreaseAttribute.bind(this));
+
+    html
+      .find(".add-increase-rating")
+      .change(this._onAddIncreaseRating.bind(this));
+
+    html
+      .find(".delete-increase-rating")
+      .click(this._onDeleteIncreaseRating.bind(this));
+
+    html
+      .find(".add-decrease-rating")
+      .change(this._onAddDecreaseRating.bind(this));
+
+    html
+      .find(".delete-decrease-rating")
+      .click(this._onDeleteDecreaseRating.bind(this));
 
     return;
   }
@@ -551,6 +603,78 @@ export class TitanSpellSheet extends TitanItemSheet {
     this.item.update({
       system: {
         decreaseAttribute: decreaseAttributeData,
+      },
+    });
+  }
+
+  _onAddIncreaseRating(event) {
+    event.preventDefault();
+    const increaseRatingData = this.item.system.increaseRating;
+
+    const selected = event.target.value;
+    if (selected == "choose") {
+      increaseRatingData.choose = 1;
+    } else {
+      increaseRatingData.rating[selected] = true;
+    }
+
+    this.item.update({
+      system: {
+        increaseRating: increaseRatingData,
+      },
+    });
+  }
+
+  _onDeleteIncreaseRating(event) {
+    event.preventDefault();
+    const increaseRatingData = this.item.system.increaseRating;
+
+    const selected = event.target.dataset.rating;
+    if (selected == "choose") {
+      increaseRatingData.choose = 0;
+    } else {
+      increaseRatingData.rating[selected] = false;
+    }
+
+    this.item.update({
+      system: {
+        increaseRating: increaseRatingData,
+      },
+    });
+  }
+
+  _onAddDecreaseRating(event) {
+    event.preventDefault();
+    const decreaseRatingData = this.item.system.decreaseRating;
+
+    const selected = event.target.value;
+    if (selected == "choose") {
+      decreaseRatingData.choose = 1;
+    } else {
+      decreaseRatingData.rating[selected] = true;
+    }
+
+    this.item.update({
+      system: {
+        decreaseRating: decreaseRatingData,
+      },
+    });
+  }
+
+  _onDeleteDecreaseRating(event) {
+    event.preventDefault();
+    const decreaseRatingData = this.item.system.decreaseRating;
+
+    const selected = event.target.dataset.rating;
+    if (selected == "choose") {
+      decreaseRatingData.choose = 0;
+    } else {
+      decreaseRatingData.rating[selected] = false;
+    }
+
+    this.item.update({
+      system: {
+        decreaseRating: decreaseRatingData,
       },
     });
   }

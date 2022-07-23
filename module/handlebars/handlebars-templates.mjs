@@ -30,6 +30,8 @@ export const preloadHandlebarsTemplates = async function () {
     "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-decrease-resistance.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-increase-attribute.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-decrease-attribute.hbs",
+    "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-increase-rating.hbs",
+    "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-decrease-rating.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-overcast.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-number-input.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-checkbox-input.hbs",

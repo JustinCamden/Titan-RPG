@@ -117,7 +117,7 @@ export class TitanSpell extends TitanTypeComponent {
           attributeIncreases += 1;
         }
       }
-      increaseAttributeData.overcast.successCost = attributeIncreases;
+      increaseAttributeData.overcast.successCost = attributeIncreases * 4;
     }
 
     // Decrease Attribute
@@ -130,7 +130,33 @@ export class TitanSpell extends TitanTypeComponent {
           attributeDecreases += 1;
         }
       }
-      decreaseAttributeData.overcast.successCost = attributeDecreases;
+      decreaseAttributeData.overcast.successCost = attributeDecreases * 4;
+    }
+
+    // Increase Rating
+    const increaseRatingData = systemData.increaseRating;
+    if (increaseRatingData.overcast.calculateSuccessCost) {
+      // Cont the number of ratings increase
+      let ratingIncreases = increaseRatingData.choose;
+      for (let [k, v] of Object.entries(increaseRatingData.rating)) {
+        if (v == true) {
+          ratingIncreases += 1;
+        }
+      }
+      increaseRatingData.overcast.successCost = ratingIncreases;
+    }
+
+    // Decrease Rating
+    const decreaseRatingData = systemData.decreaseRating;
+    if (decreaseRatingData.overcast.calculateSuccessCost) {
+      // Cont the number of ratings Decrease
+      let ratingDecreases = decreaseRatingData.choose;
+      for (let [k, v] of Object.entries(decreaseRatingData.rating)) {
+        if (v == true) {
+          ratingDecreases += 1;
+        }
+      }
+      decreaseRatingData.overcast.successCost = ratingDecreases;
     }
 
     // Update the item

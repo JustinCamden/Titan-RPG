@@ -591,61 +591,39 @@
           "successCost": 4
         }
       },
-      "increaseMeleeAndAccuracy": {
+      "increaseRating": {
         "initialValue": 0,
+        "choose": 0,
+        "rating": {
+          "melee": false,
+          "accuracy": false,
+          "defense": false,
+          "speed": false,
+          "initiative": false
+        },
         "overcast": {
           "enable": true,
           "calculateSuccessCost": true,
           "successCost": 1
         }
       },
-      "increaseDefence": {
+      "decreaseRating": {
         "initialValue": 0,
-        "overcast": {
-          "enable": true,
-          "calculateSuccessCost": true,
-          "successCost": 1
-        }
-      },
-      "increaseSpeed": {
-        "initialValue": 0,
-        "overcast": {
-          "enable": true,
-          "calculateSuccessCost": true,
-          "successCost": 1
-        }
-      },
-      "decreaseMeleeAndAccuracy": {
-        "initialValue": 0,
+        "choose": 0,
+        "rating": {
+          "accuracy": false,
+          "awareness": false,
+          "defense": false,
+          "initiative": false,
+          "melee": false,
+          "speed": false
+        },
         "resistanceCheck": "none",
         "overcast": {
           "enable": true,
           "calculateSuccessCost": true,
           "successCost": 1
         }
-      },
-      "decreaseDefence": {
-        "initialValue": 0,
-        "resistanceCheck": "none",
-        "overcast": {
-          "enable": true,
-          "calculateSuccessCost": true,
-          "successCost": 1
-        }
-      },
-      "decreaseSpeed": {
-        "initialValue": 0,
-        "resistanceCheck": "none",
-        "overcast": {
-          "enable": true,
-          "calculateSuccessCost": true,
-          "successCost": 1
-        }
-      },
-      "castingCheck": {
-        "difficulty": 4,
-        "complexity": 1,
-        "calculateCastingCheck": true
       },
       "increaseArmor": {
         "initialValue": 0,

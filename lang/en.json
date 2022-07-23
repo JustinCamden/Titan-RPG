@@ -4,11 +4,12 @@
   "TITAN.attribute.option.mind.label": "Mind",
   "TITAN.attribute.option.soul.label": "Soul",
 
-  "TITAN.rating.option.initiative.label": "Initiative",
+  "TITAN.rating.option.accuracy.label": "Accuracy",
   "TITAN.rating.option.awareness.label": "Awareness",
   "TITAN.rating.option.defense.label": "Defense",
+  "TITAN.rating.option.initiative.label": "Initiative",
   "TITAN.rating.option.melee.label": "Melee",
-  "TITAN.rating.option.accuracy.label": "Accuracy",
+  "TITAN.rating.option.speed.label": "Speed",
 
   "TITAN.resource.option.stamina.label": "Stamina",
   "TITAN.resource.option.stamina.remaining.label": "Remaining Stamina",
@@ -195,6 +196,9 @@
   "TITAN.addAttribute.label": "Add Attribute",
   "TITAN.increaseAttribute.label": "Increase Attribute",
   "TITAN.decreaseAttribute.label": "Decrease Attribute",
+  "TITAN.addRating.label": "Add Rating",
+  "TITAN.increaseRating.label": "Increase Rating",
+  "TITAN.decreaseRating.label": "Decrease Rating",
   "TITAN.increase.label": "Increase",
   "TITAN.decrease.label": "Decrease",
 
