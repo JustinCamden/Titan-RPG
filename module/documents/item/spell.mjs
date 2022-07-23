@@ -30,10 +30,10 @@ export class TitanSpell extends TitanTypeComponent {
 
         // Normal = 2
         damageData.overcast.successCost = 2;
+      } else {
+        // No ignore armor = 1
+        damageData.overcast.successCost = 1;
       }
-
-      // No ignore armor = 1
-      damageData.overcast.successCost = 1;
     }
 
     // Healing
