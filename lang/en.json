@@ -195,6 +195,8 @@
   "TITAN.addAttribute.label": "Add Attribute",
   "TITAN.increaseAttribute.label": "Increase Attribute",
   "TITAN.decreaseAttribute.label": "Decrease Attribute",
+  "TITAN.increase.label": "Increase",
+  "TITAN.decrease.label": "Decrease",
 
   "SETTINGS.showCheckOptions": {
     "name": "Ask for Check Options by default.",

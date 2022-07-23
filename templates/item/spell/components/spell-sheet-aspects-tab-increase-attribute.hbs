@@ -4,6 +4,16 @@
   {{! Category label }}
   <h3 class="stat-category-label">{{localize "TITAN.increaseAttribute.label"}}</h3>
 
+  {{! Initial Value }}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-number-input.hbs"
+  label="TITAN.increase.label"
+  path="system.increaseAttribute.initialValue"
+  value=system.increaseAttribute.initialValue
+  }}
+
+  {{! If Initial Value > 0 }}
+  {{#if (greater system.increaseAttribute.initialValue 0)}}
+
   {{! Choose }}
   {{#if (greater system.increaseAttribute.choose 0)}}
   {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-number-input.hbs"
@@ -51,5 +61,6 @@
   overcast=system.increaseAttribute.overcast
   path="system.increaseAttribute"
   }}
+  {{/if}}
   {{/if}}
 </div>

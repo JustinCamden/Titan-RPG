@@ -76,20 +76,22 @@ export class TitanSpellSheet extends TitanItemSheet {
 
     // Skill increase options
     const increaseSkillData = systemData.increaseSkill;
-    context.increaseSkill = increaseSkillData.choose > 0;
-    const increaseSkillOptions = {
-      none: "TITAN.none.label",
-    };
-    for (let [k, v] of Object.entries(increaseSkillData.skill)) {
-      if (v == false) {
-        increaseSkillOptions[k] = CONFIG.TITAN.skill.option[k].label;
-      } else {
-        context.increaseSkill = true;
+    if (increaseSkillData.initialValue > 0) {
+      context.increaseSkill = increaseSkillData.choose > 0;
+      const increaseSkillOptions = {
+        none: "TITAN.none.label",
+      };
+      for (let [k, v] of Object.entries(increaseSkillData.skill)) {
+        if (v == false) {
+          increaseSkillOptions[k] = CONFIG.TITAN.skill.option[k].label;
+        } else {
+          context.increaseSkill = true;
+        }
       }
-    }
-    if (Object.keys(increaseSkillOptions).length > 1) {
-      increaseSkillOptions.choose = "TITAN.choose.label";
-      context.increaseSkillOptions = increaseSkillOptions;
+      if (Object.keys(increaseSkillOptions).length > 1) {
+        increaseSkillOptions.choose = "TITAN.choose.label";
+        context.increaseSkillOptions = increaseSkillOptions;
+      }
     }
 
     // Skill decrease options

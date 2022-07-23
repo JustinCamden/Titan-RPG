@@ -473,6 +473,7 @@
         }
       },
       "increaseSkill": {
+        "initialValue": 0,
         "choose": 0,
         "skill": {
           "arcana": false,
@@ -502,6 +503,7 @@
         }
       },
       "decreaseSkill": {
+        "initialValue": 0,
         "choose": 0,
         "skill": {
           "arcana": false,
@@ -532,6 +534,7 @@
         }
       },
       "increaseResistance": {
+        "initialValue": 0,
         "choose": 0,
         "resistance": {
           "reflexes": false,
@@ -545,6 +548,7 @@
         }
       },
       "decreaseResistance": {
+        "initialValue": 0,
         "choose": 0,
         "resistance": {
           "reflexes": false,
@@ -559,6 +563,7 @@
         }
       },
       "increaseAttribute": {
+        "initialValue": 0,
         "choose": 0,
         "attribute": {
           "body": false,
@@ -568,10 +573,11 @@
         "overcast": {
           "enable": true,
           "calculateSuccessCost": true,
-          "successCost": 1
+          "successCost": 4
         }
       },
       "decreaseAttribute": {
+        "initialValue": 0,
         "choose": 0,
         "attribute": {
           "body": false,
@@ -582,7 +588,7 @@
         "overcast": {
           "enable": true,
           "calculateSuccessCost": true,
-          "successCost": 1
+          "successCost": 4
         }
       },
       "increaseMeleeAndAccuracy": {

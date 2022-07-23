@@ -4,6 +4,16 @@
   {{! Category label }}
   <h3 class="stat-category-label">{{localize "TITAN.decreaseResistance.label"}}</h3>
 
+  {{! Initial Value }}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-number-input.hbs"
+  label="TITAN.decrease.label"
+  path="system.decreaseResistance.initialValue"
+  value=system.decreaseResistance.initialValue
+  }}
+
+  {{! If Initial Value > 0 }}
+  {{#if (greater system.decreaseResistance.initialValue 0)}}
+
   {{! Choose }}
   {{#if (greater system.decreaseResistance.choose 0)}}
   {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-number-input.hbs"
@@ -58,5 +68,6 @@
   overcast=system.decreaseResistance.overcast
   path="system.decreaseResistance"
   }}
+  {{/if}}
   {{/if}}
 </div>
