@@ -1175,6 +1175,24 @@
 }
 
 .titan .spell-sheet .spell-sheet-aspects-tab {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+.titan .spell-sheet .spell-sheet-aspects-tab .spell-aspects {
+  max-height: 20rem;
   display: grid;
   gap: 0.5rem;
   margin: 0.5rem 0;
@@ -1183,24 +1201,24 @@
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category {
+.titan .spell-sheet .spell-sheet-aspects-tab .spell-aspects .stat-category {
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-category-label {
+.titan .spell-sheet .spell-sheet-aspects-tab .spell-aspects .stat-category .stat-category-label {
   margin-bottom: 0.25rem;
   border-bottom: none;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-field-vertical {
+.titan .spell-sheet .spell-sheet-aspects-tab .spell-aspects .stat-category .stat-field-vertical {
   margin-top: 0.25rem;
   border-top: solid;
   padding: 0.25rem;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-field-horizontal {
+.titan .spell-sheet .spell-sheet-aspects-tab .spell-aspects .stat-category .stat-field-horizontal {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1219,21 +1237,21 @@
   margin-top: 0.25rem;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-field-horizontal:not(:first-child) {
+.titan .spell-sheet .spell-sheet-aspects-tab .spell-aspects .stat-category .stat-field-horizontal:not(:first-child) {
   border-top: solid;
   padding: 0.25rem;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-field-horizontal .stat-label {
+.titan .spell-sheet .spell-sheet-aspects-tab .spell-aspects .stat-category .stat-field-horizontal .stat-label {
   width: 100%;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-field-horizontal .stat-input {
+.titan .spell-sheet .spell-sheet-aspects-tab .spell-aspects .stat-category .stat-field-horizontal .stat-input {
   width: 100%;
   text-align: center;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-sub-category {
+.titan .spell-sheet .spell-sheet-aspects-tab .spell-aspects .stat-category .stat-sub-category {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1249,17 +1267,17 @@
   padding: 0.25rem;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-sub-category .stat-field-horizontal {
+.titan .spell-sheet .spell-sheet-aspects-tab .spell-aspects .stat-category .stat-sub-category .stat-field-horizontal {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category.double-column {
+.titan .spell-sheet .spell-sheet-aspects-tab .spell-aspects .stat-category.double-column {
   grid-column-end: span 2;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category.double-column .double-column-row {
+.titan .spell-sheet .spell-sheet-aspects-tab .spell-aspects .stat-category.double-column .double-column-row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1277,11 +1295,11 @@
   width: 100%;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category.double-column .double-column-row .stat-field-horizontal {
+.titan .spell-sheet .spell-sheet-aspects-tab .spell-aspects .stat-category.double-column .double-column-row .stat-field-horizontal {
   width: 40%;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category.double-column .double-column-columns {
+.titan .spell-sheet .spell-sheet-aspects-tab .spell-aspects .stat-category.double-column .double-column-columns {
   width: 100%;
   display: grid;
   gap: 0.5rem;
