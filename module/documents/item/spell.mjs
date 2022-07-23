@@ -26,10 +26,10 @@ export class TitanSpell extends TitanTypeComponent {
         // Resistance check = 1
         if (damageData.resistanceCheck != "none") {
           damageData.overcast.successCost = 1;
+        } else {
+          // Normal = 2
+          damageData.overcast.successCost = 2;
         }
-
-        // Normal = 2
-        damageData.overcast.successCost = 2;
       } else {
         // No ignore armor = 1
         damageData.overcast.successCost = 1;

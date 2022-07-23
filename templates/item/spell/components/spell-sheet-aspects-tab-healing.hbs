@@ -5,17 +5,11 @@
   <h3 class="stat-category-label">{{localize "TITAN.healing.label"}}</h3>
 
   {{! Initial Value }}
-  <div class="stat-field-horizontal">
-
-    {{! Label }}
-    <div class="stat-label">
-      {{localize "TITAN.amount.label"}}
-    </div>
-
-    {{! Input }}
-    <input name="system.healing.initialValue" class="stat-input" type="number" value="{{system.healing.initialValue}}"
-      data-dtype="Number" />
-  </div>
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-number-input.hbs"
+  label="TITAN.healing.label"
+  path="system.healing.initialValue"
+  value=system.healing.initialValue
+  }}
 
   {{! Overcast }}
   {{#if (greater system.healing.initialValue 0)}}

@@ -1,27 +1,17 @@
-{{! Overcast Success Cost }}
-<div class="stat-field-horizontal">
-  {{! Overcast Label }}
-  <div class="stat-label">
-    {{concat (localize "TITAN.spell.overcast.label")"?"}}
-  </div>
+{{! Overcast Enable }}
+{{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-checkbox-input.hbs"
+label=(concat (localize "TITAN.spell.overcast.label") "?")
+path=(concat path ".overcast.enable")
+value=overcast.enable
+}}
 
-  {{! Overcast Checkbox }}
-  <input name="{{path}}.overcast.enable" class="stat-input" type="checkbox" {{checked overcast.enable}} />
-</div>
-
-{{! Overcast Success Cost }}
+{{! Overcast Calculate Success Cost }}
 {{#if overcast.enable}}
-<div class="stat-field-horizontal">
-
-  {{! Calculate Success Cost }}
-  <div class="stat-label">
-    {{concat (localize "TITAN.spell.overcast.calculateSuccessCost.label") "?"}}
-  </div>
-
-  {{! Calculate Success Cost Checkbox }}
-  <input name="{{path}}.overcast.calculateSuccessCost" class="stat-input" type="checkbox" {{checked
-    overcast.calculateSuccessCost}} />
-</div>
+{{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-checkbox-input.hbs"
+label=(concat (localize "TITAN.spell.overcast.calculateSuccessCost.label") "?")
+path=(concat path ".overcast.calculateSuccessCost")
+value=overcast.calculateSuccessCost
+}}
 
 <div class="stat-field-horizontal">
   {{! Overcast Success Cost Label }}

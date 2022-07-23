@@ -35,23 +35,18 @@
   {{! Any }}
   {{#if (greater system.removeCondition.any.initialValue 0)}}
   <div class="stat-sub-category">
-    <div class="stat-field-horizontal">
-      {{! Label }}
-      <div class="stat-label">
-        {{localize "TITAN.any.label"}}
-      </div>
+    {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-number-input.hbs"
+    label="TITAN.any.label"
+    path="system.removeCondition.any.initialValue"
+    value=system.removeCondition.any.initialValue
+    }}
 
-      {{! Input }}
-      <input name="system.removeCondition.any.initialValue" class="stat-input" type="number"
-        value="{{system.removeCondition.any.initialValue}}" data-dtype="Number" />
-    </div>
+    {{! Overcast }}
+    {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-overcast.hbs"
+    overcast=system.removeCondition.any.overcast
+    path="system.removeCondition.any"
+    }}
   </div>
-
-  {{! Overcast }}
-  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-overcast.hbs"
-  overcast=system.removeCondition.any.overcast
-  path="system.removeCondition.any"
-  }}
   {{/if}}
 
   {{! Add Inactive Condition }}

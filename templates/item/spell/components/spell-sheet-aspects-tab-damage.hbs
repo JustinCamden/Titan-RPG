@@ -5,44 +5,26 @@
   <h3 class="stat-category-label">{{localize "TITAN.damage.label"}}</h3>
 
   {{! Initial Value }}
-  <div class="stat-field-horizontal">
-
-    {{! Label }}
-    <div class="stat-label">
-      {{localize "TITAN.amount.label"}}
-    </div>
-
-    {{! Input }}
-    <input name="system.damage.initialValue" class="stat-input" type="number" value="{{system.damage.initialValue}}"
-      data-dtype="Number" />
-  </div>
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-number-input.hbs"
+  label="TITAN.damage.label"
+  path="system.damage.initialValue"
+  value=system.damage.initialValue
+  }}
 
   {{! If Damage }}
   {{#if (greater system.damage.initialValue 0)}}
-  {{! Ignore Armor }}
-  <div class="stat-field-horizontal">
-
-    {{! Label }}
-    <div class="stat-label">
-      {{localize "TITAN.ignoreArmor.label"}}
-    </div>
-
-    {{! Checkbox }}
-    <input name="system.damage.ignoreArmor" class="stat-input" type="checkbox" {{checked system.damage.ignoreArmor}} />
-  </div>
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-checkbox-input.hbs"
+  label="TITAN.ignoreArmor.label"
+  path="system.damage.ignoreArmor"
+  value=system.damage.ignoreArmor
+  }}
 
   {{! Resistance Check }}
-  <div class="stat-field-vertical">
-    {{! Label }}
-    <div class="stat-label">
-      {{localize "TITAN.resistanceCheck.label"}}
-    </div>
-
-    {{! Select }}
-    <select name="system.damage.resistanceCheck" class="stat-input">
-      {{selectOptions resistanceCheckOptions selected=system.damage.resistanceCheck localize=true}}
-    </select>
-  </div>
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-resistance-check-select.hbs"
+  path="system.damage.resistanceCheck"
+  options=resistanceCheckOptions
+  value=system.damage.resistanceCheck
+  }}
 
   {{! Overcast }}
   {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-overcast.hbs"

@@ -16,6 +16,13 @@
     {{! Delete Button }}
     <a class="fas fa-trash delete-inflict-condition" data-condition={{key}}></a>
   </div>
+
+  {{! Resistance Check }}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-resistance-check-select.hbs"
+  path=(concat "../system.inflictCondition." key ".resistanceCheck")
+  options=../resistanceCheckOptions
+  value=condition.resistanceCheck
+  }}
   {{/if}}
   {{/each}}
 
