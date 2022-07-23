@@ -192,6 +192,9 @@
   "TITAN.addResistance.label": "Add Resistance",
   "TITAN.increaseResistance.label": "Increase Resistance",
   "TITAN.decreaseResistance.label": "Decrease Resistance",
+  "TITAN.addAttribute.label": "Add Attribute",
+  "TITAN.increaseAttribute.label": "Increase Attribute",
+  "TITAN.decreaseAttribute.label": "Decrease Attribute",
 
   "SETTINGS.showCheckOptions": {
     "name": "Ask for Check Options by default.",

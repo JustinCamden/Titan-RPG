@@ -107,6 +107,32 @@ export class TitanSpell extends TitanTypeComponent {
       decreaseResistanceData.overcast.successCost = resistanceDecreases;
     }
 
+    // Increase Attribute
+    const increaseAttributeData = systemData.increaseAttribute;
+    if (increaseAttributeData.overcast.calculateSuccessCost) {
+      // Cont the number of attributes increase
+      let attributeIncreases = increaseAttributeData.choose;
+      for (let [k, v] of Object.entries(increaseAttributeData.attribute)) {
+        if (v == true) {
+          attributeIncreases += 1;
+        }
+      }
+      increaseAttributeData.overcast.successCost = attributeIncreases;
+    }
+
+    // Decrease Attribute
+    const decreaseAttributeData = systemData.decreaseAttribute;
+    if (decreaseAttributeData.overcast.calculateSuccessCost) {
+      // Cont the number of attributes Decrease
+      let attributeDecreases = decreaseAttributeData.choose;
+      for (let [k, v] of Object.entries(decreaseAttributeData.attribute)) {
+        if (v == true) {
+          attributeDecreases += 1;
+        }
+      }
+      decreaseAttributeData.overcast.successCost = attributeDecreases;
+    }
+
     // Update the item
     this.parent.update({
       system: systemData,

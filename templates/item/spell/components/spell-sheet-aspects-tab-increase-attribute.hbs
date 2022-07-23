@@ -1,0 +1,55 @@
+{{! Increase Attribute }}
+<div class="spell-sheet-aspects-tab-increase-attribute stat-category">
+
+  {{! Category label }}
+  <h3 class="stat-category-label">{{localize "TITAN.increaseAttribute.label"}}</h3>
+
+  {{! Choose }}
+  {{#if (greater system.increaseAttribute.choose 0)}}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-number-input.hbs"
+  label="TITAN.choose.label"
+  path="system.increaseAttribute.choose"
+  value=system.increaseAttribute.choose
+  }}
+  {{/if}}
+
+  {{! Each current active attribute }}
+  {{#each system.increaseAttribute.attribute as |attribute key|}}
+  {{#if attribute}}
+  <div class="stat-field-horizontal">
+    {{! Label }}
+    <div class="stat-label">
+      {{localize (concat "TITAN.attribute.option." key ".label")}}
+    </div>
+
+    {{! Delete Button }}
+    <a class="fas fa-trash delete-increase-attribute" data-attribute={{key}}></a>
+  </div>
+  {{/if}}
+  {{/each}}
+
+  {{! Add Inactive attribute }}
+  {{#if increaseAttributeOptions}}
+  <div class="stat-field-vertical">
+
+    {{! Type Label }}
+    <div class="stat-label">
+      {{localize "TITAN.addAttribute.label"}}
+    </div>
+
+    {{! Type Select }}
+    <select class="stat-input add-increase-attribute">
+      {{selectOptions increaseAttributeOptions selected=system.increaseAttributeOptions.none localize=true}}
+    </select>
+  </div>
+  {{/if}}
+
+
+  {{#if increaseAttribute}}
+  {{! Overcast }}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-overcast.hbs"
+  overcast=system.increaseAttribute.overcast
+  path="system.increaseAttribute"
+  }}
+  {{/if}}
+</div>

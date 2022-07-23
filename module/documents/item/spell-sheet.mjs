@@ -112,8 +112,7 @@ export class TitanSpellSheet extends TitanItemSheet {
 
     // Resistance increase options
     const increaseResistanceData = systemData.increaseResistance;
-    context.increaseResistance =
-      increaseResistanceData.choose > 0;
+    context.increaseResistance = increaseResistanceData.choose > 0;
     const increaseResistanceOptions = {
       none: "TITAN.none.label",
     };
@@ -131,8 +130,7 @@ export class TitanSpellSheet extends TitanItemSheet {
 
     // Resistance decrease options
     const decreaseResistanceData = systemData.decreaseResistance;
-    context.decreaseResistance =
-      decreaseResistanceData.choose > 0;
+    context.decreaseResistance = decreaseResistanceData.choose > 0;
     const decreaseResistanceOptions = {
       none: "TITAN.none.label",
     };
@@ -146,6 +144,42 @@ export class TitanSpellSheet extends TitanItemSheet {
     if (Object.keys(decreaseResistanceOptions).length > 1) {
       decreaseResistanceOptions.choose = "TITAN.choose.label";
       context.decreaseResistanceOptions = decreaseResistanceOptions;
+    }
+
+    // Attribute increase options
+    const increaseAttributeData = systemData.increaseAttribute;
+    context.increaseAttribute = increaseAttributeData.choose > 0;
+    const increaseAttributeOptions = {
+      none: "TITAN.none.label",
+    };
+    for (let [k, v] of Object.entries(increaseAttributeData.attribute)) {
+      if (v == false) {
+        increaseAttributeOptions[k] = CONFIG.TITAN.attribute.option[k].label;
+      } else {
+        context.increaseAttribute = true;
+      }
+    }
+    if (Object.keys(increaseAttributeOptions).length > 1) {
+      increaseAttributeOptions.choose = "TITAN.choose.label";
+      context.increaseAttributeOptions = increaseAttributeOptions;
+    }
+
+    // Attribute decrease options
+    const decreaseAttributeData = systemData.decreaseAttribute;
+    context.decreaseAttribute = decreaseAttributeData.choose > 0;
+    const decreaseAttributeOptions = {
+      none: "TITAN.none.label",
+    };
+    for (let [k, v] of Object.entries(decreaseAttributeData.attribute)) {
+      if (v == false) {
+        decreaseAttributeOptions[k] = CONFIG.TITAN.attribute.option[k].label;
+      } else {
+        context.decreaseAttribute = true;
+      }
+    }
+    if (Object.keys(decreaseAttributeOptions).length > 1) {
+      decreaseAttributeOptions.choose = "TITAN.choose.label";
+      context.decreaseAttributeOptions = decreaseAttributeOptions;
     }
 
     return context;
@@ -206,6 +240,22 @@ export class TitanSpellSheet extends TitanItemSheet {
     html
       .find(".delete-decrease-resistance")
       .click(this._onDeleteDecreaseResistance.bind(this));
+
+    html
+      .find(".add-increase-attribute")
+      .change(this._onAddIncreaseAttribute.bind(this));
+
+    html
+      .find(".delete-increase-attribute")
+      .click(this._onDeleteIncreaseAttribute.bind(this));
+
+    html
+      .find(".add-decrease-attribute")
+      .change(this._onAddDecreaseAttribute.bind(this));
+
+    html
+      .find(".delete-decrease-attribute")
+      .click(this._onDeleteDecreaseAttribute.bind(this));
 
     return;
   }
@@ -427,6 +477,78 @@ export class TitanSpellSheet extends TitanItemSheet {
     this.item.update({
       system: {
         decreaseResistance: decreaseResistanceData,
+      },
+    });
+  }
+
+  _onAddIncreaseAttribute(event) {
+    event.preventDefault();
+    const increaseAttributeData = this.item.system.increaseAttribute;
+
+    const selected = event.target.value;
+    if (selected == "choose") {
+      increaseAttributeData.choose = 1;
+    } else {
+      increaseAttributeData.attribute[selected] = true;
+    }
+
+    this.item.update({
+      system: {
+        increaseAttribute: increaseAttributeData,
+      },
+    });
+  }
+
+  _onDeleteIncreaseAttribute(event) {
+    event.preventDefault();
+    const increaseAttributeData = this.item.system.increaseAttribute;
+
+    const selected = event.target.dataset.attribute;
+    if (selected == "choose") {
+      increaseAttributeData.choose = 0;
+    } else {
+      increaseAttributeData.attribute[selected] = false;
+    }
+
+    this.item.update({
+      system: {
+        increaseAttribute: increaseAttributeData,
+      },
+    });
+  }
+
+  _onAddDecreaseAttribute(event) {
+    event.preventDefault();
+    const decreaseAttributeData = this.item.system.decreaseAttribute;
+
+    const selected = event.target.value;
+    if (selected == "choose") {
+      decreaseAttributeData.choose = 1;
+    } else {
+      decreaseAttributeData.attribute[selected] = true;
+    }
+
+    this.item.update({
+      system: {
+        decreaseAttribute: decreaseAttributeData,
+      },
+    });
+  }
+
+  _onDeleteDecreaseAttribute(event) {
+    event.preventDefault();
+    const decreaseAttributeData = this.item.system.decreaseAttribute;
+
+    const selected = event.target.dataset.attribute;
+    if (selected == "choose") {
+      decreaseAttributeData.choose = 0;
+    } else {
+      decreaseAttributeData.attribute[selected] = false;
+    }
+
+    this.item.update({
+      system: {
+        decreaseAttribute: decreaseAttributeData,
       },
     });
   }
