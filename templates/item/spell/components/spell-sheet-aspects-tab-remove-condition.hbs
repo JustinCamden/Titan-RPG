@@ -1,11 +1,11 @@
 {{! Condition removal }}
-<div class="spell-sheet-aspects-tab-condition-removal stat-category">
+<div class="spell-sheet-aspects-tab-remove-condition stat-category">
 
   {{! Category label }}
-  <h3 class="stat-category-label">{{localize "TITAN.conditionRemoval.label"}}</h3>
+  <h3 class="stat-category-label">{{localize "TITAN.removeCondition.label"}}</h3>
 
   {{! If all is true }}
-  {{#if system.conditionRemoval.all}}
+  {{#if system.removeCondition.all}}
   <div class="stat-field-horizontal">
     {{! Label }}
     <div class="stat-label">
@@ -13,12 +13,12 @@
     </div>
 
     {{! Delete Button }}
-    <a class="fas fa-trash delete-condition-removal" data-condition="all"></a>
+    <a class="fas fa-trash delete-remove-condition" data-condition="all"></a>
   </div>
   {{else}}
 
   {{! Each current active condition }}
-  {{#each system.conditionRemoval.condition as |condition key|}}
+  {{#each system.removeCondition.condition as |condition key|}}
   {{#if condition}}
   <div class="stat-field-horizontal">
     {{! Label }}
@@ -27,13 +27,13 @@
     </div>
 
     {{! Delete Button }}
-    <a class="fas fa-trash delete-condition-removal" data-condition={{key}}></a>
+    <a class="fas fa-trash delete-remove-condition" data-condition={{key}}></a>
   </div>
   {{/if}}
   {{/each}}
 
   {{! Any }}
-  {{#if (greater system.conditionRemoval.any 0)}}
+  {{#if (greater system.removeCondition.any 0)}}
   <div class="stat-sub-category">
     <div class="stat-field-horizontal">
       {{! Label }}
@@ -42,7 +42,7 @@
       </div>
 
       {{! Input }}
-      <input name="system.conditionRemoval.any" class="stat-input" type="number" value="{{system.conditionRemoval.any}}"
+      <input name="system.removeCondition.any" class="stat-input" type="number" value="{{system.removeCondition.any}}"
         data-dtype="Number" />
     </div>
 
@@ -54,12 +54,12 @@
       </div>
 
       {{! Overcast Checkbox }}
-      <input name="system.conditionRemoval.overcast.enable" class="stat-input" type="checkbox" {{checked
-        system.conditionRemoval.overcast.enable}} />
+      <input name="system.removeCondition.overcast.enable" class="stat-input" type="checkbox" {{checked
+        system.removeCondition.overcast.enable}} />
     </div>
 
     {{! Overcast Success Cost }}
-    {{#if system.conditionRemoval.overcast.enable}}
+    {{#if system.removeCondition.overcast.enable}}
     <div class="stat-field-horizontal">
 
       {{! Calculate Success Cost }}
@@ -68,8 +68,8 @@
       </div>
 
       {{! Calculate Success Cost Checkbox }}
-      <input name="system.conditionRemoval.overcast.calculateSuccessCost" class="stat-input" type="checkbox" {{checked
-        system.conditionRemoval.overcast.calculateSuccessCost}} />
+      <input name="system.removeCondition.overcast.calculateSuccessCost" class="stat-input" type="checkbox" {{checked
+        system.removeCondition.overcast.calculateSuccessCost}} />
     </div>
 
     <div class="stat-field-horizontal">
@@ -78,15 +78,15 @@
         {{localize "TITAN.spell.overcast.successCost.label"}}
       </div>
 
-      {{#if system.conditionRemoval.overcast.calculateSuccessCost}}
+      {{#if system.removeCondition.overcast.calculateSuccessCost}}
       {{! Overcast Success Cost }}
       <div class="stat-input">
-        {{system.conditionRemoval.overcast.successCost}}
+        {{system.removeCondition.overcast.successCost}}
       </div>
       {{else}}
       {{! Overcast Success Cost Input }}
-      <input name="system.conditionRemoval.overcast.successCost" class="stat-input" type="number"
-        value="{{system.conditionRemoval.overcast.successCost}}" data-dtype="Number" />
+      <input name="system.removeCondition.overcast.successCost" class="stat-input" type="number"
+        value="{{system.removeCondition.overcast.successCost}}" data-dtype="Number" />
       {{/if}}
     </div>
   </div>
@@ -94,7 +94,7 @@
   {{/if}}
 
   {{! Add Inactive Condition }}
-  {{#if conditionRemovalOptions}}
+  {{#if removeConditionOptions}}
   <div class="stat-field-vertical">
 
     {{! Type Label }}
@@ -103,8 +103,8 @@
     </div>
 
     {{! Type Select }}
-    <select class="stat-input add-condition-removal">
-      {{selectOptions conditionRemovalOptions selected=system.conditionRemovalOptions.none localize=true}}
+    <select class="stat-input add-remove-condition">
+      {{selectOptions removeConditionOptions selected=system.removeConditionOptions.none localize=true}}
     </select>
   </div>
   {{/if}}

@@ -1,11 +1,11 @@
 {{! Condition infliction }}
-<div class="spell-sheet-aspects-tab-condition-infliction stat-category">
+<div class="spell-sheet-aspects-tab-inflict-condition stat-category">
 
   {{! Category label }}
-  <h3 class="stat-category-label">{{localize "TITAN.conditionInfliction.label"}}</h3>
+  <h3 class="stat-category-label">{{localize "TITAN.inflictCondition.label"}}</h3>
 
   {{! Each current active condition }}
-  {{#each system.conditionInfliction as |condition key|}}
+  {{#each system.inflictCondition as |condition key|}}
   {{#if condition.enabled}}
   <div class="stat-field-horizontal">
     {{! Label }}
@@ -14,13 +14,13 @@
     </div>
 
     {{! Delete Button }}
-    <a class="fas fa-trash delete-condition-infliction" data-condition={{key}}></a>
+    <a class="fas fa-trash delete-inflict-condition" data-condition={{key}}></a>
   </div>
   {{/if}}
   {{/each}}
 
   {{! Add Inactive Condition }}
-  {{#if conditionInflictionOptions}}
+  {{#if inflictConditionOptions}}
   <div class="stat-field-vertical">
 
     {{! Type Label }}
@@ -29,8 +29,8 @@
     </div>
 
     {{! Type Select }}
-    <select class="stat-input add-condition-infliction">
-      {{selectOptions conditionInflictionOptions selected=system.conditionInflictionOptions.none localize=true}}
+    <select class="stat-input add-inflict-condition">
+      {{selectOptions inflictConditionOptions selected=system.inflictConditionOptions.none localize=true}}
     </select>
   </div>
   {{/if}}

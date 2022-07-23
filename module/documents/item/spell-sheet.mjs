@@ -41,37 +41,37 @@ export class TitanSpellSheet extends TitanItemSheet {
     context.durationOptions.custom = "TITAN.custom.label";
 
     // Condition removal options
-    const conditionRemovalData = systemData.conditionRemoval;
-    if (conditionRemovalData.all == false) {
-      const conditionRemovalOptions = {
+    const removeConditionData = systemData.removeCondition;
+    if (removeConditionData.all == false) {
+      const removeConditionOptions = {
         none: "TITAN.none.label",
       };
-      for (let [k, v] of Object.entries(conditionRemovalData.condition)) {
+      for (let [k, v] of Object.entries(removeConditionData.condition)) {
         if (v == false) {
-          conditionRemovalOptions[k] = CONFIG.TITAN.condition.option[k].label;
+          removeConditionOptions[k] = CONFIG.TITAN.condition.option[k].label;
         }
       }
-      if (Object.keys(conditionRemovalOptions).length > 1) {
-        if (conditionRemovalData.any <= 0) {
-          conditionRemovalOptions.any = "TITAN.any.label";
+      if (Object.keys(removeConditionOptions).length > 1) {
+        if (removeConditionData.any <= 0) {
+          removeConditionOptions.any = "TITAN.any.label";
         }
-        conditionRemovalOptions.all = "TITAN.all.label";
-        context.conditionRemovalOptions = conditionRemovalOptions;
+        removeConditionOptions.all = "TITAN.all.label";
+        context.removeConditionOptions = removeConditionOptions;
       }
     }
 
     // Condition infliction options
-    const conditionInflictionData = systemData.conditionInfliction;
-    const conditionInflictionOptions = {
+    const inflictConditionData = systemData.inflictCondition;
+    const inflictConditionOptions = {
       none: "TITAN.none.label",
     };
-    for (let [k, v] of Object.entries(conditionInflictionData)) {
+    for (let [k, v] of Object.entries(inflictConditionData)) {
       if (v.enabled == false) {
-        conditionInflictionOptions[k] = CONFIG.TITAN.condition.option[k].label;
+        inflictConditionOptions[k] = CONFIG.TITAN.condition.option[k].label;
       }
     }
-    if (Object.keys(conditionInflictionOptions).length > 1) {
-      context.conditionInflictionOptions = conditionInflictionOptions;
+    if (Object.keys(inflictConditionOptions).length > 1) {
+      context.inflictConditionOptions = inflictConditionOptions;
     }
 
     // Skill increase options
@@ -103,19 +103,19 @@ export class TitanSpellSheet extends TitanItemSheet {
     }
 
     html
-      .find(".add-condition-removal")
+      .find(".add-remove-condition")
       .change(this._onAddConditionRemoval.bind(this));
 
     html
-      .find(".delete-condition-removal")
+      .find(".delete-remove-condition")
       .click(this._onDeleteConditionRemoval.bind(this));
 
     html
-      .find(".add-condition-infliction")
+      .find(".add-inflict-condition")
       .change(this._onAddConditionInfliction.bind(this));
 
     html
-      .find(".delete-condition-infliction")
+      .find(".delete-inflict-condition")
       .click(this._onDeleteConditionInfliction.bind(this));
 
     return;
@@ -124,27 +124,27 @@ export class TitanSpellSheet extends TitanItemSheet {
   // Adding condition removal
   _onAddConditionRemoval(event) {
     event.preventDefault();
-    const conditionRemovalData = this.item.system.conditionRemoval;
+    const removeConditionData = this.item.system.removeCondition;
 
     const selected = event.target.value;
     switch (selected) {
       case "all": {
-        conditionRemovalData.all = true;
+        removeConditionData.all = true;
         break;
       }
       case "any": {
-        conditionRemovalData.any = 1;
+        removeConditionData.any = 1;
         break;
       }
       default: {
-        conditionRemovalData.condition[selected] = true;
+        removeConditionData.condition[selected] = true;
         break;
       }
     }
 
     this.item.update({
       system: {
-        conditionRemoval: conditionRemovalData,
+        removeCondition: removeConditionData,
       },
     });
   }
@@ -152,22 +152,22 @@ export class TitanSpellSheet extends TitanItemSheet {
   // Deleting condition removal
   _onDeleteConditionRemoval(event) {
     event.preventDefault();
-    const conditionRemovalData = this.item.system.conditionRemoval;
+    const removeConditionData = this.item.system.removeCondition;
     const selected = event.target.dataset.condition;
     switch (selected) {
       case "all": {
-        conditionRemovalData.all = false;
+        removeConditionData.all = false;
         break;
       }
       default: {
-        conditionRemovalData.condition[selected] = false;
+        removeConditionData.condition[selected] = false;
         break;
       }
     }
 
     this.item.update({
       system: {
-        conditionRemoval: conditionRemovalData,
+        removeCondition: removeConditionData,
       },
     });
   }
@@ -175,14 +175,14 @@ export class TitanSpellSheet extends TitanItemSheet {
   // Adding condition removal
   _onAddConditionInfliction(event) {
     event.preventDefault();
-    const conditionInflictionData = this.item.system.conditionInfliction;
+    const inflictConditionData = this.item.system.inflictCondition;
 
     const selected = event.target.value;
-    conditionInflictionData[selected].enabled = true;
+    inflictConditionData[selected].enabled = true;
 
     this.item.update({
       system: {
-        conditionInfliction: conditionInflictionData,
+        inflictCondition: inflictConditionData,
       },
     });
   }
@@ -190,14 +190,14 @@ export class TitanSpellSheet extends TitanItemSheet {
   // Deleting condition removal
   _onDeleteConditionInfliction(event) {
     event.preventDefault();
-    const conditionInflictionData = this.item.system.conditionInfliction;
+    const inflictConditionData = this.item.system.inflictCondition;
 
     const selected = event.target.dataset.condition;
-    conditionInflictionData[selected].enabled = false;
+    inflictConditionData[selected].enabled = false;
 
     this.item.update({
       system: {
-        conditionInfliction: conditionInflictionData,
+        inflictCondition: inflictConditionData,
       },
     });
   }

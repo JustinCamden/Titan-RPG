@@ -407,7 +407,7 @@
           "successCost": 1
         }
       },
-      "conditionRemoval": {
+      "removeCondition": {
         "all": false,
         "any": 0,
         "condition": {
@@ -428,7 +428,7 @@
           "successCost": 2
         }
       },
-      "conditionInfliction": {
+      "inflictCondition": {
         "blinded": {
           "enabled": false,
           "resistanceCheck": "none"

@@ -22,8 +22,8 @@ export const preloadHandlebarsTemplates = async function () {
     "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-damage.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-healing.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-duration.hbs",
-    "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-condition-removal.hbs",
-    "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-condition-infliction.hbs",
+    "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-remove-condition.hbs",
+    "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-inflict-condition.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-increase-skill.hbs",
 
     // Generic Chat message partials
