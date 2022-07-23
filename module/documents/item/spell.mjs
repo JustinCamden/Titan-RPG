@@ -51,8 +51,8 @@ export class TitanSpell extends TitanTypeComponent {
 
     // Condition removal
     const removeConditionData = systemData.removeCondition;
-    if (removeConditionData.overcast.calculateSuccessCost) {
-      removeConditionData.overcast.successCost = 2;
+    if (removeConditionData.any.overcast.calculateSuccessCost) {
+      removeConditionData.any.overcast.successCost = 2;
     }
 
     // Update the item

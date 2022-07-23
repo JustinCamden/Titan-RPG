@@ -52,7 +52,7 @@ export class TitanSpellSheet extends TitanItemSheet {
         }
       }
       if (Object.keys(removeConditionOptions).length > 1) {
-        if (removeConditionData.any <= 0) {
+        if (removeConditionData.any.initialValue <= 0) {
           removeConditionOptions.any = "TITAN.any.label";
         }
         removeConditionOptions.all = "TITAN.all.label";
@@ -140,7 +140,7 @@ export class TitanSpellSheet extends TitanItemSheet {
         break;
       }
       case "any": {
-        removeConditionData.any = 1;
+        removeConditionData.any.initialValue = 1;
         break;
       }
       default: {

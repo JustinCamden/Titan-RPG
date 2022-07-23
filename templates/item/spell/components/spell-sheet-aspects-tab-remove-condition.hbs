@@ -33,7 +33,7 @@
   {{/each}}
 
   {{! Any }}
-  {{#if (greater system.removeCondition.any 0)}}
+  {{#if (greater system.removeCondition.any.initialValue 0)}}
   <div class="stat-sub-category">
     <div class="stat-field-horizontal">
       {{! Label }}
@@ -42,55 +42,16 @@
       </div>
 
       {{! Input }}
-      <input name="system.removeCondition.any" class="stat-input" type="number" value="{{system.removeCondition.any}}"
-        data-dtype="Number" />
-    </div>
-
-    {{! Overcast }}
-    <div class="stat-field-horizontal">
-      {{! Overcast Label }}
-      <div class="stat-label">
-        {{concat (localize "TITAN.spell.overcast.label")"?"}}
-      </div>
-
-      {{! Overcast Checkbox }}
-      <input name="system.removeCondition.overcast.enable" class="stat-input" type="checkbox" {{checked
-        system.removeCondition.overcast.enable}} />
-    </div>
-
-    {{! Overcast Success Cost }}
-    {{#if system.removeCondition.overcast.enable}}
-    <div class="stat-field-horizontal">
-
-      {{! Calculate Success Cost }}
-      <div class="stat-label">
-        {{concat (localize "TITAN.spell.overcast.calculateSuccessCost.label") "?"}}
-      </div>
-
-      {{! Calculate Success Cost Checkbox }}
-      <input name="system.removeCondition.overcast.calculateSuccessCost" class="stat-input" type="checkbox" {{checked
-        system.removeCondition.overcast.calculateSuccessCost}} />
-    </div>
-
-    <div class="stat-field-horizontal">
-      {{! Overcast Success Cost Label }}
-      <div class="stat-label">
-        {{localize "TITAN.spell.overcast.successCost.label"}}
-      </div>
-
-      {{#if system.removeCondition.overcast.calculateSuccessCost}}
-      {{! Overcast Success Cost }}
-      <div class="stat-input">
-        {{system.removeCondition.overcast.successCost}}
-      </div>
-      {{else}}
-      {{! Overcast Success Cost Input }}
-      <input name="system.removeCondition.overcast.successCost" class="stat-input" type="number"
-        value="{{system.removeCondition.overcast.successCost}}" data-dtype="Number" />
-      {{/if}}
+      <input name="system.removeCondition.any.initialValue" class="stat-input" type="number"
+        value="{{system.removeCondition.any.initialValue}}" data-dtype="Number" />
     </div>
   </div>
-  {{/if}}
+
+  {{! Overcast }}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-overcast.hbs"
+  overcast=system.removeCondition.any.overcast
+  path="system.removeCondition.any"
+  }}
   {{/if}}
 
   {{! Add Inactive Condition }}
@@ -108,6 +69,7 @@
     </select>
   </div>
   {{/if}}
+
   {{/if}}
 
 </div>

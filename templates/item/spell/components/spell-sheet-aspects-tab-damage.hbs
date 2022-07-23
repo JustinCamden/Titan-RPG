@@ -45,49 +45,10 @@
   </div>
 
   {{! Overcast }}
-  <div class="stat-field-horizontal">
-    {{! Overcast Label }}
-    <div class="stat-label">
-      {{concat (localize "TITAN.spell.overcast.label")"?"}}
-    </div>
-
-    {{! Overcast Checkbox }}
-    <input name="system.damage.overcast.enable" class="stat-input" type="checkbox" {{checked
-      system.damage.overcast.enable}} />
-  </div>
-
-  {{! Overcast Success Cost }}
-  {{#if system.damage.overcast.enable}}
-  <div class="stat-field-horizontal">
-
-    {{! Calculate Success Cost }}
-    <div class="stat-label">
-      {{concat (localize "TITAN.spell.overcast.calculateSuccessCost.label") "?"}}
-    </div>
-
-    {{! Calculate Success Cost Checkbox }}
-    <input name="system.damage.overcast.calculateSuccessCost" class="stat-input" type="checkbox" {{checked
-      system.damage.overcast.calculateSuccessCost}} />
-  </div>
-
-  <div class="stat-field-horizontal">
-    {{! Overcast Success Cost Label }}
-    <div class="stat-label">
-      {{localize "TITAN.spell.overcast.successCost.label"}}
-    </div>
-
-    {{#if system.damage.overcast.calculateSuccessCost}}
-    {{! Overcast Success Cost }}
-    <div class="stat-input">
-      {{system.damage.overcast.successCost}}
-    </div>
-    {{else}}
-    {{! Overcast Success Cost Input }}
-    <input name="system.damage.overcast.successCost" class="stat-input" type="number"
-      value="{{system.damage.overcast.successCost}}" data-dtype="Number" />
-    {{/if}}
-  </div>
-  {{/if}}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-overcast.hbs"
+  overcast=system.damage.overcast
+  path="system.damage"
+  }}
   {{/if}}
 
 </div>

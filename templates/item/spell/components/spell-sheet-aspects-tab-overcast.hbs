@@ -1,0 +1,43 @@
+{{! Overcast Success Cost }}
+<div class="stat-field-horizontal">
+  {{! Overcast Label }}
+  <div class="stat-label">
+    {{concat (localize "TITAN.spell.overcast.label")"?"}}
+  </div>
+
+  {{! Overcast Checkbox }}
+  <input name="{{path}}.overcast.enable" class="stat-input" type="checkbox" {{checked overcast.enable}} />
+</div>
+
+{{! Overcast Success Cost }}
+{{#if overcast.enable}}
+<div class="stat-field-horizontal">
+
+  {{! Calculate Success Cost }}
+  <div class="stat-label">
+    {{concat (localize "TITAN.spell.overcast.calculateSuccessCost.label") "?"}}
+  </div>
+
+  {{! Calculate Success Cost Checkbox }}
+  <input name="{{path}}.overcast.calculateSuccessCost" class="stat-input" type="checkbox" {{checked
+    overcast.calculateSuccessCost}} />
+</div>
+
+<div class="stat-field-horizontal">
+  {{! Overcast Success Cost Label }}
+  <div class="stat-label">
+    {{localize "TITAN.spell.overcast.successCost.label"}}
+  </div>
+
+  {{#if overcast.calculateSuccessCost}}
+  {{! Overcast Success Cost }}
+  <div class="stat-input">
+    {{overcast.successCost}}
+  </div>
+  {{else}}
+  {{! Overcast Success Cost Input }}
+  <input name="{{path}}.overcast.successCost" class="stat-input" type="number" value="{{overcast.successCost}}"
+    data-dtype="Number" />
+  {{/if}}
+</div>
+{{/if}}

@@ -17,53 +17,12 @@
       data-dtype="Number" />
   </div>
 
-  {{! If healing }}
-  {{#if (greater system.healing.initialValue 0)}}
-
   {{! Overcast }}
-  <div class="stat-field-horizontal">
-    {{! Overcast Label }}
-    <div class="stat-label">
-      {{concat (localize "TITAN.spell.overcast.label")"?"}}
-    </div>
-
-    {{! Overcast Checkbox }}
-    <input name="system.healing.overcast.enable" class="stat-input" type="checkbox" {{checked
-      system.healing.overcast.enable}} />
-  </div>
-
-  {{! Overcast Success Cost }}
-  {{#if system.healing.overcast.enable}}
-  <div class="stat-field-horizontal">
-
-    {{! Calculate Success Cost }}
-    <div class="stat-label">
-      {{concat (localize "TITAN.spell.overcast.calculateSuccessCost.label") "?"}}
-    </div>
-
-    {{! Calculate Success Cost Checkbox }}
-    <input name="system.healing.overcast.calculateSuccessCost" class="stat-input" type="checkbox" {{checked
-      system.healing.overcast.calculateSuccessCost}} />
-  </div>
-
-  <div class="stat-field-horizontal">
-    {{! Overcast Success Cost Label }}
-    <div class="stat-label">
-      {{localize "TITAN.spell.overcast.successCost.label"}}
-    </div>
-
-    {{#if system.healing.overcast.calculateSuccessCost}}
-    {{! Overcast Success Cost }}
-    <div class="stat-input">
-      {{system.healing.overcast.successCost}}
-    </div>
-    {{else}}
-    {{! Overcast Success Cost Input }}
-    <input name="system.healing.overcast.successCost" class="stat-input" type="number"
-      value="{{system.healing.overcast.successCost}}" data-dtype="Number" />
-    {{/if}}
-  </div>
-  {{/if}}
+  {{#if (greater system.healing.initialValue 0)}}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-overcast.hbs"
+  overcast=system.healing.overcast
+  path="system.healing"
+  }}
   {{/if}}
 
 </div>
