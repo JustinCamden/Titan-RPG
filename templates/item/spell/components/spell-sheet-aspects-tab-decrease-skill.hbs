@@ -44,8 +44,17 @@
   </div>
   {{/if}}
 
+
+  {{#if decreaseSkill}}
+
+  {{! Resistance Check }}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-resistance-check-select.hbs"
+  path="system.decreaseSkill.resistanceCheck"
+  options=resistanceCheckOptions
+  value=system.decreaseSkill.resistanceCheck
+  }}
+
   {{! Overcast }}
-  {{#if decreaseSkillOvercastAvailable}}
   {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-overcast.hbs"
   overcast=system.decreaseSkill.overcast
   path="system.decreaseSkill"

@@ -76,7 +76,7 @@ export class TitanSpellSheet extends TitanItemSheet {
 
     // Skill increase options
     const increaseSkillData = systemData.increaseSkill;
-    context.increaseSkillOvercastAvailable = increaseSkillData.choose > 0;
+    context.increaseSkill = increaseSkillData.choose > 0;
     const increaseSkillOptions = {
       none: "TITAN.none.label",
     };
@@ -84,7 +84,7 @@ export class TitanSpellSheet extends TitanItemSheet {
       if (v == false) {
         increaseSkillOptions[k] = CONFIG.TITAN.skill.option[k].label;
       } else {
-        context.increaseSkillOvercastAvailable = true;
+        context.increaseSkill = true;
       }
     }
     if (Object.keys(increaseSkillOptions).length > 1) {
@@ -94,7 +94,7 @@ export class TitanSpellSheet extends TitanItemSheet {
 
     // Skill decrease options
     const decreaseSkillData = systemData.decreaseSkill;
-    context.decreaseSkillOvercastAvailable = decreaseSkillData.choose > 0;
+    context.decreaseSkill = decreaseSkillData.choose > 0;
     const decreaseSkillOptions = {
       none: "TITAN.none.label",
     };
@@ -102,7 +102,7 @@ export class TitanSpellSheet extends TitanItemSheet {
       if (v == false) {
         decreaseSkillOptions[k] = CONFIG.TITAN.skill.option[k].label;
       } else {
-        context.decreaseSkillOvercastAvailable = true;
+        context.decreaseSkill = true;
       }
     }
     if (Object.keys(decreaseSkillOptions).length > 1) {
@@ -112,7 +112,7 @@ export class TitanSpellSheet extends TitanItemSheet {
 
     // Resistance increase options
     const increaseResistanceData = systemData.increaseResistance;
-    context.increaseResistanceOvercastAvailable =
+    context.increaseResistance =
       increaseResistanceData.choose > 0;
     const increaseResistanceOptions = {
       none: "TITAN.none.label",
@@ -121,7 +121,7 @@ export class TitanSpellSheet extends TitanItemSheet {
       if (v == false) {
         increaseResistanceOptions[k] = CONFIG.TITAN.resistance.option[k].label;
       } else {
-        context.increaseResistanceOvercastAvailable = true;
+        context.increaseResistance = true;
       }
     }
     if (Object.keys(increaseResistanceOptions).length > 1) {
@@ -131,7 +131,7 @@ export class TitanSpellSheet extends TitanItemSheet {
 
     // Resistance decrease options
     const decreaseResistanceData = systemData.decreaseResistance;
-    context.decreaseResistanceOvercastAvailable =
+    context.decreaseResistance =
       decreaseResistanceData.choose > 0;
     const decreaseResistanceOptions = {
       none: "TITAN.none.label",
@@ -140,7 +140,7 @@ export class TitanSpellSheet extends TitanItemSheet {
       if (v == false) {
         decreaseResistanceOptions[k] = CONFIG.TITAN.resistance.option[k].label;
       } else {
-        context.decreaseResistanceOvercastAvailable = true;
+        context.decreaseResistance = true;
       }
     }
     if (Object.keys(decreaseResistanceOptions).length > 1) {

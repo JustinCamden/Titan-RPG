@@ -1,0 +1,54 @@
+{{! Decrease Attribute }}
+<div class="spell-sheet-aspects-tab-decrease-attribute stat-category">
+
+  {{! Category label }}
+  <h3 class="stat-category-label">{{localize "TITAN.decreaseAttribute.label"}}</h3>
+
+  {{! Choose }}
+  {{#if (greater system.decreaseAttribute.choose 0)}}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-number-input.hbs"
+  label="TITAN.choose.label"
+  path="system.decreaseAttribute.choose"
+  value=system.decreaseAttribute.choose
+  }}
+  {{/if}}
+
+  {{! Each current active attribute }}
+  {{#each system.decreaseAttribute.attribute as |attribute key|}}
+  {{#if attribute}}
+  <div class="stat-field-horizontal">
+    {{! Label }}
+    <div class="stat-label">
+      {{localize (concat "TITAN.attribute.option." key ".label")}}
+    </div>
+
+    {{! Delete Button }}
+    <a class="fas fa-trash delete-decrease-attribute" data-attribute={{key}}></a>
+  </div>
+  {{/if}}
+  {{/each}}
+
+  {{! Add Inactive attribute }}
+  {{#if decreaseAttributeOptions}}
+  <div class="stat-field-vertical">
+
+    {{! Type Label }}
+    <div class="stat-label">
+      {{localize "TITAN.addAttribute.label"}}
+    </div>
+
+    {{! Type Select }}
+    <select class="stat-input add-decrease-attribute">
+      {{selectOptions decreaseAttributeOptions selected=system.decreaseAttributeOptions.none localize=true}}
+    </select>
+  </div>
+  {{/if}}
+
+  {{! Overcast }}
+  {{#if decreaseAttributeOvercastAvailable}}
+  {{> "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-overcast.hbs"
+  overcast=system.decreaseAttribute.overcast
+  path="system.decreaseAttribute"
+  }}
+  {{/if}}
+</div>
