@@ -1,31 +1,31 @@
-{{! Condition infliction }}
+{{! skill infliction }}
 <div class="spell-sheet-aspects-tab-increase-skill stat-category">
 
   {{! Category label }}
   <h3 class="stat-category-label">{{localize "TITAN.increaseSkill.label"}}</h3>
 
-  {{! Each current active condition }}
-  {{#each system.increaseSkill as |condition key|}}
-  {{#if condition.enabled}}
+  {{! Each current active skill }}
+  {{#each system.increaseSkill.skill as |skill key|}}
+  {{#if skill}}
   <div class="stat-field-horizontal">
     {{! Label }}
     <div class="stat-label">
-      {{localize (concat "TITAN.condition.option." key ".label")}}
+      {{localize (concat "TITAN.skill.option." key ".label")}}
     </div>
 
     {{! Delete Button }}
-    <a class="fas fa-trash delete-increase-skill" data-condition={{key}}></a>
+    <a class="fas fa-trash delete-increase-skill" data-skill={{key}}></a>
   </div>
   {{/if}}
   {{/each}}
 
-  {{! Add Inactive Condition }}
+  {{! Add Inactive skill }}
   {{#if increaseSkillOptions}}
   <div class="stat-field-vertical">
 
     {{! Type Label }}
     <div class="stat-label">
-      {{localize "TITAN.addCondition.label"}}
+      {{localize "TITAN.addSkill.label"}}
     </div>
 
     {{! Type Select }}

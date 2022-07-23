@@ -76,7 +76,7 @@ export class TitanSpellSheet extends TitanItemSheet {
 
     // Skill increase options
     const increaseSkillData = systemData.increaseSkill;
-    if (increaseSkillData.chosen == false) {
+    if (increaseSkillData.choose == false) {
       const increaseSkillOptions = {
         none: "TITAN.none.label",
       };
@@ -104,25 +104,32 @@ export class TitanSpellSheet extends TitanItemSheet {
 
     html
       .find(".add-remove-condition")
-      .change(this._onAddConditionRemoval.bind(this));
+      .change(this._onAddRemoveCondition.bind(this));
 
     html
       .find(".delete-remove-condition")
-      .click(this._onDeleteConditionRemoval.bind(this));
+      .click(this._onDeleteRemoveCondition.bind(this));
 
     html
       .find(".add-inflict-condition")
-      .change(this._onAddConditionInfliction.bind(this));
+      .change(this._onAddInflictCondition.bind(this));
 
     html
       .find(".delete-inflict-condition")
-      .click(this._onDeleteConditionInfliction.bind(this));
+      .click(this._onDeleteInflictCondition.bind(this));
+
+    html
+      .find(".add-increase-skill")
+      .change(this._onAddIncreaseSkill.bind(this));
+
+    html
+      .find(".delete-increase-skill")
+      .click(this._onDeleteIncreaseSkill.bind(this));
 
     return;
   }
 
-  // Adding condition removal
-  _onAddConditionRemoval(event) {
+  _onAddRemoveCondition(event) {
     event.preventDefault();
     const removeConditionData = this.item.system.removeCondition;
 
@@ -149,8 +156,7 @@ export class TitanSpellSheet extends TitanItemSheet {
     });
   }
 
-  // Deleting condition removal
-  _onDeleteConditionRemoval(event) {
+  _onDeleteRemoveCondition(event) {
     event.preventDefault();
     const removeConditionData = this.item.system.removeCondition;
     const selected = event.target.dataset.condition;
@@ -172,8 +178,7 @@ export class TitanSpellSheet extends TitanItemSheet {
     });
   }
 
-  // Adding condition removal
-  _onAddConditionInfliction(event) {
+  _onAddInflictCondition(event) {
     event.preventDefault();
     const inflictConditionData = this.item.system.inflictCondition;
 
@@ -187,8 +192,7 @@ export class TitanSpellSheet extends TitanItemSheet {
     });
   }
 
-  // Deleting condition removal
-  _onDeleteConditionInfliction(event) {
+  _onDeleteInflictCondition(event) {
     event.preventDefault();
     const inflictConditionData = this.item.system.inflictCondition;
 
@@ -198,6 +202,42 @@ export class TitanSpellSheet extends TitanItemSheet {
     this.item.update({
       system: {
         inflictCondition: inflictConditionData,
+      },
+    });
+  }
+
+  _onAddIncreaseSkill(event) {
+    event.preventDefault();
+    const increaseSkillData = this.item.system.increaseSkill;
+
+    const selected = event.target.value;
+    if (selected == "choose") {
+      increaseSkillData.choose = true;
+    } else {
+      increaseSkillData.skill[selected] = true;
+    }
+
+    this.item.update({
+      system: {
+        increaseSkill: increaseSkillData,
+      },
+    });
+  }
+
+  _onDeleteIncreaseSkill(event) {
+    event.preventDefault();
+    const increaseSkillData = this.item.system.increaseSkill;
+
+    const selected = event.target.dataset.skill;
+    if (selected == "choose") {
+      increaseSkillData.choose = false;
+    } else {
+      increaseSkillData.skill[selected] = false;
+    }
+
+    this.item.update({
+      system: {
+        increaseSkill: increaseSkillData,
       },
     });
   }

@@ -1225,11 +1225,11 @@
 }
 
 .titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-field-horizontal .stat-label {
-  width: 50%;
+  width: 100%;
 }
 
 .titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-field-horizontal .stat-input {
-  width: 50%;
+  width: 100%;
   text-align: center;
 }
 
