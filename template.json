@@ -407,19 +407,21 @@
           "successCost": 1
         }
       },
-      "conditionRemovalAndImmunity": {
+      "conditionRemoval": {
         "all": false,
-        "blindeed": false,
-        "charmed": false,
-        "deafened": false, 
-        "frightened": false,
-        "incapacitated": false,
-        "poisoned": false,
-        "prone": false,
-        "restrained": false,
-        "stunned": false,
-        "unconscious": false,
         "any": 0,
+        "condition": {
+          "blinded": false,
+          "charmed": false,
+          "deafened": false, 
+          "frightened": false,
+          "incapacitated": false,
+          "poisoned": false,
+          "prone": false,
+          "restrained": false,
+          "stunned": false,
+          "unconscious": false
+        },
         "overcast": {
           "enable": true,
           "calculateSuccessCost": true,
@@ -427,7 +429,7 @@
         }
       },
       "conditionAffliction": {
-        "blindeed": false,
+        "blinded": false,
         "charmed": false,
         "deafened": false, 
         "frightened": false,

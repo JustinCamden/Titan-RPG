@@ -50,7 +50,7 @@ export class TitanSpell extends TitanTypeComponent {
     }
 
     // Condition removal
-    const conditionRemovalData = systemData.conditionRemovalAndImmunity;
+    const conditionRemovalData = systemData.conditionRemoval;
     if (conditionRemovalData.overcast.calculateSuccessCost) {
       conditionRemovalData.overcast.successCost = 2;
     }

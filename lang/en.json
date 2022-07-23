@@ -181,9 +181,10 @@
   "TITAN.healing.label": "Healing",
   "TITAN.amount.label": "Amount",
   "TITAN.all.label": "All",
-  "TITAN.conditionRemovalAndImmunity.label": "Condition Removal & Immunity",
+  "TITAN.conditionRemoval.label": "Condition Removal & Immunity",
   "TITAN.conditionAffliction.label": "Condition Affliction",
   "TITAN.any.label": "Any",
+  "TITAN.addCondition.label": "Add Condition",
 
   "SETTINGS.showCheckOptions": {
     "name": "Ask for Check Options by default.",

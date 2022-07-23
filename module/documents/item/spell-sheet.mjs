@@ -39,6 +39,100 @@ export class TitanSpellSheet extends TitanItemSheet {
     }
     context.durationOptions.custom = "TITAN.custom.label";
 
+    // Condition removal options;
+    // If all is not checked
+    const conditionRemovalData = this.item.system.conditionRemoval;
+    if (conditionRemovalData.all == false) {
+      const conditionRemovalOptions = {
+        none: "TITAN.none.label",
+      };
+      for (let [k, v] of Object.entries(conditionRemovalData.condition)) {
+        if (v == false) {
+          conditionRemovalOptions[k] = CONFIG.TITAN.condition.option[k].label;
+        }
+      }
+      if (Object.keys(conditionRemovalOptions).length > 1) {
+        // If Any is <= 0
+        if (conditionRemovalData.any <= 0) {
+          conditionRemovalOptions.any = "TITAN.any.label";
+        }
+        conditionRemovalOptions.all = "TITAN.all.label";
+        context.conditionRemovalOptions = conditionRemovalOptions;
+      }
+    }
+
     return context;
+  }
+
+  activateListeners(html) {
+    super.activateListeners(html);
+
+    // Everything below here is only needed if the sheet is editable
+    if (!this.isEditable) {
+      return;
+    }
+
+    html
+      .find(".add-condition-removal")
+      .change(this._onAddConditionRemoval.bind(this));
+
+    html
+      .find(".delete-condition-removal")
+      .click(this._onDeleteConditionRemoval.bind(this));
+
+    return;
+  }
+
+  // Adding condition removal
+  _onAddConditionRemoval(event) {
+    event.preventDefault();
+    const conditionRemovalData = this.item.system.conditionRemoval;
+
+    const selected = event.target.value;
+    switch (selected) {
+      case "all": {
+        conditionRemovalData.all = true;
+        break;
+      }
+      case "any": {
+        conditionRemovalData.any = 1;
+        break;
+      }
+      default: {
+        conditionRemovalData.condition[selected] = true;
+        break;
+      }
+    }
+
+    this.item.update({
+      system: {
+        conditionRemoval: conditionRemovalData,
+      },
+    });
+  }
+
+  // Deleting condition removal
+  _onDeleteConditionRemoval(event) {
+    event.preventDefault();
+    const conditionRemovalData = this.item.system.conditionRemoval;
+
+    const selected = event.target.dataset.condition;
+    console.log(selected);
+    switch (selected) {
+      case "all": {
+        conditionRemovalData.all = false;
+        break;
+      }
+      default: {
+        conditionRemovalData.condition[selected] = false;
+        break;
+      }
+    }
+
+    this.item.update({
+      system: {
+        conditionRemoval: conditionRemovalData,
+      },
+    });
   }
 }

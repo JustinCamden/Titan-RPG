@@ -274,6 +274,41 @@ export const TITAN = {
     },
   },
 
+  condition: {
+    option: {
+      blinded: {
+        label: "TITAN.condition.option.blinded.label",
+      },
+      charmed: {
+        label: "TITAN.condition.option.charmed.label",
+      },
+      deafened: {
+        label: "TITAN.condition.option.deafened.label",
+      },
+      frightened: {
+        label: "TITAN.condition.option.frightened.label",
+      },
+      incapacitated: {
+        label: "TITAN.condition.option.incapacitated.label",
+      },
+      poisoned: {
+        label: "TITAN.condition.option.poisoned.label",
+      },
+      prone: {
+        label: "TITAN.condition.option.prone.label",
+      },
+      restrained: {
+        label: "TITAN.condition.option.restrained.label",
+      },
+      stunned: {
+        label: "TITAN.condition.option.stunned.label",
+      },
+      unconscious: {
+        label: "TITAN.condition.option.unconscious.label",
+      },
+    },
+  },
+
   range: {
     name: "name",
     option: {
