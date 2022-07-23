@@ -259,16 +259,6 @@ export const TITAN = {
         },
       },
     },
-    template: {
-      name: "Attack",
-      type: "melee",
-      range: "close",
-      attribute: "body",
-      skill: "meleeWeapons",
-      damage: 1,
-      plusSuccessDamage: true,
-      traits: [],
-    },
   },
 
   duration: {

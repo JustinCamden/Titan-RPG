@@ -438,13 +438,84 @@
         "stunned": false,
         "unconscious": false
       },
+      "increaseSkill": [],
+      "increaseAttribute": [],
+      "decreaseSkill": [],
+      "decreaseAttribute": [],
+      "increaseMeleeAndAccuracy": {
+        "initialValue": 0,
+        "overcast": {
+          "enable": true,
+          "calculateSuccessCost": true,
+          "successCost": 1
+        }
+      },
+      "increaseDefence": {
+        "initialValue": 0,
+        "overcast": {
+          "enable": true,
+          "calculateSuccessCost": true,
+          "successCost": 1
+        }
+      },
+      "increaseSpeed": {
+        "initialValue": 0,
+        "overcast": {
+          "enable": true,
+          "calculateSuccessCost": true,
+          "successCost": 1
+        }
+      },
+      "decreaseMeleeAndAccuracy": {
+        "initialValue": 0,
+        "resistanceCheck": "none",
+        "overcast": {
+          "enable": true,
+          "calculateSuccessCost": true,
+          "successCost": 1
+        }
+      },
+      "decreaseDefence": {
+        "initialValue": 0,
+        "resistanceCheck": "none",
+        "overcast": {
+          "enable": true,
+          "calculateSuccessCost": true,
+          "successCost": 1
+        }
+      },
+      "decreaseSpeed": {
+        "initialValue": 0,
+        "resistanceCheck": "none",
+        "overcast": {
+          "enable": true,
+          "calculateSuccessCost": true,
+          "successCost": 1
+        }
+      },
       "castingCheck": {
         "difficulty": 4,
         "complexity": 1,
         "calculateCastingCheck": true
       },
-      "customOvercast": [],
-      "resistanceChecks": []
+      "increaseArmor": {
+        "initialValue": 0,
+        "overcast": {
+          "enable": true,
+          "calculateSuccessCost": true,
+          "successCost": 1
+        }
+      },
+      "decreaseArmor": {
+        "initialValue": 0,
+        "resistanceCheck": "none",
+        "overcast": {
+          "enable": true,
+          "calculateSuccessCost": true,
+          "successCost": 1
+        }
+      },
+      "customAspect": []
     },
     "miracle": {
       "templates": ["base", "resolveCost", "expCost"],

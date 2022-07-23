@@ -39,7 +39,7 @@ export class TitanWeapon extends TitanTypeComponent {
 
   async addAttack() {
     // Create the new attack
-    const newAttack = foundry.utils.deepClone(CONFIG.TITAN.attack.template);
+    const newAttack = getAttackTemplate();
 
     // Add the attack and update the item
     let attack = this.parent.system.attack;
@@ -72,6 +72,19 @@ export class TitanWeapon extends TitanTypeComponent {
     }
 
     return;
+  }
+
+  getAttackTemplate() {
+    return {
+      name: "Attack",
+      type: "melee",
+      range: "close",
+      attribute: "body",
+      skill: "meleeWeapons",
+      damage: 1,
+      plusSuccessDamage: true,
+      traits: [],
+    };
   }
 
   async;

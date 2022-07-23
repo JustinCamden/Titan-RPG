@@ -62,4 +62,30 @@ export class TitanSpell extends TitanTypeComponent {
 
     return;
   }
+
+  getModSkillTemplate() {
+    return {
+      skill: "athletics",
+      initialValue: 1,
+      increase: true,
+      overcast: {
+        enable: true,
+        calculateSuccessCost: true,
+        successCost: 1,
+      },
+    };
+  }
+
+  getModAttributeTemplate() {
+    return {
+      attribute: "body",
+      initialValue: 1,
+      increase: true,
+      overcast: {
+        enable: true,
+        calculateSuccessCost: true,
+        successCost: 1,
+      },
+    };
+  }
 }
