@@ -470,7 +470,35 @@
           "resistanceCheck": "none"
         }
       },
-      "increaseSkill": [],
+      "increaseSkill": {
+        "choose": false,
+        "skill": {
+          "arcana": false,
+          "athletics": false,
+          "beastHandling": false,
+          "deception": false,
+          "dexterity": false,
+          "diplomacy": false,
+          "engineering": false,
+          "intimidation": false,
+          "investigation": false,
+          "lore": false,
+          "medicine": false,
+          "meleeWeapons": false,
+          "perception": false,
+          "performance": false,
+          "rangedWeapons": false,
+          "sleightOfHand": false,
+          "stealth": false,
+          "survival": false,
+          "theology": false
+        },
+        "overcast": {
+          "enable": true,
+          "calculateSuccessCost": true,
+          "successCost": 1
+        }
+      },
       "increaseAttribute": [],
       "decreaseSkill": [],
       "decreaseAttribute": [],

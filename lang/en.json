@@ -185,6 +185,8 @@
   "TITAN.conditionInfliction.label": "Inflict Conditions",
   "TITAN.any.label": "Any",
   "TITAN.addCondition.label": "Add Condition",
+  "TITAN.choose.label": "Choose",
+  "TITAN.increaseSkill.label": "Increase Skill",
 
   "SETTINGS.showCheckOptions": {
     "name": "Ask for Check Options by default.",

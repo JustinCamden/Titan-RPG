@@ -10,6 +10,7 @@ export class TitanSpellSheet extends TitanItemSheet {
   getData() {
     // Retrieve base data structure.
     const context = super.getData();
+    const systemData = this.item.system;
 
     // Range Options
     context.rangeOptions = {};
@@ -40,7 +41,7 @@ export class TitanSpellSheet extends TitanItemSheet {
     context.durationOptions.custom = "TITAN.custom.label";
 
     // Condition removal options
-    const conditionRemovalData = this.item.system.conditionRemoval;
+    const conditionRemovalData = systemData.conditionRemoval;
     if (conditionRemovalData.all == false) {
       const conditionRemovalOptions = {
         none: "TITAN.none.label",
@@ -51,7 +52,6 @@ export class TitanSpellSheet extends TitanItemSheet {
         }
       }
       if (Object.keys(conditionRemovalOptions).length > 1) {
-        // If Any is <= 0
         if (conditionRemovalData.any <= 0) {
           conditionRemovalOptions.any = "TITAN.any.label";
         }
@@ -61,7 +61,7 @@ export class TitanSpellSheet extends TitanItemSheet {
     }
 
     // Condition infliction options
-    const conditionInflictionData = this.item.system.conditionInfliction;
+    const conditionInflictionData = systemData.conditionInfliction;
     const conditionInflictionOptions = {
       none: "TITAN.none.label",
     };
@@ -72,6 +72,23 @@ export class TitanSpellSheet extends TitanItemSheet {
     }
     if (Object.keys(conditionInflictionOptions).length > 1) {
       context.conditionInflictionOptions = conditionInflictionOptions;
+    }
+
+    // Skill increase options
+    const increaseSkillData = systemData.increaseSkill;
+    if (increaseSkillData.chosen == false) {
+      const increaseSkillOptions = {
+        none: "TITAN.none.label",
+      };
+      for (let [k, v] of Object.entries(increaseSkillData.skill)) {
+        if (v == false) {
+          increaseSkillOptions[k] = CONFIG.TITAN.skill.option[k].label;
+        }
+      }
+      if (Object.keys(increaseSkillOptions).length > 1) {
+        increaseSkillOptions.chosen = "TITAN.choose.label";
+        context.increaseSkillOptions = increaseSkillOptions;
+      }
     }
 
     return context;

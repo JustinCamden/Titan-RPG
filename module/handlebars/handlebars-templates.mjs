@@ -24,6 +24,7 @@ export const preloadHandlebarsTemplates = async function () {
     "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-duration.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-condition-removal.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-condition-infliction.hbs",
+    "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-increase-skill.hbs",
 
     // Generic Chat message partials
     "systems/titan/templates/chat-message/components/chat-message-traits-container.hbs",
