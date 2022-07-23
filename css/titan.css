@@ -1232,13 +1232,16 @@
 
 .titan .spell-sheet .spell-sheet-aspects-tab .stat-category.double-column {
   grid-column-end: span 2;
+}
+
+.titan .spell-sheet .spell-sheet-aspects-tab .stat-category.double-column .double-column-row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -1246,9 +1249,10 @@
   -ms-flex-align: center;
   align-items: center;
   text-align: center;
+  width: 100%;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category.double-column .double-column-row {
+.titan .spell-sheet .spell-sheet-aspects-tab .stat-category.double-column .double-column-row .stat-field-horizontal {
   width: 40%;
 }
 

@@ -52,11 +52,15 @@
 
       &.double-column {
         @include grid-span(2);
-        @include flex-column;
-        @include flex-group-center;
 
         .double-column-row {
-          width: 40%;
+          @include flex-row;
+          @include flex-group-center;
+          width: 100%;
+
+          .stat-field-horizontal {
+            width: 40%;
+          }
         }
 
         .double-column-columns {

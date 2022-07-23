@@ -5,15 +5,17 @@
   <h3 class="stat-category-label">{{localize "TITAN.conditionRemovalAndImmunity.label"}}</h3>
 
   {{! All }}
-  <div class="stat-field-horizontal double-column-row">
-    {{! Label }}
-    <div class="stat-label">
-      {{localize "TITAN.all.label"}}
-    </div>
+  <div class="double-column-row">
+    <div class="stat-field-horizontal">
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.all.label"}}
+      </div>
 
-    {{! Checkbox }}
-    <input name="system.conditionRemovalAndImmunity.all" class="stat-input" type="checkbox" {{checked
-      system.conditionRemovalAndImmunity.all}}>
+      {{! Checkbox }}
+      <input name="system.conditionRemovalAndImmunity.all" class="stat-input" type="checkbox" {{checked
+        system.conditionRemovalAndImmunity.all}}>
+    </div>
   </div>
 
   {{#if (not system.conditionRemovalAndImmunity.all)}}
@@ -154,15 +156,17 @@
 
   {{#if (greater system.conditionRemovalAndImmunity.any 0)}}
   {{! Overcast }}
-  <div class="stat-field-horizontal double-column-row">
-    {{! Label }}
-    <div class="stat-label">
-      {{concat (localize "TITAN.spell.overcast.label")"?"}}
-    </div>
+  <div class=" double-column-row">
+    <div class="stat-field-horizontal">
+      {{! Label }}
+      <div class="stat-label">
+        {{concat (localize "TITAN.spell.overcast.label")"?"}}
+      </div>
 
-    {{! Checkbox }}
-    <input name="system.conditionRemovalAndImmunity.overcast.enable" class="stat-input" type="checkbox" {{checked
-      system.conditionRemovalAndImmunity.overcast.enable}}>
+      {{! Checkbox }}
+      <input name="system.conditionRemovalAndImmunity.overcast.enable" class="stat-input" type="checkbox" {{checked
+        system.conditionRemovalAndImmunity.overcast.enable}}>
+    </div>
   </div>
 
   {{! Overcast Success Cost }}
