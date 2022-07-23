@@ -32,6 +32,11 @@ export const registerHandlebarsHelpers = async function () {
     return a <= b;
   });
 
+  // Or
+  Handlebars.registerHelper("or", (a, b) => {
+    return a || b;
+  });
+
   // Die class helper
   Handlebars.registerHelper("dieClasses", (die) => {
     let retVal = "die";

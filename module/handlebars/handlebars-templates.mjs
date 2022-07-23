@@ -14,9 +14,15 @@ export const preloadHandlebarsTemplates = async function () {
     "systems/titan/templates/item/weapon/components/weapon-sheet-description-tab.hbs",
     "systems/titan/templates/item/weapon/components/weapon-sheet-attacks-tab.hbs",
     "systems/titan/templates/item/weapon/components/weapon-sheet-attack-sheet-vertical.hbs",
+    "systems/titan/templates/item/spell/components/spell-sheet-tradition-rarity-header.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-description-tab.hbs",
     "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab.hbs",
-    "systems/titan/templates/item/spell/components/spell-sheet-tradition-rarity-header.hbs",
+    "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-range.hbs",
+    "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-target.hbs",
+    "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-damage.hbs",
+    "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-healing.hbs",
+    "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-duration.hbs",
+    "systems/titan/templates/item/spell/components/spell-sheet-aspects-tab-condition-removal.hbs",
 
     // Generic Chat message partials
     "systems/titan/templates/chat-message/components/chat-message-traits-container.hbs",

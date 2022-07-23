@@ -1,0 +1,25 @@
+{{! Range }}
+<div class="spell-sheet-aspects-tab-range stat-category">
+
+  {{! Category label }}
+  <h3 class="stat-category-label">{{localize "TITAN.range.label"}}</h3>
+
+  <div class="stat-field-vertical">
+
+    {{! Label }}
+    <div class="stat-label">
+      {{localize "TITAN.type.label"}}
+    </div>
+
+    {{! Select Input }}
+    <select name="system.range.type" class="stat-input">
+      {{selectOptions rangeOptions selected=system.range.type localize=true}}
+    </select>
+
+    {{! Custom }}
+    {{#if (equals system.range.type "custom")}}
+    <input class="stat-input" type="text" name="system.range.custom" value="{{system.range.custom}}"
+      placeholder="Custom" />
+    {{/if}}
+  </div>
+</div>

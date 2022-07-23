@@ -24,6 +24,7 @@
 
       .stat-category-label {
         margin-bottom: 0.25rem;
+        border-bottom: none;
       }
 
       .stat-field-vertical {
@@ -49,20 +50,16 @@
         }
       }
 
-      .condition-extra-wide-row {
-        width: 100%;
-        @include flex-row;
+      &.double-column {
+        @include grid-span(2);
+        @include flex-column;
         @include flex-group-center;
 
-        .stat-field-horizontal {
+        .double-column-row {
           width: 40%;
         }
-      }
 
-      &.spell-conditions {
-        @include grid-span(2);
-
-        .condition-rows {
+        .double-column-columns {
           width: 100%;
           @include grid(2);
         }

@@ -1,0 +1,93 @@
+{{! Damage }}
+<div class="spell-sheet-aspects-tab-damage stat-category">
+
+  {{! Category label }}
+  <h3 class="stat-category-label">{{localize "TITAN.damage.label"}}</h3>
+
+  {{! Initial Value }}
+  <div class="stat-field-horizontal">
+
+    {{! Label }}
+    <div class="stat-label">
+      {{localize "TITAN.amount.label"}}
+    </div>
+
+    {{! Input }}
+    <input name="system.damage.initialValue" class="stat-input" type="number" value="{{system.damage.initialValue}}"
+      data-dtype="Number" />
+  </div>
+
+  {{! If Damage }}
+  {{#if (greater system.damage.initialValue 0)}}
+  {{! Ignore Armor }}
+  <div class="stat-field-horizontal">
+
+    {{! Label }}
+    <div class="stat-label">
+      {{localize "TITAN.ignoreArmor.label"}}
+    </div>
+
+    {{! Checkbox }}
+    <input name="system.damage.ignoreArmor" class="stat-input" type="checkbox" {{checked system.damage.ignoreArmor}} />
+  </div>
+
+  {{! Resistance Check }}
+  <div class="stat-field-vertical">
+    {{! Label }}
+    <div class="stat-label">
+      {{localize "TITAN.resistanceCheck.label"}}
+    </div>
+
+    {{! Select }}
+    <select name="system.damage.resistanceCheck" class="stat-input">
+      {{selectOptions resistanceCheckOptions selected=system.damage.resistanceCheck localize=true}}
+    </select>
+  </div>
+
+  {{! Overcast }}
+  <div class="stat-field-horizontal">
+    {{! Overcast Label }}
+    <div class="stat-label">
+      {{concat (localize "TITAN.spell.overcast.label")"?"}}
+    </div>
+
+    {{! Overcast Checkbox }}
+    <input name="system.damage.overcast.enable" class="stat-input" type="checkbox" {{checked
+      system.damage.overcast.enable}} />
+  </div>
+
+  {{! Overcast Success Cost }}
+  {{#if system.damage.overcast.enable}}
+  <div class="stat-field-horizontal">
+
+    {{! Calculate Success Cost }}
+    <div class="stat-label">
+      {{concat (localize "TITAN.spell.overcast.calculateSuccessCost.label") "?"}}
+    </div>
+
+    {{! Calculate Success Cost Checkbox }}
+    <input name="system.damage.overcast.calculateSuccessCost" class="stat-input" type="checkbox" {{checked
+      system.damage.overcast.calculateSuccessCost}} />
+  </div>
+
+  <div class="stat-field-horizontal">
+    {{! Overcast Success Cost Label }}
+    <div class="stat-label">
+      {{localize "TITAN.spell.overcast.successCost.label"}}
+    </div>
+
+    {{#if system.damage.overcast.calculateSuccessCost}}
+    {{! Overcast Success Cost }}
+    <div class="stat-input">
+      {{system.damage.overcast.successCost}}
+    </div>
+    {{else}}
+    {{! Overcast Success Cost Input }}
+    <input name="system.damage.overcast.successCost" class="stat-input" type="number"
+      value="{{system.damage.overcast.successCost}}" data-dtype="Number" />
+    {{/if}}
+  </div>
+  {{/if}}
+  {{/if}}
+
+</div>

@@ -1,0 +1,204 @@
+{{! Condition removal }}
+<div class="spell-sheet-aspects-tab-condition-removal stat-category double-column">
+
+  {{! Category label }}
+  <h3 class="stat-category-label">{{localize "TITAN.conditionRemovalAndImmunity.label"}}</h3>
+
+  {{! All }}
+  <div class="stat-field-horizontal double-column-row">
+    {{! Label }}
+    <div class="stat-label">
+      {{localize "TITAN.all.label"}}
+    </div>
+
+    {{! Checkbox }}
+    <input name="system.conditionRemovalAndImmunity.all" class="stat-input" type="checkbox" {{checked
+      system.conditionRemovalAndImmunity.all}}>
+  </div>
+
+  {{#if (not system.conditionRemovalAndImmunity.all)}}
+  <div class="double-column-columns">
+
+    {{! Any }}
+    <div class="stat-field-horizontal">
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.any.label"}}
+      </div>
+
+      {{! Input }}
+      <input name="system.conditionRemovalAndImmunity.any" class="stat-input" type="number"
+        value="{{system.conditionRemovalAndImmunity.any}}" data-dtype="Number" />
+    </div>
+
+    {{! Blinded }}
+    <div class="stat-field-horizontal">
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.condition.option.blinded.label"}}
+      </div>
+
+      {{! Checkbox }}
+      <input name="system.conditionRemovalAndImmunity.blinded" class="stat-input" type="checkbox" {{checked
+        system.conditionRemovalAndImmunity.blinded}}>
+    </div>
+
+    {{! Charmed }}
+    <div class="stat-field-horizontal">
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.condition.option.charmed.label"}}
+      </div>
+
+      {{! Checkbox }}
+      <input name="system.conditionRemovalAndImmunity.charmed" class="stat-input" type="checkbox" {{checked
+        system.conditionRemovalAndImmunity.charmed}}>
+    </div>
+
+    {{! Deafened }}
+    <div class="stat-field-horizontal">
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.condition.option.deafened.label"}}
+      </div>
+
+      {{! Checkbox }}
+      <input name="system.conditionRemovalAndImmunity.deafened" class="stat-input" type="checkbox" {{checked
+        system.conditionRemovalAndImmunity.deafened}}>
+    </div>
+
+    {{! Frightened }}
+    <div class="stat-field-horizontal">
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.condition.option.frightened.label"}}
+      </div>
+
+      {{! Checkbox }}
+      <input name="system.conditionRemovalAndImmunity.frightened" class="stat-input" type="checkbox" {{checked
+        system.conditionRemovalAndImmunity.frightened}}>
+    </div>
+
+    {{! Incapacitated }}
+    <div class="stat-field-horizontal">
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.condition.option.incapacitated.label"}}
+      </div>
+
+      {{! Checkbox }}
+      <input name="system.conditionRemovalAndImmunity.incapacitated" class="stat-input" type="checkbox" {{checked
+        system.conditionRemovalAndImmunity.incapacitated}}>
+    </div>
+
+    {{! Poisoned }}
+    <div class="stat-field-horizontal">
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.condition.option.poisoned.label"}}
+      </div>
+
+      {{! Checkbox }}
+      <input name="system.conditionRemovalAndImmunity.poisoned" class="stat-input" type="checkbox" {{checked
+        system.conditionRemovalAndImmunity.poisoned}}>
+    </div>
+
+    {{! Prone }}
+    <div class="stat-field-horizontal">
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.condition.option.prone.label"}}
+      </div>
+
+      {{! Checkbox }}
+      <input name="system.conditionRemovalAndImmunity.prone" class="stat-input" type="checkbox" {{checked
+        system.conditionRemovalAndImmunity.prone}}>
+    </div>
+
+    {{! Restrained }}
+    <div class="stat-field-horizontal">
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.condition.option.restrained.label"}}
+      </div>
+
+      {{! Checkbox }}
+      <input name="system.conditionRemovalAndImmunity.restrained" class="stat-input" type="checkbox" {{checked
+        system.conditionRemovalAndImmunity.restrained}}>
+    </div>
+
+    {{! Stunned }}
+    <div class="stat-field-horizontal">
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.condition.option.stunned.label"}}
+      </div>
+
+      {{! Checkbox }}
+      <input name="system.conditionRemovalAndImmunity.stunned" class="stat-input" type="checkbox" {{checked
+        system.conditionRemovalAndImmunity.stunned}}>
+    </div>
+
+    {{! Unconscious }}
+    <div class="stat-field-horizontal">
+      {{! Label }}
+      <div class="stat-label">
+        {{localize "TITAN.condition.option.unconscious.label"}}
+      </div>
+
+      {{! Checkbox }}
+      <input name="system.conditionRemovalAndImmunity.unconscious" class="stat-input" type="checkbox" {{checked
+        system.conditionRemovalAndImmunity.unconscious}}>
+    </div>
+  </div>
+
+  {{#if (greater system.conditionRemovalAndImmunity.any 0)}}
+  {{! Overcast }}
+  <div class="stat-field-horizontal double-column-row">
+    {{! Label }}
+    <div class="stat-label">
+      {{concat (localize "TITAN.spell.overcast.label")"?"}}
+    </div>
+
+    {{! Checkbox }}
+    <input name="system.conditionRemovalAndImmunity.overcast.enable" class="stat-input" type="checkbox" {{checked
+      system.conditionRemovalAndImmunity.overcast.enable}}>
+  </div>
+
+  {{! Overcast Success Cost }}
+  {{#if system.conditionRemovalAndImmunity.overcast.enable}}
+  <div class="double-column-columns">
+    <div class="stat-field-horizontal">
+
+      {{! Calculate Success Cost }}
+      <div class="stat-label">
+        {{concat (localize "TITAN.spell.overcast.calculateSuccessCost.label") "?"}}
+      </div>
+
+      {{! Calculate Success Cost Checkbox }}
+      <input name="system.conditionRemovalAndImmunity.overcast.calculateSuccessCost" class="stat-input" type="checkbox"
+        {{checked system.conditionRemovalAndImmunity.overcast.calculateSuccessCost}} />
+    </div>
+
+    <div class="stat-field-horizontal">
+      {{! Overcast Success Cost Label }}
+      <div class="stat-label">
+        {{localize "TITAN.spell.overcast.successCost.label"}}
+      </div>
+
+      {{#if system.conditionRemovalAndImmunity.overcast.calculateSuccessCost}}
+      {{! Overcast Success Cost }}
+      <div class="stat-input">
+        {{system.conditionRemovalAndImmunity.overcast.successCost}}
+      </div>
+      {{else}}
+      {{! Overcast Success Cost Input }}
+      <input name="system.conditionRemovalAndImmunity.overcast.successCost" class="stat-input" type="number"
+        value="{{system.conditionRemovalAndImmunity.overcast.successCost}}" data-dtype="Number" />
+      {{/if}}
+    </div>
+  </div>
+  {{/if}}
+  {{/if}}
+  {{/if}}
+</div>

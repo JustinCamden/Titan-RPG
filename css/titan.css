@@ -849,10 +849,6 @@
   margin-bottom: 0;
 }
 
-.titan .item-sheet .stat-category:not(:first-child) {
-  margin-left: 0.5rem;
-}
-
 .titan .item-sheet .stat-label {
   font-weight: bold;
   width: 100%;
@@ -1195,6 +1191,7 @@
 
 .titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-category-label {
   margin-bottom: 0.25rem;
+  border-bottom: none;
 }
 
 .titan .spell-sheet .spell-sheet-aspects-tab .stat-category .stat-field-vertical {
@@ -1233,15 +1230,15 @@
   text-align: center;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .condition-extra-wide-row {
-  width: 100%;
+.titan .spell-sheet .spell-sheet-aspects-tab .stat-category.double-column {
+  grid-column-end: span 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -1251,15 +1248,11 @@
   text-align: center;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category .condition-extra-wide-row .stat-field-horizontal {
+.titan .spell-sheet .spell-sheet-aspects-tab .stat-category.double-column .double-column-row {
   width: 40%;
 }
 
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category.spell-conditions {
-  grid-column-end: span 2;
-}
-
-.titan .spell-sheet .spell-sheet-aspects-tab .stat-category.spell-conditions .condition-rows {
+.titan .spell-sheet .spell-sheet-aspects-tab .stat-category.double-column .double-column-columns {
   width: 100%;
   display: grid;
   gap: 0.5rem;

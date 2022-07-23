@@ -182,6 +182,7 @@
   "TITAN.amount.label": "Amount",
   "TITAN.all.label": "All",
   "TITAN.conditionRemovalAndImmunity.label": "Condition Removal & Immunity",
+  "TITAN.any.label": "Any",
 
   "SETTINGS.showCheckOptions": {
     "name": "Ask for Check Options by default.",

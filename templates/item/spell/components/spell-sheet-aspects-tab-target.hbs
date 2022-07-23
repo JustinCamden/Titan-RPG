@@ -1,0 +1,84 @@
+{{! Target }}
+<div class="spell-sheet-aspects-tab-target stat-category">
+
+  {{! Category label }}
+  <h3 class="stat-category-label">{{localize "TITAN.target.label"}}</h3>
+
+  {{! Type }}
+  <div class="stat-field-vertical">
+    {{! Type Label }}
+    <div class="stat-label">
+      {{localize "TITAN.type.label"}}
+    </div>
+
+    {{! Type Select }}
+    <select name="system.target.type" class="stat-input">
+      {{selectOptions targetOptions selected=system.target.type localize=true}}
+    </select>
+
+    {{! Type Custom }}
+    {{#if (equals system.target.type "custom")}}
+    <input class="stat-input" type="text" name="system.target.custom" value="{{system.target.custom}}"
+      placeholder="Custom" />
+    {{/if}}
+  </div>
+
+  {{! If Target not Self }}
+  {{#if (not (equals system.target.type "self"))}}
+  <div class="stat-field-horizontal">
+    {{! Initial Value Label }}
+    <div class="stat-label">
+      {{localize "TITAN.number.label"}}
+    </div>
+
+    {{! Initial Value Input }}
+    <input name="system.target.initialValue" class="stat-input" type="number" value="{{system.target.initialValue}}"
+      data-dtype="Number" />
+  </div>
+
+  {{! Overcast }}
+  <div class="stat-field-horizontal">
+    {{! Overcast Label }}
+    <div class="stat-label">
+      {{concat (localize "TITAN.spell.overcast.label")"?"}}
+    </div>
+
+    {{! Overcast Checkbox }}
+    <input name="system.target.overcast.enable" class="stat-input" type="checkbox" {{checked
+      system.target.overcast.enable}} />
+  </div>
+
+  {{! Overcast Success Cost }}
+  {{#if system.target.overcast.enable}}
+  <div class="stat-field-horizontal">
+
+    {{! Calculate Success Cost }}
+    <div class="stat-label">
+      {{concat (localize "TITAN.spell.overcast.calculateSuccessCost.label") "?"}}
+    </div>
+
+    {{! Calculate Success Cost Checkbox }}
+    <input name="system.target.overcast.calculateSuccessCost" class="stat-input" type="checkbox" {{checked
+      system.target.overcast.calculateSuccessCost}} />
+  </div>
+
+  <div class="stat-field-horizontal">
+    {{! Overcast Success Cost Label }}
+    <div class="stat-label">
+      {{localize "TITAN.spell.overcast.successCost.label"}}
+    </div>
+
+    {{#if system.target.overcast.calculateSuccessCost}}
+    {{! Overcast Success Cost }}
+    <div class="stat-input">
+      {{system.target.overcast.successCost}}
+    </div>
+    {{else}}
+    {{! Overcast Success Cost Input }}
+    <input name="system.target.overcast.successCost" class="stat-input" type="number"
+      value="{{system.target.overcast.successCost}}" data-dtype="Number" />
+    {{/if}}
+  </div>
+  {{/if}}
+  {{/if}}
+</div>
